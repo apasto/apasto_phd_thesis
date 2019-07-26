@@ -1,1 +1,1 @@
-# apasto_phd_thesis
+# PhD thesis git repository

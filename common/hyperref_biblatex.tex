@@ -1,0 +1,30 @@
+% from tex.stackexchange.com/a/27107
+% link on whole citation (author + year)
+
+\renewbibmacro*{cite}{%
+  \printtext[bibhyperref]{% Apply citation link to bibmacro output
+    \DeclareFieldAlias{bibhyperref}{default}% Prevent nested hyperlinks
+    \iffieldundef{shorthand}
+      {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+         {\usebibmacro{cite:label}%
+          \setunit{\addspace}}
+         {\printnames{labelname}%
+          \setunit{\nameyeardelim}}%
+       \usebibmacro{cite:labelyear+extrayear}}
+      {\usebibmacro{cite:shorthand}}}}
+
+\DeclareCiteCommand{\textcite}
+  {\boolfalse{cbx:parens}}
+  {\usebibmacro{citeindex}%
+   \ifboolexpr{ ( not test {\iffieldundef{prenote}} and
+                  test {\ifnumequal{\value{citecount}}{1}} ) or
+                ( not test {\iffieldundef{postnote}} and
+                  test {\ifnumequal{\value{citecount}}{\value{citetotal}}} ) }
+     {\usebibmacro{textcite}}
+     {\printtext[bibhyperref]{% Apply citation link to bibmacro output
+        \DeclareFieldAlias{bibhyperref}{default}% Prevent nested hyperlinks
+        \usebibmacro{textcite}%
+        \ifbool{cbx:parens}{\bibcloseparen\global\boolfalse{cbx:parens}}{}}}}
+  {\ifbool{cbx:parens}{\bibcloseparen\global\boolfalse{cbx:parens}}{}%
+   \multicitedelim}
+  {\usebibmacro{textcite:postnote}}

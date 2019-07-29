@@ -1,4 +1,5 @@
-\documentclass[11pt,a4paper]{memoir}
+% input this at the beginning of each chapter-draft
+\documentclass[12pt,a4paper]{scrbook}
 
 % encoding, ams, microtype, graphicx
 \usepackage[utf8]{inputenc}
@@ -7,20 +8,26 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage[dvips]{graphicx}
 
-% fbb font (from documentation)
-\usepackage[full]{textcomp}          % to get the right copyright, etc.
-\usepackage[lining,tabular]{fbb}     % so math uses tabular lining figures
-\usepackage[scaled=.95,type1]{cabin} % sans serif in style of Gill Sans
-\usepackage[varqu,varl]{zi4}         % inconsolata typewriter
-\usepackage[libertine,bigdelims]{newtxmath}
-\usepackage[cal=boondoxo,bb=boondox,frak=boondox]{mathalfa}
-\useosf % change normal text to use proportional oldstyle figures
-% \usetosf would provide tabular oldstyle figures in text
+% % fbb font (from documentation)
+% \usepackage[full]{textcomp}          % to get the right copyright, etc.
+% \usepackage[lining,tabular]{fbb}     % so math uses tabular lining figures
+% \usepackage[scaled=.95,type1]{cabin} % sans serif in style of Gill Sans
+% \usepackage[varqu,varl]{zi4}         % inconsolata typewriter
+% \usepackage[libertine,bigdelims]{newtxmath}
+% \usepackage[cal=boondoxo,bb=boondox,frak=boondox]{mathalfa}
+% \useosf % change normal text to use proportional oldstyle figures
+% % \usetosf would provide tabular oldstyle figures in text
 
-% babel: last decleared language becomes default
+\usepackage{newtxtext}
+
+\usepackage{lineno}
+\linenumbers
+
+\numberwithin{equation}{chapter}
+
 \usepackage[english]{babel}
 \usepackage[babel]{csquotes}
-\linespread{1.25} % large line spread in drafts
+\linespread{1.5} % large line spread in drafts
 
 \usepackage{siunitx}
 
@@ -28,7 +35,7 @@
 \usepackage[
 	backend=biber,
 	style=authoryear-comp,
-	firstinits=true,
+	giveninits=true,
 	uniquename=init,
 	uniquelist=false,
 	hyperref=true,
@@ -47,6 +54,15 @@
   \printtext{\bibstring{in}\intitlepunct}}}
 
 \bibliography{../../bibliography/phdt}
+
+\usepackage{geometry}
+\geometry{
+  left=40mm, right=40mm,
+  bindingoffset=0mm,
+  top=40mm, bottom=40mm,
+  heightrounded}
+
+\usepackage{lipsum}
 
 \usepackage{xcolor}
 \definecolor{linkblue}{RGB}{0,51,153}
@@ -70,12 +86,3 @@
   citecolor=linkblue}
 
 \input{../../common/hyperref_biblatex} % link on whole citation (only on year otherwise)
-
-\usepackage{geometry}
-\geometry{total={210mm,297mm},
-left=40mm,right=40mm,
-bindingoffset=0mm, top=40mm, bottom=40mm}
-
-\begin{document}
-
-\end{document}

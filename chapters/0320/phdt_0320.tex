@@ -1,0 +1,52 @@
+\input{../0000_chapter_draft_boilerplate/phdt_0000_draft_boilerplate.tex}
+
+\begin{document}
+
+\setcounter{chapter}{2}
+\chapter{The Earth crust as sensed by inverse modelling of the gravity field}
+
+\setcounter{section}{1}
+\section{Signal isolation: data reduction and uncertainty budget}
+
+\subsection*{Summary}
+In order to perform geophysical inversions on the static gravity field, a signal separation procedure is required, i.e.~the effect of an a-priori mass distribution must be removed, isolating an anomalous field \parencites[e.g.][]{Tenzer2012}{Sjoberg2013}[][and references therein]{Tenzer2009}.
+The observed field stripped of the forward-modelled attraction of these `known masses' constitutes the input of inverse gravity modelling.
+Any distribution of anomalous masses that result in the isolated field is a solution to the inverse problem.
+Common reductions include the well-known terrain correction, i.e.~landmasses and bathymetry \parencites{Hinze2003}{Hinze2005}, which can be further refined by stripping the effect of subsurface density variations \parencite{Vajda2008}.
+
+Uncertainties in the a-priori masses, such as unmodelled spatial variability in density, accumulate in the reductions and are propagated to the reduced data and to the inversion results.
+Incomplete and inexact geological knowledge cannot be avoided, thus a perfect data reduction is unrealistic.
+Therefore, an uncertainty-aware signal isolation process, i.e.~a process providing error estimates alongside its reduced gravity data, is a necessary step in estimating confidence of the inversion results, in statistical terms.
+Error information is required in order to perform multi-observable integrated modelling \parencite[e.g.][]{Afonso2013}, comparisons \parencite[e.g.][]{Root2017}, or assimilation of geophysical models \parencites[e.g.~to assemble large scale maps from local studies, see][]{Tesauro2008}{Grad2009}{Molinari2011}.
+
+The procedure and experiments described in this section were designed for local Moho inverse modelling, using global satellite-only gravity field models.
+They were applied in the gravity-constrained thermal modelling strategy described in this thesis.
+They include corrections for the terrain effect (topography, water, and ice), sediments and other intra-crustal density variations, far-field effects of crustal roots, and inhomogeneities in the lithospheric- and upper-mantle.
+Particular attention was paid to ensure spectral consistency between the forward-modelled reductions and the input gravity models.
+
+Uncertainty was quantified through Monte Carlo error propagation \parencite{Aster2018}, resulting in a population of randomly perturbed reduction fields (according to a set of parameter uncertainty assumptions) and of inverted crust-mantle boundary depths.
+Results include the probability density function of these reductions and of the inverted results, from which derived descriptive statistics were computed (e.g.~the spatial distribution of a defined confidence interval).
+
+% The adjective `anomalous' is commonly used to indicate deviations from an a-priori reference. In order to prevent confusion with the strict-sense `anomaly', a gravity functional, in this section the term \textit{residual} is used to refer to any gravity data after the signal isolation procedure.
+\newpage
+
+\subsection{Forward modelling of reductions to the gravity disturbance}
+% teoria, definizioni, metodo SH e confronti con tesseroids
+
+
+
+\subsection{Input a-priori mass distribution models}
+% topografia, water, ice, litho, conversioni velocità
+
+\subsection{Implementation}
+% multiprocessing (subsection discutibile)
+
+\subsection{Global reduction results}
+% con valutazioni spettrali
+
+\subsection{Reductions for regional crustal modelling}
+% test locale, simile ad articolo, confronto con altro modello con incertezza
+
+\subsection{Discussion}
+
+\input{../0000_chapter_draft_boilerplate/phdt_0000_draft_boilerplate_end.tex}

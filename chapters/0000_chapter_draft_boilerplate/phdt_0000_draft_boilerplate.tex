@@ -4,7 +4,7 @@
 % encoding, ams, microtype, graphicx
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,bm}
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage[dvips]{graphicx}
 
@@ -20,16 +20,18 @@
 
 \usepackage{newtxtext}
 
-\usepackage{lineno}
+\usepackage[mathlines]{lineno}
 \linenumbers
 
 \numberwithin{equation}{chapter}
 
 \usepackage[english]{babel}
 \usepackage[babel]{csquotes}
-\linespread{1.5} % large line spread in drafts
+\linespread{1.6} % large line spread in drafts
 
 \usepackage{siunitx}
+
+\setcounter{secnumdepth}{3} % number up to subsubsections
 
 % --- biblatex with sorting, position, authoryear
 \usepackage[

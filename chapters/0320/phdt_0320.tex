@@ -3,14 +3,18 @@
 \begin{document}
 
 \setcounter{chapter}{2}
+\linespread{0.75}
 \chapter{The Earth crust as sensed by inverse modelling of the gravity field}
+\linespread{1} % reset to value in preamble
 
 \setcounter{section}{1}
 \section{Signal isolation: data reduction and uncertainty budget}
+\label{s:SigIs}
 
 \subsection*{Summary}
+\label{ss:SigIs:Summary}
 In order to perform geophysical inversions on the static gravity field, a signal separation procedure is required, i.e.~the effect of an a-priori mass distribution must be removed, isolating an anomalous field \parencites[e.g.][]{Tenzer2012}{Sjoberg2013}[][and references therein]{Tenzer2009}.
-The observed field stripped of the forward-modelled attraction of these `known masses' constitutes the input of inverse gravity modelling.
+The observed field stripped of the forward-modelled attraction of these ``known masses'' constitutes the input of inverse gravity modelling.
 Any distribution of anomalous masses that result in the isolated field is a solution to the inverse problem.
 Common reductions include the well-known terrain correction, i.e.~landmasses and bathymetry \parencites{Hinze2003}{Hinze2005}, which can be further refined by stripping the effect of subsurface density variations \parencite{Vajda2008}.
 
@@ -27,24 +31,123 @@ Particular attention was paid to ensure spectral consistency between the forward
 Uncertainty was quantified through Monte Carlo error propagation \parencite{Aster2018}, resulting in a population of randomly perturbed reduction fields (according to a set of parameter uncertainty assumptions) and of inverted crust-mantle boundary depths.
 Results include the probability density function of these reductions and of the inverted results, from which derived descriptive statistics were computed (e.g.~the spatial distribution of a defined confidence interval).
 
-% The adjective `anomalous' is commonly used to indicate deviations from an a-priori reference. In order to prevent confusion with the strict-sense `anomaly', a gravity functional, in this section the term \textit{residual} is used to refer to any gravity data after the signal isolation procedure.
+% The adjective ``anomalous'' is commonly used to indicate deviations from an a-priori reference. In order to prevent confusion with the strict-sense ``anomaly'', a gravity functional, in this section the term \textit{residual} is used to refer to any gravity data after the signal isolation procedure.
 \newpage
 
-\subsection{Forward modelling of reductions to the gravity disturbance}
+\subsection{Definition and computation of data reductions}
+\label{ss:SigIs:Defs}
 % teoria, definizioni, metodo SH e confronti con tesseroids
+
+\subsubsection{No-topography gravity disturbance}
+\label{sss:SigIs:Defs:NETC}
+In order to isolate the gravitational signal due to an unknown mass distribution, a technique known as ``stripping'' is employed \parencites{Vajda2008}{Tenzer2009}.
+It consists in computing the gravitational effect of a ``known mass'' model, as inferred by other investigations, and removing it from the observed signal.
+The gravimetric inverse problem is therefore formulated in terms of an anomalous gravity field resulting from the enquired mass/density distribution.
+
+Following the recommendations in \textcite{Hackney2003} and \textcite{Vajda2007}, the formulation hereby presented is based on gravity disturbances, to avoid the ``Secondary Indirect Topographic Effect'' that arises when the topographic correction is applied to gravity anomalies.
+We recall the definition of gravity disturbance from \textcite{HofmannWellenhof2006}, section~2.12: it is defined as the difference in magnitude between the observed gravity vector $\bm{g}$ and the normal gravity vector $\bm{\gamma}$, at the same point $P$ of geocentric geodetic coordinates $(h, \lambda, \phi)$:
+\begin{equation}
+    \label{eq:red:GravDist}
+    \delta g (h, \lambda, \phi) =
+    \lvert \bm{g}(h, \lambda, \phi) \rvert -
+    \lvert \bm{\gamma}(h, \lambda, \phi) \rvert
+\end{equation}
+where $\bm{g}$ is the gradient of the potential $\nabla W$ and $\bm{\gamma}$ is the gradient of the normal potential $\nabla U$.
+This follows from the definition of normal and disturbing potential, respectively $U$ and $T$:
+\begin{equation}
+    \label{eq:red:Pot}
+    W(h, \lambda, \phi) = U(h, \lambda) + T(h, \lambda, \phi)
+\end{equation}
+in which we can decompose the $W$ and $U$ in an attraction (gravitational) and a centrifugal component, denoted with $\Phi$ \parencite[Eq.~5 and 13 in][]{Barthelmes2013}.
+\begin{equation}
+    \label{eq:red:PotAttr}
+    \underbrace{W_{a}(h, \lambda, \phi) + \Phi(h, \lambda)}_W =
+    \underbrace{U_{a}(h, \lambda) + \Phi(h, \lambda)}_U +
+    T(h, \lambda, \phi)
+\end{equation}
+By ``geocentric geodetic coordinates'' we refer to ``ellipsoidal coordinates'' \parencite{HofmannWellenhof2006}, with $h$ ellipsoidal height, $\phi$ geodetic latitude, and $\lambda$ geodetic longitude.
+
+To isolate the contribution of the anomalous density distribution we must remove the effect of a reference density model, against which anomalous densities are referred (in terms of density contrasts).
+Following the strategy of \textcite{Vajda2006}, we can define a reference density model composed of two regions: one inside the reference ellipsoid, such as to generate the external normal potential, and one between the reference ellipsoid and the ``ellipsoidal topography'', i.e. the ``topography reckoned from the ellipsoid''.
+As demonstrated by them, the gravity disturbance obtained by removing the effect of such a reference model is rigorously related with the ``gravitational attraction of the anomalous density distribution inside the entire earth'' \parencite{Vajda2006}.
+Omitting most of the derivation, for which I refer the reader to the contents in \textcite{Vajda2006}, I report here the following decomposition of the attraction potential $W_a$:
+\begin{equation}
+    \label{eq:red:Vdec1}
+    W_a(h, \lambda, \phi) = V^{E}(h, \lambda, \phi) + V^{ET}(h, \lambda, \phi)
+\end{equation}
+where $V^{E}$ is the normal potential ($U_a$ in Eq.~\ref{eq:red:PotAttr}), due to the masses inside the reference ellipsoid, and $V^{ET}$ is the potential due to the masses between the ellipsoid and the topography.
+Each of the potentials in Eq.~\ref{eq:red:Vdec1} is further decomposed, in the contribution of a reference density and in the contribution of the anomalous density distribution (in respect to the chosen reference). Therefore, omitting the position arguments ($h, \lambda, \phi$), the following is obtained:
+\begin{equation}
+    \label{eq:red:Vdec2}
+    W_a = V_{R}^{E} + \delta V^{E} + V_{R}^{ET} + \delta V^{ET}
+\end{equation}
+where the terms with the subscript $R$ ($V_{R}^{E}$ and $V_{R}^{ET}$) denote the potentials due to the reference density contribution and the terms preceded by $\delta$ ($\delta V^{E}$ and $\delta V^{ET}$) denote the potentials due to the anomalous density contribution.
+Recalling that $W_a - V_{R}^{E}$ (equivalent to $W_a - U_a$) is the disturbing potential $T$, Eq.~\ref{eq:red:Vdec2} can thus be rewritten as:
+\begin{equation}
+    \label{eq:red:DistT1}
+    T = \left( \delta V^{E} + \delta V^{ET} \right) + V_{R}^{ET}
+\end{equation}
+The sum of $\delta V^{E}$ and $ \delta V^{ET}$ is the potential of the anomalous density distribution in the whole earth $\delta V$, so the Eq.~\ref{eq:red:DistT1} can be further rearranged to:
+\begin{equation}
+    \label{eq:red:DistT2}
+    T - V_{R}^{ET} = \delta V
+\end{equation}
+
+\Textcite{Vajda2006} proposed the notation $T^{NETC}$ for $T - V_{R}^{ET}$, the {NETC} acronym standing for ``No Ellipsoidal Topography of Constant density''.
+Taking the vertical derivative of $T^{NETC}$ (applying the differential operator $-\partial / \partial h$, along the ellipsoidal normal), the ``NETC gravity disturbance'' is obtained:
+\begin{equation}
+    \label{eq:red:DistgNETC1}
+    \delta_{g}^{NETC} =
+    -\frac{\partial T^{NETC}}{\partial h} =
+    -\frac{\partial \delta V}{\partial h} \equiv \delta A
+\end{equation}
+where $\delta A$ is the attraction of the anomalous density distribution.
+The NETC gravity disturbance can be computed for each point gravity disturbance $\delta g$ using the following:
+\begin{equation}
+    \label{eq:red:DistgNETC2}
+    \delta_{g}^{NETC} = \delta_{g} - A_{R}^{ET}
+\end{equation}
+here $A_{R}^{ET}$ is the forward-modelled attraction of the earth topography of reference density.
+
+The process that has been just described is conceptually akin to computing and removing a ``complete Bouguer correction'' \parencites{Hinze2003}{Mikuska2006} to gravity observations.
+There are, however, some methodological discrepancies in the various definitions.
+The method and terminology hereby presented should prevent confusion, providing a gravity quantity ($\delta_{g}^{NETC}$) which is formally related to the unmodelled density distribution, i.e. the component that was not accounted for in the reference model.
+\newpage
+
+\subsubsection{Corrections to the gravity disturbance}
+\label{sss:SigIs:Defs:Corrs}
+
+Following the definitions used by \textcite{Vajda2008} and \textcite{Tenzer2009}, we classify the corrections to the gravity disturbance as topographic, bathymetric, and stripping.
+They are fundamentally further refinements to the reference density model.
+The topographic correction is computed with a reference density for both solid and liquid topography, i.e. for the strict sense topographic surface of land masses and for the surface of water bodies, both in respect to the reference ellipsoid.
+The bathymetic correction consists in the removal of the effect of water density, expressed as contrast against the reference topographic density.
+All further corrections (e.g. ice, sediments, crustal and mantle inhomogeneities...) go under the name of stripping -- they are computed as contrasts against reference, similarly to the bathymetic correction.
+
+In regard to the masses below the reference ellipsoid, the reference densities are the ones of a model which results in the adopted normal potential, in concordance with the normal potential decomposition of Eq.~\ref{eq:red:Vdec1}.
+A radially-stratified model of the interior (actually made up of concentric ellipsoidal shells), such as the PREM \parencite{Dziewonski1981}, should satisfy this condition \parencite{Tscherning1981}.
+
+\subsubsection{Spectral-domain forward modelling}
+\label{sss:SigIs:Defs:SHfwd}
+
+\subsubsection{Spatial-domain forward modelling}
+\label{sss:SigIs:Defs:SPfwd}
 
 
 
 \subsection{Input a-priori mass distribution models}
+\label{ss:SigIs:InModels}
 % topografia, water, ice, litho, conversioni velocità
 
 \subsection{Implementation}
+\label{ss:SigIs:Impl}
 % multiprocessing (subsection discutibile)
 
 \subsection{Global reduction results}
+\label{ss:SigIs:Results}
 % con valutazioni spettrali
 
 \subsection{Reductions for regional crustal modelling}
+\label{ss:SigIs:Regional}
 % test locale, simile ad articolo, confronto con altro modello con incertezza
 
 \subsection{Discussion}

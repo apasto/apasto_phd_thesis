@@ -69,7 +69,7 @@ By ``geocentric geodetic coordinates'' we refer to ``ellipsoidal coordinates'' \
 
 To isolate the contribution of the anomalous density distribution we must remove the effect of a reference density model, against which anomalous densities are referred (in terms of density contrasts).
 Following the strategy of \textcite{Vajda2006}, we can define a reference density model composed of two regions: one inside the reference ellipsoid, such as to generate the external normal potential, and one between the reference ellipsoid and the ``ellipsoidal topography'', i.e. the ``topography reckoned from the ellipsoid''.
-As demonstrated by them, the gravity disturbance obtained by removing the effect of such a reference model is rigorously related with the ``gravitational attraction of the anomalous density distribution inside the entire earth'' \parencite{Vajda2006}.
+As demonstrated by them, the gravity disturbance obtained by removing the effect of such a reference model is rigorously related with the ``gravitational attraction of the anomalous density distribution inside the entire Earth'' \parencite{Vajda2006}.
 Omitting most of the derivation, for which I refer the reader to the contents in \textcite{Vajda2006}, I report here the following decomposition of the attraction potential $W_a$:
 \begin{equation}
     \label{eq:red:Vdec1}
@@ -87,7 +87,7 @@ Recalling that $W_a - V_{R}^{E}$ (equivalent to $W_a - U_a$) is the disturbing p
     \label{eq:red:DistT1}
     T = \left( \delta V^{E} + \delta V^{ET} \right) + V_{R}^{ET}
 \end{equation}
-The sum of $\delta V^{E}$ and $ \delta V^{ET}$ is the potential of the anomalous density distribution in the whole earth $\delta V$, so the Eq.~\ref{eq:red:DistT1} can be further rearranged to:
+The sum of $\delta V^{E}$ and $ \delta V^{ET}$ is the potential of the anomalous density distribution in the whole Earth $\delta V$, so the Eq.~\ref{eq:red:DistT1} can be further rearranged to:
 \begin{equation}
     \label{eq:red:DistT2}
     T - V_{R}^{ET} = \delta V
@@ -107,7 +107,7 @@ The NETC gravity disturbance can be computed for each point gravity disturbance 
     \label{eq:red:DistgNETC2}
     \delta_{g}^{NETC} = \delta_{g} - A_{R}^{ET}
 \end{equation}
-here $A_{R}^{ET}$ is the forward-modelled attraction of the earth topography of reference density.
+here $A_{R}^{ET}$ is the forward-modelled attraction of the Earth topography of reference density.
 
 The process that has been just described is conceptually akin to computing and removing a ``complete Bouguer correction'' \parencites{Hinze2003}{Mikuska2006} to gravity observations.
 There are, however, some methodological discrepancies in the various definitions.
@@ -120,19 +120,43 @@ The method and terminology hereby presented should prevent confusion, providing 
 Following the definitions used by \textcite{Vajda2008} and \textcite{Tenzer2009}, we classify the corrections to the gravity disturbance as topographic, bathymetric, and stripping.
 They are fundamentally further refinements to the reference density model.
 The topographic correction is computed with a reference density for both solid and liquid topography, i.e. for the strict sense topographic surface of land masses and for the surface of water bodies, both in respect to the reference ellipsoid.
-The bathymetic correction consists in the removal of the effect of water density, expressed as contrast against the reference topographic density.
-All further corrections (e.g. ice, sediments, crustal and mantle inhomogeneities...) go under the name of stripping -- they are computed as contrasts against reference, similarly to the bathymetic correction.
+The bathymetric correction consists in the removal of the effect of water density, expressed as contrast against the reference topographic density.
+All further corrections (e.g. ice, sediments, crustal and mantle inhomogeneities...) go under the name of stripping -- they are computed as contrasts against reference, similarly to the bathymetric correction \parencite{Hammer1963}.
 
 In regard to the masses below the reference ellipsoid, the reference densities are the ones of a model which results in the adopted normal potential, in concordance with the normal potential decomposition of Eq.~\ref{eq:red:Vdec1}.
-A radially-stratified model of the interior (actually made up of concentric ellipsoidal shells), such as the PREM \parencite{Dziewonski1981}, should satisfy this condition \parencite{Tscherning1981}.
+A radially-stratified model of the interior (actually made up of concentric ellipsoidal shells), such as the PREM \parencite[Preliminary Reference Earth Model,][]{Dziewonski1981}, should satisfy this condition \parencite{Tscherning1981}.
 
-\subsubsection{Spectral-domain forward modelling}
-\label{sss:SigIs:Defs:SHfwd}
+Stripping a set of \textit{known masses} (i.e. a-priori density distributions models) is often aimed at signal isolation.
+For example, \textit{mantle gravity anomalies} \parencites[e.g.][]{Mooney2010}{Kaban2014} are obtained by stripping the ``crustal effect'', i.e. by correcting for a crust model \parencite[e.g. {CRUST1.0},][]{Laske2012Crust10}.
+Starting from the NETC gravity disturbance introduced in the previous section (\ref{sss:SigIs:Defs:NETC}), corrections can be applied for ice, sediments, crustal heterogeneities.
+The disturbance obtained after those corrections equals to a model Earth without topography above the ellipsoid and a reference-density (\textit{normal}) crust inside the ellipsoid, down to the crust-mantle interface.
+In the unlikely case we had a perfect density model for these above-Moho masses, this reduced gravity would be equal to the attraction of anomalous densities in the mantle and core.
 
-\subsubsection{Spatial-domain forward modelling}
-\label{sss:SigIs:Defs:SPfwd}
+An application example is the work by \textcite{Tenzer2009}, who compiled and presented a set of global maps of the gravity disturbance --obtained from the EGM08 global gravity model \parencite{Pavlis2012EGM2008}-- corrected for the {CRUST2.0} model \parencite{Bassin2000Crust20} and for a reference crust of constant density.
+They chose the density of the latter in order to minimise the correlation between the crust-reduced disturbance and the Moho depth.
+By doing so, they obtained a global best-decorrelation density contrast of the ``consolidated crust'' (i.e. the bulk value) of \SI{-520}{\kilo \gram \per \metre \squared}, against the reference ellipsoid.
+This results in a stripped disturbance containing ideally no-topography, a \SI{3190}{\kilo \gram \per \metre \squared} crust between the ellipsoid surface and the Moho interface ($\num{2670} + \num{520}$), and the attraction of the density inhomogeneities below the Moho.
+It should be noted that there is no requirement of decorrelation between the crustal gravity signal and the one resulting from mantle inhomogeneities.
 
+\Textcite{Tenzer2009} also provided a global map of ellipsoid- versus geoid-referenced topography and bathymetry corrected gravity disturbance.
+Differences reach upwards to $\pm~14$~\si{\milli Gal} over continents, with a morphology highly correlated to geoidal undulations, as expected.
 
+In crustal thickness modelling, signal isolation is obtained by concurrently correcting for above- and below-Moho masses ---as it has been done to obtain the global model {GEMMA} \parencites{Reguzzoni2013}{Reguzzoni2015}.
+Global density models \parencites[e.g.][]{Laske2012Crust10}{Pasyanos2014} rely mostly on seismological data, therefore requiring strong assumptions on velocity-density conversions.
+%The mantle is less constrained,
+% qui Tenzer 2015 points out missing density information in Simmons 2010
+% chiudo qui scrivendo che questo è descrito in maniera più estesa in \ref{ss:SigIs:InModels}
+
+\subsubsection{Forward modelling strategy}
+\label{sss:SigIs:Defs:Fwd}
+
+% descrizione metodo poster, forward SH Wieczorek
+% lascio spazio anche a metodo space domain, magari sottocapitolo confronti
+% (attenzione: non troppo prolisso!)
+% razionale per il metodo: random modelling
+% VALUTARE di spostare ss:SigIs:Impl qui, altrimenti è una micro sssection
+% mentre questa ha già l'aria di essere corposa
+% VALUTARE anche di fondere la precedente con la prima
 
 \subsection{Input a-priori mass distribution models}
 \label{ss:SigIs:InModels}
@@ -151,5 +175,6 @@ A radially-stratified model of the interior (actually made up of concentric elli
 % test locale, simile ad articolo, confronto con altro modello con incertezza
 
 \subsection{Discussion}
+% citare/confrontare Tenzer2015
 
 \input{../0000_chapter_draft_boilerplate/phdt_0000_draft_boilerplate_end.tex}

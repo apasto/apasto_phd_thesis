@@ -15,7 +15,7 @@
 \label{ss:SigIs:Summary}
 In order to perform geophysical inversions on the static gravity field, a signal separation procedure is required, i.e.~the effect of an a-priori mass distribution must be removed, isolating an anomalous field \parencites[e.g.][]{Tenzer2012}{Sjoberg2013}[][and references therein]{Tenzer2009}.
 The observed field stripped of the forward-modelled attraction of these ``known masses'' constitutes the input of inverse gravity modelling.
-Any distribution of anomalous masses that result in the isolated field is a solution to the inverse problem.
+Any distribution of anomalous masses that results in the isolated field is a solution to the inverse problem.
 Common reductions include the well-known terrain correction, i.e.~landmasses and bathymetry \parencites{Hinze2003}{Hinze2005}, which can be further refined by stripping the effect of subsurface density variations \parencite{Vajda2008}.
 
 Uncertainties in the a-priori masses, such as unmodelled spatial variability in density, accumulate in the reductions and are propagated to the reduced data and to the inversion results.
@@ -142,10 +142,15 @@ It should be noted that there is no requirement of decorrelation between the cru
 Differences reach upwards to $\pm~14$~\si{\milli Gal} over continents, with a morphology highly correlated to geoidal undulations, as expected.
 
 In crustal thickness modelling, signal isolation is obtained by concurrently correcting for above- and below-Moho masses ---as it has been done to obtain the global model {GEMMA} \parencites{Reguzzoni2013}{Reguzzoni2015}.
-Global density models \parencites[e.g.][]{Laske2012Crust10}{Pasyanos2014} rely mostly on seismological data, therefore requiring strong assumptions on velocity-density conversions.
-%The mantle is less constrained,
-% qui Tenzer 2015 points out missing density information in Simmons 2010
-% chiudo qui scrivendo che questo è descrito in maniera più estesa in \ref{ss:SigIs:InModels}
+Global crustal density models \parencites[e.g.][]{Laske2012Crust10}{Pasyanos2014} rely mostly on seismological data, therefore requiring strong assumptions on velocity-density conversions \parencite[e.g.][]{} % sebera
+The mantle is less constrained, lacking readily available density models \parencite{Tenzer2015}.
+Conversion from velocity models \parencites[e.g.][]{}{} % simmons, lebedev
+again require
+concurring effect of temperature, pressure and composition, i.e. comprehensive thermodynamical % mechanical?
+modelling % cito Perplex
+These issues area dealt in detail in section~\ref{ss:SigIs:InModels}.
+
+
 
 \subsubsection{Forward modelling strategy}
 \label{sss:SigIs:Defs:Fwd}
@@ -153,18 +158,21 @@ Global density models \parencites[e.g.][]{Laske2012Crust10}{Pasyanos2014} rely m
 % descrizione metodo poster, forward SH Wieczorek
 % lascio spazio anche a metodo space domain, magari sottocapitolo confronti
 % (attenzione: non troppo prolisso!)
-% razionale per il metodo: random modelling
-% VALUTARE di spostare ss:SigIs:Impl qui, altrimenti è una micro sssection
-% mentre questa ha già l'aria di essere corposa
-% VALUTARE anche di fondere la precedente con la prima
+
 
 \subsection{Input a-priori mass distribution models}
 \label{ss:SigIs:InModels}
 % topografia, water, ice, litho, conversioni velocità
 
-\subsection{Implementation}
+\subsection{Assessment of uncertainty}
 \label{ss:SigIs:Impl}
-% multiprocessing (subsection discutibile)
+% multiprocessing
+
+% spostati commenti seguenti da FWD
+% razionale per il metodo: random modelling
+% VALUTARE di spostare ss:SigIs:Impl qui, altrimenti è una micro sssection
+% mentre questa ha già l'aria di essere corposa
+% VALUTARE anche di fondere la precedente con la prima
 
 \subsection{Global reduction results}
 \label{ss:SigIs:Results}

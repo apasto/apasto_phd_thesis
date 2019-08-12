@@ -23,7 +23,7 @@ Incomplete and inexact geological knowledge cannot be avoided, thus a perfect da
 Therefore, an uncertainty-aware signal isolation process, i.e.~a process providing error estimates alongside its reduced gravity data, is a necessary step in estimating confidence of the inversion results, in statistical terms.
 Error information is required in order to perform multi-observable integrated modelling \parencite[e.g.][]{Afonso2013}, comparisons \parencite[e.g.][]{Root2017}, or assimilation of geophysical models \parencites[e.g.~to assemble large scale maps from local studies, see][]{Tesauro2008}{Grad2009}{Molinari2011}.
 
-The procedure and experiments described in this section were designed for local Moho inverse modelling, using global satellite-only gravity field models.
+The procedure and experiments described in this chapter were designed for local Moho inverse modelling, using global satellite-only gravity field models.
 They were applied in the gravity-constrained thermal modelling strategy described in this thesis.
 They include corrections for the terrain effect (topography, water, and ice), sediments and other intra-crustal density variations, far-field effects of crustal roots, and inhomogeneities in the lithospheric- and upper-mantle.
 Particular attention was paid to ensure spectral consistency between the forward-modelled reductions and the input gravity models.
@@ -151,13 +151,60 @@ These issues area dealt in detail in section~\ref{ss:SigIs:InModels}.
 %\label{sss:SigIs:Defs:IsoCorr}
 % place-holder
 
-\subsubsection{Forward modelling strategy}
+\subsubsection{Forward modelling method}
 \label{sss:SigIs:Defs:Fwd}
 
-% descrizione metodo poster, forward SH Wieczorek
-% lascio spazio anche a metodo space domain, magari sottocapitolo confronti
-% (attenzione: non troppo prolisso!)
+Forward modelling the gravity field resulting from a mass distribution involves integrating its gravitational effects, thus evaluating the so called ``Newton integral'' \parencite{HofmannWellenhof2006}.
+Methods to do so are either \textit{space--domain} or \textit{spectral--domain} forward modelling methods \parencite{Kuhn2005}.
 
+In the first case, the direct integration of masses is computed: volumes are decomposed (\textit{discretised}) in elementary bodies for which a solution to the Newton integral exists.
+There are analytical formulas available for special cases (e.g. point masses, prisms \cites{Nagy2000}{Nagy2002}, or polyhedra \cites{Tsoulis2012}), while numerical approximations are more commonly employed for general solutions \parencites[e.g. spherical tesseroids][]{Heck2006}{Uieda2016}.
+Numerical methods, in addition, are less time consuming in equivalent cases, e.g. by resorting to FFT, Taylor series expansion, or Gauss--Legendre cubature \parencite[see][and references therein]{Grombein2013}.
+
+Spectral--domain forward modelling, on the other hand, is based on the spherical harmonic (SH) series expansion of the Newtonian kernel \parencites{Rummel1988}{Blakely1996}{Root2015}{Wieczorek2007}.
+In methods of this kind, coefficients of the resulting potential (or its derived functionals) are obtained from the mass distribution.
+To assure convergence of the SH series, modelling must be performed outside the \textit{Brillouin sphere} \parencite{Moritz1980}, i.e. a sphere encompassing all the field-generating mass, concentric with the spherical coordinate system \parencites{Hu2015}{Hirt2017}.
+Spectral--domain methods are commonly adopted for global computations, where they are considered less time consuming than space--domain methods, at least for degrees less than about 1000 \parencite{Kuhn2005}.
+Computing higher maximum degrees of the SH series expansion, points inside the Brillouin sphere, and rugged topography are three factors that influence issues of numerical accuracy and divergence of spectral forward modelling methods \parencite{Hirt2017}.
+Combined spectral/spatial methods have been recently employed with success to obtain very high resolution synthetic gravity models \parencite{Hirt2019}.
+
+The experiments described in this chapter were designed with the highest resolution available from satellite-only global gravity models, as gravity data to be reduced, and the resolution of global density models to compute reductions (as described in the following section~\ref{ss:SigIs:InModels}).
+In addition, error assessment through random perturbation of the input models, the aforementioned Monte Carlo uncertainty propagation technique (described in section~\ref{ss:SigIs:Impl}), require a large number of forward iterations.
+Therefore, I resorted to spectral--domain methods, using the method by \textcite{Wieczorek2007}, as implemented in the SHTOOLS code \parencite{Wieczorek2018}.
+
+\Textcite{Wieczorek2007} provides a method for calculating the potential due to the topography, using a technique analogous to the cartesian (``flat-Earth'') method by \textcite{Parker1973}.
+For its detailed description, I refer to the derivation of Eq.~6--12 in \textcite{Wieczorek1998}.
+Consider the case with a relief $h(\theta, \phi)$ ($\theta = \SI{90}{\degree} - \lambda$, colatitude), referenced to a spherical interface of radius $D$, with density $\rho(\theta, \phi)$ radially constant between $h$ and $D$, $\rho$ considered negative when $h<0$.
+Expressing the potential $W$ at a reference radius $R_0$ as a sum of spherical harmonic functions:
+\begin{equation}
+    \label{eq:SHfwd:pot}
+    W(h, \lambda, \phi) =
+    \frac{GM}{r}
+    \sum_{l=0}^{l_{max}}
+    \sum_{m=0}^{l}
+    \left( \frac{R_0}{r} \right)^l
+    C_{lm} Y_{lm} (h, \lambda, \phi)
+\end{equation}
+where $G$ is the gravitational constant, $M$ is the total mass, 
+
+The coefficients $C_{lm}$ are obtained from the following:
+\begin{equation}
+    \label{eq:SHfwd:coeffs}
+    C_{lm} =
+    \frac{4 \pi D^3}{M(2l+1)}
+    \sum_{n=1}^{n_{max}}
+    \frac{(\rho h^n)_{lm}}{D^n \ n!}
+    \frac{\prod_{j=1}^{n}(l+4-j)}{(l+3)}
+\end{equation}
+where the $(\rho h^n)_{lm}$ denotes the spherical harmonics of the relief times density, obtained from:
+\begin{equation}
+    \label{eq:SHfwd:reliefSH}
+    (\rho h^n)_{lm} =
+    \frac{1}{4 \pi}
+    \int_{\theta, \phi}
+    \left[ \rho(\theta, \phi) h^n(\theta, \phi) \right]
+    Y_{lm}(\theta, \phi) d(\theta, \phi)
+\end{equation}
 
 \subsection{Input a-priori mass distribution models}
 \label{ss:SigIs:InModels}
@@ -176,6 +223,8 @@ These issues area dealt in detail in section~\ref{ss:SigIs:InModels}.
 \subsection{Global reduction results}
 \label{ss:SigIs:Results}
 % con valutazioni spettrali
+
+% qui: faccio riferimento a power, cross power, in Wieczorek2007 (treat geoph)
 
 \subsection{Reductions for regional crustal modelling}
 \label{ss:SigIs:Regional}

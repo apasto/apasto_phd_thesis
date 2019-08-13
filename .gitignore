@@ -273,4 +273,6 @@ TSWLatexianTemp*
 
 # End of https://www.gitignore.io/api/latex
 
-*.pdf
+# ignore pdfs, but not those used for figures
+/chapters/**/*.pdf
+/fulltext/**/*.pdf

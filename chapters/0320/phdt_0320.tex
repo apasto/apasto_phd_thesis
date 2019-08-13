@@ -182,6 +182,8 @@ Therefore, I resorted to spectral--domain methods, using the method by \textcite
 
 \Textcite{Wieczorek2007} provides a method for calculating the potential due to the topography, using a technique analogous to the cartesian (``flat-Earth'') method by \textcite{Parker1973}.
 For its detailed description, I refer to the derivation of Eq.~6--12 in \textcite{Wieczorek1998}.
+It is similar to a wider family of spherical-harmonics based solution to the volume integral, based on the binomial series expansion method, which \textcite{Root2015} defined as ``Fast Spectral Methods'' (FSMs).
+
 Consider the case with a relief $h(\theta, \phi)$ ($\theta = \SI{90}{\degree} - \lambda$, colatitude), referenced to a spherical interface of radius $D$, with density $\rho(\theta, \phi)$ radially constant between $h$ and $D$, $\rho$ considered negative when $h<0$.
 Expressing the potential $W$ at a reference radius $R_0$ as a sum of spherical harmonic functions, we get:
 \begin{equation}
@@ -239,17 +241,39 @@ It is described in detail in the following section, \ref{sss:SigIs:Fwd:SHfwd}.
 
 \Textcite{Wieczorek2007} notes that the potential (Eq.~\ref{eq:SHfwd:pot}) so obtained is valid only at $r > (D + h)$, i.e. outside the maximum radius of the relief ---this arises from the derivation of Eq.~\ref{eq:SHfwd:coeffs}, which is omitted here.
 
-% accenno a ellipsoidal harmonics
-% fine di un paper di Hirt
-% ma trascurate qui e ne do il motivo
+% accenno a ellipsoidal harmonics?
+% trascurate qui - ne do il motivo?
 % \Parencites{Claessens2013}{Rexer2016}
 
 \subsubsection{Layer--wise modelling}
 \label{sss:SigIs:Fwd:SHfwd}
 
+The forward modelling method by \Textcite{Wieczorek2007}, which was just described in section~\ref{sss:SigIs:Fwd:SHfwd}, provides the potential due to relief against a reference sphere.
+In order to model the gravity effect of a \textit{layer}, I devised a strategy based on superposition of two relief-against-sphere potentials, which is described hereafter.
+Defining a \textit{layer} as a volume of radially constant density $\rho(\lambda, \phi)$, bound by two surfaces expressed by geocentric radii $t(\lambda, \phi)$ and $b(\lambda, \phi)$, respectively top and bottom, its resulting potential is equal $W_{b}^{t}$ to the following difference:
+\begin{equation}
+    \label{eq:layerFWD:layerPot}
+    W_{b}^{t} = W_{b}^{D} - W_{top}^{D}
+\end{equation}
+where subscripts denote the bottom boundary, superscripts denote the top boundary and $D$ is the radius of the reference sphere (from Eq.~\ref{eq:SHfwd:coeffs}).
+Therefore, the potential of a layer with two arbitrary bounding surfaces can be forward modelled by computing the difference between two relief referred to the same sphere, $W_{b}^{D}$ and $W_{top}^{D}$.
+A graphical representation of this difference is shown in Fig.~0. % mettere figura
+
+A pitfall of this strategy is that Eq.~\ref{eq:SHfwd:pot} needs to be evaluated twice, including the series expansion of Eq.~\ref{eq:SHfwd:coeffs}.
+Other strategies with a similar aim have been developed \parencite[e.g.][]{Novak2006} and avoid this issue.
+Nevertheless, the implementation by \textcite{Wieczorek2018} was preferred here, since it could be readily integrated in the random modelling scheme --- their Fortran functions are provided as {F2PY}--wrapped Python modules \parencite{Peterson2009}.
+
 % QUI passo a mio metodo, sovrapposizione
 % dove metto benchmark? accenno?
-% inoltre: effetto D troppo distante
+% inoltre: effetto D troppo distante (nei test, spettralmente... magari altra sezione?)
+% devo decidere dove mettere power, cross power, deg variances
+% ha senso appesantire i results?
+% meglio forse definirli in una subsection qui
+
+
+% \begin{overpic}[width=0.5\textwidth,grid,tics=10]{pictures/baum}
+%     \put (20,85) {\huge$\displaystyle\gamma$}
+% \end{overpic}
 
 \subsection{Input a-priori mass distribution models}
 \label{ss:SigIs:InModels}
@@ -261,9 +285,6 @@ It is described in detail in the following section, \ref{sss:SigIs:Fwd:SHfwd}.
 
 % spostati commenti seguenti da FWD
 % razionale per il metodo: random modelling
-% VALUTARE di spostare ss:SigIs:Impl qui, altrimenti è una micro sssection
-% mentre questa ha già l'aria di essere corposa
-% VALUTARE anche di fondere la precedente con la prima
 
 \subsection{Global reduction results}
 \label{ss:SigIs:Results}
@@ -279,5 +300,13 @@ It is described in detail in the following section, \ref{sss:SigIs:Fwd:SHfwd}.
 
 \subsection{Discussion}
 % citare/confrontare Tenzer2015
+
+% questioni numeriche: pag. 24 di Root (2015)
+% faccio doppio calcolo per coefficienti (con sovrapposizione)
+% di contro, rispetto a Novak, faccio singolo rho*h in spatial domain
+% risparmiandomi una GSHA (SH analysis grid->SH), che è expensive
+% implementazione nello script: GSHA per interfacce fatta il doppio
+% perché ne faccio una sia per il bottom dello strato sopra
+% che per il top dello strato sotto
 
 \input{../0000_chapter_draft_boilerplate/phdt_0000_draft_boilerplate_end.tex}

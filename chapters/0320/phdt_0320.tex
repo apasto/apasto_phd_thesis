@@ -237,7 +237,7 @@ The convergence of such kind of expansions has been rigorously studied by \textc
 For a maximum degree $l = \num{360}$, a $n_{max}$ of \num{2} was shown to already provide less than \SI{1}{\percent} error ---in the case of topography.
 Large deviations from the reference radius (e.g. in modelling deep layers) may result in convergence problems, which can be mitigated by reducing the reference radius accordingly, as it was shown later by \textcite{Root2015}.
 For this reason, the experiments described in this section included a test against a spatial--domain benchmark.
-It is described in detail in the following section, \ref{sss:SigIs:Fwd:SHfwd}.
+It is described in detail in the following section, \ref{sss:SigIs:Fwd:LayerFwd}.
 
 \Textcite{Wieczorek2007} notes that the potential (Eq.~\ref{eq:SHfwd:pot}) so obtained is valid only at $r > (D + h)$, i.e. outside the maximum radius of the relief ---this arises from the derivation of Eq.~\ref{eq:SHfwd:coeffs}, which is omitted here.
 
@@ -246,35 +246,43 @@ It is described in detail in the following section, \ref{sss:SigIs:Fwd:SHfwd}.
 % \Parencites{Claessens2013}{Rexer2016}
 
 \subsubsection{Layer--wise modelling}
-\label{sss:SigIs:Fwd:SHfwd}
+\label{sss:SigIs:Fwd:LayerFwd}
 
 The forward modelling method by \Textcite{Wieczorek2007}, which was just described in section~\ref{sss:SigIs:Fwd:SHfwd}, provides the potential due to relief against a reference sphere.
 In order to model the gravity effect of a \textit{layer}, I devised a strategy based on superposition of two relief-against-sphere potentials, which is described hereafter.
-Defining a \textit{layer} as a volume of radially constant density $\rho(\lambda, \phi)$, bound by two surfaces expressed by geocentric radii $t(\lambda, \phi)$ and $b(\lambda, \phi)$, respectively top and bottom, its resulting potential is equal $W_{b}^{t}$ to the following difference:
+Defining a \textit{layer} as a volume of radially constant density $\rho(\lambda, \phi)$, bound by two surfaces expressed by geocentric radii $t(\lambda, \phi)$ and $b(\lambda, \phi)$, respectively top and bottom, its resulting potential ($W_{b}^{t}$) is equal to the following difference:
 \begin{equation}
     \label{eq:layerFWD:layerPot}
     W_{b}^{t} = W_{b}^{D} - W_{top}^{D}
 \end{equation}
 where subscripts denote the bottom boundary, superscripts denote the top boundary and $D$ is the radius of the reference sphere (from Eq.~\ref{eq:SHfwd:coeffs}).
-Therefore, the potential of a layer with two arbitrary bounding surfaces can be forward modelled by computing the difference between two relief referred to the same sphere, $W_{b}^{D}$ and $W_{top}^{D}$.
-A graphical representation of this difference is shown in Fig.~0. % mettere figura
+Therefore, the potential of a layer with two arbitrary bounding surfaces can be forward modelled by computing the difference between two relief referred to the same sphere, $W_{b}^{D}$ and $W_{t}^{D}$.
+A graphical representation of this difference is shown in Fig.~\ref{fig:SigIs:LayerDifference}.
 
 A pitfall of this strategy is that Eq.~\ref{eq:SHfwd:pot} needs to be evaluated twice, including the series expansion of Eq.~\ref{eq:SHfwd:coeffs}.
 Other strategies with a similar aim have been developed \parencite[e.g.][]{Novak2006} and avoid this issue.
 Nevertheless, the implementation by \textcite{Wieczorek2018} was preferred here, since it could be readily integrated in the random modelling scheme --- their Fortran functions are provided as {F2PY}--wrapped Python modules \parencite{Peterson2009}.
 
-% QUI passo a mio metodo, sovrapposizione
+\textit{[3.2.2.2 continua]}
+
+\begin{figure}
+    \fbox{
+    \begin{overpic}[width=0.9\textwidth]{SH_layer_superposition_out.pdf}
+        \put (15,4) {\huge$W_{b}^{D}$}
+        \put (45,4) {\huge$W_{t}^{D}$}
+        \put (75,4) {\huge$W_{b}^{t}$}
+    \end{overpic}}
+    \caption{Sketch for the layer potential expressed in Eq.~\ref{eq:layerFWD:layerPot}.}
+    \label{fig:SigIs:LayerDifference}
+\end{figure}
+
 % dove metto benchmark? accenno?
 % inoltre: effetto D troppo distante (nei test, spettralmente... magari altra sezione?)
 % devo decidere dove mettere power, cross power, deg variances
 % ha senso appesantire i results?
 % meglio forse definirli in una subsection qui
 
-
-% \begin{overpic}[width=0.5\textwidth,grid,tics=10]{pictures/baum}
-%     \put (20,85) {\huge$\displaystyle\gamma$}
-% \end{overpic}
-
+\newpage % remove later
 \subsection{Input a-priori mass distribution models}
 \label{ss:SigIs:InModels}
 % topografia, water, ice, litho, conversioni velocità

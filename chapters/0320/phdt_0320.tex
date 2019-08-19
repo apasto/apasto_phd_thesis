@@ -116,7 +116,6 @@ The method and terminology hereby presented should prevent confusion, providing 
 
 \subsubsection{Corrections to the gravity disturbance}
 \label{sss:SigIs:Defs:Corrs}
-
 Following the definitions used by \textcite{Vajda2008} and \textcite{Tenzer2009}, we classify the corrections to the gravity disturbance as topographic, bathymetric, and stripping.
 They are fundamentally further refinements to the reference density model.
 The topographic correction is computed with a reference density for both solid and liquid topography, i.e. for the strict sense topographic surface of land masses and for the surface of water bodies, both in respect to the reference ellipsoid.
@@ -146,10 +145,6 @@ Global crustal density models \parencites[e.g.][]{Laske2012Crust10}{Pasyanos2014
 Mantle stripping is less constrained, since there are no readily available density models \parencite{Tenzer2015}.
 Conversion from velocity models \parencites[e.g.][]{Simmons2010}{Schaeffer2013} require modelling the concurring effect of temperature, pressure and composition on the elastic parameter --- which means carrying out comprehensive thermodynamic modelling \parencites{Connolly2005}{Connolly2009}.
 These issues area dealt in detail in section~\ref{ss:SigIs:InModels}.
-
-%\subsubsection{Isostatic correction}
-%\label{sss:SigIs:Defs:IsoCorr}
-% place-holder
 
 \subsection{Forward modelling method}
 \label{ss:SigIs:Fwd}
@@ -247,7 +242,6 @@ It is described in detail in the following section, \ref{sss:SigIs:Fwd:LayerFwd}
 
 \subsubsection{Layer--wise modelling}
 \label{sss:SigIs:Fwd:LayerFwd}
-
 The forward modelling method by \Textcite{Wieczorek2007}, which was just described in section~\ref{sss:SigIs:Fwd:SHfwd}, provides the potential due to relief against a reference sphere.
 In order to model the gravity effect of a \textit{layer}, I devised a strategy based on superposition of two relief-against-sphere potentials, which is described hereafter.
 Defining a \textit{layer} as a volume of radially constant density $\rho(\lambda, \phi)$, bound by two surfaces expressed by geocentric radii $t(\lambda, \phi)$ and $b(\lambda, \phi)$, respectively top and bottom, its resulting potential ($W_{b}^{t}$) is equal to the following difference:
@@ -274,42 +268,60 @@ A pitfall of this strategy is that Eq.~\ref{eq:SHfwd:pot} needs to be evaluated 
 Other strategies with a similar aim have been developed \parencite[e.g.][]{Novak2006} and avoid this issue.
 Nevertheless, the implementation by \textcite{Wieczorek2018} was preferred here, since it could be readily integrated in the random modelling scheme --- their Fortran functions are provided as {F2PY}--wrapped Python modules \parencite{Peterson2009}.
 
-\subsubsection{Power spectra and correlations}
+\subsubsection{Spectral domain transform}
+\label{sss:SigIs:Fwd:SHtransform}
+
+Transforming a generic function $f$ in its spherical harmonic coefficients $f_{lm}$ goes under the name of Global Spherical Harmonic Analysis, GSHA \parencite{Sneeuw1994}.
+It implies performing the following integration \parencite[Eq.~8 in][]{Wieczorek2007}:
+\begin{equation}
+    \label{eq:GSHA}
+    f_{lm} =
+    \frac{1}{4 \pi}
+    \int_{\theta, \phi}
+    f(\theta, \phi)
+    Y_{lm}(\theta, \phi) d(\theta, \phi)
+\end{equation}
+which was already presented in Eq.~\ref{eq:SHfwd:reliefSH}, for the specific case of the relief-density product.
+When $f$ is provided as a grid of discrete points, the integral of Eq.~\ref{eq:GSHA} can be evaluated numerically.
+For these tests we utilised $n \times 2n$ grids (expressed as latitude times longitude) compliant to \textcite{Driscoll1994} sampling theorem.
+Grids of these kind are also known as ``equally spaced''.
+For such grids, the numerical solution to Eq.~\ref{eq:GSHA} is obtained through along--latitude FFT first, then by integration over latitude for each degree and order \parencites{Sneeuw1994}{Wieczorek2007}.
+The transform on a $n \times 2n$ \textcite{Driscoll1994} grid is exact if $f$ is bandlimited to a maximum degree of $n/2 - 1$.
+
+\subsubsection{Power spectrum and correlations between functions}
 \label{sss:SigIs:Fwd:Spectrum}
-% dove mettere power, cross power, deg variances
-% parto da Eq. 1 Wieczorek
 
-% includo qualcosa anche da Hirt+Kuhn / Hirt+Rexer
-% come introduzione
-% poi mi butto sulla teoria da Wieczorek
-% eventualmente integro da Physical Geodesy
+For the degree $l$ of spherical harmonic coefficients $f_{lm}$, the \textit{degree variance} is defined as:
+\begin{equation}
+    \label{eq:DegVar}
+    S_{ff}(l) = \sum_{m=-l}^{l} f_{lm}^2
+\end{equation}
+The degree variances spectrum, $S_{ff}(\bm{l})$ with $\bm{l} = (1 \dots l_{max})$, provides a metric of the average power per harmonic degree \parencites{Rapp1982}{Wieczorek2007}{Hirt2015}.
 
-% BREVE!
-
+Comparison between the coefficients of two functions, $f_{lm}$ and $g_{lm}$ may be performed by computing their cross-correlation:
+\begin{equation}
+    \label{eq:DegVarCross}
+    S_{fg}(l) = \sum_{m=-l}^{l} f_{lm} \enskip g_{lm}
+\end{equation}
+Note that the cross-power spectrum obtained with this equation \parencite[Eq.~12 in][]{Wieczorek2007} differs from other common formulations \parencites[e.g.][]{Phillips1980}{Rapp1982}{Rexer2016} by a factor \sloppy{${[S_{ff}(l) \cdot S_{gg}(l)]^{(-1/2)}}$}, which was not applied here.
 
 \subsubsection{Testing the method against spatial--domain forward modelling}
 \label{sss:SigIs:Fwd:Test}
-% effetto D troppo distante (nei test, spettralmente)
+\Textcite{Sun2001}, assessing the convergence issues of spherical harmonics methods based on the binomial expansion, observed that isostatic studies require much higher truncation numbers than terrain forward modelling.
+They argued that this arises due to the much larger differences between isostatic roots and the compensation depth (e.g. \SI{100}{\kilo \metre}), compared to topography and the reference radius (about \SI{9}{\kilo \metre} of maximum topography).
+This issue was also addressed by \textcite{Root2015}, who proposed an improved \textit{fast spectral method} \parencites{Rummel1988}{Novak2006} in order to model crustal and upper mantle regions.
+They devised an ``error mitigation strategy'' which consists in lowering the reference sphere to model the deeper layers, then transforming the spherical harmonics back to the usual, larger reference sphere.
+By doing so, they obtain results inside a $\pm$~\SI{4}{\milli Gal} difference range from spatial--domain forward modelling.
 
 Compared with the mean Earth radius ($R = \SI{6371}{\kilo \metre}$), a \SI{40}{\kilo \metre} deep crust--mantle boundary accounts for about 6 thousands of $R$.
 When modelling the underlying lithospheric mantle, a \SI{300}{\kilo \metre} lithosphere--asthenosphere boundary reaches about \SI{4.7}{\percent} of $R$.
+This means that the layers modelled in the following experiments are likely to incur in the issues that have been just described.
 
-% frase seguente: introduco motivo frase precedente
-\Textcite{Sun2001}, assessing the convergence issues of spherical harmonics methods based on the binomial expansion, observed that isostatic studies require much higher truncation numbers than terrain forward modelling.
-They argue that this is due to the much larger differences between isostatic roots and the compensation depth (e.g. \SI{100}{\kilo \metre})
+A rigorous assessment of the convergence of the layer--wise arrangement adopted in this work (section~\ref{sss:SigIs:Fwd:LayerFwd}) is not available at the moment.
+Therefore, an heuristic test was devised to assess if such a strategy was fit for these experiments purpose, i.e. \si{\milli Gal} level accuracy at comparatively low degrees (limited by satellite-only gravity models).
+As it is shown later, the magnitude of the contribution of uncertainty of geophysical models was large enough to support leaving any more rigorous analysis to further developments.
 
-A rigorous assessment of the convergence of this layer--wise arrangement is not available at the moment.
-Therefore, an heuristic test was devised to assess if such a strategy was fit for the purpose of these experiments, i.e. \si{\milli Gal} level accuracy at comparatively low degrees (limited by satellite-only gravity models).
-As it is shown later, the magnitude of the contribution of uncertainty of geophysical models was large enough to support leaving any in depth analysis to further developments.
-
-These tests consist in a direct comparison of the potential obtained from the layer--wise spectral--domain method against spatial--domain forward modelling ---the latter being adopted as a benchmark.
-
-% for in detail, reader is referred to Hirt and Kuhn 2017
-
-% While the topography mass models are strictly band-limited to the NT max values reported in Table 1, the topography-implied gravity contains signals at harmonic degrees much larger than NT max [Hirt and Kuhn, 2014]
-
-% ALTRA COSA DA AGGIUNGERE
-% shape griglie (Nx2N, perché...)
+These tests consist in a direct comparison of the potential obtained from the layer--wise spectral--domain method against spatial--domain forward modelling, the latter being adopted as a benchmark.
 
 % descrizione Tesseroids
 % descrizione test
@@ -338,6 +350,10 @@ These tests consist in a direct comparison of the potential obtained from the la
 
 \subsection{Discussion}
 % citare/confrontare Tenzer2015
+
+% considerazioni su input bandwidth: sposto a discussione
+% for in detail, reader is referred to Hirt and Kuhn 2017
+% "While the topography mass models are strictly band-limited to the NT max values reported in Table 1, the topography-implied gravity contains signals at harmonic degrees much larger than NT max" [Hirt and Kuhn, 2014]
 
 % questioni numeriche: pag. 24 di Root (2015)
 % faccio doppio calcolo per coefficienti (con sovrapposizione)

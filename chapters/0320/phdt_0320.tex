@@ -45,7 +45,7 @@ It consists in computing the gravitational effect of a ``known mass'' model, as 
 The gravimetric inverse problem is therefore formulated in terms of an anomalous gravity field resulting from the enquired mass/density distribution.
 
 Following the recommendations in \textcite{Hackney2003} and \textcite{Vajda2007}, the formulation hereby presented is based on gravity disturbances, to avoid the ``Secondary Indirect Topographic Effect'' that arises when the topographic correction is applied to gravity anomalies.
-We recall the definition of gravity disturbance from \textcite{HofmannWellenhof2006}, section~2.12: it is defined as the difference in magnitude between the observed gravity vector $\bm{g}$ and the normal gravity vector $\bm{\gamma}$, at the same point $P$ of geocentric geodetic coordinates $(h, \lambda, \phi)$:
+Recalling the definition of gravity disturbance from \textcite{HofmannWellenhof2006}, section~2.12: it is defined as the difference in magnitude between the observed gravity vector $\bm{g}$ and the normal gravity vector $\bm{\gamma}$, at the same point $P$ of geocentric geodetic coordinates $(h, \lambda, \phi)$:
 \begin{equation}
     \label{eq:red:GravDist}
     \delta g (h, \lambda, \phi) =
@@ -58,7 +58,7 @@ This follows from the definition of normal and disturbing potential, respectivel
     \label{eq:red:Pot}
     W(h, \lambda, \phi) = U(h, \lambda) + T(h, \lambda, \phi)
 \end{equation}
-in which we can decompose the $W$ and $U$ in an attraction (gravitational) and a centrifugal component, denoted with $\Phi$ \parencite[Eq.~5 and 13 in][]{Barthelmes2013}.
+in which $W$ and $U$ can be decomposed in an attraction (gravitational) and a centrifugal component each, denoted with $\Phi$ \parencite[Eq.~5 and 13 in][]{Barthelmes2013}.
 \begin{equation}
     \label{eq:red:PotAttr}
     \underbrace{W_{a}(h, \lambda, \phi) + \Phi(h, \lambda)}_W =
@@ -333,7 +333,7 @@ These tests consist in a direct comparison of the potential obtained from the la
 % sia con sintetico che con dati veri (es. LAB)
 
 \newpage % remove later
-\subsection{Input a-priori mass distribution models}
+\subsection{Input mass distribution models}
 \label{ss:SigIs:InModels}
 % topografia, water, ice, litho, conversioni velocità
 
@@ -348,7 +348,8 @@ These tests consist in a direct comparison of the potential obtained from the la
 \label{ss:SigIs:Results}
 % con valutazioni spettrali
 
-\subsection{Discussion}
+\subsubsection{Discussion}
+\label{ss:SigIs:Results:Discussion}
 % citare/confrontare Tenzer2015
 
 % considerazioni su input bandwidth: sposto a discussione

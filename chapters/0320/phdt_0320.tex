@@ -301,9 +301,9 @@ The degree variances spectrum, $S_{ff}(\bm{l})$ with $\bm{l} = (1 \dots l_{max})
 Comparison between the coefficients of two functions, $f_{lm}$ and $g_{lm}$ may be performed by computing their cross-correlation:
 \begin{equation}
     \label{eq:DegVarCross}
-    S_{fg}(l) = \sum_{m=-l}^{l} f_{lm} \enskip g_{lm}
+    S_{fg}(l) = \sum_{m=-l}^{l} \left( f_{lm} \enskip g_{lm} \right)
 \end{equation}
-Note that the cross-power spectrum obtained with this equation \parencite[Eq.~12 in][]{Wieczorek2007} differs from other common formulations \parencites[e.g.][]{Phillips1980}{Rapp1982}{Rexer2016} by a factor \sloppy{${[S_{ff}(l) \cdot S_{gg}(l)]^{(-1/2)}}$}, which was not applied here.
+Note that the cross-power spectrum $S_{fg}(\bm{l})$ obtained with this equation \parencite[Eq.~12 in][]{Wieczorek2007} differs from other common formulations \parencites[e.g.][]{Phillips1980}{Rapp1982}{Rexer2016} by a normalisation factor \sloppy{${[S_{ff}(l) \cdot S_{gg}(l)]^{-\frac{1}{2}}}$}, which was not applied here.
 
 \subsubsection{Testing the method against spatial--domain forward modelling}
 \label{sss:SigIs:Fwd:Test}
@@ -321,9 +321,9 @@ A rigorous assessment of the convergence of the layer--wise arrangement adopted 
 Therefore, an heuristic test was devised to assess if such a strategy was fit for these experiments purpose, i.e. \si{\milli Gal} level accuracy at comparatively low degrees (limited by satellite-only gravity models).
 As it is shown later, the magnitude of the contribution of uncertainty of geophysical models was large enough to support leaving any more rigorous analysis to further developments.
 
-These tests consist in a direct comparison of the potential obtained from the layer--wise spectral--domain method against spatial--domain forward modelling, the latter being adopted as a benchmark.
+These tests consist of a direct comparison between the potential obtained from the layer--wise spectral--domain method and the one obtained from spatial--domain forward modelling, the latter being adopted as a benchmark.
+Spatial--domain forward modelling was performed using the Tesseroids code \parencites{Uieda2016}{UiedaTesseroids}.
 
-% descrizione Tesseroids
 % descrizione test
 % outcome test
 % prova con degree maggiori?

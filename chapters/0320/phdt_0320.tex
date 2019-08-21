@@ -125,7 +125,7 @@ All further corrections (e.g. ice, sediments, crustal and mantle inhomogeneities
 In regard to the masses below the reference ellipsoid, the reference densities are the ones of a model which results in the adopted normal potential, in concordance with the normal potential decomposition of Eq.~\ref{eq:red:Vdec1}.
 A radially-stratified model of the interior (actually made up of concentric ellipsoidal shells), such as the PREM \parencite[Preliminary Reference Earth Model,][]{Dziewonski1981}, should satisfy this condition \parencite{Tscherning1981}.
 
-Stripping a set of \textit{known masses} (i.e. a-priori density distributions models) is often aimed at signal isolation.
+Stripping a set of \textit{known masses} (i.e. a-priori density distribution models) is often aimed at signal isolation.
 For example, \textit{mantle gravity anomalies} \parencites[e.g.][]{Mooney2010}{Kaban2014} are obtained by stripping the ``crustal effect'', i.e. by correcting for a crust model \parencite[e.g. {CRUST1.0},][]{Laske2012Crust10}.
 Starting from the NETC gravity disturbance introduced in the previous section (\ref{sss:SigIs:Defs:NETC}), corrections can be applied for ice, sediments, crustal heterogeneities.
 The disturbance obtained after those corrections equals to a model Earth without topography above the ellipsoid and a reference-density (\textit{normal}) crust inside the ellipsoid, down to the crust-mantle interface.
@@ -137,7 +137,7 @@ By doing so, they obtained a global best-decorrelation density contrast of the `
 This results in a stripped disturbance containing ideally no-topography, a \SI{3190}{\kilo \gram \per \metre \squared} crust between the ellipsoid surface and the Moho interface ($\num{2670} + \num{520}$), and the attraction of the density inhomogeneities below the Moho.
 It should be noted that there is no requirement of decorrelation between the crustal gravity signal and the one resulting from mantle inhomogeneities.
 
-\Textcite{Tenzer2009} also provided a global map of ellipsoid- versus geoid-referenced topography and bathymetry corrected gravity disturbance.
+\Textcite{Tenzer2009} also provided a global map of ellipsoid-- versus geoid--referenced topography and bathymetry corrected gravity disturbance.
 Differences reach upwards to $\pm~14$~\si{\milli Gal} over continents, with a morphology highly correlated to geoidal undulations, as expected.
 
 In crustal thickness modelling, signal isolation is obtained by concurrently correcting for above- and below-Moho masses ---as it has been done to obtain the global model {GEMMA} \parencites{Reguzzoni2013}{Reguzzoni2015}.
@@ -151,7 +151,7 @@ These issues area dealt in detail in section~\ref{ss:SigIs:InModels}.
 
 \subsubsection{Spectral--domain forward modelling}
 \label{sss:SigIs:Fwd:SHfwd}
-Forward modelling the gravity field resulting from a mass distribution involves integrating its gravitational effects, thus evaluating the so called textit{Newton integral} \parencite{HofmannWellenhof2006}:
+Forward modelling the gravity field resulting from a mass distribution involves integrating its gravitational effects, thus evaluating the so called \textit{Newton integral} \parencite{HofmannWellenhof2006}:
 \begin{equation}
     \label{eq:SHfwd:NewtonInt}
     W = G \iiint_v \frac{\rho}{r}dv
@@ -205,7 +205,7 @@ Here, the order-wise sum over $m$ (the innermost sum) is performed starting from
 This results in a more compact notation: the spherical harmonics coefficients are denoted only by $C_{lm}$, instead of the usual ``$C_{lm}$'' and ``$S_{lm}$''.
 As defined by the two cases of Eq.~\ref{eq:SHfwd:rsh}, positive-order coefficients would be usually noted with $C_{lm}$ and negative-order ones would be usually noted with $S_{lm}$.
 
-Therefore, the formula for $C_{lm}$, on which the forward modelling of the relief is based, can be expressed in this form:
+Therefore, the formula for $C_{lm}$, on which the forward modelling of the relief is based, can be expressed in this form \parencite{Wieczorek2007}:
 \begin{equation}
     \label{eq:SHfwd:coeffs}
     C_{lm} =
@@ -227,8 +227,12 @@ where the $(\rho h^n)_{lm}$ denotes the spherical harmonics of the relief times 
 Eq.~\ref{eq:SHfwd:coeffs} includes a Taylor series expansion of the power of the relief $(\rho h^n)_{lm}$.
 If the sum is carried out up to its upper bound of the sum, $l+3$, it provides an exact solution.
 However, the number of terms grows linearly with $l$.
-Therefore, a truncation value $n_{max}$ is typically chosen, knowing that higher terms become more and more smaller. 
-The convergence of such kind of expansions has been rigorously studied by \textcite{Sun2001}, among others.
+Therefore, a truncation value $n_{max}$ is typically chosen, under the assumption that higher terms become more and more smaller \parencite{Wieczorek2007}.
+
+However, \textcite{Balmino2012} and \textcite{Hirt2017} found that when a certain degree is reached, ``the energy of succeeding terms is larger than of the previous''.
+They found this phenomenon to become significant around degree \num{1000} ---way above this experiment objective, which is limited by the maximum degree of satellite-only potential models (less than \num{300} as of March~2019).
+
+The convergence of expansions of this kind has been rigorously studied by \textcite{Sun2001}, among others.
 For a maximum degree $l = \num{360}$, a $n_{max}$ of \num{2} was shown to already provide less than \SI{1}{\percent} error ---in the case of topography.
 Large deviations from the reference radius (e.g. in modelling deep layers) may result in convergence problems, which can be mitigated by reducing the reference radius accordingly, as it was shown later by \textcite{Root2015}.
 For this reason, the experiments described in this section included a test against a spatial--domain benchmark.
@@ -332,11 +336,34 @@ Spatial--domain forward modelling was performed using the Tesseroids code \paren
 % effetto D "troppo lontano" con 4-5 D diversi
 % sia con sintetico che con dati veri (es. LAB)
 
-\newpage % remove later
 \subsection{Input mass distribution models}
 \label{ss:SigIs:InModels}
 % topografia, water, ice, litho, conversioni velocità
+% descrizione e sistema riferimento (shape)
 
+\subsubsection{Terrain correction}
+\label{sss:SigIs:InModels:TC}
+To model the solid topography, bathymetry (ocean, lakes) and ice, I adopted the {Earth2014} model \parencite{Hirt2015}.
+It comprises data from SRTM (SRTM~v4.1 continental topography by \cite{Jarvis2008_SRTM4}, SRTM30~PLUS~v9 bathymetry by \cite{Becker_SRTM30plus}), Bedmap2 \parencite{Fretwell2013_Bedmap}, and GBT~v3 \parencite{Bamber2013_GBT}.
+It is the base of the extensively used \verb|dV_ELL_Earth2014| topographic potential model \parencite{Rexer2016}.
+In order to model an ellipsoid--referenced terrain correction (NETC, as described in section~\ref{sss:SigIs:Defs:NETC}) and to keep consistency with the subsurface stripping corrections applied afterwards, the already available potential model was not used.
+Instead, I forward modelled and ad-hoc topographic potential, using {Earth2014} shape model (i.e. relief provided as geocentric radii) as input.
+
+In addition to the spatial--domain comparison tests, shown in section~\ref{sss:SigIs:Fwd:Test}, the terrain correction proved an useful benchmark for troubleshooting the method implementation: it could be readily compared with other topographic model, which would have likely been more difficult with subsurface correction models.
+Uncertainty propagation on the terrain correction was not among the objectives of these experiments, therefore it was not carried out.
+However, this ad-hoc modelling setup would enable to do so easily, e.g. if required in further developments.
+
+% formato in cui sono i dati, livelli, appunti da marzo
+
+
+
+\subsubsection{Sediments and crust}
+\label{sss:SigIs:InModels:CRUST}
+
+\subsubsection{Lithospheric mantle}
+\label{sss:SigIs:InModels:SCLM}
+
+\newpage % remove later
 \subsection{Assessment of uncertainty}
 \label{ss:SigIs:Impl}
 % multiprocessing

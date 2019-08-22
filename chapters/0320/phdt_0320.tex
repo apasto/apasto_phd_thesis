@@ -359,7 +359,43 @@ However, this ad-hoc modelling setup would enable to do so easily, e.g. if requi
 
 % formato in cui sono i dati, livelli, appunti da marzo
 
+Potential forward modelling of the {Earth2014} relief grids was partitioned in solid topography, ocean bathymetry, lake bathymetry, on-shore ice, off-shore ice, and on-lakes ice.
+Solid topography is defined by \verb|SUR|, the topmost surface in {Earth2014}, which includes the top surface of ice masses and of all bodies of water.
+Top and bottom surfaces defining each layer are summarised in Table~\ref{tab:E2014fwdLayers}, along with densities.
+A general scheme is sketched in Fig.~\ref{fig:E2014fwdLayersSketch}
+% \begin{description}[align=right,labelwidth=4cm,noitemsep,style=standard]
+%     \item [Solid topography] temp
+%     \item [Ocean bathymetry] temp
+%     \item [Lake bathymetry] temp
+%     \item [On-shore ice] temp
+%     \item [Off-shore ice] temp
+%     \item [On-lakes ice] temp
+% \end{description}
 
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{@{\extracolsep{4pt}}lcccc}
+        \toprule   
+        {} & {} & \multicolumn{2}{c}{\textbf{Boundary surfaces}}  & {}\\
+            \cmidrule{3-4} 
+            \textbf{Layer name} & \textbf{ID} & \textbf{Top} & \textbf{Bottom} & \textbf{Density [\si{\kilo \gram \per \cubic \metre}]} \\
+        \midrule
+        Aaaa aaa  & AAA & BBB & CCC & 0000 \\
+        Aaaa aaa  & AAA & BBB & CCC & 0000 \\
+        Aaaa aaa  & AAA & BBB & CCC & 0000 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Temp caption.}
+    \label{tab:E2014fwdLayers}
+\end{table}
+
+\begin{figure}
+    \fbox{
+        \Huge{\texttt{placeholder: layers sketch}}
+    }
+        \caption{Temp caption.}
+        \label{fig:E2014fwdLayersSketch}
+\end{figure}
 
 \subsubsection{Sediments and crust}
 \label{sss:SigIs:InModels:CRUST}
@@ -381,11 +417,18 @@ However, this ad-hoc modelling setup would enable to do so easily, e.g. if requi
 
 \subsubsection{Discussion}
 \label{ss:SigIs:Results:Discussion}
-% citare/confrontare Tenzer2015
+% confronto con tenzer2009 (e 2015)
+% statico-no-uncertainty
+% a strati (con ancora segnale ondulazione)
+% vs "a gusci"
+% esempio taglio a massima profondità Moho
+% v. appunti 20190821
 
 % considerazioni su input bandwidth: sposto a discussione
 % for in detail, reader is referred to Hirt and Kuhn 2017
 % "While the topography mass models are strictly band-limited to the NT max values reported in Table 1, the topography-implied gravity contains signals at harmonic degrees much larger than NT max" [Hirt and Kuhn, 2014]
+
+
 
 % questioni numeriche: pag. 24 di Root (2015)
 % faccio doppio calcolo per coefficienti (con sovrapposizione)

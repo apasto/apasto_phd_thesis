@@ -304,7 +304,7 @@ For the degree $l$ of spherical harmonic coefficients $f_{lm}$, the \textit{degr
     \label{eq:DegVar}
     S_{ff}(l) = \sum_{m=-l}^{l} f_{lm}^2
 \end{equation}
-The degree variances spectrum, $S_{ff}(\bm{l})$ with $\bm{l} = (1 \dots l_{max})$, provides a metric of the average power per harmonic degree \parencites{Rapp1982}{Wieczorek2007}{Hirt2015}.
+The degree variances spectrum, $S_{ff}(\bm{l})$ with $\bm{l} = (1, \dots, l_{max})$, provides a metric of the average power per harmonic degree \parencites{Rapp1982}{Wieczorek2007}{Hirt2015}.
 
 Comparison between the coefficients of two functions, $f_{lm}$ and $g_{lm}$ may be performed by computing their cross-correlation:
 \begin{equation}
@@ -360,33 +360,70 @@ However, this ad-hoc modelling setup would enable to do so easily, e.g. if requi
 % formato in cui sono i dati, livelli, appunti da marzo
 
 Potential forward modelling of the {Earth2014} relief grids was partitioned in solid topography, ocean bathymetry, lake bathymetry, on-shore ice, off-shore ice, and on-lakes ice.
-Solid topography is defined by \verb|SUR|, the topmost surface in {Earth2014}, which includes the top surface of ice masses and of all bodies of water.
-Top and bottom surfaces defining each layer are summarised in Table~\ref{tab:E2014fwdLayers}, along with densities.
-A general scheme is sketched in Fig.~\ref{fig:E2014fwdLayersSketch}
-% \begin{description}[align=right,labelwidth=4cm,noitemsep,style=standard]
-%     \item [Solid topography] temp
-%     \item [Ocean bathymetry] temp
-%     \item [Lake bathymetry] temp
-%     \item [On-shore ice] temp
-%     \item [Off-shore ice] temp
-%     \item [On-lakes ice] temp
-% \end{description}
+\textit{Solid topography} is defined by the \verb|SUR| surface, the topmost surface in {Earth2014}, which includes the top surface of ice masses and of all bodies of water.
+Top and bottom surfaces defining each layer are summarised in Table~\ref{tab:E2014fwdLayers}, along with their densities.
+The general scheme of layers arrangement is sketched in Fig.~\ref{fig:E2014fwdLayersSketch}
+
+% in questa subsubsection, RIMANGONO DA INSERIRE:
+% - FIGURE RISULTATI, ISOLATE E SOMMATE
+%       in frase in cui faccio riferimento a figure
+%       spiego come sono state sommate
+% - CONFRONTO CON dV_ELL? (è più roba da discussione)
 
 \begin{table}[ht]
-    \centering
-    \begin{tabular}{@{\extracolsep{4pt}}lcccc}
+    \begin{adjustbox}{center}
+    \begin{tabular}{lllrrr}
         \toprule   
-        {} & {} & \multicolumn{2}{c}{\textbf{Boundary surfaces}}  & {}\\
-            \cmidrule{3-4} 
-            \textbf{Layer name} & \textbf{ID} & \textbf{Top} & \textbf{Bottom} & \textbf{Density [\si{\kilo \gram \per \cubic \metre}]} \\
+        {} & \multicolumn{2}{c}{\textbf{Boundary surfaces}}  & \multicolumn{3}{c}{\textbf{Density [\si{\kilo \gram \per \cubic \metre}]}}\\
+            \cmidrule{2-3}
+            \cmidrule{4-6}
+            \textbf{Layer name} & \multicolumn{1}{c}{\textbf{Top}} & \multicolumn{1}{c}{\textbf{Bottom}} & Layer & Ref. & Contrast \\
         \midrule
-        Aaaa aaa  & AAA & BBB & CCC & 0000 \\
-        Aaaa aaa  & AAA & BBB & CCC & 0000 \\
-        Aaaa aaa  & AAA & BBB & CCC & 0000 \\
+        Solid topography &
+        \texttt{SUR} & \texttt{GRS80} &
+        \num{2670} & & \\
+
+        \textit{Stripping of} & & & & \\
+
+        \quad ocean bathymetry &
+        \texttt{SUR} & \texttt{BED\_OCEANS} &
+        \num{1030} & \num{2670} & \num{-1640} \\
+
+        \quad lake bathymetry &
+        \texttt{SUR} & \texttt{BED\_LAKES} &
+        \num{1000} & \num{2670} & \num{-1670} \\
+
+        \quad on-shore ice &
+        \texttt{TBI} & \texttt{ICEbot\_onshore} &
+        \num{915} & \num{2670} & \num{-1755} \\
+
+        \quad off-shore ice &
+        \texttt{TBI} & \texttt{ICEbot\_offshore} &
+        \num{915} & \num{1030} & \num{-1755} \\
+
+        \quad on-lakes ice &
+        \texttt{TBI} & \texttt{ICEbot\_onlakes} &
+        \num{915} & \num{1000} & \num{-1755} \\
         \bottomrule
     \end{tabular}
-    \caption{Temp caption.}
+    \end{adjustbox}
+    \caption{
+        Terrain correction scheme: summary of the layers and their defining surfaces and densities.
+        \textit{Layer:}~density of the modelled mass.
+        \textit{Ref.:}~reference density for stripping corrections.
+        \textit{Contrast.:}~layer density minus reference density.
+        For a description of the surfaces, see Tab.~\ref{tab:E2014fwdSurfaces}.}
     \label{tab:E2014fwdLayers}
+\end{table}
+
+\begin{table}[ht]
+    \begin{adjustbox}{center}
+        \fbox{
+            \Huge{\texttt{placeholder: surfaces}}
+        }
+    \end{adjustbox}
+    \caption{Input surfaces for the terrain correction, from Earth2014 \parencite{Hirt2015}.}
+    \label{tab:E2014fwdSurfaces}
 \end{table}
 
 \begin{figure}
@@ -400,8 +437,14 @@ A general scheme is sketched in Fig.~\ref{fig:E2014fwdLayersSketch}
 \subsubsection{Sediments and crust}
 \label{sss:SigIs:InModels:CRUST}
 
+%\parencite{Laske2012Crust10}
+%\parencite{Pasyanos2014}
+
 \subsubsection{Lithospheric mantle}
 \label{sss:SigIs:InModels:SCLM}
+
+%\parencite{Connolly2005}
+%\parencite{Connolly2009}
 
 \newpage % remove later
 \subsection{Assessment of uncertainty}

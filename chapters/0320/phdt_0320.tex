@@ -456,8 +456,40 @@ The general scheme of layers arrangement is sketched in Fig.~\ref{fig:E2014fwdLa
 \subsubsection{Sediments and crust}
 \label{sss:SigIs:InModels:CRUST}
 
-%\parencite{Laske2012Crust10}
-%\parencite{Pasyanos2014}
+These experiments rely on the {LITHO1.0} model by \textcite{Pasyanos2014}.
+They provide a global model of the lithosphere, from the topography to the base of lithospheric mantle (lithosphere--asthenosphere boundary, LAB), parametrized vertically in a serie of `geophysical layers'.
+Horizontally (i.e. referring to the Earth surface) data is discretised on a \SI{1}{\degree} icosahedron--based tesselation.
+The following physical properties are provided in each of the layers, for each of the depth-columns defined by the model nodes: compressional wave velocity ($V_{P}$), shear wave velocity ($V_{S}$), and density ($\rho$).
+In each node, the properties inside each layer are constant in the radial direction.
+
+% brief description of the model motivation - stemming from Crust1.0
+% \parencite{Laske2012Crust10}
+However, care must be taken
+
+as the authors stated, it is by no means a
+derived properties
+imposed constrains
+
+a satisfying degree of independence from gravity data
+apart from Antartica
+where they used a gravity-based crustal thickness
+
+no uncertainty information is provided
+own simplified error model
+described in section~\ref{ss:SigIs:Impl}
+
+% fine descrizione, parte mia
+% circa
+% "air, water, ice" discarded [...]
+
+The water and ice layers were discarded, since {Earth2014} \parencite{Hirt2015} relies 
+the topographic surface
+the top of the model has been re-referenced to the bottom of the {Earth2014} extra
+
+
+Extraction to a regular grid
+was performed using
+% CITARE da poster
 
 \subsubsection{Lithospheric mantle}
 \label{sss:SigIs:InModels:SCLM}

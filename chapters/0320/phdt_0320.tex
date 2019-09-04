@@ -262,13 +262,16 @@ Therefore, the potential of a layer with two arbitrary bounding surfaces can be 
 A graphical representation of this difference is shown in Fig.~\ref{fig:SigIs:LayerDifference}.
 
 \begin{figure}
+    \begin{adjustbox}{center}
     \fbox{
-    \begin{overpic}[width=0.9\textwidth]{SH_layer_superposition_out.pdf}
-        \put (15,4) {\huge$W_{b}^{D}$}
-        \put (45,4) {\huge$W_{t}^{D}$}
-        \put (75,4) {\huge$W_{b}^{t}$}
-    \end{overpic}}
-    \caption{Sketch for the potential of a layer bounded by surfaces $b$ and $t$, as expressed in Eq.~\ref{eq:layerFWD:layerPot}.}
+        \begin{overpic}[width=\textwidth]{SH_layer_superposition_out.pdf}
+            \put (15,4) {\huge$W_{b}^{D}$}
+            \put (45,4) {\huge$W_{t}^{D}$}
+            \put (75,4) {\huge$W_{b}^{t}$}
+        \end{overpic}
+    }
+    \end{adjustbox}
+    \caption[Sketch for the potential of a layer.]{Sketch for the potential of a layer bounded by surfaces $b$ and $t$, as expressed in Eq.~\ref{eq:layerFWD:layerPot}.}
     \label{fig:SigIs:LayerDifference}
 \end{figure}
 
@@ -332,6 +335,10 @@ As it is shown later, the magnitude of the contribution of uncertainty of geophy
 These tests consist of a direct comparison between the potential obtained from the layer--wise spectral--domain method and the one obtained from spatial--domain forward modelling, the latter being adopted as a benchmark.
 Spatial--domain forward modelling was performed using the Tesseroids code \parencites{Uieda2016}{UiedaTesseroids}.
 
+\begin{center}
+    \textbf{[Da inserire: descrizione test.]}
+\end{center}
+
 % descrizione test
 % outcome test
 % prova con degree maggiori?
@@ -351,114 +358,89 @@ To model the solid topography, bathymetry (ocean, lakes) and ice, I adopted the 
 It comprises data from SRTM (SRTM~v4.1 continental topography by \cite{Jarvis2008_SRTM4}, SRTM30~PLUS~v9 bathymetry by \cite{Becker_SRTM30plus}), Bedmap2 \parencite{Fretwell2013_Bedmap}, and GBT~v3 \parencite{Bamber2013_GBT}.
 It is the base of the extensively used \verb|dV_ELL_Earth2014| topographic potential model \parencite{Rexer2016}.
 In order to model an ellipsoid--referenced terrain correction (NETC, as described in section~\ref{sss:SigIs:Defs:NETC}) and to keep consistency with the subsurface stripping corrections applied afterwards, the already available potential model was not used.
-Instead, I forward modelled and ad-hoc topographic potential, using {Earth2014} shape model (i.e. relief provided as geocentric radii) as input.
+Instead, I forward modelled an ad-hoc topographic potential, using the {Earth2014} shape model (i.e. relief provided as geocentric radii) as input.
 
 In addition to the spatial--domain comparison tests, shown in section~\ref{sss:SigIs:Fwd:Test}, the terrain correction proved an useful benchmark for troubleshooting the method implementation: it could be readily compared with other topographic model, which would have likely been more difficult with subsurface correction models.
 Uncertainty propagation on the terrain correction was not among the objectives of these experiments, therefore it was not carried out.
 However, this ad-hoc modelling setup would enable to do so easily, e.g. if required in further developments.
 
-% formato in cui sono i dati, livelli, appunti da marzo
-
 Potential forward modelling of the {Earth2014} relief grids was partitioned in solid topography, ocean bathymetry, lake bathymetry, on-shore ice, off-shore ice, and on-lakes ice.
+Each unit was modelled as a distinct layer, with its own forward modelling call.
 \textit{Solid topography} is defined by the \verb|SUR| surface, the topmost surface in {Earth2014}, which includes the top surface of ice masses and of all bodies of water.
-Top and bottom surfaces defining each layer are summarised in Table~\ref{tab:E2014fwdLayers}, along with their densities.
-The general scheme of layers arrangement is sketched in Fig.~\ref{fig:E2014fwdLayersSketch}
+The layers are summarised in Tab.~\ref{tab:E2014fwdLayers}, along with their densities and the defining top and bottom surfaces.
+The general scheme of layers arrangement is sketched in Fig.~\ref{fig:E2014fwdLayersSketch}, showing the modelling of solid topography and ocean stripping as an example.
 
-% in questa subsubsection, RIMANGONO DA INSERIRE:
-% - FIGURE RISULTATI, ISOLATE E SOMMATE
-%       in frase in cui faccio riferimento a figure
-%       spiego come sono state sommate
-% - CONFRONTO CON dV_ELL? (è più roba da discussione)
+The boundary surfaces extracted from {Earth2014} data are described in Tab.~\ref{tab:E2014fwdSurfaces}.
+Discrimination between ocean and lake bathymetry, and between on-shore and off-shore ice was performed using the ``mask grid files'' provided with the model, which include land types flags.
+
+In order to obtain an exact number of samples nodes along latitude and longitude, all the grids were resampled to a \SI{0.08}{\degree}~by~\SI{0.08}{\degree} equally spaced grid ($n \times 2n$, as described in section~\ref{sss:SigIs:Fwd:SHtransform}), using a modified Akima piecewise cubic Hermite interpolation---a Matlab--specific implementation of \textcite{Akima1974}---which successfully avoided local artefacts and overshoots.
+The original grids in \textcite{Hirt2015} are provided with a \SI{1}{min} and \SI{5}{min} spacing, the latter being a box--mean downsampled version of the former.
+To ease the computational requirements, the \SI{5}{min} version was used here, justified by the much lower target resolution of our terrain forward model ($l_{max} = \num{280}$, resulting in a half--wavelength resolution of about \SI{0,64}{\degree})
+This resulted in slight upsampling, from \SI{5}{min} (equal to \SI[parse-numbers=false]{0.08\overline{3}}{\degree}) to \SI{0.08}{\degree}.
+
+The \textit{complete terrain correction} was then computed by summing the gravity effect of all the forward modelled masses.
+Expressed in terms of correction to the gravity disturbance (the \textit{attraction of the Earth topography} $A_{R}^{ET}$ in Eq.~\ref{eq:red:DistgNETC2}), it results in the following:
+\begin{equation}
+    \label{eq:}
+    A_{R}^{ET} =
+    -\frac{\partial}{\partial h}
+    \left(
+        W^{\mathtt{SUR}}_{\mathtt{GRS80}} +
+        W^{\mathtt{SUR}}_{\mathtt{BED\_OCEANS}} +
+        \dots +
+        W^{\mathtt{TBI}}_{\mathtt{ICEbot\_onlakes}}
+    \right)
+\end{equation}
+in which part of the terms listed in Tab.~\ref{tab:E2014fwdLayers} are omitted, for clarity.
 
 \begin{table}[ht]
     \begin{adjustbox}{center}
-    \begin{tabular}{lllrrr}
-        \toprule   
-        {} & \multicolumn{2}{c}{\textbf{Boundary surfaces}}  & \multicolumn{3}{c}{\textbf{Density [\si{\kilo \gram \per \cubic \metre}]}}\\
-            \cmidrule{2-3}
-            \cmidrule{4-6}
-            \textbf{Layer name} & \multicolumn{1}{c}{\textbf{Top}} & \multicolumn{1}{c}{\textbf{Bottom}} & Layer & Ref. & Contrast \\
-        \midrule
-        Solid topography &
-        \texttt{SUR} & \texttt{GRS80} &
-        \num{2670} & & \\
-
-        \textit{Stripping of} & & & & \\
-
-        \quad ocean bathymetry &
-        \texttt{SUR} & \texttt{BED\_OCEANS} &
-        \num{1030} & \num{2670} & \num{-1640} \\
-
-        \quad lake bathymetry &
-        \texttt{SUR} & \texttt{BED\_LAKES} &
-        \num{1000} & \num{2670} & \num{-1670} \\
-
-        \quad on-shore ice &
-        \texttt{TBI} & \texttt{ICEbot\_onshore} &
-        \num{915} & \num{2670} & \num{-1755} \\
-
-        \quad off-shore ice &
-        \texttt{TBI} & \texttt{ICEbot\_offshore} &
-        \num{915} & \num{1030} & \num{-1755} \\
-
-        \quad on-lakes ice &
-        \texttt{TBI} & \texttt{ICEbot\_onlakes} &
-        \num{915} & \num{1000} & \num{-1755} \\
-        \bottomrule
-    \end{tabular}
+        \input{tab_E2014fwdLayers.tex}
     \end{adjustbox}
-    \caption{
+    \caption[Terrain correction scheme: summary of the layers and their defining surfaces and densities.]{
         Terrain correction scheme: summary of the layers and their defining surfaces and densities.
         \textit{Layer:}~density of the modelled mass.
         \textit{Ref.:}~reference density for stripping corrections.
         \textit{Contrast.:}~layer density minus reference density.
-        For a description of the surfaces, see Tab.~\ref{tab:E2014fwdSurfaces}.}
+        \texttt{GRS80}: GRS80 ellipsoid in geocentric radius \parencites{Moritz1980_GRS80}{Moritz2000_GRS80}. For a description of surfaces, see Tab.~\ref{tab:E2014fwdSurfaces}.}
     \label{tab:E2014fwdLayers}
 \end{table}
 
 \begin{table}[ht]
     \begin{adjustbox}{center}
-    \begin{tabular}{ll}
-        \toprule   
-        \textbf{Surface} & \textbf{Description} \\
-        \midrule
-        \texttt{AAA} &
-        Placeholder placeholder placeholder placeholder. \\
-        \texttt{AAA} &
-        Placeholder placeholder placeholder placeholder. \\
-        \texttt{AAA} &
-        Placeholder placeholder placeholder placeholder. \\
-        \texttt{AAA} &
-        Placeholder placeholder placeholder placeholder. \\
-        \texttt{AAA} &
-        Placeholder placeholder placeholder placeholder. \\
-        \texttt{AAA} &
-        Placeholder placeholder placeholder placeholder. \\
-        \texttt{AAA} &
-        Placeholder placeholder placeholder placeholder. \\
-        \texttt{BOT} &
-        Note: all-out bottom HERE, used as datum for {LITHO1.0}. \\
-        \bottomrule
-    \end{tabular}
+        \input{tab_E2014fwdSurfaces.tex}
     \end{adjustbox}
-    \caption{Description of the input surfaces utilised in the terrain correction, as extracted from Earth2014 \parencite{Hirt2015}.}
+    \caption[Description of the input surfaces utilised in the terrain correction, as extracted from {Earth2014}.]{
+        Description of the input surfaces utilised in the terrain correction, as extracted from {Earth2014}. Text between quotes is from Table~1 in \textcite{Hirt2015}. Land type flag description from the {Earth2014} \textit{readme} file \parencite{Hirt2015_Earth2014readme}.}
     \label{tab:E2014fwdSurfaces}
 \end{table}
 
 \begin{figure}
+    \begin{adjustbox}{center}
     \fbox{
-        \Huge{\texttt{placeholder: layers sketch}}
+        \includegraphics[width=\textwidth]{forward_scheme_topo_water_out.pdf}
     }
-        \caption{Temp caption.}
-        \label{fig:E2014fwdLayersSketch}
+    \end{adjustbox}
+    \caption[Terrain correction: sketch of the solid topography and ocean bathymetry stripping.]{
+        Terrain correction: sketch of the solid topography and ocean bathymetry stripping.
+        The hatched area 
+            \includegraphics[width=0.75\baselineskip]{symbol_hatched_out.pdf}
+        covers the layer--volume of solid topography, between the reference ellipsoid (\textit{ell.}) and the \texttt{SUR} surface.
+        The teal-coloured area 
+            \includegraphics[width=0.75\baselineskip]{symbol_water_out.pdf}
+        represents the layer--volume of ocean bathymetry stripping, between the \texttt{BED} and \texttt{SUR} surfaces. Note that \texttt{SUR} and \texttt{BED} coincide onshore.
+        $D$:~reference radius.
+        For a description of surfaces, see Tab.~\ref{tab:E2014fwdSurfaces}.
+    }
+    \label{fig:E2014fwdLayersSketch}
 \end{figure}
 
 \subsubsection{Sediments and crust}
 \label{sss:SigIs:InModels:CRUST}
 
 These experiments rely on the {LITHO1.0} model by \textcite{Pasyanos2014}.
-They provide a global model of the lithosphere, from the topography to the base of lithospheric mantle (lithosphere--asthenosphere boundary, LAB), parametrized vertically in a serie of `geophysical layers'.
-Horizontally (i.e. referring to the Earth surface) data is discretised on a \SI{1}{\degree} icosahedron--based tesselation.
+They provide a global model of the lithosphere, from the topography to the base of lithospheric mantle (lithosphere--asthenosphere boundary, LAB), parametrized vertically in a series of `geophysical layers'.
+Horizontally (i.e. referring to the Earth surface) data is discretised on a \SI{1}{\degree} icosahedron--based tessellation.
 The following physical properties are provided in each of the layers, for each of the depth-columns defined by the model nodes: compressional wave velocity ($V_{P}$), shear wave velocity ($V_{S}$), and density ($\rho$).
 In each node, the properties inside each layer are constant in the radial direction.
 
@@ -471,7 +453,7 @@ derived properties
 imposed constrains
 
 a satisfying degree of independence from gravity data
-apart from Antartica
+apart from Antarctica
 where they used a gravity-based crustal thickness
 
 no uncertainty information is provided
@@ -482,14 +464,11 @@ described in section~\ref{ss:SigIs:Impl}
 % circa
 % "air, water, ice" discarded [...]
 
-The water and ice layers were discarded, since {Earth2014} \parencite{Hirt2015} relies 
-the topographic surface
-the top of the model has been re-referenced to the bottom of the {Earth2014} extra
+The water and ice layers were discarded, since {Earth2014} \parencite{Hirt2015} relies on updated and revised data.
+Therefore, the top of the solid--Earth layers of {LITHO1.0} (starting from the first sedimentary layer) has been re-referenced to the bottom of {Earth2014} bedrock (\texttt{BED} surface, see Tab.~\ref{tab:E2014fwdSurfaces} and \cite{Hirt2015_Earth2014readme}).
 
-
-Extraction to a regular grid
-was performed using
-% CITARE da poster
+As mentioned for the terrain correction, this data also needs to be gridded to in a format compatible with the chosen gravity forward modelling: an equally spaced $n \times 2n$ grid, consistent with \textcite{Driscoll1994} sampling theorem.
+Triangulation from the tessellated data to cartesian coordinates was performed using the {Stripy} package \parencites{Moresi2019}{Moresi2019_zenodo} and {litho1pt0} \parencite{Moresi2019_litho1pt0}, a Python interface to {LITHO1.0}.
 
 \subsubsection{Lithospheric mantle}
 \label{sss:SigIs:InModels:SCLM}

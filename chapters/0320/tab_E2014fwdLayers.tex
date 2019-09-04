@@ -1,0 +1,35 @@
+% E2014fwdLayers table
+\begin{tabular}{lllrrr}
+    \toprule   
+    {} & \multicolumn{2}{c}{\textbf{Boundary surfaces}}  & \multicolumn{3}{c}{\textbf{Density [\si{\kilo \gram \per \cubic \metre}]}}\\
+        \cmidrule{2-3}
+        \cmidrule{4-6}
+        \textbf{Layer name} & \multicolumn{1}{c}{\textbf{Top}} & \multicolumn{1}{c}{\textbf{Bottom}} & Layer & Ref. & Contrast \\
+    \midrule
+    Solid topography &
+    \texttt{SUR} & \texttt{GRS80} &
+    \num{2670} & & \\
+
+    \textit{Stripping of} & & & & \\
+
+    \quad ocean bathymetry &
+    \texttt{SUR} & \texttt{BED\_OCEANS} &
+    \num{1030} & \num{2670} & \num{-1640} \\
+
+    \quad lake bathymetry &
+    \texttt{SUR} & \texttt{BED\_LAKES} &
+    \num{1000} & \num{2670} & \num{-1670} \\
+
+    \quad on-shore ice &
+    \texttt{TBI} & \texttt{ICEbot\_onshore} &
+    \num{915} & \num{2670} & \num{-1755} \\
+
+    \quad off-shore ice &
+    \texttt{TBI} & \texttt{ICEbot\_offshore} &
+    \num{915} & \num{1030} & \num{-1755} \\
+
+    \quad on-lakes ice &
+    \texttt{TBI} & \texttt{ICEbot\_onlakes} &
+    \num{915} & \num{1000} & \num{-1755} \\
+    \bottomrule
+\end{tabular}

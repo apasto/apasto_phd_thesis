@@ -1,0 +1,23 @@
+% E2014fwdSurfaces table
+\begin{tabular}{lp{0.7\textwidth}}
+    \toprule   
+    \textbf{Surface} & \textbf{Description} \\
+    \midrule
+    \texttt{SUR} &
+    ``Lower interface of the atmosphere'' i.e.~surface of the continental topography, lakes, oceans and ice sheets. \\
+    & Unmodified from Earth2014 data. \\
+    \texttt{BED\_OCEANS} &
+    ``Bedrock, planet without water and ice'' masked by land type flag equal to 2 (ocean bathymetry). \\
+    \texttt{BED\_LAKES} &
+    ``Bedrock, planet without water and ice'' masked by land type flag equal to 3, 4 (inland lakes) or 8 (ice covered lake). \\
+    \texttt{TBI} &
+    Topography, including ice, without liquid water. \\
+    & Unmodified from Earth2014 data. \\
+    \texttt{ICEbot\_onshore} &
+    \texttt{TBI} minus ice thickness, masked by land type flag equal to 5 and 6 (ice cover). \\
+    \texttt{ICEbot\_offshore} &
+    \texttt{TBI} minus ice thickness, masked by land type flag equal to 7 (ice shelf).  \\
+    \texttt{ICEbot\_onlakes} &
+    \texttt{TBI} minus ice thickness, masked by land type flag equal to 8 (ice covered lake).  \\
+    \bottomrule
+\end{tabular}

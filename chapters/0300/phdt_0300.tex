@@ -4,14 +4,12 @@
 
 \setcounter{chapter}{2}
 \linespread{0.75}
-\chapter{The Earth crust as sensed by inverse modelling of the gravity field}
+\chapter{Signal isolation: data reduction and uncertainty budget}
+\label{c:SigIs}
 \linespread{1} % reset to value in preamble
 
 \setcounter{section}{1}
-\section{Signal isolation: data reduction and uncertainty budget}
-\label{s:SigIs}
-
-\subsection*{Summary}
+\section*{Summary}
 \label{ss:SigIs:Summary}
 In order to perform geophysical inversions on the static gravity field, a signal separation procedure is required, i.e.~the effect of an a-priori mass distribution must be removed, isolating an anomalous field \parencites[e.g.][]{Tenzer2012}{Sjoberg2013}[][and references therein]{Tenzer2009}.
 The observed field stripped of the forward-modelled attraction of these ``known masses'' constitutes the input of inverse gravity modelling.
@@ -34,12 +32,12 @@ Results include the probability density function of these reductions and of the 
 % The adjective ``anomalous'' is commonly used to indicate deviations from an a-priori reference. In order to prevent confusion with the strict-sense ``anomaly'', a gravity functional, in this section the term \textit{residual} is used to refer to any gravity data after the signal isolation procedure.
 \newpage
 
-\subsection{Definition and computation of data reductions}
-\label{ss:SigIs:Defs}
+\section{Definition and computation of data reductions}
+\label{s:SigIs:Defs}
 % teoria, definizioni, metodo SH e confronti con tesseroids
 
-\subsubsection{No-topography gravity disturbance}
-\label{sss:SigIs:Defs:NETC}
+\subsection{No-topography gravity disturbance}
+\label{ss:SigIs:Defs:NETC}
 In order to isolate the gravitational signal due to an unknown mass distribution, a technique known as ``stripping'' is employed \parencites{Vajda2008}{Tenzer2009}.
 It consists in computing the gravitational effect of a ``known mass'' model, as inferred by other investigations, and removing it from the observed signal.
 The gravimetric inverse problem is therefore formulated in terms of an anomalous gravity field resulting from the enquired mass/density distribution.
@@ -114,8 +112,8 @@ There are, however, some methodological discrepancies in the various definitions
 The method and terminology hereby presented should prevent confusion, providing a gravity quantity ($\delta_{g}^{NETC}$) which is formally related to the unmodelled density distribution, i.e. the component that was not accounted for in the reference model.
 \newpage
 
-\subsubsection{Corrections to the gravity disturbance}
-\label{sss:SigIs:Defs:Corrs}
+\subsection{Corrections to the gravity disturbance}
+\label{ss:SigIs:Defs:Corrs}
 Following the definitions used by \textcite{Vajda2008} and \textcite{Tenzer2009}, we classify the corrections to the gravity disturbance as topographic, bathymetric, and stripping.
 They are fundamentally further refinements to the reference density model.
 The topographic correction is computed with a reference density for both solid and liquid topography, i.e. for the strict sense topographic surface of land masses and for the surface of water bodies, both in respect to the reference ellipsoid.
@@ -127,7 +125,7 @@ A radially-stratified model of the interior (actually made up of concentric elli
 
 Stripping a set of \textit{known masses} (i.e. a-priori density distribution models) is often aimed at signal isolation.
 For example, \textit{mantle gravity anomalies} \parencites[e.g.][]{Mooney2010}{Kaban2014} are obtained by stripping the ``crustal effect'', i.e. by correcting for a crust model \parencite[e.g. {CRUST1.0},][]{Laske2012Crust10}.
-Starting from the NETC gravity disturbance introduced in the previous section (\ref{sss:SigIs:Defs:NETC}), corrections can be applied for ice, sediments, crustal heterogeneities.
+Starting from the NETC gravity disturbance introduced in the previous section (\ref{ss:SigIs:Defs:NETC}), corrections can be applied for ice, sediments, crustal heterogeneities.
 The disturbance obtained after those corrections equals to a model Earth without topography above the ellipsoid and a reference-density (\textit{normal}) crust inside the ellipsoid, down to the crust-mantle interface.
 In the unlikely case we had a perfect density model for these above-Moho masses, this reduced gravity would be equal to the attraction of anomalous densities in the mantle and core.
 
@@ -148,13 +146,13 @@ In crustal thickness modelling, signal isolation is obtained by concurrently cor
 Global crustal density models \parencites[e.g.][]{Laske2012Crust10}{Pasyanos2014} rely mostly on seismological data, therefore requiring strong assumptions on velocity-density conversions \parencite[e.g.][]{Sebera2018}.
 Mantle stripping is less constrained, since there are no readily available density models \parencite{Tenzer2015}.
 Conversion from velocity models \parencites[e.g.][]{Simmons2010}{Schaeffer2013} require modelling the concurring effect of temperature, pressure and composition on the elastic parameter --- which means carrying out comprehensive thermodynamic modelling \parencites{Connolly2005}{Connolly2009}.
-These issues area dealt in detail in section~\ref{ss:SigIs:InModels}.
+These issues area dealt in detail in section~\ref{s:SigIs:InModels}.
 
-\subsection{Forward modelling method}
-\label{ss:SigIs:Fwd}
+\section{Forward modelling method}
+\label{s:SigIs:Fwd}
 
-\subsubsection{Spectral--domain forward modelling}
-\label{sss:SigIs:Fwd:SHfwd}
+\subsection{Spectral--domain forward modelling}
+\label{ss:SigIs:Fwd:SHfwd}
 Forward modelling the gravity field resulting from a mass distribution involves integrating its gravitational effects, thus evaluating the so called \textit{Newton integral} \parencite{HofmannWellenhof2006}:
 \begin{equation}
     \label{eq:SHfwd:NewtonInt}
@@ -175,8 +173,8 @@ Spectral--domain methods are commonly adopted for global computations, where the
 Computing higher maximum degrees of the SH series expansion, points inside the Brillouin sphere, and rugged topography are three factors that influence issues of numerical accuracy and divergence of spectral forward modelling methods \parencites{Hu2015}{Hirt2017}.
 Combined spectral/spatial methods have been recently employed with success to obtain very high resolution synthetic gravity models \parencite{Hirt2019}.
 
-The experiments described in this chapter were designed with the highest resolution available from satellite-only global gravity models, as gravity data to be reduced, and the resolution of global density models to compute reductions (as described in the following section~\ref{ss:SigIs:InModels}).
-In addition, error assessment through random perturbation of the input models, the aforementioned Monte Carlo uncertainty propagation technique (described in section~\ref{ss:SigIs:Impl}), require a large number of forward iterations.
+The experiments described in this chapter were designed with the highest resolution available from satellite-only global gravity models, as gravity data to be reduced, and the resolution of global density models to compute reductions (as described in the following section~\ref{s:SigIs:InModels}).
+In addition, error assessment through random perturbation of the input models, the aforementioned Monte Carlo uncertainty propagation technique (described in section~\ref{s:SigIs:Impl}), require a large number of forward iterations.
 Therefore, I resorted to spectral--domain methods, using the method by \textcite{Wieczorek2007}, as implemented in the SHTOOLS code \parencite{Wieczorek2018}.
 
 \Textcite{Wieczorek2007} provides a method for calculating the potential due to the topography, using a technique analogous to the cartesian (``flat-Earth'') method by \textcite{Parker1973}.
@@ -240,7 +238,7 @@ The convergence of expansions of this kind has been rigorously studied by \textc
 For a maximum degree $l = \num{360}$, a $n_{max}$ of \num{2} was shown to already provide less than \SI{1}{\percent} error ---in the case of topography.
 Large deviations from the reference radius (e.g. in modelling deep layers) may result in convergence problems, which can be mitigated by reducing the reference radius accordingly, as it was shown later by \textcite{Root2015}.
 For this reason, the experiments described in this section included a test against a spatial--domain benchmark.
-It is described in detail in the following section, \ref{sss:SigIs:Fwd:LayerFwd}.
+It is described in detail in the following section, \ref{ss:SigIs:Fwd:LayerFwd}.
 
 \Textcite{Wieczorek2007} notes that the potential (Eq.~\ref{eq:SHfwd:pot}) so obtained is valid only at $r > (D + h)$, i.e. outside the maximum radius of the relief ---this arises from the derivation of Eq.~\ref{eq:SHfwd:coeffs}, which is omitted here.
 
@@ -248,9 +246,9 @@ It is described in detail in the following section, \ref{sss:SigIs:Fwd:LayerFwd}
 % trascurate qui - ne do il motivo?
 % \Parencites{Claessens2013}{Rexer2016}
 
-\subsubsection{Layer--wise modelling}
-\label{sss:SigIs:Fwd:LayerFwd}
-The forward modelling method by \Textcite{Wieczorek2007}, which was just described in section~\ref{sss:SigIs:Fwd:SHfwd}, provides the potential due to relief against a reference sphere.
+\subsection{Layer--wise modelling}
+\label{ss:SigIs:Fwd:LayerFwd}
+The forward modelling method by \Textcite{Wieczorek2007}, which was just described in section~\ref{ss:SigIs:Fwd:SHfwd}, provides the potential due to relief against a reference sphere.
 In order to model the gravity effect of a \textit{layer}, I devised a strategy based on superposition of two relief-against-sphere potentials, which is described hereafter.
 Defining a \textit{layer} as a volume of radially constant density $\rho(\lambda, \phi)$, bound by two surfaces expressed by geocentric radii $t(\lambda, \phi)$ and $b(\lambda, \phi)$, respectively top and bottom, its resulting potential ($W_{b}^{t}$) is equal to the following difference:
 \begin{equation}
@@ -279,8 +277,8 @@ A pitfall of this strategy is that Eq.~\ref{eq:SHfwd:pot} needs to be evaluated 
 Other strategies with a similar aim have been developed \parencite[e.g.][]{Novak2006} and avoid this issue.
 Nevertheless, the implementation by \textcite{Wieczorek2018} was preferred here, since it could be readily integrated in the random modelling scheme --- their Fortran functions are provided as {F2PY}--wrapped Python modules \parencite{Peterson2009}.
 
-\subsubsection{Spectral domain transform}
-\label{sss:SigIs:Fwd:SHtransform}
+\subsection{Spectral domain transform}
+\label{ss:SigIs:Fwd:SHtransform}
 
 Transforming a generic function $f$ in its spherical harmonic coefficients $f_{lm}$ goes under the name of Global Spherical Harmonic Analysis, GSHA \parencite{Sneeuw1994}.
 It implies performing the following integration \parencite[Eq.~8 in][]{Wieczorek2007}:
@@ -299,8 +297,8 @@ Grids of these kind are also known as ``equally spaced''.
 For such grids, the numerical solution to Eq.~\ref{eq:GSHA} is obtained through along--latitude FFT first, then by integration over latitude for each degree and order \parencites{Sneeuw1994}{Wieczorek2007}.
 The transform on a $n \times 2n$ \textcite{Driscoll1994} grid is exact if $f$ is bandlimited to a maximum degree of $n/2 - 1$.
 
-\subsubsection{Power spectrum and correlations between functions}
-\label{sss:SigIs:Fwd:Spectrum}
+\subsection{Power spectrum and correlations between functions}
+\label{ss:SigIs:Fwd:Spectrum}
 
 For the degree $l$ of spherical harmonic coefficients $f_{lm}$, the \textit{degree variance} is defined as:
 \begin{equation}
@@ -316,8 +314,8 @@ Comparison between the coefficients of two functions, $f_{lm}$ and $g_{lm}$ may 
 \end{equation}
 Note that the cross-power spectrum $S_{fg}(\bm{l})$ obtained with this equation \parencite[Eq.~12 in][]{Wieczorek2007} differs from other common formulations \parencites[e.g.][]{Phillips1980}{Rapp1982}{Rexer2016} by a normalisation factor \sloppy{${[S_{ff}(l) \cdot S_{gg}(l)]^{-\frac{1}{2}}}$}, which was not applied here.
 
-\subsubsection{Testing the method against spatial--domain forward modelling}
-\label{sss:SigIs:Fwd:Test}
+\subsection{Testing the method against spatial--domain forward modelling}
+\label{ss:SigIs:Fwd:Test}
 \Textcite{Sun2001}, assessing the convergence issues of spherical harmonics methods based on the binomial expansion, observed that isostatic studies require much higher truncation numbers than terrain forward modelling.
 They argued that this arises due to the much larger differences between isostatic roots and the compensation depth (e.g. \SI{100}{\kilo \metre}), compared to topography and the reference radius (about \SI{9}{\kilo \metre} of maximum topography).
 This issue was also addressed by \textcite{Root2015}, who proposed an improved \textit{fast spectral method} \parencites{Rummel1988}{Novak2006} in order to model crustal and upper mantle regions.
@@ -328,7 +326,7 @@ Compared with the mean Earth radius ($R = \SI{6371}{\kilo \metre}$), a \SI{40}{\
 When modelling the underlying lithospheric mantle, a \SI{300}{\kilo \metre} lithosphere--asthenosphere boundary reaches about \SI{4.7}{\percent} of $R$.
 This means that the layers modelled in the following experiments are likely to incur in the issues that have been just described.
 
-A rigorous assessment of the convergence of the layer--wise arrangement adopted in this work (section~\ref{sss:SigIs:Fwd:LayerFwd}) is not available at the moment.
+A rigorous assessment of the convergence of the layer--wise arrangement adopted in this work (section~\ref{ss:SigIs:Fwd:LayerFwd}) is not available at the moment.
 Therefore, an heuristic test was devised to assess if such a strategy was fit for these experiments purpose, i.e. \si{\milli Gal} level accuracy at comparatively low degrees (limited by satellite-only gravity models).
 As it is shown later, the magnitude of the contribution of uncertainty of geophysical models was large enough to support leaving any more rigorous analysis to further developments.
 
@@ -347,20 +345,20 @@ Spatial--domain forward modelling was performed using the Tesseroids code \paren
 % effetto D "troppo lontano" con 4-5 D diversi
 % sia con sintetico che con dati veri (es. LAB)
 
-\subsection{Input mass distribution models}
-\label{ss:SigIs:InModels}
+\section{Input mass distribution models}
+\label{s:SigIs:InModels}
 % topografia, water, ice, litho, conversioni velocità
 % descrizione e sistema riferimento (shape)
 
-\subsubsection{Terrain correction}
-\label{sss:SigIs:InModels:TC}
+\subsection{Terrain correction}
+\label{ss:SigIs:InModels:TC}
 To model the solid topography, bathymetry (ocean, lakes) and ice, I adopted the {Earth2014} model \parencite{Hirt2015}.
 It comprises data from SRTM (SRTM~v4.1 continental topography by \cite{Jarvis2008_SRTM4}, SRTM30~PLUS~v9 bathymetry by \cite{Becker_SRTM30plus}), Bedmap2 \parencite{Fretwell2013_Bedmap}, and GBT~v3 \parencite{Bamber2013_GBT}.
 It is the base of the extensively used \verb|dV_ELL_Earth2014| topographic potential model \parencite{Rexer2016}.
-In order to model an ellipsoid--referenced terrain correction (NETC, as described in section~\ref{sss:SigIs:Defs:NETC}) and to keep consistency with the subsurface stripping corrections applied afterwards, the already available potential model was not used.
+In order to model an ellipsoid--referenced terrain correction (NETC, as described in section~\ref{ss:SigIs:Defs:NETC}) and to keep consistency with the subsurface stripping corrections applied afterwards, the already available potential model was not used.
 Instead, I forward modelled an ad-hoc topographic potential, using the {Earth2014} shape model (i.e. relief provided as geocentric radii) as input.
 
-In addition to the spatial--domain comparison tests, shown in section~\ref{sss:SigIs:Fwd:Test}, the terrain correction proved an useful benchmark for troubleshooting the method implementation: it could be readily compared with other topographic model, which would have likely been more difficult with subsurface correction models.
+In addition to the spatial--domain comparison tests, shown in section~\ref{ss:SigIs:Fwd:Test}, the terrain correction proved an useful benchmark for troubleshooting the method implementation: it could be readily compared with other topographic model, which would have likely been more difficult with subsurface correction models.
 Uncertainty propagation on the terrain correction was not among the objectives of these experiments, therefore it was not carried out.
 However, this ad-hoc modelling setup would enable to do so easily, e.g. if required in further developments.
 
@@ -373,7 +371,7 @@ The general scheme of layers arrangement is sketched in Fig.~\ref{fig:E2014fwdLa
 The boundary surfaces extracted from {Earth2014} data are described in Tab.~\ref{tab:E2014fwdSurfaces}.
 Discrimination between ocean and lake bathymetry, and between on-shore and off-shore ice was performed using the ``mask grid files'' provided with the model, which include land types flags.
 
-In order to obtain an exact number of samples nodes along latitude and longitude, all the grids were resampled to a \SI{0.08}{\degree}~by~\SI{0.08}{\degree} equally spaced grid ($n \times 2n$, as described in section~\ref{sss:SigIs:Fwd:SHtransform}), using a modified Akima piecewise cubic Hermite interpolation---a Matlab--specific implementation of \textcite{Akima1974}---which successfully avoided local artefacts and overshoots.
+In order to obtain an exact number of samples nodes along latitude and longitude, all the grids were resampled to a \SI{0.08}{\degree}~by~\SI{0.08}{\degree} equally spaced grid ($n \times 2n$, as described in section~\ref{ss:SigIs:Fwd:SHtransform}), using a modified Akima piecewise cubic Hermite interpolation---a Matlab--specific implementation of \textcite{Akima1974}---which successfully avoided local artefacts and overshoots.
 The original grids in \textcite{Hirt2015} are provided with a \SI{1}{min} and \SI{5}{min} spacing, the latter being a box--mean downsampled version of the former.
 To ease the computational requirements, the \SI{5}{min} version was used here, justified by the much lower target resolution of our terrain forward model ($l_{max} = \num{280}$, resulting in a half--wavelength resolution of about \SI{0,64}{\degree})
 This resulted in slight upsampling, from \SI{5}{min} (equal to \SI[parse-numbers=false]{0.08\overline{3}}{\degree}) to \SI{0.08}{\degree}.
@@ -435,60 +433,76 @@ in which part of the terms listed in Tab.~\ref{tab:E2014fwdLayers} are omitted, 
     \label{fig:E2014fwdLayersSketch}
 \end{figure}
 
-\subsubsection{Sediments and crust}
-\label{sss:SigIs:InModels:CRUST}
+\subsection{Sediments and crust}
+\label{ss:SigIs:InModels:CRUST}
 
-These experiments rely on the {LITHO1.0} model by \textcite{Pasyanos2014}.
-They provide a global model of the lithosphere, from the topography to the base of lithospheric mantle (lithosphere--asthenosphere boundary, LAB), parametrized vertically in a series of `geophysical layers'.
-Horizontally (i.e. referring to the Earth surface) data is discretised on a \SI{1}{\degree} icosahedron--based tessellation.
+These experiments rely on the {LITHO1.0} model by \textcite{Pasyanos2014}, which expands on the results of CRUST5.1 \parencite{Mooney1998_Crust51}, CRUST2.0 \parencite{Bassin2000Crust20} and CRUST1.0 \parencite{Laske2012Crust10}.
+\Textcite{Pasyanos2014} provide a global model of the lithosphere, from the topography to the base of lithospheric mantle (lithosphere--asthenosphere boundary, LAB), parametrized vertically in a series of `geophysical layers'.
+Horizontally, these layers are discretised on a icosahedron--based tessellation, which results in an average arc-distance of about \SI{1}{\degree} between points.
 The following physical properties are provided in each of the layers, for each of the depth-columns defined by the model nodes: compressional wave velocity ($V_{P}$), shear wave velocity ($V_{S}$), and density ($\rho$).
 In each node, the properties inside each layer are constant in the radial direction.
 
-% brief description of the model motivation - stemming from Crust1.0
-% \parencite{Laske2012Crust10}
-However, care must be taken
+Thickness and properties of the crust and lithospheric mantle in {LITHO1.0} are the result of targeted--grid--search based inversion of surface wave dispersion maps.
+Their starting model is based on the data in {CRUST1.0} \parencite{Laske2012Crust10}, an updated version of the sediment model by \textcite{Laske1997_sediments}, an updated crustal thickness from undisclosed 1D seismic profiles (active source and receiver function studies), the lithospheric thickness by \textcite{Pasyanos2005}, the upper mantle velocity from {LLNL-G3Dv3} \parencite{Simmons2012_LLNL}, pure--gravity based crustal thickness in Antarctica \parencite{Block2009} and other locations lacking seismic data (undisclosed).
+The lithospheric thickness in \textcite{Pasyanos2005} was in turn constrained by continental heat--flow based estimates by \textcite{Artemieva2006} and oceanic lithospheric cooling \parencite{Turcotte1982_geodynamics}.
 
-as the authors stated, it is by no means a
-derived properties
-imposed constrains
+As the authors of {LITHO1.0} point out, it would be naive to assume that the model resolves the complicated lateral and vertical inhomogeneities of the lithosphere.
+They aimed at ``a consistent, defensible, and updatable model that is compatible with observed data and can capture some of the geophysical community's collective understanding of the Earth'' \parencite{Pasyanos2014}.
+In the context of these experiments, {LITHO1.0} provides a global, readily accessible model of density in the lithosphere, at a nominal resolution which is comparable with the current resolving power of satellite--only global gravity models (more precisely, of geophysical inversion based on satellite--only GGMs).
 
-a satisfying degree of independence from gravity data
-apart from Antarctica
-where they used a gravity-based crustal thickness
+%Competing candidates for an input model
+% elenco, es modelli
+% e cito lavori recentissimi
+%with the issue of global harmonisation
 
-no uncertainty information is provided
-own simplified error model
-described in section~\ref{ss:SigIs:Impl}
+\begin{center}
+    \textbf{[Da inserire: ragioni per scelta LITHO1.0, modelli simili esistenti, differente approccio di \textcite{Szwillus2019} e \textcite{Afonso2019}]}
+\end{center}
 
-% fine descrizione, parte mia
-% circa
-% "air, water, ice" discarded [...]
+\begin{center}
+    \textbf{[Da inserire: discorso su proprietà derivate, non indipendenti]}
+\end{center}
+% discorsi su proprietà derivate, fissate, rapporti
+%The three properties provided in the model ($V_P$, $V_S$, and $\rho$) were not independently estimated.
+
+The Poisson's ratio \parencite[see e.g.][]{Sheriff2002} in the lithospheric mantle, from which the $V_S/V_P$ can be derived, is fixed to \num{0.26}.
+Density in the lithospheric mantle is provided as a constant value (\SI{3300}{\kilo \gram \per \cubic \metre}).
+The extraction of a velocity-converted density is the subject of the following section (\ref{ss:SigIs:InModels:SCLM}).
+
+Regarding data uncertainty, no space--wise error information is provided, neither any information on data quality (e.g. distance to data or sources of the starting model).
+These experiments therefore resorted to a simplified error model, which is described in section~\ref{s:SigIs:Impl}.
 
 The water and ice layers were discarded, since {Earth2014} \parencite{Hirt2015} relies on updated and revised data.
 Therefore, the top of the solid--Earth layers of {LITHO1.0} (starting from the first sedimentary layer) has been re-referenced to the bottom of {Earth2014} bedrock (\texttt{BED} surface, see Tab.~\ref{tab:E2014fwdSurfaces} and \cite{Hirt2015_Earth2014readme}).
 
-As mentioned for the terrain correction, this data also needs to be gridded to in a format compatible with the chosen gravity forward modelling: an equally spaced $n \times 2n$ grid, consistent with \textcite{Driscoll1994} sampling theorem.
-Triangulation from the tessellated data to cartesian coordinates was performed using the {Stripy} package \parencites{Moresi2019}{Moresi2019_zenodo} and {litho1pt0} \parencite{Moresi2019_litho1pt0}, a Python interface to {LITHO1.0}.
+As already mentioned for the terrain correction, this data also needs to be gridded to in a format compatible with the chosen gravity forward modelling: an equally spaced $n \times 2n$ grid, consistent with \textcite{Driscoll1994} sampling theorem.
+Triangulation from the original tessellated data to cartesian coordinates was performed using the {Stripy} package \parencites{Moresi2019}{Moresi2019_zenodo} and {litho1pt0} \parencite{Moresi2019_litho1pt0}, a Python interface to {LITHO1.0}.
 
-\subsubsection{Lithospheric mantle}
-\label{sss:SigIs:InModels:SCLM}
+\subsection{Lithospheric mantle}
+\label{ss:SigIs:InModels:SCLM}
+% \SI{3300}{\kilo \gram \per \cubic \metre}
+% sigma (poisson ratio) in LID è fissato a 0.26
+% Vs/Vp = sqrt( (0.5 - sigma) / (1 - sigma) )
+% da Sheriff2002
+% quindi Vs/Vp in LID = 0.5695
+
 
 %\parencite{Connolly2005}
 %\parencite{Connolly2009}
 
 \newpage % remove later
-\subsection{Assessment of uncertainty}
-\label{ss:SigIs:Impl}
+\section{Assessment of uncertainty}
+\label{s:SigIs:Impl}
 % multiprocessing
 
 % spostati commenti seguenti da FWD
 % razionale per il metodo: random modelling
 
-\subsection{Global reduction results}
-\label{ss:SigIs:Results}
+\section{Global reduction results}
+\label{s:SigIs:Results}
 % con valutazioni spettrali
 
-\subsubsection{Discussion}
+\subsection{Discussion}
 \label{ss:SigIs:Results:Discussion}
 % confronto con tenzer2009 (e 2015)
 % statico-no-uncertainty

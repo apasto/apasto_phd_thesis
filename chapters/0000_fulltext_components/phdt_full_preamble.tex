@@ -1,4 +1,4 @@
-\documentclass[fontsize=11pt,a4paper,twoside]{scrbook}
+\documentclass[fontsize=12pt,a4paper,twoside]{scrbook}
 
 % encoding, ams, microtype, graphicx
 \usepackage[utf8]{inputenc}
@@ -10,18 +10,24 @@
 
 % fbb font (from documentation)
 \usepackage[full]{textcomp}          % to get the right copyright, etc.
-\usepackage[lining,tabular]{fbb}     % so math uses tabular lining figures
-\usepackage[scaled=.95,type1]{cabin} % sans serif in style of Gill Sans
+\usepackage[p,osf]{fbb}
+\usepackage[scaled=0.95,type1]{cabin} % sans serif in style of Gill Sans
 \usepackage[varqu,varl]{zi4}         % inconsolata typewriter
 \usepackage[libertine,bigdelims]{newtxmath}
 \usepackage[cal=boondoxo,bb=boondox,frak=boondox]{mathalfa}
 \useosf % change normal text to use proportional oldstyle figures
 % \usetosf would provide tabular oldstyle figures in text
 
+% slight increase of line spacing, makes fbb less clumped
+\linespread{1.075}
+
 \graphicspath{{./../graphics/}}
 \usepackage[percent]{overpic}
 
-\usepackage{newtxtext}
+\usepackage{import}
+% 'import' allows inputting/including from different subdirectories
+% without issues on changing paths...
+% use case: '\input{./sometable.tex}' in chapter files
 
 \usepackage{enumitem}
 \usepackage{booktabs}
@@ -65,16 +71,19 @@
 
 \usepackage{geometry}
 \geometry{
-  left=30mm, right=30mm,
+  left=33mm, right=33mm,
   bindingoffset=10mm,
-  top=35mm, bottom=35mm,
+  top=35mm, bottom=40mm,
   heightrounded}
 
-  \usepackage{xcolor}
+\usepackage{xcolor}
 \definecolor{linkblue}{RGB}{0,51,153}
 \definecolor{zgraylt}{RGB}{252,252,252}
 \definecolor{zgraydk}{RGB}{200,200,200}
 \definecolor{commentgray}{RGB}{95,95,95}
+
+% table of contents depth up to sections
+\setcounter{tocdepth}{1}
 
 \usepackage{hyperref}
 \hypersetup{

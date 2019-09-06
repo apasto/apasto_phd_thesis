@@ -4,13 +4,15 @@
 \begin{document}
 
 % here: abstract, toc, etc
+% before adding those, see class documentation: http://ctan.mirror.garr.it/mirrors/CTAN/macros/latex/contrib/koma-script/doc/scrguien.pdf
+\tableofcontents
 
 % chapters
-\include{./chapters/0100/phdt_0100.tex}
-\include{./chapters/0200/phdt_0200.tex}
-\include{./chapters/0300/phdt_0300.tex}
-\include{./chapters/0400/phdt_0400.tex}
-\include{./chapters/0500/phdt_0500.tex}
+\subincludefrom{./0100/}{phdt_0100}
+\subincludefrom{./0200/}{phdt_0200}
+\subincludefrom{./0300/}{phdt_0300}
+\subincludefrom{./0400/}{phdt_0400}
+\subincludefrom{./0500/}{phdt_0500}
 
 % here: everything before coda
 

@@ -275,4 +275,3 @@ TSWLatexianTemp*
 
 # ignore pdfs, but not those used for figures
 /chapters/**/*.pdf
-/fulltext/**/*.pdf

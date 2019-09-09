@@ -3,7 +3,7 @@
 
 \section*{Summary}
 \label{ss:SigIs:Summary}
-In order to perform geophysical inversions on the static gravity field, a signal separation procedure is required, i.e.~the effect of an a-priori mass distribution must be removed, isolating an anomalous field \parencites[e.g.][]{Tenzer2012}{Sjoberg2013}[][and references therein]{Tenzer2009}.
+In order to perform geophysical inversions on the static gravity field, a signal separation procedure is required, i.e.~the effect of an a-priori mass distribution must be removed, isolating an anomalous field \parencites[e.g.][]{Tenzer2009}{Tenzer2012}{Sjoberg2013}[][and references therein]{Aitken2015}.
 The observed field stripped of the forward-modelled attraction of these ``known masses'' constitutes the input of inverse gravity modelling.
 Any distribution of anomalous masses that results in the isolated field is a solution to the inverse problem.
 Common reductions include the well-known terrain correction, i.e.~landmasses and bathymetry \parencites{Hinze2003}{Hinze2005}, which can be further refined by stripping the effect of subsurface density variations \parencite{Vajda2008}.
@@ -132,10 +132,13 @@ They also provided a crust reduction not depending on a-priori density models, u
 \Textcite{Tenzer2009} also provided a global map of ellipsoid-- versus geoid--referenced topography and bathymetry corrected gravity disturbance.
 Differences reach upwards to $\pm~14$~\si{\milli Gal} over continents, with a morphology highly correlated to geoidal undulations, as expected.
 
+The same methodology of \textcite{Tenzer2009} is the base of the later work by \textcite{Tenzer2019}, which extended the forward modelling from {CRUST2.0} to {LITHO1.0} \parencite{Pasyanos2014}.
+
 In crustal thickness modelling, signal isolation is obtained by concurrently correcting for above- and below-Moho masses ---as it has been done to obtain the global model {GEMMA} \parencites{Reguzzoni2013}{Reguzzoni2015}.
-Global crustal density models \parencites[e.g.][]{Laske2012Crust10}{Pasyanos2014} rely mostly on seismological data, therefore requiring strong assumptions on velocity-density conversions \parencite[e.g.][]{Sebera2018}.
+Most of global crustal density models are constrained by seismic data \parencites[e.g.][]{Laske2012Crust10}{Pasyanos2014}{Szwillus2019}, either completely of for the most part, and are constrained mainly in terms of velocity.
+Reliance on assumed velocity-density conversions \parencite[e.g.][]{Sebera2018} is therefore required.
 Mantle stripping is less constrained, since there are no readily available density models \parencite{Tenzer2015}.
-Conversion from velocity models \parencites[e.g.][]{Simmons2010}{Schaeffer2013} require modelling the concurring effect of temperature, pressure and composition on the elastic parameter --- which means carrying out comprehensive thermodynamic modelling \parencites{Connolly2005}{Connolly2009}.
+At mantle conditions, density conversion from velocity models \parencites[e.g.][]{Simmons2010}{Schaeffer2013} require modelling the concurring effect of temperature, pressure and composition on the elastic parameter --- which means carrying out comprehensive thermodynamic modelling \parencites{Connolly2005}{Connolly2009}.
 These issues area dealt in detail in section~\ref{s:SigIs:InModels}.
 
 \section{Forward modelling method}
@@ -423,7 +426,7 @@ in which part of the terms listed in Tab.~\ref{tab:E2014fwdLayers} are omitted, 
     \label{fig:E2014fwdLayersSketch}
 \end{figure}
 
-\subsection{Sediments and crust}
+\subsection{Lithospheric density model}
 \label{ss:SigIs:InModels:CRUST}
 
 These experiments rely on the {LITHO1.0} model by \textcite{Pasyanos2014}, which expands on the results of CRUST5.1 \parencite{Mooney1998_Crust51}, CRUST2.0 \parencite{Bassin2000Crust20} and CRUST1.0 \parencite{Laske2012Crust10}.
@@ -436,61 +439,38 @@ Thickness and properties of the crust and lithospheric mantle in {LITHO1.0} are 
 Their starting model is based on the data in {CRUST1.0} \parencite{Laske2012Crust10}, an updated version of the sediment model by \textcite{Laske1997_sediments}, an updated crustal thickness from undisclosed 1D seismic profiles (active source and receiver function studies), the lithospheric thickness by \textcite{Pasyanos2005}, the upper mantle velocity from {LLNL-G3Dv3} \parencite{Simmons2012_LLNL}, pure--gravity based crustal thickness in Antarctica \parencite{Block2009} and other locations lacking seismic data (undisclosed).
 The lithospheric thickness in \textcite{Pasyanos2005} was in turn constrained by continental heat--flow based estimates by \textcite{Artemieva2006} and oceanic lithospheric cooling \parencite{Turcotte1982_geodynamics}.
 
+\begin{table}
+    \begin{adjustbox}{center}
+        \input{tab_LithoLayers.tex}
+    \end{adjustbox}
+    \caption[TEMP]{TEMP}
+    \label{tab:LithoLayers}
+\end{table}
+
 As the authors of {LITHO1.0} point out, it would be naive to assume that the model resolves the complicated lateral and vertical inhomogeneities of the lithosphere.
 They aimed at ``a consistent, defensible, and updatable model that is compatible with observed data and can capture some of the geophysical community's collective understanding of the Earth'' \parencite{Pasyanos2014}.
 In the context of these experiments, {LITHO1.0} provides a global, readily accessible model of density in sediments, crystalline crust, and lithospheric mantle
 It provides so at a nominal resolution which is comparable with the resolving power of geophysical inversion based on satellite--only global gravity models.
 
-\begin{center}
-\textbf{[TEMP]}
-\end{center}
-
-% Harmonising the data available at a global scale, even at a target resolution of \SI{1}{\degree}, is still
-
-% In addition, in order to use such a model for gravity data reduction,
-
-% either by using a purely non-gravity dataset
-% or by integrating the
-% multi--observable strategy
-
-% The recent work by \textcite{Szwillus2019}
-% provides a
-
-There are two features that are particularly relevant for applications such as the one hereby described:
+Compiling the available data in a global model of the crust and/or lithosphere is still a challenging task, requiring the retrieval, harmonisation and gridding of a huge assortment of data sets.
+The recent global crustal thickness by \textcite{Szwillus2019} was also considered as an alternative crustal model, due to two features that are particularly relevant for these data reduction experiments:
 (1) the transparency in its construction, since the input data is disclosed and accessible \parencite{Mooney2015_globalcrust} and the methods are reproducible;
-(2) the estimation of uncertainty, which could then be employed in a realistic uncertainty propagation to the forward modelled gravity field.
+(2) the estimation of uncertainty is described and its grids are provided: they could be employed in a realistic error propagation scheme to the forward modelled gravity field.
 
-%Competing candidates for an input model
-% elenco, es modelli
-% e cito lavori recentissimi
-%with the issue of global harmonisation
+Nevertheless, while {LITHO1.0} is lacking in those two aspects, it was still adopted as our reference density model, owing to:
+(1) its integration with a global sediment thickness model;
+(2) its seismic multi--observable nature, which takes advantage of the sensitivity to discontinuities of controlled--source and receiver functions, from prior models, and the sensitivity to ``bulk Earth properties'' ---from which density can be derived--- of surface waves;
+(3) its relative independence from gravity data: aiming at preventing any circular reference (i.e. correcting gravity data with models which were inverted from gravity), full independence would be ideal. While {LITHO1.0} is not free from local gravity--based \textit{fill-ins} (Antarctica and other undisclosed locations), the inversion starting models and inversion strategy of \textcite{Pasyanos2014} is predominantly based on seismic data.
+It is for this particular reason that multi--observable models that include global gravity models among their input data were left out, such as the recent \textit{LithoRef18} model \parencite{Afonso2019}.
 
-\begin{center}
-    \textbf{[Da inserire: ragioni per scelta LITHO1.0, modelli simili esistenti, differente approccio di \textcite{Szwillus2019} e \textcite{Afonso2019}]}
-\end{center}
+In summary, {LITHO1.0} is a reasonable compromise model, fit for this methodological test, albeit affected by the aforementioned pitfalls.
+It must be noted that the procedure hereby described could be easily scaled to different global models and to more refined uncertainty data, as further described in section~\ref{s:SigIs:Impl}.
 
-% ragioni per preferire litho
-% sensibilità bulk properties delle surface wave
-% integrata con crust
-% tectonic regularisation in crust
-% integrazione con sediment model
-% different assumptions (oceans, descrivo)
-% con quella stima di incertezza e differenza -> giustifico mio modello incertezza
-
-% data-aware uncertainty methods: Grad, EU
-% forse anche eunaseis artemieva
-
-% take-home message: il metodo è adattabile a modelli complessi, questa è proof of concept
-
-\begin{center}
-    \textbf{[Da inserire: discorso su proprietà derivate, non indipendenti]}
-\end{center}
-% discorsi su proprietà derivate, fissate, rapporti
-%The three properties provided in the model ($V_P$, $V_S$, and $\rho$) were not independently estimated.
-
+The three properties provided in {LITHO1.0} ($V_P$, $V_S$, and $\rho$) are not independently estimated quantities: the starting model reflects the reference values and parameter relationships defined by the  ``primary crustal types'' and their variants, from {CRUST5.1} \parencite{Mooney1998_Crust51} and the following version (as mentioned above).
+The $V_S/V_P$ ratio in the crust is unmodified from CRUST1.0 data.
 The Poisson's ratio \parencite[see e.g.][]{Sheriff2002} in the lithospheric mantle, from which the $V_S/V_P$ can be derived, is fixed to \num{0.26}.
-Density in the lithospheric mantle is provided as a constant value (\SI{3300}{\kilo \gram \per \cubic \metre}).
-The extraction of a velocity-converted density is the subject of the following section (\ref{ss:SigIs:InModels:SCLM}).
+Density in the lithospheric mantle (``LID''~layer) is provided as a constant value (\SI{3300}{\kilo \gram \per \cubic \metre}).
+The extraction of a velocity-converted density in the LID is the subject of the following section (\ref{ss:SigIs:InModels:SCLM}).
 
 Regarding data uncertainty, no space--wise error information is provided, neither any information on data quality (e.g. distance to data or sources of the starting model).
 These experiments therefore resorted to a simplified error model, which is described in section~\ref{s:SigIs:Impl}.
@@ -501,7 +481,7 @@ Therefore, the top of the solid--Earth layers of {LITHO1.0} (starting from the f
 As already mentioned for the terrain correction, this data also needs to be gridded to in a format compatible with the chosen gravity forward modelling: an equally spaced $n \times 2n$ grid, consistent with \textcite{Driscoll1994} sampling theorem.
 Triangulation from the original tessellated data to cartesian coordinates was performed using the {Stripy} package \parencites{Moresi2019}{Moresi2019_zenodo} and {litho1pt0} \parencite{Moresi2019_litho1pt0}, a Python interface to {LITHO1.0}.
 
-\subsection{Lithospheric mantle}
+\subsection{Velocity--density conversion in the lithospheric mantle}
 \label{ss:SigIs:InModels:SCLM}
 % \SI{3300}{\kilo \gram \per \cubic \metre}
 % sigma (poisson ratio) in LID è fissato a 0.26
@@ -520,6 +500,12 @@ Triangulation from the original tessellated data to cartesian coordinates was pe
 
 % spostati commenti seguenti da FWD
 % razionale per il metodo: random modelling
+
+% giustifico mio modello incertezza con valori che ha ottenuto Szwillus (2019)
+% altri data-aware uncertainty methods: Grad, EU, forse anche eunaseis artemieva
+
+% considerazioni globali uncertainty, da articolo LITHO1.0
+
 
 \section{Global reduction results}
 \label{s:SigIs:Results}
@@ -547,3 +533,7 @@ Triangulation from the original tessellated data to cartesian coordinates was pe
 % implementazione nello script: GSHA per interfacce fatta il doppio
 % perché ne faccio una sia per il bottom dello strato sopra
 % che per il top dello strato sotto
+
+% "è necessario rimuovere segnale litosferico?"
+% esistono approcci alternativi: Greff-Lefftz 2016, Panet 2014 - giustificato da Ricard 2006
+% con questo mostro un esempio: solo gradi bassi vs rimozione litosfera (ai gradi bassi)

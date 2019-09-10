@@ -415,10 +415,10 @@ in which part of the terms listed in Tab.~\ref{tab:E2014fwdLayers} are omitted, 
     \caption[Terrain correction: sketch of the solid topography and ocean bathymetry stripping.]{
         Terrain correction: sketch of the solid topography and ocean bathymetry stripping.
         The hatched area 
-            \includegraphics[width=0.75\baselineskip]{symbol_hatched_out.pdf}
+            \includegraphics[width=0.5\baselineskip]{symbol_hatched_out.pdf}
         covers the layer--volume of solid topography, between the reference ellipsoid (\textit{ell.}) and the \texttt{SUR} surface.
         The teal-coloured area 
-            \includegraphics[width=0.75\baselineskip]{symbol_water_out.pdf}
+            \includegraphics[width=0.5\baselineskip]{symbol_water_out.pdf}
         represents the layer--volume of ocean bathymetry stripping, between the \texttt{BED} and \texttt{SUR} surfaces. Note that \texttt{SUR} and \texttt{BED} coincide onshore.
         $D$:~reference radius.
         For a description of surfaces, see Tab.~\ref{tab:E2014fwdSurfaces}.
@@ -435,7 +435,7 @@ Horizontally, these layers are discretised on a icosahedron--based tessellation,
 The following physical properties are provided in each of the layers, for each of the depth-columns defined by the model nodes: compressional wave velocity ($V_{P}$), shear wave velocity ($V_{S}$), and density ($\rho$).
 In each node, the properties inside each layer are constant in the radial direction.
 
-Thickness and properties of the crust and lithospheric mantle in {LITHO1.0} are the result of targeted--grid--search based inversion of surface wave dispersion maps.
+Thickness and properties of the crust and lithospheric mantle in {LITHO1.0} are the result of a targeted--grid--search based inversion of surface wave dispersion maps.
 Their starting model is based on the data in {CRUST1.0} \parencite{Laske2012Crust10}, an updated version of the sediment model by \textcite{Laske1997_sediments}, an updated crustal thickness from undisclosed 1D seismic profiles (active source and receiver function studies), the lithospheric thickness by \textcite{Pasyanos2005}, the upper mantle velocity from {LLNL-G3Dv3} \parencite{Simmons2012_LLNL}, pure--gravity based crustal thickness in Antarctica \parencite{Block2009} and other locations lacking seismic data (undisclosed).
 The lithospheric thickness in \textcite{Pasyanos2005} was in turn constrained by continental heat--flow based estimates by \textcite{Artemieva2006} and oceanic lithospheric cooling \parencite{Turcotte1982_geodynamics}.
 
@@ -443,7 +443,12 @@ The lithospheric thickness in \textcite{Pasyanos2005} was in turn constrained by
     \begin{adjustbox}{center}
         \input{tab_LithoLayers.tex}
     \end{adjustbox}
-    \caption[TEMP]{TEMP}
+    \caption[Average thickness and density of the layers from {LITHO1.0}.]{
+        Thickness and density of the layers from {LITHO1.0} \parencite{Pasyanos2014}.
+        {SEDS}:~sediments,
+        {CRUST}:~crystalline crust (basement to Moho),
+        {LID}:~lithospheric mantle (Moho to LAB).
+    }
     \label{tab:LithoLayers}
 \end{table}
 
@@ -492,6 +497,10 @@ Triangulation from the original tessellated data to cartesian coordinates was pe
 
 %\parencite{Connolly2005}
 %\parencite{Connolly2009}
+
+\subsection{Reference densities: layered normal Earth}
+\label{ss:SigIs:InModels:REF}
+% AK135 \parencite{Kennett1995_ak135}
 
 \newpage % remove later
 \section{Assessment of uncertainty}

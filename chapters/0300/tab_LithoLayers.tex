@@ -1,10 +1,23 @@
 % Litho1.0 used layers table
-\begin{tabular}{llll}
-    \toprule   
-    \multicolumn{2}{l}{\textbf{Layer}} & & \textbf{Density source} \\
+\begin{tabular}{lrrrll}
+    \toprule
+        & & \multicolumn{2}{c}{\textbf{Average}\textsuperscript{1}} \\
+        \cmidrule{3-4}
+        & & \multicolumn{1}{c}{\textbf{Thickness}} & \multicolumn{1}{c}{\textbf{Density}\textsuperscript{2}} & & \\
+        \multicolumn{2}{l}{\textbf{Layer}} & \multicolumn{1}{c}{\textbf{[km]}} & \multicolumn{1}{c}{\textbf{[\si{\kilo \gram \per \cubic \metre}]}} & & \textbf{Density source} \\
     \midrule
-    SEDS & 1, 2, 3 & \rdelim\}{2}{*}& \multirow{2}{*}{unmodified $\rho$} \\
-    CRUST & 1, 2, 3 & \\
-    \multicolumn{2}{l}{LID} & &  $V_S$ to $\rho$ conversion \\
+
+    SEDS & 1 & \num{0} & \num{0} & \rdelim\}{6}{*} & \multirow{6}{*}{unmodified $\rho$} \\
+    \multicolumn{1}{c}{''} & 2 & \num{0} & \num{0} \\
+    \multicolumn{1}{c}{''} & 3 & \num{0} & \num{0} \\
+
+    CRUST & 1 & \num{0} & \num{0} \\
+    \multicolumn{1}{c}{''} & 2 & \num{0} & \num{0} \\
+    \multicolumn{1}{c}{''} & 3 & \num{0} & \num{0} \\
+
+    \multicolumn{2}{l}{LID} & \num{0} & \num{0} & & $V_S$ to $\rho$ conversion \\
+
     \bottomrule
+    \multicolumn{6}{p{0.75\textwidth}}{\textsuperscript{1}\footnotesize{Weighted by the cosine of each node latitude, to account for the convergence of meridians.}} \\
+    \multicolumn{6}{p{0.75\textwidth}}{\textsuperscript{2}\footnotesize{Also weighted by each node thickness.}}
 \end{tabular}

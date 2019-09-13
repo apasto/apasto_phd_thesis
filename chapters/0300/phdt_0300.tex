@@ -385,24 +385,24 @@ Expressed in terms of correction to the gravity disturbance (the \textit{attract
 in which part of the terms listed in Tab.~\ref{tab:E2014fwdLayers} are omitted, for clarity.
 
 \begin{table}[ht]
-    \begin{adjustbox}{center}
-        \input{tab_E2014fwdLayers.tex}
-    \end{adjustbox}
     \caption[Terrain correction scheme: summary of the layers and their defining surfaces and densities.]{
         Terrain correction scheme: summary of the layers and their defining surfaces and densities.
         \textit{Layer:}~density of the modelled mass.
         \textit{Ref.:}~reference density for stripping corrections.
         \textit{Contrast.:}~layer density minus reference density.
         \texttt{GRS80}: GRS80 ellipsoid in geocentric radius \parencites{Moritz1980_GRS80}{Moritz2000_GRS80}. For a description of surfaces, see Tab.~\ref{tab:E2014fwdSurfaces}.}
+    \begin{adjustbox}{center}
+        \input{tab_E2014fwdLayers.tex}
+    \end{adjustbox}
     \label{tab:E2014fwdLayers}
 \end{table}
 
 \begin{table}[ht]
+    \caption[Description of the input surfaces utilised in the terrain correction, as extracted from {Earth2014}.]{
+        Description of the input surfaces utilised in the terrain correction, as extracted from {Earth2014}. Text between quotes is from Table~1 in \textcite{Hirt2015}. Land type flag description from the {Earth2014} \textit{readme} file \parencite{Hirt2015_Earth2014readme}.}
     \begin{adjustbox}{center}
         \input{tab_E2014fwdSurfaces.tex}
     \end{adjustbox}
-    \caption[Description of the input surfaces utilised in the terrain correction, as extracted from {Earth2014}.]{
-        Description of the input surfaces utilised in the terrain correction, as extracted from {Earth2014}. Text between quotes is from Table~1 in \textcite{Hirt2015}. Land type flag description from the {Earth2014} \textit{readme} file \parencite{Hirt2015_Earth2014readme}.}
     \label{tab:E2014fwdSurfaces}
 \end{table}
 
@@ -440,16 +440,28 @@ Their starting model is based on the data in {CRUST1.0} \parencite{Laske2012Crus
 The lithospheric thickness in \textcite{Pasyanos2005} was in turn constrained by continental heat--flow based estimates by \textcite{Artemieva2006} and oceanic lithospheric cooling \parencite{Turcotte1982_geodynamics}.
 
 \begin{table}
-    \begin{adjustbox}{center}
-        \input{tab_LithoLayers.tex}
-    \end{adjustbox}
-    \caption[Average thickness and density of the layers from {LITHO1.0}.]{
-        Thickness and density of the layers from {LITHO1.0} \parencite{Pasyanos2014}.
+    \caption[Thickness and density of the layers from {LITHO1.0}.]{
+        Average (Avg.) and standard deviation (SD) of thickness and density of the layers from {LITHO1.0} \parencite{Pasyanos2014}.
         {SEDS}:~sediments,
         {CRUST}:~crystalline crust (basement to Moho),
         {LID}:~lithospheric mantle (Moho to LAB).
+        See Tab.~\ref{tab:LithoLayersGroups} for the statistics on aggregated layers.
+        Note that strongly asymmetrical distributions result in standard deviations larger than the average value.
     }
+    \begin{adjustbox}{center}
+        \input{tab_LithoLayers.tex}
+    \end{adjustbox}
     \label{tab:LithoLayers}
+\end{table}
+
+\begin{table}
+    \caption[Thickness and density of the layers from {LITHO1.0}.]{
+        Average and standard deviation of thickness and density of grouped layers from {LITHO1.0} \parencite{Pasyanos2014}. See Tab.~\ref{tab:LithoLayers} for the non aggregated layers and notes on computation. Standard deviations are shown in parentheses.
+    }
+    \begin{adjustbox}{center}
+        \input{tab_LithoLayersGroup.tex}
+    \end{adjustbox}
+    \label{tab:LithoLayersGroups}
 \end{table}
 
 As the authors of {LITHO1.0} point out, it would be naive to assume that the model resolves the complicated lateral and vertical inhomogeneities of the lithosphere.

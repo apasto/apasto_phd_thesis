@@ -1,39 +1,31 @@
 % Litho1.0 used layers table
-\begin{tabular}{lllllllll}
+\begin{tabular}{lS[table-format=3.2]S[table-format=3.2]rr}
     \toprule
-        & \multicolumn{2}{c}{\textbf{Average}\textsuperscript{*}} \\
+        & \multicolumn{2}{c}{\textbf{Thickness}\textsuperscript{*}} & \multicolumn{2}{c}{\textbf{Density}\textsuperscript{†}} \\
+        & \textbf{[\si{\kilo \metre}]} & \textbf{[\si{\kilo \gram \per \cubic \metre}]} \\
         \cmidrule{2-3}
-        & \multicolumn{1}{c}{\textbf{Thickness}} & \multicolumn{1}{c}{\textbf{Density}\textsuperscript{†}} \\
-        \textbf{Layer} & \multicolumn{1}{c}{\textbf{[\si{\kilo \metre}]}} & \multicolumn{1}{c}{\textbf{[\si{\kilo \gram \per \cubic \metre}]}} &
-        \multicolumn{6}{c}{\textbf{Cumulative averages}} \\
+        \cmidrule{4-5}
+        \textbf{Layer} & \multicolumn{1}{c}{\textbf{Avg.}} & \multicolumn{1}{c}{\textbf{SD}} & \multicolumn{1}{c}{\textbf{Avg.}} & \multicolumn{1}{c}{\textbf{SD}} \\
     \midrule
 
-    SEDS 1 & \num{0.62}\textsuperscript{‡} & \num{1978} &
-    \rdelim\}{3}{*} & \multirow{3}{*}{\shortstack[l]{
-        \SI{1.13}{\kilo \metre}\textsuperscript{‡} \\ \SI{2128}{\kilo \gram \per \cubic \metre}}} &
-    \rdelim\}{6}{*} & \multirow{6}{*}{\shortstack[l]{
-        \SI{13.2}{\kilo \metre} \\ \SI{2827}{\kilo \gram \per \cubic \metre}}} &
-    \rdelim\}{7}{*} & \multirow{7}{*}{\shortstack[l]{
-        \SI{95.1}{\kilo \metre} \\ \SI{3213}{\kilo \gram \per \cubic \metre}}} \\
-    SEDS 2 & \num{2.21}\textsuperscript{‡} & \num{2341} \\
-    SEDS 3 & \num{3.10}\textsuperscript{‡} & \num{2558} \\
-
-    CRUST 1 & \num{5.63} & \num{2719} &
-    \rdelim\}{3}{*} & \multirow{3}{*}{\shortstack[l]{
-        \SI{12.2}{\kilo \metre} \\ \SI{2856}{\kilo \gram \per \cubic \metre}}} \\
-    CRUST 2 & \num{6.49} & \num{2820} \\
-    CRUST 3 & \num{9.06} & \num{2966} \\
-
-    LID & \num{81.9} & \num{3317} \\
-
+    SEDS  1\textsuperscript{‡}
+            & 0.62 & 0.61 & 1978 &  98 \\
+    SEDS  2\textsuperscript{‡}
+            & 2.21 & 1.23 & 2341 &  84 \\
+    SEDS  3\textsuperscript{‡}
+            & 3.10 & 2.33 & 2558 & 139 \\
+    CRUST 1 & 5.63 & 6.36 & 2719 & 122 \\
+    CRUST 2 & 6.49 & 1.23 & 2820 &  84 \\
+    CRUST 3 & 9.06 & 4.20 & 2966 &  85 \\
+    LID     & 81.9 & 62.0 & 3317 &  31 \\
     \bottomrule
-    \multicolumn{9}{l}{\textsuperscript{*}\footnotesize{
+    \multicolumn{5}{p{0.6\textwidth}}{\textsuperscript{*}\footnotesize{
         Weighted by the cosine of latitude of each grid node, to account for the convergence of meridians.}
     } \\
-    \multicolumn{9}{l}{\textsuperscript{†}\footnotesize{
+    \multicolumn{5}{p{0.6\textwidth}}{\textsuperscript{†}\footnotesize{
         Density average is also weighted by thickness.}
     } \\
-    \multicolumn{9}{l}{\textsuperscript{‡}\footnotesize{
+    \multicolumn{5}{p{0.6\textwidth}}{\textsuperscript{‡}\footnotesize{
         Average of nodes with non-zero sediment thickness.}
     }
 \end{tabular}

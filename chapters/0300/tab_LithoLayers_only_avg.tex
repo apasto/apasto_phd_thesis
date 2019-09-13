@@ -1,0 +1,39 @@
+% Litho1.0 used layers table
+\begin{tabular}{lllllllll}
+    \toprule
+        & \multicolumn{2}{c}{\textbf{Average}\textsuperscript{*}} \\
+        \cmidrule{2-3}
+        & \multicolumn{1}{c}{\textbf{Thickness}} & \multicolumn{1}{c}{\textbf{Density}\textsuperscript{†}} \\
+        \textbf{Layer} & \multicolumn{1}{c}{\textbf{[\si{\kilo \metre}]}} & \multicolumn{1}{c}{\textbf{[\si{\kilo \gram \per \cubic \metre}]}} &
+        \multicolumn{6}{c}{\textbf{Cumulative averages}} \\
+    \midrule
+
+    SEDS 1 & \num{0.62}\textsuperscript{‡} & \num{1978} &
+    \rdelim\}{3}{*} & \multirow{3}{*}{\shortstack[l]{
+        \SI{1.13}{\kilo \metre}\textsuperscript{‡} \\ \SI{2128}{\kilo \gram \per \cubic \metre}}} &
+    \rdelim\}{6}{*} & \multirow{6}{*}{\shortstack[l]{
+        \SI{13.2}{\kilo \metre} \\ \SI{2827}{\kilo \gram \per \cubic \metre}}} &
+    \rdelim\}{7}{*} & \multirow{7}{*}{\shortstack[l]{
+        \SI{95.1}{\kilo \metre} \\ \SI{3213}{\kilo \gram \per \cubic \metre}}} \\
+    SEDS 2 & \num{2.21}\textsuperscript{‡} & \num{2341} \\
+    SEDS 3 & \num{3.10}\textsuperscript{‡} & \num{2558} \\
+
+    CRUST 1 & \num{5.63} & \num{2719} &
+    \rdelim\}{3}{*} & \multirow{3}{*}{\shortstack[l]{
+        \SI{12.2}{\kilo \metre} \\ \SI{2856}{\kilo \gram \per \cubic \metre}}} \\
+    CRUST 2 & \num{6.49} & \num{2820} \\
+    CRUST 3 & \num{9.06} & \num{2966} \\
+
+    LID & \num{81.9} & \num{3317} \\
+
+    \bottomrule
+    \multicolumn{9}{l}{\textsuperscript{*}\footnotesize{
+        Weighted by the cosine of latitude of each grid node, to account for the convergence of meridians.}
+    } \\
+    \multicolumn{9}{l}{\textsuperscript{†}\footnotesize{
+        Density average is also weighted by thickness.}
+    } \\
+    \multicolumn{9}{l}{\textsuperscript{‡}\footnotesize{
+        Average of nodes with non-zero sediment thickness.}
+    }
+\end{tabular}

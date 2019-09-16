@@ -1,0 +1,87 @@
+\documentclass[11pt,a4paper]{scrbook}
+
+% encoding, ams, microtype, graphicx
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,bm}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage[dvips]{graphicx}
+\usepackage{mathtools} % underbrace
+
+\graphicspath{{../../graphics/}}
+\usepackage[percent]{overpic}
+
+\usepackage{newtxtext}
+
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{bigdelim}
+\usepackage{adjustbox}
+\usepackage[mathlines]{lineno}
+
+\numberwithin{equation}{chapter}
+
+\usepackage[english]{babel}
+\usepackage[babel]{csquotes}
+
+\usepackage[
+  detect-mode=true,
+  detect-weight=true
+  ]{siunitx} % get math/text mode from context
+
+%\setcounter{secnumdepth}{3} % number up to subsubsections
+
+% --- biblatex with sorting, position, authoryear
+\usepackage[
+	backend=biber,
+	style=authoryear-comp,
+	giveninits=true,
+	uniquename=init,
+	uniquelist=false,
+	hyperref=true,
+	maxcitenames=2,
+	maxbibnames=99,
+	dashed=false,
+	url=false,
+	doi=true,
+]{biblatex}
+
+\renewcommand*{\nameyeardelim}{\addcomma\space} % comma bw author and year
+
+\DeclareNameAlias{sortname}{family-given}
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{%
+  \printtext{\bibstring{in}\intitlepunct}}}
+
+\bibliography{../../bibliography/phdt}
+
+\usepackage{geometry}
+\geometry{
+  left=40mm, right=40mm,
+  bindingoffset=0mm,
+  top=30mm, bottom=30mm,
+  heightrounded}
+
+\usepackage{xcolor}
+\definecolor{linkblue}{RGB}{0,51,153}
+
+\raggedbottom % fine for drafts
+
+\usepackage{hyperref}
+\hypersetup{
+  pdfpagelayout=SinglePage, % default
+  pdfpagemode=UseOutlines, % default
+  bookmarksopen, % default
+  bookmarksopenlevel=2, % default;
+  bookmarksdepth=3 % up to subsubsection (hidden in ToC)
+  pdftitle={},
+  pdfauthor={Alberto Pastorutti},
+  pdfsubject={},
+  pdfkeywords={},
+  colorlinks=true,
+  urlcolor=linkblue,
+  linkcolor=linkblue,
+  citecolor=linkblue}
+
+\input{../../common/hyperref_biblatex} % link on whole citation (only on year otherwise)

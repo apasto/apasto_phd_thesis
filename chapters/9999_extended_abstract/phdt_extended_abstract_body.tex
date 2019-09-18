@@ -1,48 +1,70 @@
-% Global models of the Earth gravitational fields
+This doctoral dissertation aims to relate satellite-derived global models of the Earth static gravity field with regional surface heat flow estimates on stable continental lithosphere, using variations in crustal thickness as a gravity-derived thermal constraint.
+\\
 
-% suitable for
-
-% structure of the lithosphere
-
-% ...
-% recent developments
-% 3d modelling of earth lithosphere
-% static snapshot
-% insight into dynamics
-% (e.g. back-propagation ...)
-
-The heat transport across the Earth surface, arising from its cooling interiors, senses a wide assortment of phenomena, from near-surface paleoclimatic perturbations \parencite{Majorowicz2011} to the driving forces of plate tectonics and mantle dynamics \parencite{Cooper2017}.
+The heat transported across the Earth surface, arising from its cooling interiors, senses a wide assortment of phenomena, from near-surface paleoclimatic perturbations \parencite{Majorowicz2011} to the driving forces of plate tectonics and mantle dynamics \parencite{Cooper2017}.
 Surface heat flow is sensed with in situ measurements of temperature and conductivity, usually in boreholes.
 This implies that heat flow is a costly observable, highly depending on logistic and financial constraints, on previous exploration interest and on availability of data.
 The collection and maintenance of a global database is an ongoing effort, spanning multiple decades \parencites{Lee1965}{Hasterok2008}.
 
 Different components superimpose on the surface heat flow signal.
 Over continents, at regional scales (from \SI{100}{\kilo \metre} onwards), most of the static signal can be explained by a partition between a `basal heat flow' (through the crust-mantle boundary) and a crustal radiogenic component ---i.e. the result of radioactive decay occurring in the crust \parencite{Jaupart2016}.
-The generation of continental crust through magmatic differentiation (partial melting and crystallization) significantly enriched the upper portions of the lithosphere with radioactive elements, among which uranium, thorium, and potassium account for almost the total heat production.
-These are highly mobile trace elements, and their concentration does not directly affect geophysical quantities by a significant amount \parencite{Hasterok2017_mis}.
+The generation of continental crust through magmatic differentiation significantly enriched the upper portions of the lithosphere with radioactive elements, among which uranium, thorium, and potassium account for almost the total heat production.
+These are highly mobile trace elements, and their concentration alone does not directly affect petrophysical quantities by a significant amount \parencite{Hasterok2017_mis}.
 
 Therefore, radioactive heat production is a highly uncertain physical property.
 However, other petrogenetic processes concur in affecting sensible quantities (e.g.~seismic velocities, density).
 Empirical relationships from velocity and/or density to heat production have developed and tested satisfactorily \parencites{Rudnick2003}{Vila2010}{Hasterok2017_ign}.
 In addition, multi-observable modelling \parencites[e.g.][]{Mather2018}{Afonso2019} is regularly employed to improve the understanding on the subsurface distribution of temperature and thermal parameters, exploiting their effect on directly sensed quantities (e.g.~topography, gravity, seismic, and electromagnetic observations).
+\\
 
-The gravity field is particularly sensible to variations in crustal thickness, arising from the significant density contrast at the Moho (a global average of \SI{485}{\kilo \gram \per \cubic \metre} according to \cite{Tenzer2012}, of \num{448}~$\pm$~\SI{187}{\kilo \gram \per \cubic \metre} according to \cite{Sjoberg2011}, to name two).
+The gravity field is particularly sensitive to variations in crustal thickness, arising from the significant density contrast at the Moho (a global average of \SI{485}{\kilo \gram \per \cubic \metre} according to \cite{Tenzer2012}, of \num{448}~$\pm$~\SI{187}{\kilo \gram \per \cubic \metre} according to \cite{Sjoberg2011}, to name two).
 Compared with the problematically sampled heat flow, gravity data benefits from a much more uniform coverage, instead.
-While high resolution terrestrial data suffers from the same issues that affect heat flow (and )
-It is therefore tempting to assess how 
+While high resolution terrestrial data suffers from the same data availability issues that affect heat flow, models derived from satellite gravimetry missions provide an unprecedented spatial homogeneity in sampling and in data quality.
+The global gravity models (GGMs) derived from the European Space Agency Gravity field and steady-state Ocean Circulation Explorer mission \parencite[GOCE,][]{Floberghagen2011_goce}provide a ppm-level accuracy for $g$ with a resolution of about \SI{70}{\kilo \metre} at the Earth surface \parencites{Brockmann2014}{Kvas_GOCO06s_dataset}.
+These kind of models, together with other geophysical constraints, have already shown promising results in global crustal thickness modelling \parencites[e.g.][]{Eshagh2011}{Reguzzoni2015} and in regional thermal modelling \parencite{Bouman2015}.
+\\
 
-make us of
+This basis provided the motivation to perform an assessment on how satellite gravity data can contribute to thermal modelling.
+In this dissertation I devise and test a strategy to constrain the crustal radioactive heat production (RHP) using gravity-derived Moho depths and the available heat flow data \parencite{globalHF}, with the aim of overcoming the issues with heat flow interpolation over areas devoid of measurements.
 
-if a % relazione soddisfacente con gravità
+Following an introductory chapter, in chapter~2 of this thesis I deal with the details and documentation of the ad-hoc thermal forward model.
+It central component is a 3D central-finite-differences solver for the steady-state heat diffusion equation in rectangularly discretised domains, with non-uniform heat production and conductivity.
+Over a standard `box` configuration, it allows for non-flat constant temperature (Dirichlet) boundaries: topography and isotherm lithosphere base, for these purposes.
+It is complemented by a set of functions to translate a plain-text layered definition file of the lithosphere model to a volume parametrised in terms of thermal conductivity, heat production, density, and grid definitions.
+Temperature, pressure, and depth-dependency of the input parameters can be defined.
+The adopted rectangular discretisation allows for directly calling spatial-domain gravity forward modelling (prism-defined, thus completely coherent with the model elements).
+Particular attention was paid to the model efficiency, chiefly in building the coefficient matrix of the finite differences.
+This allowed to employ it in an iterative subsequent-substitution parameter fitting scheme, which is the basis of the aforementioned crustal-thickness based RHP inversion.
+\\
 
-compiling requires "fill in"
-% spatial regularisation?
-lithosphere component
-short scale
-backstripping
+The application part involved a gravity data reduction strategy, to isolate the Moho undulation signal, and an ad-hoc thermal forward model.
+Moho signal isolation is part of the general topic of signal separation in the observed static gravity field, i.e. stripping the effect of an assumed mass distribution to isolate an anomalous potential, usually attributed to the enquired phenomenon \parencites{Mikuska2007}{Sjoberg2013}{Aitken2015}[][, to name a few]{Tenzer2019}.
+Uncertainties in the a-priori masses, such as unmodelled spatial variability in density, accumulate in the reductions and are propagated to the reduced data and to the inversion results.
+Incomplete and inexact geological knowledge cannot be avoided, thus a perfect data reduction is unrealistic.
+
+Therefore, an uncertainty-aware signal isolation process, i.e.~a process providing error estimates alongside its reduced gravity data, is a necessary step in estimating confidence of the inversion results, in statistical terms.
+In chapter~3 of this dissertation I deal with this issue, presenting the results of a Monte Carlo error propagation \parencite{Aster2018} of a global reduction for lithospheric masses (from the terrain correction to the lithosphere-asthenosphere boundary).
+The experiments results are preceded by a brief introduction on gravity corrections (revolving on the ellipsoid-referenced disturbances defined by \cite{Vajda2008}) and on the adopted spectral-domain forward modelling method (a layer-wise arrangement of the code by \cite{Wieczorek2018}).
+The chapter is complemented by a series of validation tests against spatial-domain forward modelling of test mass distributions.
+
+The tested strategy, albeit relying on a simplified uniform model of error distribution, proved fit for purpose at the target resolution (maximum degree and order of 280, aimed at data reduction of satellite-only models) and may be easily scaled to more complex schemes.
+\\
+
+An application test in Central-Eastern europe, across the Trans-European Suture Zone is presented in the last chapter.
+It integrates a combined satellite-only GGM, data reductions including a mixed spatial- and spectral-domain forward modelling scheme to integrate global and regional sediment thickness models \parencite{EuCRUST07}, and available heat flow measurements \parencite{globalHF}.
+It resulted in a 3D lithospheric model of temperature and thermal parameters, fitting available data and providing added information respect to the structure of the lithosphere.
+
+The modelled thermal regime is coherent with what geological inference expects and with other models of the area, keeping into account the limitations of a method which relies on as less a-priori data as possible, by design.
+The model is accompanied by a sensitivity test of the results to the crustal thickness estimate ---to quantify the role of the information inverted from gravity.
+The gravity-derived Moho is benchmarked against existing crustal models in the area, obtained through different methods \parencites{Grad2009}{Pasyanos2014}{Reguzzoni2015}.
+Since no prior information on density-to-RHP relationship was included, the output data was also used to independently test the relationship proposed by \textcite{Hasterok2017_ign}.
+Albeit complicated by wide uncertainties, a satisfying overlap between the two data fits was observed.
+\\
+
+\nocite{Pastorutti2019}
 
 
-Satellite gravity missions provide % ... solito
-% uniform sampling
+
+
 
 

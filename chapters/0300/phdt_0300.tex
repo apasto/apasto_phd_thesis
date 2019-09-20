@@ -132,7 +132,7 @@ They also provided a crust reduction not depending on a-priori density models, u
 \Textcite{Tenzer2009} also provided a global map of ellipsoid-- versus geoid--referenced topography and bathymetry corrected gravity disturbance.
 Differences reach upwards to $\pm~14$~\si{\milli Gal} over continents, with a morphology highly correlated to geoidal undulations, as expected.
 
-The same methodology of \textcite{Tenzer2009} is the base of the later work by \textcite{Tenzer2019}, which extended the forward modelling from {CRUST2.0} to {LITHO1.0} \parencite{Pasyanos2014}.
+The methodology of \textcite{Tenzer2009} is the basis of the later work by \textcite{Tenzer2019}, which extended the forward modelling from {CRUST2.0} to {LITHO1.0} \parencite{Pasyanos2014}.
 
 In crustal thickness modelling, signal isolation is obtained by concurrently correcting for above- and below-Moho masses ---as it has been done to obtain the global model {GEMMA} \parencites{Reguzzoni2013}{Reguzzoni2015}.
 Most of global crustal density models are constrained by seismic data \parencites[e.g.][]{Laske2012Crust10}{Pasyanos2014}{Szwillus2019}, either completely of for the most part, and are constrained mainly in terms of velocity.
@@ -140,6 +140,9 @@ Reliance on assumed velocity-density conversions \parencite[e.g.][]{Sebera2018} 
 Mantle stripping is less constrained, since there are no readily available density models \parencite{Tenzer2015}.
 At mantle conditions, density conversion from velocity models \parencites[e.g.][]{Simmons2010}{Schaeffer2013} require modelling the concurring effect of temperature, pressure and composition on the elastic parameter --- which means carrying out comprehensive thermodynamic modelling \parencites{Connolly2005}{Connolly2009}.
 These issues area dealt in detail in section~\ref{s:SigIs:InModels}.
+
+The atmospheric correction has a range of \num{-0.04} to \SI{0.18}{mGal} at the Earth surface \parencite{Tenzer2009_AtmCorr}.
+Owing to its small value (3 orders of magnitude smaller than the effects of lithospheric mass inhomogeneities), it is often not considered for solid Earth signal isolation \parencite[e.g][]{Tenzer2019}.
 
 \section{Forward modelling method}
 \label{s:SigIs:Fwd}
@@ -372,7 +375,7 @@ This resulted in slight upsampling, from \SI{5}{min} (equal to \SI[parse-numbers
 The \textit{complete terrain correction} was then computed by summing the gravity effect of all the forward modelled masses.
 Expressed in terms of correction to the gravity disturbance (the \textit{attraction of the Earth topography} $A_{R}^{ET}$ in Eq.~\ref{eq:red:DistgNETC2}), it results in the following:
 \begin{equation}
-    \label{eq:}
+    \label{eq:CompleteTC}
     A_{R}^{ET} =
     -\frac{\partial}{\partial h}
     \left(
@@ -441,7 +444,7 @@ The lithospheric thickness in \textcite{Pasyanos2005} was in turn constrained by
 
 \begin{table}
     \caption[Thickness and density of the layers from {LITHO1.0}.]{
-        Average (Avg.) and standard deviation (SD) of thickness and density of the layers from {LITHO1.0} \parencite{Pasyanos2014}.
+        Average (\textbf{Avg.}) and standard deviation (\textbf{SD}) of thickness and density of the layers from {LITHO1.0} \parencite{Pasyanos2014}.
         {SEDS}:~sediments,
         {CRUST}:~crystalline crust (basement to Moho),
         {LID}:~lithospheric mantle (Moho to LAB).
@@ -500,15 +503,94 @@ Triangulation from the original tessellated data to cartesian coordinates was pe
 
 \subsection{Velocity--density conversion in the lithospheric mantle}
 \label{ss:SigIs:InModels:SCLM}
-% \SI{3300}{\kilo \gram \per \cubic \metre}
-% sigma (poisson ratio) in LID è fissato a 0.26
-% Vs/Vp = sqrt( (0.5 - sigma) / (1 - sigma) )
-% da Sheriff2002
-% quindi Vs/Vp in LID = 0.5695
+
+Density in {LITHO1.0} \parencite{Pasyanos2014} lithospheric mantle ({LID}~layer) is provided constant at \SI{3300}{\kilo \gram \per \cubic \metre}.
+Only $V_P$ and $V_S$ are provided, with a Poisson ratio ($\sigma$) fixed at~\num{0.26}.
+The $V_S / V_P$ ratio is directly related to $\sigma$ \parencite{Sheriff2002}:
+\begin{equation}
+    \label{eq:VSVP_PoissonRatio}
+    \frac{V_S}{V_P} =
+    \sqrt{\frac{0.5 - \sigma}{1 - \sigma}}
+\end{equation}
+This results in a $V_S / V_P$ ratio in {LITHO1.0} lithospheric mantle of about \num{0.57}.
+
+Therefore, a velocity-to-density conversion was set up, based on assumptions on composition and thermodynamic modelling.
+In order to define this strategy, a trade-off was needed between uniform velocity-density scaling (i.e. with a constant ratio) and detailed modelling of mineralogical phases, which goes beyond the scope of these experiments.
+
+The basis for the conversion is the compositional model by \textcite{Griffin2009}.
+As they argued, there is a broad relation between the lithospheric mantle composition and the tectonothermal age of the overlying crust.
+Therefore, I have grouped the crustal types from {CRUST1.0} \parencite{Laske2012Crust10} in a simplified three-member model of LID composition.
+The result of this partition is shown in Fig.~\ref{fig:SigIs:LithoAges}.
+These members, accompanied by their code in \textcite{Griffin2009}, are: \textit{archon} (Arc\_1), \textit{proton} (Pr\_4), and \textit{tecton} (Tc\_1)
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \Large{Placeholder, tectonothermal ages global map.}
+        }
+    \end{adjustbox}
+    \caption[Tectonothermal age partition of the lithospheric mantle.]{Three-member tectonothermal age partition of the lithospheric mantle, derived from the crustal types by \textcite{Laske2012Crust10}.}
+    \label{fig:SigIs:LithoAges}
+\end{figure}
+
+Phase equilibria was modelled with the {Perple\_X} program \parencites{Connolly2005}{Connolly2009}, adopting the {hp02ver} thermodynamic data base \parencites{Powell1998_hp02}{Ghiorso2002_pMELTS}, which is a comprehensive chemical model for silicates in the lithosphere, appropriate for depths less than \SI{440}{\kilo \metre}.
+I extracted $V_S$ and $\rho$ in the pressure range of interest (up to the maximum LAB depth, \SI{300}{\kilo \metre}) and then fitted a $\rho (P, V_S)$ linear interpolator on the data.
+Pressure values where computed as purely lithostatic pressure, by depth-integration of the density of the overlying layers and of the constant \SI{3300}{\kilo \gram \per \cubic \metre} lithospheric mantle density (prior to conversion).
+The conversion curves on the pressure-velocity field are shown in Fig.~\ref{fig:SigIs:VelConvCurves}.
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \Large{Placeholder, velocity-density curves.}
+        }
+    \end{adjustbox}
+    \caption[Pressure, shear wave velocity and density conversion curves.]{
+        Temporary caption.
+    }
+    \label{fig:SigIs:VelConvCurves}
+\end{figure}
+
+Since the whole lithospheric mantle is originally defined in bulk columns, Moho to LAB, it was sliced depth-wise prior to velocity conversion.
+While $V_S$ does not change depth-wise, this allowed for a finer discretisation of pressure: inside each slice, the value at the slice midpoint was adopted.
+This slicing operation follows the same depth discretisation that was adopted for the reference density model, as described in the next section~\ref{ss:SigIs:InModels:REF}.
+Conversion results, condensed after slicing using a thickness-weighted average, are shown in Fig.~\ref{fig:SigIs:LID_density_map}.
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \Large{Placeholder, LID density map.}
+        }
+    \end{adjustbox}
+    \caption[Density in the lithospheric mantle (LID) after conversion.]{Global map of the lithospheric mantle (LID) density, obtained by velocity-density-conversion.}
+    \label{fig:SigIs:LID_density_map}
+\end{figure}
+
+% It must be noted that this conversion
+% usable
+% observation-based model
+
+% provide mutual constraints
+% regional studies
+
+% LITHO1.0 on its own
+% require correction
 
 
-%\parencite{Connolly2005}
-%\parencite{Connolly2009}
+% CITO LAVORI SIMILI
+% note that
+% no fitting was performed
+% while it is a common strategy
+
+
+% relies on
+
+% compositional and temperature effects
+
+% surely 
+
+% provide mutual constraints % kaban, tesauro, temperature da tomografia
+
+% given the
 
 \subsection{Reference densities: layered normal Earth}
 \label{ss:SigIs:InModels:REF}

@@ -111,7 +111,7 @@ The bathymetric correction consists in the removal of the effect of water densit
 All further corrections (e.g. ice, sediments, crustal and mantle inhomogeneities...) go under the name of stripping -- they are computed as contrasts against reference, similarly to the bathymetric correction \parencite{Hammer1963}.
 
 In regard to the masses below the reference ellipsoid, the reference densities are the ones of a model which results in the adopted normal potential, in concordance with the normal potential decomposition of Eq.~\ref{eq:red:Vdec1}.
-A radially-stratified model of the interior (actually made up of concentric ellipsoidal shells), such as the PREM \parencite[Preliminary Reference Earth Model,][]{Dziewonski1981}, should satisfy this condition \parencite{Tscherning1981}.
+A radially-stratified model of the interior (actually made of concentric ellipsoidal shells, or \textit{homeoids}), such as the PREM \parencite[Preliminary Reference Earth Model,][]{Dziewonski1981}, should satisfy this condition \parencite{Tscherning1981}.
 
 Stripping a set of \textit{known masses} (i.e. a-priori density distribution models) is often aimed at signal isolation.
 For example, \textit{mantle gravity anomalies} \parencites[e.g.][]{Mooney2010}{Kaban2014} are obtained by stripping the ``crustal effect'', i.e. by correcting for a crust model \parencite[e.g. {CRUST1.0},][]{Laske2012Crust10}.
@@ -343,8 +343,6 @@ Spatial--domain forward modelling was performed using the Tesseroids code \paren
 
 \section{Input mass distribution models}
 \label{s:SigIs:InModels}
-% topografia, water, ice, litho, conversioni velocità
-% descrizione e sistema riferimento (shape)
 
 \subsection{Terrain correction}
 \label{ss:SigIs:InModels:TC}
@@ -522,7 +520,7 @@ As they argued, there is a broad relation between the lithospheric mantle compos
 Therefore, I have grouped the crustal types from {CRUST1.0} \parencite{Laske2012Crust10} in a simplified two-member model of LID composition.
 The result of this partition is shown in Fig.~\ref{fig:SigIs:LithoAges}.
 The two members are \textit{archon} (Arc\_1) and \textit{tecton} (Tc\_1), the code from \textcite{Griffin2009} shown in parentheses.
-They represent a coarse but realistic discrimination between `young' (Phanerozoic) and `old' lithospheric mantle (e.g.~protons, shields, cratons).
+They represent a simplified but realistic discrimination between `young' (Phanerozoic) and `old' lithospheric mantle (e.g.~protons, shields, cratons).
 
 \begin{figure}
     \begin{adjustbox}{center}
@@ -566,36 +564,62 @@ Conversion results, condensed after slicing using a thickness-weighted average, 
     \label{fig:SigIs:LID_density_map}
 \end{figure}
 
-% It must be noted that this conversion
-% usable
-% observation-based model
-
-% provide mutual constraints
-% regional studies
-
-% LITHO1.0 on its own
-% require correction
-
-
-% CITO LAVORI SIMILI
-% note that
-% no fitting was performed
-% while it is a common strategy
-
-
-% relies on
-
-% compositional and temperature effects
-
-% surely 
-
-% provide mutual constraints % kaban, tesauro, temperature da tomografia
-
-% given the
+It must be noted that this conversion strategy was set up enable propagation of lithospheric mantle inhomogeneities, as sensed by a model that provide only velocities.
+I deemed a constant velocity-to-density scaling factor as an excessive simplification, since it would have ignored the lateral variations due to tectonothermal ages and the radial ones due to pressure dependence.
+Still, since the main objective of these experiments is to assess an uncertainty modelling method, comprehensive thermochemical modelling was left out.
 
 \subsection{Reference densities: layered normal Earth}
 \label{ss:SigIs:InModels:REF}
-% AK135 \parencite{Kennett1995_ak135}
+
+As described in section~\ref{ss:SigIs:Defs:NETC}, the attraction of `anomalous masses' inside the planet is defined against the normal gravity  (Eq.~\ref{eq:red:Vdec2} and following).
+By assuming that the normal gravity arises from a `reference Earth' with ellipsoidal stratification and with no lateral inhomogeneities, we can express any density refinement to the normal gravity model as a contrast against this reference.
+As mentioned in section~\ref{ss:SigIs:Defs:Corrs} and as discussed by \textcite{Vajda2008}, this should be satisfactorily approximated by reference earth models. \nocite{Moritz1990} \nocite{Tscherning1981} % probably I am citing these elsewhere
+The densities of the modelled layers are thus expressed as density contrasts against a reference.
+
+% slicing description
+For these tests, the \textit{ak135} model \parencites{Kennett1995_ak135}{Montagner1996} was adopted.
+The depth-density reference, in the form provided in the {NMSOP-2} manual \parencite{Bormann2002}, was tailored for these experiment by computing the average density in selected ranges of depth, as shown in Fig.~\ref{fig:SigIs:Ref_ak135}.
+These ranges define a set of ellipsoidal shells of homogeneous density.
+The modelled layers were `sliced' according to these shells: in other words, an intersection was performed between the boundaries defining each layer and the reference shells boundaries (see Fig.~\ref{fig:SigIs:RefSlices}).
+By doing so, each layer of the input model was divided in a number of \textit{layer-slices} equal to the number of reference shells it intersects.
+In each layer-slice the density contrast was expressed as the difference between the density prescribed by the model at those coordinates and the density of the reference shell in that depth range.
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \Large{Placeholder, ak135 curve.}
+        }
+    \end{adjustbox}
+    \caption[Temp caption.]{Temp caption.}
+    \label{fig:SigIs:Ref_ak135}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \Large{Placeholder,  \textit{layer-slices} example.}
+        }
+    \end{adjustbox}
+    \caption[Temp caption.]{Temp caption.}
+    \label{fig:SigIs:RefSlices}
+\end{figure}
+
+
+
+
+
+% note su rilevanza densità media
+reference density in a spherical shell
+the case of an homogeneous homeoid \parencite{Moritz1990}
+more complex
+external potential
+stops at degree % cito... Hirt and Rexer? fino a che grado
+
+therefore a wrong reference
+of the average
+or a reasonable approximation of the average
+% noto che media può essere utilizzata per ri-definire valore medio
+% out of scope of these experiments
 
 \newpage % remove later
 \section{Assessment of uncertainty}
@@ -628,7 +652,8 @@ Conversion results, condensed after slicing using a thickness-weighted average, 
 % for in detail, reader is referred to Hirt and Kuhn 2017
 % "While the topography mass models are strictly band-limited to the NT max values reported in Table 1, the topography-implied gravity contains signals at harmonic degrees much larger than NT max" [Hirt and Kuhn, 2014]
 
-
+% questioni isostatiche: summary and conclusions Sebera 2018
+% ricordarsi che Sebera 2018 non è reductions, è forward assoluto (no contrasti)
 
 % questioni numeriche: pag. 24 di Root (2015)
 % faccio doppio calcolo per coefficienti (con sovrapposizione)

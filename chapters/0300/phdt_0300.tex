@@ -111,7 +111,8 @@ The bathymetric correction consists in the removal of the effect of water densit
 All further corrections (e.g. ice, sediments, crustal and mantle inhomogeneities...) go under the name of stripping -- they are computed as contrasts against reference, similarly to the bathymetric correction \parencite{Hammer1963}.
 
 In regard to the masses below the reference ellipsoid, the reference densities are the ones of a model which results in the adopted normal potential, in concordance with the normal potential decomposition of Eq.~\ref{eq:red:Vdec1}.
-A radially-stratified model of the interior (actually made of concentric ellipsoidal shells, or \textit{homeoids}), such as the PREM \parencite[Preliminary Reference Earth Model,][]{Dziewonski1981}, should satisfy this condition \parencite{Tscherning1981}.
+A radially-stratified model of the interior, such as the PREM \parencite[Preliminary Reference Earth Model,][]{Dziewonski1981}, should satisfy this condition \parencite{Tscherning1981}.
+Note that, in the adopted configuration, the `radial stratification' is actually defined by shells with a constant distance from the reference ellipsoid.
 
 Stripping a set of \textit{known masses} (i.e. a-priori density distribution models) is often aimed at signal isolation.
 For example, \textit{mantle gravity anomalies} \parencites[e.g.][]{Mooney2010}{Kaban2014} are obtained by stripping the ``crustal effect'', i.e. by correcting for a crust model \parencite[e.g. {CRUST1.0},][]{Laske2012Crust10}.
@@ -525,10 +526,13 @@ They represent a simplified but realistic discrimination between `young' (Phaner
 \begin{figure}
     \begin{adjustbox}{center}
         \fbox{
-            \Large{Placeholder, tectonothermal ages global map.}
+            \includegraphics[width=\textwidth]{maps/sig_isol/CTypes_AT.pdf}
         }
     \end{adjustbox}
-    \caption[Tectonothermal age partition of the lithospheric mantle.]{Two-member tectonothermal age partition of the lithospheric mantle, derived from the crustal types by \textcite{Laske2012Crust10}.}
+    \caption[Tectonothermal age partition of the lithospheric mantle.]{
+        Two-member tectonothermal age partition of the lithospheric mantle, derived from the crustal types by \textcite{Laske2012Crust10}.
+        \textbf{Light green}:~`young' lithosphere (Phanerozoic, with \textit{tecton} composition), \textbf{blue}:~`old' lithosphere (protons, shields, cratons, with \textit{archon} composition).
+    }
     \label{fig:SigIs:LithoAges}
 \end{figure}
 
@@ -579,7 +583,7 @@ The densities of the modelled layers are thus expressed as density contrasts aga
 % slicing description
 For these tests, the \textit{ak135} model \parencites{Kennett1995_ak135}{Montagner1996} was adopted.
 The depth-density reference, in the form provided in the {NMSOP-2} manual \parencite{Bormann2002}, was tailored for these experiment by computing the average density in selected ranges of depth, as shown in Fig.~\ref{fig:SigIs:Ref_ak135}.
-These ranges define a set of ellipsoidal shells of homogeneous density.
+These ranges define a set of shells of homogeneous density.
 The modelled layers were `sliced' according to these shells: in other words, an intersection was performed between the boundaries defining each layer and the reference shells boundaries (see Fig.~\ref{fig:SigIs:RefSlices}).
 By doing so, each layer of the input model was divided in a number of \textit{layer-slices} equal to the number of reference shells it intersects.
 In each layer-slice the density contrast was expressed as the difference between the density prescribed by the model at those coordinates and the density of the reference shell in that depth range.
@@ -641,10 +645,8 @@ In each layer-slice the density contrast was expressed as the difference between
 % SCELTA REFERENCE, differenza è media (circa media)
 % note su rilevanza densità media
 %reference density in a spherical shell
-%the case of an homogeneous homeoid \parencite{Moritz1990}
-%more complex
-%external potential
-%stops at degree % cito... Hirt and Rexer? fino a che grado
+% slightly more complex for ell, stops at degree
+% cito... Hirt and Rexer? fino a che grado
 % 
 %therefore a wrong reference
 %of the average

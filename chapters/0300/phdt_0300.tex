@@ -357,6 +357,26 @@ In addition to the spatial--domain comparison tests, shown in section~\ref{ss:Si
 Uncertainty propagation on the terrain correction was not among the objectives of these experiments, therefore it was not carried out.
 However, this ad-hoc modelling setup would enable to do so easily, e.g. if required in further developments.
 
+\begin{figure}
+    \begin{adjustbox}{center}
+    \fbox{
+        \includegraphics[width=\textwidth]{forward_scheme_topo_water_out.pdf}
+    }
+    \end{adjustbox}
+    \caption[Terrain correction: sketch of the solid topography and ocean bathymetry stripping.]{
+        Terrain correction: sketch of the solid topography and ocean bathymetry stripping.
+        The hatched area 
+            \includegraphics[width=0.5\baselineskip]{symbol_hatched_out.pdf}
+        covers the layer--volume of solid topography, between the reference ellipsoid (\textit{ell.}) and the \texttt{SUR} surface.
+        The teal-coloured area 
+            \includegraphics[width=0.5\baselineskip]{symbol_water_out.pdf}
+        represents the layer--volume of ocean bathymetry stripping, between the \texttt{BED} and \texttt{SUR} surfaces. Note that \texttt{SUR} and \texttt{BED} coincide onshore.
+        $D$:~reference radius.
+        For a description of surfaces, see Tab.~\ref{tab:E2014fwdSurfaces}.
+    }
+    \label{fig:E2014fwdLayersSketch}
+\end{figure}
+
 Potential forward modelling of the {Earth2014} relief grids was partitioned in solid topography, ocean bathymetry, lake bathymetry, on-shore ice, off-shore ice, and on-lakes ice.
 Each unit was modelled as a distinct layer, with its own forward modelling call.
 \textit{Solid topography} is defined by the \verb|SUR| surface, the topmost surface in {Earth2014}, which includes the top surface of ice masses and of all bodies of water.
@@ -410,26 +430,16 @@ in which part of the terms listed in Tab.~\ref{tab:E2014fwdLayers} are omitted, 
 
 \begin{figure}
     \begin{adjustbox}{center}
-    \fbox{
-        \includegraphics[width=\textwidth]{forward_scheme_topo_water_out.pdf}
-    }
+        \fbox{
+            \includegraphics[width=\textwidth]{maps/sig_isol/TC_g_rad.pdf}
+        }
     \end{adjustbox}
-    \caption[Terrain correction: sketch of the solid topography and ocean bathymetry stripping.]{
-        Terrain correction: sketch of the solid topography and ocean bathymetry stripping.
-        The hatched area 
-            \includegraphics[width=0.5\baselineskip]{symbol_hatched_out.pdf}
-        covers the layer--volume of solid topography, between the reference ellipsoid (\textit{ell.}) and the \texttt{SUR} surface.
-        The teal-coloured area 
-            \includegraphics[width=0.5\baselineskip]{symbol_water_out.pdf}
-        represents the layer--volume of ocean bathymetry stripping, between the \texttt{BED} and \texttt{SUR} surfaces. Note that \texttt{SUR} and \texttt{BED} coincide onshore.
-        $D$:~reference radius.
-        For a description of surfaces, see Tab.~\ref{tab:E2014fwdSurfaces}.
-    }
-    \label{fig:E2014fwdLayersSketch}
+    \caption[Radial component of the terrain correction, corrections included.]{Radial component of the terrain correction, corrections included. It is expressed as positive upwards (i.e. the attraction of solid topography is negative). The histogram over the colour scale is equal-area normalised.}
+    \label{fig:E2014fwd_out_TC_g_rad}
 \end{figure}
 
 \subsection{Lithospheric density model}
-\label{ss:SigIs:InModels:CRUST}
+\label{ss:SigIs:E2014fwd_TC_g_rad}
 
 These experiments rely on the {LITHO1.0} model by \textcite{Pasyanos2014}, which expands on the results of CRUST5.1 \parencite{Mooney1998_Crust51}, CRUST2.0 \parencite{Bassin2000Crust20} and CRUST1.0 \parencite{Laske2012Crust10}.
 \Textcite{Pasyanos2014} provide a global model of the lithosphere, from the topography to the base of lithospheric mantle (lithosphere--asthenosphere boundary, LAB), parametrized vertically in a series of `geophysical layers'.
@@ -544,28 +554,60 @@ The conversion curves on the pressure-velocity field are shown in Fig.~\ref{fig:
 \begin{figure}
     \begin{adjustbox}{center}
         \fbox{
-            \Large{Placeholder, velocity-density curves.}
+            \begin{tabular}{cc}
+                \begin{overpic}[
+                    width=0.65\textwidth,
+                    clip, trim=1cm 0.25cm 1.15cm 1cm
+                    ]{VSconv/VSconv_arc.pdf}
+                    \put (65,85) {\large \textsf{\textit{Archon}}}
+                \end{overpic}
+                \begin{overpic}[
+                    width=0.65\textwidth,
+                    clip, trim=1cm 0.25cm 1.15cm 1cm
+                    ]{VSconv/VSconv_tec.pdf}
+                    \put (65,85) {\large \textsf{\textit{Tecton}}}
+                \end{overpic}
+            \end{tabular}
         }
     \end{adjustbox}
-    \caption[Pressure, shear wave velocity and density conversion curves.]{
-        Temporary caption.
+    \caption[Pressure and shear wave velocity density conversion.]{Pressure and shear wave velocity ($V_S$) density conversion curves for the two-member lithospheric mantle composition model. Density is plotted with contours, the gray-filled area shows the bounds of the modelled domain.
     }
     \label{fig:SigIs:VelConvCurves}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \includegraphics[
+                width=0.65\textwidth,
+                clip, trim=1cm 0.25cm 1.15cm 1cm
+                ]{VSconv/VSconv_both.pdf}
+        }
+    \end{adjustbox}
+    \caption[Density conversion curves: direct comparison between the two members.]{
+        The density conversion solutions for the two-member composition model (as shown in Fig.~\ref{fig:SigIs:VelConvCurves}), plotted overlaid on the same pressure-velocity field.
+    }
+    \label{fig:SigIs:VelConvCurves_comp}
 \end{figure}
 
 Since the whole lithospheric mantle is originally defined in bulk columns, Moho to LAB, it was sliced depth-wise prior to velocity conversion.
 While $V_S$ does not change depth-wise, this allowed for a finer discretisation of pressure: inside each slice, the value at the slice midpoint was adopted.
 This slicing operation follows the same depth discretisation that was adopted for the reference density model, as described in the next section~\ref{ss:SigIs:InModels:REF}.
-Conversion results, condensed after slicing using a thickness-weighted average, are shown in Fig.~\ref{fig:SigIs:LID_density_map}.
+Conversion results, condensed after slicing using a thickness-weighted average, are shown in Fig.~\ref{fig:SigIs:LID_VS-density_map}.
 
 \begin{figure}
     \begin{adjustbox}{center}
         \fbox{
-            \Large{Placeholder, LID density map.}
+            \begin{tabular}{c}
+                \includegraphics[width=\textwidth]{maps/sig_isol/VSLID.pdf} \\
+                \includegraphics[width=\textwidth]{maps/sig_isol/RhoLID.pdf}
+            \end{tabular}
         }
     \end{adjustbox}
-    \caption[Density in the lithospheric mantle (LID) after conversion.]{Global map of the lithospheric mantle (LID) density, obtained by velocity-density-conversion.}
-    \label{fig:SigIs:LID_density_map}
+    \caption[Density in the lithospheric mantle (LID) after conversion.]{
+        \textbf{Top:}~shear wave velocity ($V_S$) in the lithospheric mantle (LID), from {LITHO1.0}. 
+        \textbf{Bottom:}~lithospheric mantle density, obtained by velocity to density conversion.}
+    \label{fig:SigIs:LID_VS-density_map}
 \end{figure}
 
 It must be noted that this conversion strategy was set up enable propagation of lithospheric mantle inhomogeneities, as sensed by a model that provide only velocities.

@@ -312,39 +312,6 @@ Comparison between the coefficients of two functions, $f_{lm}$ and $g_{lm}$ may 
 \end{equation}
 Note that the cross-power spectrum $S_{fg}(\bm{l})$ obtained with this equation \parencite[Eq.~12 in][]{Wieczorek2007} differs from other common formulations \parencites[e.g.][]{Phillips1980}{Rapp1982}{Rexer2016} by a normalisation factor \sloppy{${[S_{ff}(l) \cdot S_{gg}(l)]^{-\frac{1}{2}}}$}, which was not applied here.
 
-\subsection{Testing the method against spatial--domain forward modelling}
-\label{ss:SigIs:Fwd:Test}
-\Textcite{Sun2001}, assessing the convergence issues of spherical harmonics methods based on the binomial expansion, observed that isostatic studies require much higher truncation numbers than terrain forward modelling.
-They argued that this arises due to the much larger differences between isostatic roots and the compensation depth (e.g. \SI{100}{\kilo \metre}), compared to topography and the reference radius (about \SI{9}{\kilo \metre} of maximum topography).
-This issue was also addressed by \textcite{Root2015}, who proposed an improved \textit{fast spectral method} \parencites{Rummel1988}{Novak2006} in order to model crustal and upper mantle regions.
-They devised an ``error mitigation strategy'' which consists in lowering the reference sphere to model the deeper layers, then transforming the spherical harmonics back to the usual, larger reference sphere.
-By doing so, they obtain results inside a $\pm$~\SI{4}{\milli Gal} difference range from spatial--domain forward modelling.
-
-Compared with the mean Earth radius ($R = \SI{6371}{\kilo \metre}$), a \SI{40}{\kilo \metre} deep crust--mantle boundary accounts for about 6 thousands of $R$.
-When modelling the underlying lithospheric mantle, a \SI{300}{\kilo \metre} lithosphere--asthenosphere boundary reaches about \SI{4.7}{\percent} of $R$.
-This means that the layers modelled in the following experiments are likely to incur in the issues that have been just described.
-
-A rigorous assessment of the convergence of the layer--wise arrangement adopted in this work (section~\ref{ss:SigIs:Fwd:LayerFwd}) is not available at the moment.
-Therefore, an heuristic test was devised to assess if such a strategy was fit for these experiments purpose, i.e. \si{\milli Gal} level accuracy at comparatively low degrees (limited by satellite-only gravity models).
-As it is shown later, the magnitude of the contribution of uncertainty of geophysical models was large enough to support leaving any more rigorous analysis to further developments.
-
-These tests consist of a direct comparison between the potential obtained from the layer--wise spectral--domain method and the one obtained from spatial--domain forward modelling, the latter being adopted as a benchmark.
-Spatial--domain forward modelling was performed using the Tesseroids code \parencites{Uieda2016}{UiedaTesseroids}.
-
-\begin{center}
-    \textbf{[Da inserire: descrizione test.]}
-\end{center}
-
-
-
-% descrizione test
-% outcome test
-% prova con degree maggiori?
-
-% TEST DA FARE (DATI NUOVI!)
-% effetto D "troppo lontano" con 4-5 D diversi
-% sia con sintetico che con dati veri (es. LAB)
-
 \section{Input mass distribution models}
 \label{s:SigIs:InModels}
 
@@ -633,54 +600,6 @@ The modelled layers were `sliced' according to these shells: in other words, an 
 By doing so, each layer of the input model was divided in a number of \textit{layer-slices} equal to the number of reference shells it intersects.
 In each layer-slice the density contrast was expressed as the difference between the density prescribed by the model at those coordinates and the density of the reference shell in that depth range.
 
-% \begin{figure*}
-%     \BottomFloatBoxes
-%     \begin{adjustbox}{center}
-%     \begin{minipage}{1.15\textwidth}
-%     \begin{center}
-%     \begin{floatrow}[2]
-%     \ffigbox[0.55\textwidth][][]{%
-%     \fbox{
-%         \includegraphics[
-%                 width=0.525\textwidth,
-%                 clip, trim=0.25cm 1.25cm 1.25cm 0cm
-%                 ]{VSconv/ak135_RefCol.pdf}
-%     }}{%
-%       \caption[Temp caption.]{
-%           \textbf{Blue}:~input depths and densities from the \textit{ak135} reference model \parencite{Kennett1995_ak135}, set at \SI{2.67}{\kilo \gram \per \cubic \metre} at less than \SI{10}{\kilo \metre}.
-%           \textbf{Orange}:~constant density layers obtained from the \textit{ak135} model.}%
-%       \label{fig:SigIs:Ref_ak135}
-%     }
-%     \floatbox{figure}[0.45\textwidth]{%
-%       \begin{tabular}{rl}
-%         \toprule
-%         \multicolumn{1}{c}{\textbf{Depth}} & \multicolumn{1}{c}{\textbf{Density}} \\
-%         \multicolumn{1}{c}{\textbf{[\si{\kilo \metre}]}} & \multicolumn{1}{c}{\textbf{[\si{\gram \per \cubic \centi \metre}]}} \\
-%         \midrule
-%         0   & \multirow{2}{*}{2.670} \\
-%         10  & \multirow{2}{*}{2.920} \\
-%         18  & \multirow{2}{*}{3.611} \\
-%         43  & \multirow{2}{*}{3.562} \\
-%         60  & \multirow{2}{*}{3.523} \\
-%         80  & \multirow{2}{*}{3.483} \\
-%         100 & \multirow{2}{*}{3.446} \\
-%         120 & \multirow{2}{*}{3.399} \\
-%         165 & \multirow{2}{*}{3.348} \\
-%         210 & \multirow{2}{*}{3.345} \\
-%         260 & \multirow{2}{*}{3.389} \\
-%         310 \\
-%         \bottomrule
-%       \end{tabular}
-%     }{%
-%       \caption[Layer-discretised reference densities.]{Layer-discretised reference densities, modified from \textit{ak135}.}%
-%       \label{fig:SigIs:Ref_ak135_table}
-%     }
-%     \end{floatrow}
-%     \end{center}
-%     \end{minipage}
-%     \end{adjustbox}
-% \end{figure*}
-
 \begin{figure}
     \begin{adjustbox}{center}
     \begin{minipage}{1.2\textwidth}
@@ -793,3 +712,28 @@ In each layer-slice the density contrast was expressed as the difference between
 % "è necessario rimuovere segnale litosferico?"
 % esistono approcci alternativi: Greff-Lefftz 2016, Panet 2014 - giustificato da Ricard 2006
 % con questo mostro un esempio: solo gradi bassi vs rimozione litosfera (ai gradi bassi)
+
+\begin{subappendices}
+\section{Supplementary: testing the method against spatial--domain forward modelling}
+\label{ss:SigIs:Fwd:Test}
+\Textcite{Sun2001}, assessing the convergence issues of spherical harmonics methods based on the binomial expansion, observed that isostatic studies require much higher truncation numbers than terrain forward modelling.
+They argued that this arises due to the much larger differences between isostatic roots and the compensation depth (e.g. \SI{100}{\kilo \metre}), compared to topography and the reference radius (about \SI{9}{\kilo \metre} of maximum topography).
+This issue was also addressed by \textcite{Root2015}, who proposed an improved \textit{fast spectral method} \parencites{Rummel1988}{Novak2006} in order to model crustal and upper mantle regions.
+They devised an ``error mitigation strategy'' which consists in lowering the reference sphere to model the deeper layers, then transforming the spherical harmonics back to the usual, larger reference sphere.
+By doing so, they obtain results inside a $\pm$~\SI{4}{\milli Gal} difference range from spatial--domain forward modelling.
+
+Compared with the mean Earth radius ($R = \SI{6371}{\kilo \metre}$), a \SI{40}{\kilo \metre} deep crust--mantle boundary accounts for about 6 thousands of $R$.
+When modelling the underlying lithospheric mantle, a \SI{300}{\kilo \metre} lithosphere--asthenosphere boundary reaches about \SI{4.7}{\percent} of $R$.
+This means that the layers modelled in the following experiments are likely to incur in the issues that have been just described.
+
+A rigorous assessment of the convergence of the layer--wise arrangement adopted in this work (section~\ref{ss:SigIs:Fwd:LayerFwd}) is not available at the moment.
+Therefore, an heuristic test was devised to assess if such a strategy was fit for these experiments purpose, i.e. \si{\milli Gal} level accuracy at comparatively low degrees (limited by satellite-only gravity models).
+As it is shown later, the magnitude of the contribution of uncertainty of geophysical models was large enough to support leaving any more rigorous analysis to further developments.
+
+These tests consist of a direct comparison between the potential obtained from the layer--wise spectral--domain method and the one obtained from spatial--domain forward modelling, the latter being adopted as a benchmark.
+Spatial--domain forward modelling was performed using the Tesseroids code \parencites{Uieda2016}{UiedaTesseroids}.
+
+\begin{center}
+    \textbf{[Da inserire: descrizione test.]}
+\end{center}
+\end{subappendices}

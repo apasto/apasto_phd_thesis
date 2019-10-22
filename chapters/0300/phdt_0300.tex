@@ -804,10 +804,10 @@ Spatial--domain forward modelling was performed using the Tesseroids code \paren
     \end{adjustbox}
     \caption[``Single-relief'' against layer-wise comparison: degree variance and difference spectra.]{
         ``Single-relief'' against layer-wise comparison: degree variance and difference spectra.
-        The \textbf{upper panel} shows the degree variance power spectra of the potential resulting from the ``four-blocks test'' in the ``single-relief'' setup \parencite[unmodified method of][]{Wieczorek2007} and in the layer-wise strategy adopted in this chapter.
+        The \textbf{upper panel} shows the degree variance power spectra of the potential resulting from the ``four blocks test'' in the single-relief setup \parencite[unmodified method of][]{Wieczorek2007} and in the layer-wise strategy adopted in this chapter.
         The differences in input-masses representation between the two methods are shown in Fig.~\ref{fig:SpatSpecComp:4B_sections}.
-        Note that no difference can be appreciated between the two plotted curves.
-        The \textbf{lower panel} show the cumulative degree standard deviation spectra of the differences in radial component of gravity ($g_r$), computed as layer-wise minus single-relief.}
+        Note that no difference can be graphically appreciated between the two plotted curves.
+        The \textbf{lower panel} show the cumulative standard deviation spectra of the differences in radial component of gravity ($g_r$), computed as layer-wise minus single-relief.}
     \label{fig:SpatSpecComp:4B_dv_spec_relief}
 \end{figure}
 
@@ -817,7 +817,12 @@ Spatial--domain forward modelling was performed using the Tesseroids code \paren
             \includegraphics[width=1.2\textwidth]{tess_test/FwdTest_degvar_comp.pdf}
         }
     \end{adjustbox}
-    \caption[Temp.]{Temp.}
+    \caption[Spectral domain modelling against spatial domain modelling: degree variance and difference spectra (four blocks test).]{
+        Spectral domain (layer-wise) modelling against spatial domain (Tesseroids) modelling: degree variance and difference spectra for the ``four blocks test''.
+        The \textbf{upper panel} shows the degree variance power spectra of the forward-modelled potential of the two methods.
+        Note that no difference can be graphically appreciated between the two plotted curves.
+        The \textbf{lower panel} show the cumulative standard deviation spectra of the differences in radial component of gravity ($g_r$), computed as spatial-domain minus spectral-domain.
+        The cumulative standard deviation of misfit at degree 360 is \SI{0.512}{mGal}.}
     \label{fig:SpatSpecComp:4B_dv_spec_tess}
 \end{figure}
 
@@ -839,7 +844,9 @@ Spatial--domain forward modelling was performed using the Tesseroids code \paren
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[Temp.]{Temp.}
+    \caption[Spectral domain modelling against spatial domain modelling: SEDS1 test, direct comparison of $g_z$.]{Spectral domain (layer-wise) modelling against spatial domain (Tesseroids) modelling: direct comparison using the {SEDS1} layer from {LITHO1.0}.
+    All the maps show the vertical (radial) component of $g$.
+    Upper left map: spectral domain $g_z \ S$, upper right map: spatial domain $g_z \ T$, lower map: difference, expressed as spatial minus spectral.}
     \label{fig:SpatSpecComp:SEDS1_g_maps}
 \end{figure}
 
@@ -849,7 +856,13 @@ Spatial--domain forward modelling was performed using the Tesseroids code \paren
             \includegraphics[width=1.2\textwidth]{tess_test/FwdTest_SEDS_degvar_comp.pdf}
         }
     \end{adjustbox}
-    \caption[Temp.]{Temp.}
+    \caption[Spectral domain modelling against spatial domain modelling: degree variance and difference spectra (SEDS1 test).]{
+        Spectral domain (layer-wise) modelling against spatial domain (Tesseroids) modelling: degree variance and difference spectra for the SEDS1 test (Fig.~\ref{fig:SpatSpecComp:SEDS1_g_maps}).
+        The \textbf{upper panel} shows the degree variance power spectra of the forward-modelled potential of the two methods.
+        Note that no difference can be graphically appreciated between the two plotted curves.
+        The \textbf{lower panel} show the cumulative standard deviation spectra of the differences in radial component of gravity ($g_r$), computed as spatial-domain minus spectral-domain.
+        The cumulative standard deviation of misfit at degree 360 is \SI{0.016}{mGal}.
+    }
     \label{fig:SpatSpecComp:SEDS1_dv_spec}
 \end{figure}
 

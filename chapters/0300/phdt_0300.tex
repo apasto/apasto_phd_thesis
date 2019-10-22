@@ -634,7 +634,7 @@ In each layer-slice the density contrast was expressed as the difference between
     \end{tabular}
 
       \caption[Depths and densities from the \textit{ak135} reference model, original and discretised.]{
-        \textbf{Blue}:~input depths and densities from the \textit{ak135} reference model \parencite{Kennett1995_ak135}, set at \SI{2.67}{\kilo \gram \per \cubic \metre} at less than \SI{10}{\kilo \metre}.
+        \textbf{Blue}:~input depths and densities from the \textit{ak135} reference model \parencite{Kennett1995_ak135}, set at \SI{2.67}{\gram \per \cubic \centi \metre} at less than \SI{10}{\kilo \metre}.
         \textbf{Orange}:~constant density layers obtained by averaging the \textit{ak135} model in discrete depth intervals.
         These layer-discretised densities are shown in the accompanying table.}%
     \label{fig:SigIs:Ref_ak135}
@@ -744,7 +744,7 @@ Spatial--domain forward modelling was performed using the Tesseroids code \paren
         }
     \end{adjustbox}
     \caption[Relief map of the synthetic mass distribution used to compare the three modelling methods.]{
-        Relief map of the synthetic mass distribution used to compare the three modelling methods.
+        Relief map of the synthetic mass distribution (``four blocks test'') used to compare the three modelling methods.
         Heights (and depths) are expressed in respect to a reference sphere with radius equal to \SI{6378.137}{\kilo \metre} (semi-major axis of {WGS84}).
         The black line along the \SI{48}{\degree}~N parallel denotes the profile shown in Fig.~\ref{fig:SpatSpecComp:4B_sections}.}
     \label{fig:SpatSpecComp:4B_DepthMap}
@@ -757,12 +757,12 @@ Spatial--domain forward modelling was performed using the Tesseroids code \paren
         }
     \end{adjustbox}
     \caption[Sections trough the synthetic mass distribution in the three tested modelling methods]{
-        Sections trough the synthetic mass distribution in the three tested modelling methods:
-        \textbf{a)}~one relief against a reference sphere of radius $D$: input for the unmodified spectral-domain method of \textcite{Wieczorek2007};
+        Sections trough the synthetic mass distribution (Fig.~\ref{fig:SpatSpecComp:4B_DepthMap}) in the three tested methods:
+        \textbf{a)}~one relief against a reference sphere of radius $\bm{D}$, input for the unmodified spectral-domain method of \textcite{Wieczorek2007};
         \textbf{b)}~the layer-wise spectral-domain strategy adopted in this chapter: two separate layers for the positive and negative density volumes, each defined by a top and bottom surface, and a common reference sphere;
-        \textbf{c)}~tesseroids discretisation (\SI{0.0625}{\degree}$\times$\SI{0.0625}{\degree}), input for the spatial-domain method.
-        All heights are expressed in respect to a reference sphere with radius equal to \SI{6378.137}{\kilo \metre}.
-        The red-filled areas denote positive input densities and the blue-filled ones denote negative densities.}
+        \textbf{c)}~tesseroids discretisation (\SI{0.0625}{\degree}$\times$\SI{0.0625}{\degree}), input for the spatial-domain method \parencite{Uieda2016}.
+        All heights are expressed in respect to a reference sphere with radius equal to \SI{6378}{\kilo \metre}.
+        The red-filled areas denote positive input densities ($+$\SI{1}{\gram \per \cubic \centi \metre}) and the blue-filled ones denote negative input densities (\SI{-1}{\gram \per \cubic \centi \metre}).}
     \label{fig:SpatSpecComp:4B_sections}
 \end{figure}
 
@@ -785,7 +785,14 @@ Spatial--domain forward modelling was performed using the Tesseroids code \paren
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[Temp.]{Temp.}
+    \caption[Forward modelled output of the spectral--spatial comparison, ``four blocks test''.]{
+        Forward modelled output of the spectral--spatial comparison, ``four blocks test''.
+        These four maps show the radial component $g_z$ of the attraction of the modelled masses, expressed as positive upwards (i.e. a positive density contrast result in a negative $g_z$ directly above it).
+        The observation height is \SI{40}{km} above the reference sphere.
+        The two maps on bottom row show the spatial minus spectral $g_z$ difference.
+        In the lower left map, the spherical harmonics coefficents were synthetized up to degree and order $l_{max}$ \num{360}, with an abrupt truncation at $l_{max}$.
+        In the lower right map, a linear taper was applied to the coefficients above degree \num{200}, reaching zero weight at $l_{max}$.
+    }
     \label{fig:SpatSpecComp:4B_g_maps}
 \end{figure}
 
@@ -795,7 +802,12 @@ Spatial--domain forward modelling was performed using the Tesseroids code \paren
             \includegraphics[width=1.2\textwidth]{tess_test/FwdTest_degvar_spec_comp.pdf}
         }
     \end{adjustbox}
-    \caption[Temp.]{Temp.}
+    \caption[``Single-relief'' against layer-wise comparison: degree variance and difference spectra.]{
+        ``Single-relief'' against layer-wise comparison: degree variance and difference spectra.
+        The \textbf{upper panel} shows the degree variance power spectra of the potential resulting from the ``four-blocks test'' in the ``single-relief'' setup \parencite[unmodified method of][]{Wieczorek2007} and in the layer-wise strategy adopted in this chapter.
+        The differences in input-masses representation between the two methods are shown in Fig.~\ref{fig:SpatSpecComp:4B_sections}.
+        Note that no difference can be appreciated between the two plotted curves.
+        The \textbf{lower panel} show the cumulative degree standard deviation spectra of the differences in radial component of gravity ($g_r$), computed as layer-wise minus single-relief.}
     \label{fig:SpatSpecComp:4B_dv_spec_relief}
 \end{figure}
 

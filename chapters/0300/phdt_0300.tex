@@ -737,7 +737,20 @@ As it is shown later, the magnitude of the contribution of uncertainty of geophy
 These tests consist of a direct comparison between the potential obtained from the layer--wise spectral--domain method and the one obtained from spatial--domain forward modelling, the latter being adopted as a benchmark.
 Spatial--domain forward modelling was performed using the Tesseroids code \parencites{Uieda2016}{UiedaTesseroids}.
 
-\begin{center}
-    \textbf{[Da inserire: descrizione test.]}
-\end{center}
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \includegraphics[width=0.9\textwidth]{tess_test/tess_test_ElevPlot_stairs_mod_out.pdf}
+        }
+    \end{adjustbox}
+    \caption[Sections trough the synthetic mass distribution in the three tested three tested modelling methods]{
+        Sections trough the synthetic mass distribution in the three tested three tested modelling methods:
+        \textbf{a)}~one relief against a reference sphere of radius $D$: input for the unmodified spectral-domain method of \textcite{Wieczorek2007};
+        \textbf{b)}~the layer-wise spectral-domain strategy adopted in this chapter: two separate layers for the positive and negative density volumes, each defined by a top and bottom surface, and a common reference sphere;
+        \textbf{c)}~tesseroids discretisation (\SI{0.0625}{\degree}$\times$\SI{0.0625}{\degree}), input for the spatial-domain method.
+        All heights are expressed in respect to a reference sphere with radius equal to \SI{6378.137}{\kilo \metre}.
+        The red-filled areas denote positive input densities and the blue-filled ones denote negative densities.}
+    \label{fig:SpatSpecComp_sections}
+\end{figure}
+
 \end{subappendices}

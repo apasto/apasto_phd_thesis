@@ -737,20 +737,108 @@ As it is shown later, the magnitude of the contribution of uncertainty of geophy
 These tests consist of a direct comparison between the potential obtained from the layer--wise spectral--domain method and the one obtained from spatial--domain forward modelling, the latter being adopted as a benchmark.
 Spatial--domain forward modelling was performed using the Tesseroids code \parencites{Uieda2016}{UiedaTesseroids}.
 
-\begin{figure}
+\begin{figure} % 4 blocks, depth map
+    \begin{adjustbox}{center}
+        \fbox{
+            \includegraphics[width=0.9\textwidth]{maps/spatial_spectral_comparison/BLO_depth.pdf}
+        }
+    \end{adjustbox}
+    \caption[Relief map of the synthetic mass distribution used to compare the three modelling methods.]{
+        Relief map of the synthetic mass distribution used to compare the three modelling methods.
+        Heights (and depths) are expressed in respect to a reference sphere with radius equal to \SI{6378.137}{\kilo \metre} (semi-major axis of {WGS84}).
+        The black line along the \SI{48}{\degree}~N parallel denotes the profile shown in Fig.~\ref{fig:SpatSpecComp:4B_sections}.}
+    \label{fig:SpatSpecComp:4B_DepthMap}
+\end{figure}
+
+\begin{figure} % 4 blocks, sections
     \begin{adjustbox}{center}
         \fbox{
             \includegraphics[width=0.9\textwidth]{tess_test/tess_test_ElevPlot_stairs_mod_out.pdf}
         }
     \end{adjustbox}
-    \caption[Sections trough the synthetic mass distribution in the three tested three tested modelling methods]{
-        Sections trough the synthetic mass distribution in the three tested three tested modelling methods:
+    \caption[Sections trough the synthetic mass distribution in the three tested modelling methods]{
+        Sections trough the synthetic mass distribution in the three tested modelling methods:
         \textbf{a)}~one relief against a reference sphere of radius $D$: input for the unmodified spectral-domain method of \textcite{Wieczorek2007};
         \textbf{b)}~the layer-wise spectral-domain strategy adopted in this chapter: two separate layers for the positive and negative density volumes, each defined by a top and bottom surface, and a common reference sphere;
         \textbf{c)}~tesseroids discretisation (\SI{0.0625}{\degree}$\times$\SI{0.0625}{\degree}), input for the spatial-domain method.
         All heights are expressed in respect to a reference sphere with radius equal to \SI{6378.137}{\kilo \metre}.
         The red-filled areas denote positive input densities and the blue-filled ones denote negative densities.}
-    \label{fig:SpatSpecComp_sections}
+    \label{fig:SpatSpecComp:4B_sections}
+\end{figure}
+
+\begin{figure} % 4 blocks, output maps
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{cc}
+                \begin{overpic}[width=0.65\textwidth]{maps/spatial_spectral_comparison/BLO_S.pdf}
+                    \put (15,62.5) {\large \textsf{\textbf{$\bm{g_z}$, spectral}}}
+                \end{overpic} &
+                \begin{overpic}[width=0.65\textwidth]{maps/spatial_spectral_comparison/BLO_T.pdf}
+                    \put (15,62.5) {\large \textsf{\textbf{$\bm{g_z}$, spatial}}}
+                \end{overpic} \\
+                \begin{overpic}[width=0.65\textwidth]{maps/spatial_spectral_comparison/BLO_D.pdf}
+                    \put (15,62.5) {\large \textsf{\textbf{$\bm{\Delta g_z}$, boxcar truncation}}}
+                \end{overpic} &
+                \begin{overpic}[width=0.65\textwidth]{maps/spatial_spectral_comparison/BLO_Dt.pdf}
+                    \put (15,62.5) {\large \textsf{\textbf{$\bm{\Delta g_z}$, tapered truncation}}}
+                \end{overpic}
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[Temp.]{Temp.}
+    \label{fig:SpatSpecComp:4B_g_maps}
+\end{figure}
+
+\begin{figure} % 4 blocks, deg var spectra comparison: 1 relief vs layers
+    \begin{adjustbox}{center}
+        \fbox{
+            \includegraphics[width=1.2\textwidth]{tess_test/FwdTest_degvar_spec_comp.pdf}
+        }
+    \end{adjustbox}
+    \caption[Temp.]{Temp.}
+    \label{fig:SpatSpecComp:4B_dv_spec_relief}
+\end{figure}
+
+\begin{figure} % 4 blocks, deg var spectra comparison: layers vs tesseroids
+    \begin{adjustbox}{center}
+        \fbox{
+            \includegraphics[width=1.2\textwidth]{tess_test/FwdTest_degvar_comp.pdf}
+        }
+    \end{adjustbox}
+    \caption[Temp.]{Temp.}
+    \label{fig:SpatSpecComp:4B_dv_spec_tess}
+\end{figure}
+
+\begin{figure} % SEDS1 test, output maps
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{cc}
+                \begin{overpic}[width=0.65\textwidth]{maps/spatial_spectral_comparison/SED_St.pdf}
+                    \put (0,62) {\large \textsf{\textbf{$\bm{g_z}$ S}}}
+                \end{overpic} &
+                \begin{overpic}[width=0.65\textwidth]{maps/spatial_spectral_comparison/SED_Tt.pdf}
+                    \put (0,62) {\large \textsf{\textbf{$\bm{g_z}$ T}}}
+                \end{overpic} \\
+                \multicolumn{2}{c}{
+                    \begin{overpic}[width=1.3\textwidth]{maps/spatial_spectral_comparison/SED_Dt.pdf}
+                        \put (0,62) {\large \textsf{\textbf{$\bm{\Delta g_z (\textsf{T} - \textsf{S})}$}}}
+                    \end{overpic}
+                }
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[Temp.]{Temp.}
+    \label{fig:SpatSpecComp:SEDS1_g_maps}
+\end{figure}
+
+\begin{figure} % SEDS1 test, deg var spectra comparison
+    \begin{adjustbox}{center}
+        \fbox{
+            \includegraphics[width=1.2\textwidth]{tess_test/FwdTest_SEDS_degvar_comp.pdf}
+        }
+    \end{adjustbox}
+    \caption[Temp.]{Temp.}
+    \label{fig:SpatSpecComp:SEDS1_dv_spec}
 \end{figure}
 
 \end{subappendices}

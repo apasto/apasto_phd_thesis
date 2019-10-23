@@ -245,7 +245,7 @@ It is described in detail in the following section, \ref{ss:SigIs:Fwd:LayerFwd}.
 
 \subsection{Layer--wise modelling}
 \label{ss:SigIs:Fwd:LayerFwd}
-The forward modelling method by \Textcite{Wieczorek2007}, which was just described in section~\ref{ss:SigIs:Fwd:SHfwd}, provides the potential due to relief against a reference sphere.
+The forward modelling method by \textcite{Wieczorek2007}, which was just described in section~\ref{ss:SigIs:Fwd:SHfwd}, provides the potential due to relief against a reference sphere.
 In order to model the gravity effect of a \textit{layer}, I devised a strategy based on superposition of two relief-against-sphere potentials, which is described hereafter.
 Defining a \textit{layer} as a volume of radially constant density $\rho(\lambda, \phi)$, bound by two surfaces expressed by geocentric radii $t(\lambda, \phi)$ and $b(\lambda, \phi)$, respectively top and bottom, its resulting potential ($W_{b}^{t}$) is equal to the following difference:
 \begin{equation}
@@ -274,6 +274,22 @@ A graphical representation of this difference is shown in Fig.~\ref{fig:SigIs:La
 A pitfall of this strategy is that Eq.~\ref{eq:SHfwd:pot} needs to be evaluated twice, including the series expansion of Eq.~\ref{eq:SHfwd:coeffs}.
 Other strategies with a similar aim have been developed \parencite[e.g.][]{Novak2006} and avoid this issue.
 Nevertheless, the implementation by \textcite{Wieczorek2018} was preferred here, since it could be readily integrated in the random modelling scheme --- their Fortran functions are provided as {F2PY}--wrapped Python modules \parencite{Peterson2009}.
+
+A potential source of issues is the depth of the modelled mass distribution, in terms of distance from the reference sphere: we are not in the same conditions that topographic effect modelling operates in.
+\Textcite{Sun2001}, assessing the convergence issues of spherical harmonics methods based on the binomial expansion, observed that isostatic studies require much higher truncation numbers than terrain forward modelling.
+They argued that this arises due to the much larger differences between isostatic roots and the compensation depth (e.g. \SI{100}{\kilo \metre}), compared to topography and the reference radius (about \SI{9}{\kilo \metre} of maximum topography).
+This issue was also addressed by \textcite{Root2015}, who proposed an improved \textit{fast spectral method} \parencites{Rummel1988}{Novak2006} in order to model crustal and upper mantle regions.
+They devised an ``error mitigation strategy'' which consists in lowering the reference sphere to model the deeper layers.
+By doing so, they obtain results inside a $\pm$~\SI{4}{\milli Gal} difference range from spatial--domain forward modelling.
+
+Compared with the mean Earth radius ($R = \SI{6371}{\kilo \metre}$), a \SI{40}{\kilo \metre} deep crust--mantle boundary accounts for about 6 thousands of $R$.
+When modelling the underlying lithospheric mantle, a \SI{300}{\kilo \metre} lithosphere--asthenosphere boundary reaches about \SI{4.7}{\percent} of $R$.
+This means that the layers modelled in the following experiments are likely to incur in the issues that have been just described.
+Therefore. $D$ has been lowered accordingly for each modelled layer, setting it at the shallowest modelled depth.
+
+Care must be paid to the sign of density, which is provided on the same grid as the top and bottom boundaries.
+The relief-times-density product ($\rho h$ in Eq.~\ref{eq:SHfwd:reliefSH}) is negative for reliefs below the reference sphere (radius $D$).
+Since in this setup all the boundary surfaces lie at radii less than $D$, by design, we must reverse the sign of the input density map.
 
 \subsection{Spectral domain transform}
 \label{ss:SigIs:Fwd:SHtransform}
@@ -720,15 +736,13 @@ In each layer-slice the density contrast was expressed as the difference between
 \begin{subappendices}
 \section{Supplementary: testing the method against spatial--domain forward modelling}
 \label{ss:SigIs:Fwd:Test}
-\Textcite{Sun2001}, assessing the convergence issues of spherical harmonics methods based on the binomial expansion, observed that isostatic studies require much higher truncation numbers than terrain forward modelling.
-They argued that this arises due to the much larger differences between isostatic roots and the compensation depth (e.g. \SI{100}{\kilo \metre}), compared to topography and the reference radius (about \SI{9}{\kilo \metre} of maximum topography).
-This issue was also addressed by \textcite{Root2015}, who proposed an improved \textit{fast spectral method} \parencites{Rummel1988}{Novak2006} in order to model crustal and upper mantle regions.
-They devised an ``error mitigation strategy'' which consists in lowering the reference sphere to model the deeper layers, then transforming the spherical harmonics back to the usual, larger reference sphere.
-By doing so, they obtain results inside a $\pm$~\SI{4}{\milli Gal} difference range from spatial--domain forward modelling.
 
-Compared with the mean Earth radius ($R = \SI{6371}{\kilo \metre}$), a \SI{40}{\kilo \metre} deep crust--mantle boundary accounts for about 6 thousands of $R$.
-When modelling the underlying lithospheric mantle, a \SI{300}{\kilo \metre} lithosphere--asthenosphere boundary reaches about \SI{4.7}{\percent} of $R$.
-This means that the layers modelled in the following experiments are likely to incur in the issues that have been just described.
+Modelling setups such as the one employed in this chapter are commonplace, with different technical choices being dictated by application requirements.
+However, I decided to supplement these modelling experiments with a set of direct comparison tests aimed to assess:
+1) the behaviour of the layer-wise modelling (section~\ref{ss:SigIs:Fwd:LayerFwd}), since it is an ``off-label'' use of the relief forward modelling method by \textcite{Wieczorek2007};
+2) the difference in results with a spatial domain modelling method, given the well known issues with limited bandwidth of spectral domain methods \parencite{Hirt2014}.
+
+% SPOSTATA ...
 
 A rigorous assessment of the convergence of the layer--wise arrangement adopted in this work (section~\ref{ss:SigIs:Fwd:LayerFwd}) is not available at the moment.
 Therefore, an heuristic test was devised to assess if such a strategy was fit for these experiments purpose, i.e. \si{\milli Gal} level accuracy at comparatively low degrees (limited by satellite-only gravity models).

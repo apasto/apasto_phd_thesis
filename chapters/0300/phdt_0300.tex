@@ -142,7 +142,7 @@ Mantle stripping is less constrained, since there are no readily available densi
 At mantle conditions, density conversion from velocity models \parencites[e.g.][]{Simmons2010}{Schaeffer2013} require modelling the concurring effect of temperature, pressure and composition on the elastic parameter --- which means carrying out comprehensive thermodynamic modelling \parencites{Connolly2005}{Connolly2009}.
 These issues area dealt in detail in section~\ref{s:SigIs:InModels}.
 
-The atmospheric correction has a range of \num{-0.04} to \SI{0.18}{mGal} at the Earth surface \parencite{Tenzer2009_AtmCorr}.
+The atmospheric correction has a range of \num{-0.04} to \SI{0.18}{\milli Gal} at the Earth surface \parencite{Tenzer2009_AtmCorr}.
 Owing to its small value (3 orders of magnitude smaller than the effects of lithospheric mass inhomogeneities), it is often not considered for solid Earth signal isolation \parencite[e.g][]{Tenzer2019}.
 
 \section{Forward modelling method}
@@ -342,7 +342,7 @@ It is the base of the extensively used \verb|dV_ELL_Earth2014| topographic poten
 In order to model an ellipsoid--referenced terrain correction (NETC, as described in section~\ref{ss:SigIs:Defs:NETC}) and to keep consistency with the subsurface stripping corrections applied afterwards, the already available potential model was not used.
 Instead, I forward modelled an ad-hoc topographic potential, using the {Earth2014} shape model (i.e. relief provided as geocentric radii) as input.
 
-In addition to the spatial--domain comparison tests, shown in section~\ref{ss:SigIs:Fwd:Test}, the terrain correction proved an useful benchmark for troubleshooting the method implementation: it could be readily compared with other topographic model, which would have likely been more difficult with subsurface correction models.
+% In addition to the spatial--domain comparison tests, shown in the supplementary section~\ref{s:SigIs:Test}, the terrain correction proved an useful benchmark for troubleshooting the method implementation: it could be readily compared with other topographic model, which would have likely been more difficult with subsurface correction models.
 Uncertainty propagation on the terrain correction was not among the objectives of these experiments, therefore it was not carried out.
 However, this ad-hoc modelling setup would enable to do so easily, e.g. if required in further developments.
 
@@ -738,7 +738,7 @@ In each layer-slice the density contrast was expressed as the difference between
 
 \begin{subappendices}
 \section{Supplementary: testing the method against spatial--domain forward modelling}
-\label{ss:SigIs:Fwd:Test}
+\label{s:SigIs:Test}
 
 Modelling setups such as the one employed in this chapter are commonplace, with different technical choices being dictated by application requirements.
 However, I decided to supplement these modelling experiments with a set of direct comparison tests aimed to assess:
@@ -750,16 +750,17 @@ Therefore, an heuristic test was devised to assess if such a strategy was fit fo
 As it is shown later, the satisfactory results of the direct comparison and the larger magnitude of the contribution of uncertainty of geophysical models were enough to support leaving any more rigorous analysis to further development.
 
 \subsection{Synthetic model: ``four blocks test''}
+\label{ss:SigIs:Test:FourBlocks}
 
-A synthetic mass distribution was defined, made up of four 2$times$2~degree ``blocks'', \SI{1}{\kilo \metre} thick.
+A synthetic mass distribution was defined, made up of four 2$\times$2~degree ``blocks'', each \SI{1}{\kilo \metre} thick.
 Set on a sphere with radius equal to WGS84 semi-major axis (\SI{6378.137}{\kilo \metre}), two blocks rise above it, the remaining two below it, arranged in a checkerboard fashion.
 The bodies above the sphere radius have a density of $+$\SI{1}{\gram \per \cubic \centi \metre}, those below have a density of \SI{-1}{\gram \per \cubic \centi \metre}.
-The resulting relief map is plotted in Fig.~\ref{fig:SpatSpecComp:4B_DepthMap}, zoomed in on the area covered by the blocks.
-The rest of the grid, of global extent, contains no other masses.
-Owing to the limited bandwidth requirement of the input grids for the spectral method (section~\ref{ss:SigIs:Fwd:SHtransform}), the original square-wave shaped relief map was low-pass filtered with a Gaussian kernel ($e^{-1/2}$ response at \SI{4}{degree}).
+The resulting relief map is plotted in Fig.~\ref{fig:SpatSpecComp:4B_DepthMap}, zoomed in on the area covered by the blocks (centered on \SI{47}{\degree N}, \SI{47}{\degree E}).
+The grid covers the whole globe and contains no other masses.
+Owing to the limited bandwidth requirement of the input grids for the spectral method (section~\ref{ss:SigIs:Fwd:SHtransform}), the original square-wave shaped relief map was low-pass filtered with a Gaussian kernel ($e^{-1/2}$ response at \SI{4}{\degree}).
 All the three forward modelling methods tested employ a \SI{0.0625}{\degree}$\times$\SI{0.0625}{\degree} equally spaced global grid.
 
-A section along the \SI{48}{\degree}~N parallel is plotted in Fig.~\ref{fig:SpatSpecComp:4B_sections}, which shows the three ways in which the mass distributions have been expressd:
+A section along the \SI{48}{\degree N} parallel is plotted in Fig.~\ref{fig:SpatSpecComp:4B_sections}, which shows the three ways in which the mass distributions have been expressd:
 \begin{enumerate}
 \item[a)] \textbf{one relief}, input for the unmodified spectral-domain method of \textcite{Wieczorek2007}. The reference sphere radius $D$ is set equal to the zero-relief sphere radius (\SI{6378.137}{\kilo \metre}). The input density is set uniform everywhere: its effect is negative in areas with negative relief, due to the $\rho h$ product (Eq.~\ref{eq:SHfwd:reliefSH}).
 \item[b)] \textbf{layer-wise} setup: positive- and negative-relief volumes are modelled as two separate layers. The reference sphere radius $D$ is set equal to the highest relief. The aforementioned zero-relief sphere serves as the bottom boundary for the positive relief layer and as the top boundary for the negative relief one. Input density is positive above zero (red fill) and negative below (blue fill) -- as mentioned in the strategy description, density signs are then reversed in the forward-modelling function, since height in respect to $D$ is negative.
@@ -775,7 +776,7 @@ A section along the \SI{48}{\degree}~N parallel is plotted in Fig.~\ref{fig:Spat
     \caption[Relief map of the synthetic mass distribution used to compare the three modelling methods.]{
         Relief map of the synthetic mass distribution (``four blocks test'') used to compare the three modelling methods.
         Heights (and depths) are expressed in respect to a reference sphere with radius equal to \SI{6378.137}{\kilo \metre} (semi-major axis of {WGS84}).
-        The black line along the \SI{48}{\degree}~N parallel denotes the profile shown in Fig.~\ref{fig:SpatSpecComp:4B_sections}.}
+        The black line along the \SI{48}{\degree N} parallel denotes the profile shown in Fig.~\ref{fig:SpatSpecComp:4B_sections}.}
     \label{fig:SpatSpecComp:4B_DepthMap}
 \end{figure}
 
@@ -795,12 +796,13 @@ A section along the \SI{48}{\degree}~N parallel is plotted in Fig.~\ref{fig:Spat
     \label{fig:SpatSpecComp:4B_sections}
 \end{figure}
 
+\paragraph*{Four blocks test, $g_z$ grids}
 Figure~\ref{fig:SpatSpecComp:4B_g_maps} shows the results and direct comparison between spectral-domain (method \textbf{a)}) and spatial-domain (method \textbf{c)}).
-The difference between the spectral and spatial output (spatial minus spectral $g_z$, lower left panel) lies inside a \num{-0.92} to \SI{0.92}{mGal} range.
+The difference between the spectral and spatial output (spatial minus spectral $g_z$, lower left panel) lies inside a \num{-0.92} to \SI{0.92}{\milli Gal} range.
 It is affected by the characteristic side lobes (\textit{ringing}) which arise due to the boxcar truncation of the spherical harmonic expansion \parencite{BarthelmesGentleCut2008}.
 Applying a linerly decreasing weight (from 1 to 0) to all coefficients from degree 200 to 360 results in the differences plotted in the lower right panel.
 This \textit{gentle cut} truncation was applied both to the coefficients resulting from the spectral method and to the results of Tesseroids modelling, by transforming the global grids in a spherical harmonics expansion, applying the truncation and synthesizing $g_z$.
-The filtered $\Delta g_z$ is distributed between \num{-0.0184} and \SI{0.0181}{mGal}.
+The filtered $\Delta g_z$ is distributed between \num{-0.0184} and \SI{0.0181}{\milli Gal}.
 
 \begin{figure} % 4 blocks, output maps
     \begin{adjustbox}{center}
@@ -846,10 +848,11 @@ The filtered $\Delta g_z$ is distributed between \num{-0.0184} and \SI{0.0181}{m
     \label{fig:SpatSpecComp:4B_dv_spec_tess}
 \end{figure}
 
+\paragraph*{Four blocks test, power spectrum}
 The same output can be expressed in the spectral domain, by comparing the power spectra of the modelled fields. The upper panel of Fig.~\ref{fig:SpatSpecComp:4B_dv_spec_tess} shows the degree variances (Eq.~\ref{eq:DegVar}) of the potentials obtained with the spectral-domain method and with the spatial-domain one (after transforming the global grid in spherical harmonics).
 To better express the differences (spatial minus spectral), which are not evident in the degree variances plot, the spectrum of the standard deviation of $\Delta g_z$ is shown in the bottom panel of the same figure.
 This spectrum was also obtained by prior spherical harmonics expansion of the synthesized $g_z$ grids, unfiltered (no \textit{gentle cut} applied).
-It is expressed cumulatively, reaching a maximum of \SI{0.512}{mGal} at $l_{max}$.
+It is expressed cumulatively, reaching a maximum of \SI{0.512}{\milli Gal} at $l_{max}$.
 
 \begin{figure} % 4 blocks, deg var spectra comparison: 1 relief vs layers
     \begin{adjustbox}{center}
@@ -866,6 +869,28 @@ It is expressed cumulatively, reaching a maximum of \SI{0.512}{mGal} at $l_{max}
     \label{fig:SpatSpecComp:4B_dv_spec_relief}
 \end{figure}
 
+\paragraph*{Four blocks test, single relief against layer-wise method}
+In addition to the spectral-domain (method \textbf{a)}) against spatial-domain (method \textbf{c)}) comparison, the consistency between two spectra-domain methods was tested: the unmodified relief-forward-modelling of \textcite{Wieczorek2007} (method \textbf{a)}) and its implementation as a layer-wise approach (method \textbf{b)}).
+The results, expressed in terms of power spectra (degree variances of the potential) and spectrum of $g_z$ differences (cumulative degreee standard deviation) are shown in Fig.~\ref{fig:SpatSpecComp:4B_dv_spec_relief}.
+The two strategies converge to identical results, the only discrepancy likely arising from computational precision.
+Cumulative standard deviation of $\Delta g_z$ at $l_{max}$ is \SI{1.23e-12}{\milli Gal}.
+
+\subsection{Test using the SEDS1 layer}
+\label{ss:SigIs:Test:SEDS1}
+
+I am also including the output of another test: instead of the ``synthetic relief'' just shown in section~\ref{ss:SigIs:Test:FourBlocks}, here the real layer boundaries of a layer from LITHO1.0 \parencite{Pasyanos2014} was used, representing a real step of the forward modelling carried out in this chapter.
+The {SEDS1} layer is the most superficial among the layer modelled here (see the general model description in section~\ref{ss:SigIs:E2014fwd_TC_g_rad}).
+Representing the first of three sedimentary layers, it is derived from an updated version of the global sediment thickness map by \textcite{Laske1997_sediments}.
+The only difference with the modelled reductions (section \ref{s:SigIs:Results}) is that the prescribed depths were referred to a sphere (instead of the WGS84 ellipsoid), the observation points were also spherical (\SI{40}{\kilo \metre} above the sphere) and density has been imposed constant at \SI{2.17}{\gram \per \cubic \centi \metre} (modelled as a \SI{-0.50}{\gram \per \cubic \centi \metre} contrast against a \SI{2.17}{\gram \per \cubic \centi \metre} reference density).
+These three modifications simplified the generation of the corresponding tesseroids-discretised model and computation points grid, thus avoiding a potential source of discrepance in the direct comparison.
+
+The direct comparison on synthesized $g_z$ maps is shown in Fig.~\ref{fig:SpatSpecComp:SEDS1_g_maps}.
+Differences, expressed as Tesseroids-modelled $g_z$ minus spectral-domain layer-wise modelled $g_z$, are shown in the lower map.
+They are distributed between \num{-0.099} and \SI{0.129}{\milli Gal}, with local maxima concentrating on margin areas -- likely arising from issues in correctly modelling sharp edges with the limited bandwidth of the spectral method.
+The range of the difference expressed in relative terms (as percentage of the signal at the same point) is \SI{-0.448}{\percent} to \SI{0.345}{\percent}.
+In regards to the maximum power ($n_{max}$) in the relief spherical harmonics expansion (Eq.~\ref{eq:SHfwd:coeffs}), values ranging from \num{2} to \num{14} were tested, observing no significant change in spectral-to-spatial differences.
+Owing to the short time requirements for a single spectral forward modelling run, a mid-range $n_{max}$ of 7 was chosen (the run times for $n_{max}$ of 2, 7, 14 are \SI{2.2}{s}, \SI{4.2}{s}, \SI{6.1}{s} respectively).
+The minimum and maximum difference are reported here for $n_{max}$ equal to 2 and 14, respectively: \num{-0.201} to \SI{0.212}{\milli Gal} and \num{-0.099} to \SI{0.129}{\milli Gal} (the former are identical to the min/max range at $n_{max}=\textrm{\num{7}}$).
 
 \begin{figure} % SEDS1 test, output maps
     \begin{adjustbox}{center}
@@ -902,9 +927,27 @@ It is expressed cumulatively, reaching a maximum of \SI{0.512}{mGal} at $l_{max}
         The \textbf{upper panel} shows the degree variance power spectra of the forward-modelled potential of the two methods.
         Note that no difference can be graphically appreciated between the two plotted curves.
         The \textbf{lower panel} show the cumulative standard deviation spectra of the differences in radial component of gravity ($g_z$), computed as spatial-domain minus spectral-domain.
-        The cumulative standard deviation of misfit at degree 360 is \SI{0.016}{mGal}.
     }
     \label{fig:SpatSpecComp:SEDS1_dv_spec}
 \end{figure}
 
+Figure~\ref{fig:SpatSpecComp:SEDS1_dv_spec} shows the spectral- to spatial-domain comparison in terms of power spectra (upper panel) and cumulative standard deviation spectrum of the gravity ($g_z$) differences (lower panel).
+The same process adopted for the ``four-block test'' was adopted here: in order to perform a spectral domain comparison, the spatial domain output was transformed in a spherical harmonics expansion.
+Both plots show a satisfactory coherency.
+The two potential degree variance curves are non-distinguishable and the $\Delta g_z$ spectrum plot, which amplifies the differences, show a misfit level in the order of magnitude of tens of \si{\micro Gal}.
+The cumulative standard deviation of  $\Delta g_z$ at $l_{max}$ is \SI{0.016}{\milli Gal}.
+
+%\subsection{Outcome of the tests}
+%\label{ss:SigIs:Test:Outcome}
+
+Overall, the two tests that were presented here show a satisfactory agreement between the spatial-domain method (adopted as a benchmark) and the layer-wise spectral-domain technique that was employed in computing the reductions and uncertainty-propagation of this chapter.
+Misfit levels, both in a synthetic 2$\times$2 checkerboard test and with a realistic global layer, are small enough to exceed the application requirements: they lie below the uncertainties involved in the input mass distribution data.
+In addition, the layer-wise spectra-domain modelling technique, which relies on the superposition of the effects of the top and bottom surfaces of a layer, was shown to provide identical results to the single relief modelling provided in SHTOOLS \parencite{Wieczorek2018}.
+
+The direct comparison of spatial- and spectral-domain methods also allowed to quantify and compare the computational time requirements, which has been the rationale for preferring the faster spectral-domain method for the Monte Carlo uncertainty propagation.
+For a single layer, provided on a global $n \times 2n$ grid with a \SI{0.25}{\degree} spacing, the spectral-domain method takes about 3~seconds, comprising two spherical harmonic transforms (for the top and bottom input reliefs), two calls to the forward-modelling routine, and a spectral harmonic synthesis to four output grids (the potential and the three components of its first derivative, $g$)
+In order to obtain a similar result in space domain, using Tesseroids \parencite{UiedaTesseroids} on the same grid, a total number of \SI{1036800}{tesseroids}$\times$\SI{1036800}{computation points} must be calculated.
+This requires a run time of about \SI{240}{hours}, which becomes feasible only by resorting to parallelisation -- the SEDS1 test was run on \num{100} parallel workers, requiring \SI{2.26}{hours}.
+
+However, it must be noted that this remarkable difference in computational requirements and this spatial- to spectral-domain equivalence is true only in this peculiar configuration, given the requirements of these reduction experiments: relatively low-resolution input data, with a large associated uncertainty, and a relatively low-degree band-limited output requirement (the satellite-only global gravity models at which the reductions are aimed).
 \end{subappendices}

@@ -15,11 +15,11 @@ Error information is required in order to perform multi-observable integrated mo
 
 The procedure and experiments described in this chapter were designed for local Moho inverse modelling, using global satellite-only gravity field models.
 They were applied in the gravity-constrained thermal modelling strategy described in this thesis.
-They include corrections for the terrain effect (topography, water, and ice), sediments and other intra-crustal density variations, far-field effects of crustal roots, and inhomogeneities in the lithospheric- and upper-mantle.
+They include corrections for the terrain effect (topography, water, and ice), sediments and other intra-crustal density variations, and inhomogeneities in the lithospheric mantle.
 Particular attention was paid to ensure spectral consistency between the forward-modelled reductions and the input gravity models.
 
 Uncertainty was quantified through Monte Carlo error propagation \parencite{Aster2018}, resulting in a population of randomly perturbed reduction fields (according to a set of parameter uncertainty assumptions).
-Results include the probability density function of these reductions, from which derived descriptive statistics were computed (e.g.~the spatial distribution of a defined confidence interval).
+Results include the probability density function of these reductions, from which derived descriptive statistics was computed (e.g.~the spatial distribution of a defined confidence interval).
 
 % The adjective ``anomalous'' is commonly used to indicate deviations from an a-priori reference. In order to prevent confusion with the strict-sense ``anomaly'', a gravity functional, in this section the term \textit{residual} is used to refer to any gravity data after the signal isolation procedure.
 
@@ -42,19 +42,19 @@ Recalling the definition of gravity disturbance from \textcite{HofmannWellenhof2
     \lvert \bm{\gamma}(h, \lambda, \phi) \rvert
 \end{equation}
 where $\bm{g}$ is the gradient of the potential $\nabla W$ and $\bm{\gamma}$ is the gradient of the normal potential $\nabla U$.
+By ``geocentric geodetic coordinates'' we refer to ``ellipsoidal coordinates'' \parencite{HofmannWellenhof2006}, with $h$ ellipsoidal height, $\phi$ geodetic latitude, and $\lambda$ geodetic longitude.
 This follows from the definition of normal and disturbing potential, respectively $U$ and $T$:
 \begin{equation}
     \label{eq:red:Pot}
-    W(h, \lambda, \phi) = U(h, \lambda) + T(h, \lambda, \phi)
+    W(h, \lambda, \phi) = U(h, \phi) + T(h, \lambda, \phi)
 \end{equation}
 in which $W$ and $U$ can be decomposed in an attraction (gravitational) and a centrifugal component each, denoted with $\Phi$ \parencite[Eq.~5 and 13 in][]{Barthelmes2013}.
 \begin{equation}
     \label{eq:red:PotAttr}
-    \underbrace{W_{a}(h, \lambda, \phi) + \Phi(h, \lambda)}_W =
-    \underbrace{U_{a}(h, \lambda) + \Phi(h, \lambda)}_U +
+    \underbrace{W_{a}(h, \lambda, \phi) + \Phi(h, \phi)}_W =
+    \underbrace{U_{a}(h, \phi) + \Phi(h, \phi)}_U +
     T(h, \lambda, \phi)
 \end{equation}
-By ``geocentric geodetic coordinates'' we refer to ``ellipsoidal coordinates'' \parencite{HofmannWellenhof2006}, with $h$ ellipsoidal height, $\phi$ geodetic latitude, and $\lambda$ geodetic longitude.
 
 To isolate the contribution of the anomalous density distribution we must remove the effect of a reference density model, against which anomalous densities are referred (in terms of density contrasts).
 Following the strategy of \textcite{Vajda2006}, we can define a reference density model composed of two regions: one inside the reference ellipsoid, such as to generate the external normal potential, and one between the reference ellipsoid and the ``ellipsoidal topography'', i.e. the ``topography reckoned from the ellipsoid''.
@@ -136,9 +136,9 @@ Differences reach upwards to $\pm~14$~\si{\milli Gal} over continents, with a mo
 The methodology of \textcite{Tenzer2009} is the basis of the later work by \textcite{Tenzer2019}, which extended the forward modelling from {CRUST2.0} to {LITHO1.0} \parencite{Pasyanos2014}.
 
 In crustal thickness modelling, signal isolation is obtained by concurrently correcting for above- and below-Moho masses ---as it has been done to obtain the global model {GEMMA} \parencites{Reguzzoni2013}{Reguzzoni2015}.
-Most of global crustal density models are constrained by seismic data \parencites[e.g.][]{Laske2012Crust10}{Pasyanos2014}{Szwillus2019}, either completely of for the most part, and are constrained mainly in terms of velocity.
-Reliance on assumed velocity-density conversions \parencite[e.g.][]{Sebera2018} is therefore required.
-Mantle stripping is less constrained, since there are no readily available density models \parencite{Tenzer2015}.
+Most of global crustal density models are constrained by seismic data \parencites[e.g.][]{Laske2012Crust10}{Pasyanos2014}{Szwillus2019}, either completely or for the most part, and are constrained mainly in terms of velocity.
+Reliance on assumed velocity-density conversions is therefore required.
+Mantle stripping is affected by the same issues, and no ready-made velocity conversions of seismic models are available, as observed by \textcite{Tenzer2015}, requiring again to resort to conversion schemes \parencite[e.g.][]{Sebera2018}.
 At mantle conditions, density conversion from velocity models \parencites[e.g.][]{Simmons2010}{Schaeffer2013} require modelling the concurring effect of temperature, pressure and composition on the elastic parameter --- which means carrying out comprehensive thermodynamic modelling \parencites{Connolly2005}{Connolly2009}.
 These issues area dealt in detail in section~\ref{s:SigIs:InModels}.
 
@@ -160,8 +160,9 @@ where $G$ is the gravitational constant and $r$ is the distance from an element 
 Common methods to do so are either \textit{spatial--domain} or \textit{spectral--domain} forward modelling methods \parencite{Kuhn2005}.
 
 In spatial--domain methods, the direct integration of masses is computed: volumes are decomposed (\textit{discretised}) in elementary bodies for which a solution to the Newton integral exists.
-There are analytical formulas available for special cases (e.g. point masses, prisms \cites{Nagy2000}{Nagy2002}, or polyhedra \cites{Tsoulis2012}), while numerical approximations are more commonly employed for general solutions \parencites[e.g. spherical tesseroids][]{Heck2006}{Uieda2016}.
+There are analytical formulas available for special cases (e.g. point masses, prisms \cites{Nagy2000}{Nagy2002}, or polyhedra \cites{Tsoulis2012}{Benedek2016}), while numerical approximations are more commonly employed for general solutions \parencites[e.g. spherical tesseroids][]{Heck2006}{Uieda2016}.
 Numerical methods, in addition, are less time consuming in equivalent cases, e.g. by resorting to FFT, Taylor series expansion, or Gauss--Legendre cubature \parencite[see][and references therein]{Grombein2013}.
+\nocite{Benedek2009} % also citing Benedek PhD thesis
 
 Spectral--domain forward modelling, on the other hand, is based on the spherical harmonic (SH) series expansion of the Newtonian kernel \parencites{Rummel1988}{Blakely1996}{Root2015}{Wieczorek2007}.
 In methods of this kind, coefficients of the resulting potential (or its derived functionals) are obtained from the mass distribution.
@@ -170,32 +171,32 @@ Spectral--domain methods are commonly adopted for global computations, where the
 Computing higher maximum degrees of the SH series expansion, points inside the Brillouin sphere, and rugged topography are three factors that influence issues of numerical accuracy and divergence of spectral forward modelling methods \parencites{Hu2015}{Hirt2017}.
 Combined spectral/spatial methods have been recently employed with success to obtain very high resolution synthetic gravity models \parencite{Hirt2019}.
 
-The experiments described in this chapter were designed with the highest resolution available from satellite-only global gravity models, as gravity data to be reduced, and the resolution of global density models to compute reductions (as described in the following section~\ref{s:SigIs:InModels}).
-In addition, error assessment through random perturbation of the input models, the aforementioned Monte Carlo uncertainty propagation technique (described in section~\ref{s:SigIs:Impl}), require a large number of forward iterations.
+The experiments described in this chapter were designed by taking into account the highest resolution available from satellite-only global gravity models -- which defined the maximum degree -- and the comparable (albeit lower) resolution of global density models to compute reductions (as described in the following section~\ref{s:SigIs:InModels}).
+In addition, error assessment through random perturbation of the input models, the aforementioned Monte Carlo uncertainty propagation technique (described in section~\ref{s:SigIs:Impl}), requires a large number of forward iterations.
 Therefore, I resorted to spectral--domain methods, using the method by \textcite{Wieczorek2007}, as implemented in the SHTOOLS code \parencite{Wieczorek2018}.
 
 \Textcite{Wieczorek2007} provides a method for calculating the potential due to the topography, using a technique analogous to the cartesian (``flat-Earth'') method by \textcite{Parker1973}.
 For its detailed description, I refer to the derivation of Eq.~6--12 in \textcite{Wieczorek1998}.
 It is similar to a wider family of spherical-harmonics based solution to the volume integral, based on the binomial series expansion method, which \textcite{Root2015} defined as ``Fast Spectral Methods'' (FSMs).
 
-Consider the case with a relief $h(\theta, \phi)$ ($\theta = \SI{90}{\degree} - \lambda$, colatitude), referenced to a spherical interface of radius $D$, with density $\rho(\theta, \phi)$ radially constant between $h$ and $D$, $\rho$ considered negative when $h<0$.
+Consider the case with a relief $h(\lambda, \theta)$ ($\theta = \SI{90}{\degree} - \phi$, colatitude), referenced to a spherical interface of radius $D$, with density $\rho(\lambda, \theta)$ radially constant between $h$ and $D$, $\rho$ considered negative when $h<0$.
 Expressing the potential $W$ at a reference radius $R_0$ as a sum of spherical harmonic functions, we get:
 \begin{equation}
     \label{eq:SHfwd:pot}
-    W(r, \lambda, \phi) =
+    W(r, \lambda, \theta) =
     \frac{GM}{r}
     \sum_{l=0}^{l_{max}}
     \sum_{m=-l}^{l}
     \left( \frac{R_0}{r} \right)^l
-    C_{lm} Y_{lm} (\lambda, \phi)
+    C_{lm} Y_{lm} (\lambda, \theta)
 \end{equation}
 where $G$ is the gravitational constant, $M$ the total mass, $r$ calculation radius, and $Y_{lm}$ denotes the real spherical harmonics:
 \begin{equation}
     \label{eq:SHfwd:rsh}
-    Y_{lm}(\lambda, \phi) =
+    Y_{lm}(\lambda, \theta) =
     \begin{cases}
-        \overline{P}_{lm} (cos \theta) \cos m \phi & \mbox{if } m \ge 0 \\
-        \overline{P}_{l|m|} (cos \theta) sin |m| \phi & \mbox{if } m < 0
+        \overline{P}_{lm} (cos \theta) \cos m \lambda & \mbox{if } m \ge 0 \\
+        \overline{P}_{l|m|} (cos \theta) sin |m| \lambda & \mbox{if } m < 0
     \end{cases}
 \end{equation}
 with $P_{lm}$ the normalized associated Legendre polynomials, omitted here.
@@ -218,9 +219,9 @@ where the $(\rho h^n)_{lm}$ denotes the spherical harmonics of the relief times 
     \label{eq:SHfwd:reliefSH}
     (\rho h^n)_{lm} =
     \frac{1}{4 \pi}
-    \int_{\theta, \phi}
-    \left[ \rho(\theta, \phi) h^n(\theta, \phi) \right]
-    Y_{lm}(\theta, \phi) d(\theta, \phi)
+    \int_{\lambda, \theta}
+    \left[ \rho(\lambda, \theta) h^n(\lambda, \theta) \right]
+    Y_{lm}(\lambda, \theta) d(\lambda, \theta)
 \end{equation}
 
 Eq.~\ref{eq:SHfwd:coeffs} includes a Taylor series expansion of the power of the relief $(\rho h^n)_{lm}$.
@@ -233,9 +234,9 @@ They found this phenomenon to become significant around degree \num{1000} ---way
 
 The convergence of expansions of this kind has been rigorously studied by \textcite{Sun2001}, among others.
 For a maximum degree $l = \num{360}$, a $n_{max}$ of \num{2} was shown to already provide less than \SI{1}{\percent} error ---in the case of topography.
-Large deviations from the reference radius (e.g. in modelling deep layers) may result in convergence problems, which can be mitigated by reducing the reference radius accordingly, as it was shown later by \textcite{Root2015}.
+Large deviations from the reference radius (e.g. in modelling deep and/or thick layers) may result in convergence problems, which can be mitigated by reducing the reference radius accordingly, as was shown later by \textcite{Root2015}.
 For this reason, the experiments described in this section included a test against a spatial--domain benchmark.
-It is described in detail in the following section, \ref{ss:SigIs:Fwd:LayerFwd}.
+It is described in more detail in section \ref{ss:SigIs:Fwd:LayerFwd}.
 
 \Textcite{Wieczorek2007} notes that the potential (Eq.~\ref{eq:SHfwd:pot}) so obtained is valid only at $r > (D + h)$, i.e. outside the maximum radius of the relief ---this arises from the derivation of Eq.~\ref{eq:SHfwd:coeffs}, which is omitted here.
 
@@ -253,7 +254,7 @@ Defining a \textit{layer} as a volume of radially constant density $\rho(\lambda
     W_{b}^{t} = W_{b}^{D} - W_{top}^{D}
 \end{equation}
 where subscripts denote the bottom boundary, superscripts denote the top boundary and $D$ is the radius of the reference sphere (from Eq.~\ref{eq:SHfwd:coeffs}).
-Therefore, the potential of a layer with two arbitrary bounding surfaces can be forward modelled by computing the difference between two relief referred to the same sphere, $W_{b}^{D}$ and $W_{t}^{D}$.
+Therefore, the potential of a layer with two arbitrary bounding surfaces can be forward modelled by computing the difference between two reliefs referred to the same sphere, $W_{b}^{D}$ and $W_{t}^{D}$.
 A graphical representation of this difference is shown in Fig.~\ref{fig:SigIs:LayerDifference}.
 
 \begin{figure}
@@ -300,15 +301,15 @@ It implies performing the following integration \parencite[Eq.~8 in][]{Wieczorek
     \label{eq:GSHA}
     f_{lm} =
     \frac{1}{4 \pi}
-    \int_{\theta, \phi}
-    f(\theta, \phi)
-    Y_{lm}(\theta, \phi) d(\theta, \phi)
+    \int_{\lambda, \theta}
+    f(\lambda, \theta)
+    Y_{lm}(\lambda, \theta) d(\lambda, \theta)
 \end{equation}
 which was already presented in Eq.~\ref{eq:SHfwd:reliefSH}, for the specific case of the relief-density product.
 When $f$ is provided as a grid of discrete points, the integral of Eq.~\ref{eq:GSHA} can be evaluated numerically.
 For these tests we utilised $n \times 2n$ grids (expressed as latitude times longitude) compliant to \textcite{Driscoll1994} sampling theorem.
-Grids of these kind are also known as ``equally spaced''.
-For such grids, the numerical solution to Eq.~\ref{eq:GSHA} is obtained through along--latitude FFT first, then by integration over latitude for each degree and order \parencites{Sneeuw1994}{Wieczorek2007}.
+Grids of this kind are also known as ``equally spaced''.
+For such grids, the numerical solution to Eq.~\ref{eq:GSHA} is obtained through along--latitude FFT first, then by integration over longitude for each degree and order \parencites{Sneeuw1994}{Wieczorek2007}.
 The transform on a $n \times 2n$ \textcite{Driscoll1994} grid is exact if $f$ is bandlimited to a maximum degree of $n/2 - 1$.
 
 \subsection{Power spectrum and correlations between functions}
@@ -328,8 +329,6 @@ Comparison between the coefficients of two functions, $f_{lm}$ and $g_{lm}$ may 
 \end{equation}
 which is usually expressed in a normalised form \parencites[e.g.][]{Phillips1980}{Rapp1982}{Rexer2016}, multiplying it with the factor \sloppy{${[S_{ff}(l) \cdot S_{gg}(l)]^{-\frac{1}{2}}}$}.
 Note that while Eq.~12 in \textcite{Wieczorek2007} omits it, this normalisation factor is applied by the \textit{SHAdmitCorr} routine in {SHTOOLS} \parencite{Wieczorek2018}.
-
-Note that the cross-power spectrum $S_{fg}(\bm{l})$ obtained with this equation \parencite[Eq.~12 in][]{Wieczorek2007} differs from other common formulations \parencites[e.g.][]{Phillips1980}{Rapp1982}{Rexer2016} by a normalisation factor \sloppy{${[S_{ff}(l) \cdot S_{gg}(l)]^{-\frac{1}{2}}}$}, which was not applied here.
 
 \section{Input mass distribution models}
 \label{s:SigIs:InModels}
@@ -382,18 +381,20 @@ This resulted in slight upsampling, from \SI{5}{min} (equal to \SI[parse-numbers
 
 The \textit{complete terrain correction} was then computed by summing the gravity effect of all the forward modelled masses.
 Expressed in terms of correction to the gravity disturbance (the \textit{attraction of the Earth topography} $A_{R}^{ET}$ in Eq.~\ref{eq:red:DistgNETC2}), it results in the following:
-\begin{equation}
+\begin{multline}
     \label{eq:CompleteTC}
     A_{R}^{ET} =
     -\frac{\partial}{\partial h}
-    \left(
+    (
         W^{\mathtt{SUR}}_{\mathtt{GRS80}} +
         W^{\mathtt{SUR}}_{\mathtt{BED\_OCEANS}} +
-        \dots +
+        W^{\mathtt{SUR}}_{\mathtt{BED\_LAKES}} + \\
+        + W^{\mathtt{TBI}}_{\mathtt{ICEbot\_onshore}} +
+        W^{\mathtt{TBI}}_{\mathtt{ICEbot\_offshore}} +
         W^{\mathtt{TBI}}_{\mathtt{ICEbot\_onlakes}}
-    \right)
-\end{equation}
-in which part of the terms listed in Tab.~\ref{tab:E2014fwdLayers} are omitted, for clarity.
+    )
+\end{multline}
+in which the terms refer to the labels in Tab.~\ref{tab:E2014fwdLayers}.
 
 \begin{table}[ht]
     \caption[Terrain correction scheme: summary of the layers and their defining surfaces and densities.]{
@@ -467,8 +468,8 @@ The lithospheric thickness in \textcite{Pasyanos2005} was in turn constrained by
 
 As the authors of {LITHO1.0} point out, it would be naive to assume that the model resolves the complicated lateral and vertical inhomogeneities of the lithosphere.
 They aimed at ``a consistent, defensible, and updatable model that is compatible with observed data and can capture some of the geophysical community's collective understanding of the Earth'' \parencite{Pasyanos2014}.
-In the context of these experiments, {LITHO1.0} provides a global, readily accessible model of density in sediments, crystalline crust, and lithospheric mantle
-It provides so at a nominal resolution which is comparable with the resolving power of geophysical inversion based on satellite--only global gravity models.
+In the context of these experiments, {LITHO1.0} provides a global, readily accessible model of density in sediments, crystalline crust, and lithospheric mantle.
+It provides a model at a nominal resolution which is comparable with the resolving power of geophysical inversion based on satellite--only global gravity models.
 
 Compiling the available data in a global model of the crust and/or lithosphere is still a challenging task, requiring the retrieval, harmonisation and gridding of a huge assortment of data sets.
 The recent global crustal thickness by \textcite{Szwillus2019} was also considered as an alternative crustal model, due to two features that are particularly relevant for these data reduction experiments:
@@ -494,16 +495,16 @@ Regarding data uncertainty, no space--wise error information is provided, neithe
 These experiments therefore resorted to a simplified error model, which is described in section~\ref{s:SigIs:Impl}.
 
 The water and ice layers were discarded, since {Earth2014} \parencite{Hirt2015} relies on updated and revised data.
-Therefore, the top of the solid--Earth layers of {LITHO1.0} (starting from the first sedimentary layer) has been re-referenced to the bottom of {Earth2014} bedrock (\texttt{BED} surface, see Tab.~\ref{tab:E2014fwdSurfaces} and \cite{Hirt2015_Earth2014readme}).
+Therefore, the top of the solid--Earth layers of {LITHO1.0} (starting from the first sedimentary layer) has been re-referenced to {Earth2014} bedrock (\texttt{BED} surface, see Tab.~\ref{tab:E2014fwdSurfaces} and \cite{Hirt2015_Earth2014readme}).
 
-As already mentioned for the terrain correction, this data also needs to be gridded to in a format compatible with the chosen gravity forward modelling: an equally spaced $n \times 2n$ grid, consistent with \textcite{Driscoll1994} sampling theorem.
-Triangulation from the original tessellated data to cartesian coordinates was performed using the {Stripy} package \parencites{Moresi2019}{Moresi2019_zenodo} and {litho1pt0} \parencite{Moresi2019_litho1pt0}, a Python interface to {LITHO1.0}.
+As already mentioned for the terrain correction, this data also needs to be gridded in a format compatible with the chosen gravity forward modelling: an equally spaced $n \times 2n$ grid, consistent with \textcite{Driscoll1994} sampling theorem.
+Triangulation from the original tessellated data to geographic coordinates was performed using the {Stripy} package \parencites{Moresi2019}{Moresi2019_zenodo} and {litho1pt0} \parencite{Moresi2019_litho1pt0}, a Python interface to {LITHO1.0}.
 
 \subsection{Velocity--density conversion in the lithospheric mantle}
 \label{ss:SigIs:InModels:SCLM}
 
 Density in {LITHO1.0} \parencite{Pasyanos2014} lithospheric mantle ({LID}~layer) is provided constant at \SI{3300}{\kilo \gram \per \cubic \metre}.
-Only $V_P$ and $V_S$ are provided, with a Poisson ratio ($\sigma$) fixed at~\num{0.26}.
+$V_P$ and $V_S$ are both provided, but with a Poisson ratio ($\sigma$) fixed at~\num{0.26}.
 The $V_S / V_P$ ratio is directly related to $\sigma$ \parencite{Sheriff2002}:
 \begin{equation}
     \label{eq:VSVP_PoissonRatio}
@@ -535,9 +536,9 @@ They represent a simplified but realistic discrimination between `young' (Phaner
     \label{fig:SigIs:LithoAges}
 \end{figure}
 
-Phase equilibria was modelled with the {Perple\_X} program \parencites{Connolly2005}{Connolly2009}, adopting the {hp02ver} thermodynamic data base \parencites{Powell1998_hp02}{Ghiorso2002_pMELTS}, which is a comprehensive chemical model for silicates in the lithosphere, appropriate for depths less than \SI{440}{\kilo \metre}.
+Phase equilibria were modelled with the {Perple\_X} program \parencites{Connolly2005}{Connolly2009}, adopting the {hp02ver} thermodynamic data base \parencites{Powell1998_hp02}{Ghiorso2002_pMELTS}, which is a comprehensive chemical model for silicates in the lithosphere, appropriate for depths less than \SI{440}{\kilo \metre}.
 I extracted $V_S$ and $\rho$ in the pressure range of interest (up to the maximum LAB depth, \SI{300}{\kilo \metre}) and then fitted a $\rho (P, V_S)$ linear interpolator on the data.
-Pressure values where computed as purely lithostatic pressure, by depth-integration of the density of the overlying layers and of the constant \SI{3300}{\kilo \gram \per \cubic \metre} lithospheric mantle density (prior to conversion).
+Pressure values were computed as purely lithostatic pressure, by depth-integration of the density of the overlying layers and of the constant \SI{3300}{\kilo \gram \per \cubic \metre} lithospheric mantle density (prior to conversion).
 The conversion curves on the pressure-velocity field are shown in Fig.~\ref{fig:SigIs:VelConvCurves}.
 
 \begin{figure}
@@ -599,7 +600,7 @@ Conversion results, condensed after slicing using a thickness-weighted average, 
     \label{fig:SigIs:LID_VS-density_map}
 \end{figure}
 
-It must be noted that this conversion strategy was set up enable propagation of lithospheric mantle inhomogeneities, as sensed by a model that provide only velocities.
+It must be noted that this conversion strategy was set up to enable propagation of lithospheric mantle inhomogeneities, as sensed by a model that provides only velocities.
 I deemed a constant velocity-to-density scaling factor as an excessive simplification, since it would have ignored the lateral variations due to tectonothermal ages and the radial ones due to pressure dependence.
 Still, since the main objective of these experiments is to assess an uncertainty modelling method, comprehensive thermochemical modelling was left out.
 
@@ -613,7 +614,7 @@ The densities of the modelled layers are thus expressed as density contrasts aga
 
 % slicing description
 For these tests, the \textit{ak135} model \parencites{Kennett1995_ak135}{Montagner1996} was adopted.
-The depth-density reference, in the form provided in the {NMSOP-2} manual \parencite{Bormann2002}, was tailored for these experiment by computing the average density in selected ranges of depth, as shown in Fig.~\ref{fig:SigIs:Ref_ak135}.
+The depth-density reference, in the tabular form provided in the {NMSOP-2} manual \parencite{Bormann2002}, was tailored for these experiments by computing the average density in selected ranges of depth, as shown in Fig.~\ref{fig:SigIs:Ref_ak135}.
 These ranges define a set of shells of homogeneous density.
 The modelled layers were `sliced' according to these shells: in other words, an intersection was performed between the boundaries defining each layer and the reference shells boundaries (see Fig.~\ref{fig:SigIs:RefSlices}).
 By doing so, each layer of the input model was divided in a number of \textit{layer-slices} equal to the number of reference shells it intersects.
@@ -721,6 +722,9 @@ In each layer-slice the density contrast was expressed as the difference between
 %or a reasonable approximation of the average
 % noto che media può essere utilizzata per ri-definire valore medio
 % out of scope of these experiments
+%
+% CRUST-MANTLE a 18 km (media globale ak135) è molto sottile per continenti!
+
 
 % altro appunto su ref densities: a cosa corrispondono ref densities da ak135 nelle conversioni Rho(VS, P)?
 

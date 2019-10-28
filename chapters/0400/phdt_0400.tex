@@ -979,9 +979,37 @@ In the figures we show how:
 (a) Variations in $k(T)$ and $T$ are strongly attenuated after iteration one. Their values at that point are already smaller than parameter uncertainty.
 (b) Two different first-guess linear geotherms converge to the same results, regardless of under- or over-shooting the final geotherm (Fig.~\ref{fig:kITN1} and \ref{fig:kITN2}, respectively). The temperature differences at the 6th iteration is shown in figure~\ref{fig:kITNdiff}: they are on the order of $10^-5$~K.
 
-% 3x figures here fig:kITN1 fig:kITN2 fig:kITNdiff
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{\includegraphics[width=\textwidth]{./0400_suppl/k_itn_case1.pdf}}
+	\end{adjustbox}
+	\caption{Iterative modelling of temperature-dependent thermal conductivity. Case~1: first guess with a linear geotherm. \textbf{a)}~geotherm curve, \textbf{b)}~temperature difference in respect to previous iteration, \textbf{c)}~thermal conductivity, \textbf{d)}~thermal conductivity difference in respect to previous iteration, \textbf{e)}~root mean square of difference in $k$ with previous iteration, separated for the 3 layers with temperature-dependent thermal conductivity, \textbf{f)}~same as e), for temperature. SED: sediments, UCC: upper crystalline crust, LCC: lower crystalline crust, SCLM: sub-continental lithospheric mantle.
+	Plots a) through d) stop at the third iteration, the subsequent variations are too small to be visualised. The difference between $T$ of iteration 1 and the first guess is not shown.}
+	\label{fig:kITN1}
+\end{figure}
 
-% here: Iterative fitting of radioactive heat production (change title)
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{\includegraphics[width=\textwidth]{./0400_suppl/k_itn_case2.pdf}}
+	\end{adjustbox}
+	\caption{Iterative modelling of temperature-dependent thermal conductivity. Case~2: first guess with a segmented geotherm.
+	Description: see caption of Fig.~\ref{fig:kITN1}.}
+	\label{fig:kITN2}
+\end{figure}
+
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{\includegraphics[width=0.75\textwidth]{./0400_suppl/k_itn_Tguess_diff.pdf}}
+	\end{adjustbox}
+	\caption{Iterative modelling of temperature-dependent thermal conductivity: difference between geotherms obtained with the first guess of case~1 (Fig.~\ref{fig:kITN1}) and case~2 (Fig.~\ref{fig:kITN2}).
+	Note the less than significant order of magnitude.}
+	\label{fig:kITNdiff}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Iterative fitting of radioactive heat production}
+\label{ss:ApplSup:MethodTests:ItFit}
 In figures~\ref{fig:AITN_ACC} trough~\ref{fig:AITN_DAC} we show the output of the fitting procedure (section~3.2 of the manuscript), iteration by iteration.
 ``Iteration zero'' refers to the first-guess radioactive heat production (RHP) value, which is used to run the first forward model.
 It is constant throughout the area (\textbf{A\textsubscript{C}~0} map, Fig.~\ref{fig:AITN_ACC}).
@@ -1001,7 +1029,39 @@ We computed it a-posteriori, after each thermal forward model run.
 In Fig.~\ref{fig:AITN_DAC} we show the difference between the actual values used in the model, iteration by iteration, and the ones obtained using the aforementioned `1D approximation'.
 Differences correlate with the actual (i.e. modelled) RHP values, but sharp variations are observed where lateral variations in RHP or in Moho depth occur, resulting in departure from vertical conduction.
 
-% 4 figures here AITN_ACC AITN_Qc AITN_Qm AITN_A1D AITN_DAC
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{\includegraphics[width=1.35\textwidth]{./0400_suppl/ACCarrays.pdf}}
+	\end{adjustbox}
+	\caption{Value of bulk heat production of the crystalline crust, trough the fitting iterations.}
+	\label{fig:AITN_ACC}
+\end{figure}
+
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{\includegraphics[width=1.35\textwidth]{./0400_suppl/Qc_arrays.pdf}}
+	\end{adjustbox}
+	\caption{Crustal contribution to the surface heat flow, computed as heat flow a the sediment-crystalline crust interface minus heat flow at the crust-mantle interface, trough the fitting iterations.}
+	\label{fig:AITN_Qc}
+\end{figure}
+
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{\includegraphics[width=1.35\textwidth]{./0400_suppl/Qm_arrays.pdf}}
+	\end{adjustbox}
+	\caption{Heat flow at the crust-mantle interface (basal heat flow), trough the fitting iterations.}
+	\label{fig:AITN_Qm}
+\end{figure}
+
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{\includegraphics[width=1.35\textwidth]{./0400_suppl/A1Darrays.pdf}}
+	\end{adjustbox}
+	\caption{Crustal heat production computed a-posteriori using a 1D approximation, i.e. crustal heat flow divided by crustal thickness.}
+	\label{fig:AITN_A1D}
+\end{figure}
+
+\FloatBarrier
 
 \subsection{Effects of horizontal heat conduction}
 \label{ss:ApplSup:MethodTests:HorQ}
@@ -1059,7 +1119,15 @@ A sketch is included in the bottom of Fig.~\ref{fig:2Deff}.
 To improve the plot clarity, the sign of the horizontal gradient was discarded.
 Its direction is towards negative-$x$ in the left side of the plot, towards positive-$x$ in the right side -- i.e. part of heat flow is deviated around the thickened, hotter portion of crust.
 
-% 1x figure here fig:2Deff
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{\includegraphics[width=\textwidth]{./0400_suppl/SM2D_effect.pdf}}
+	\end{adjustbox}
+	\caption{Output of the synthetic experiment showing the effect of horizontal heat conduction.}
+	\label{fig:2Deff}
+\end{figure}
+
+\FloatBarrier
 
 \subsection{Effect of a temperature-dependent Moho density contrast}
 \label{ss:ApplSup:MethodTests:MohoDeltaRho}
@@ -1087,20 +1155,38 @@ In Fig.~\ref{fig:RhoRHP}, we are including a version of manuscript figure~14 "Cr
 Instead of the RHP~versus~density scatter plot (upper right axes), here we included a map of the spatial distribution of the bulk crustal density.
 The density of the samples in all the scatter plots (each sample a model column) is plotted with the same colour scale used in the density map.
 
-% 1x figure here RhoRHP
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{\includegraphics[width=\textwidth]{./0400_suppl/crossplots_rho_mod.pdf}}
+	\end{adjustbox}
+	\caption{Cross plots between thickness of the crystalline crust (Moho depth minus basement depth), radioactive heat production (RHP) of the bulk crystalline crust, crustal component of heat flow ($Q_C$), and crust density. The line overlaid on scatter~plots \textbf{A)} to \textbf{C)} represents the first guess, using the a-priori constant RHP.
+	The map in the upper right shows the bulk crustal density (depth-weighted average) for each model column.}
+	\label{fig:RhoRHP}
+\end{figure}
 
 \subsection{Relationship of RHP with VP}
 \label{ss:ApplSup:Rel:VP}
-Fig.~\ref{fig:VpRHP} shows the comparison between our inverted RHP estimate and the output of Hasterok and Webb (2017) V\textsubscript{P}-RHP relationship (using data for the continental crust), as discussed at the end of section 5.2 in the manuscript.\\
+
+Fig.~\ref{fig:VpRHP} shows the comparison between our inverted RHP estimate and the output of Hasterok and Webb (2017) V\textsubscript{P}-RHP relationship (using data for the continental crust), as discussed at the end of section 5.2 in the manuscript.
 Log-linear fits are in the following form (eq. 4 in Hasterok and Webb (2017)):
+
 \begin{equation*}
 	\log_{10} A = m (V_{P} - 6) + b
 \end{equation*}
 With $m$ in $(\log_{10} (\mu W \ m^{-3})) \ (km \ s^{-1})^{-1}$, $b$ in $\log_{10} (\mu W \ m^{-3})$, $V_{P}$ in $km \ s^{-1}$. \\
-Hasterok and Webb (2017) fit parameters (`continental') are: $m = -0.70 \pm 0.10$, $b = 0.48 \pm 0.08$. \\
-The fit we obtained on our data (by regression) is: $m = -0.56 \pm 0.18$, $b = 0.19 \pm 0.11$. \\
+Hasterok and Webb (2017) fit parameters (`continental') are: $m = -0.70 \pm 0.10$, $b = 0.48 \pm 0.08$.
+The fit we obtained on our data (by regression) is: $m = -0.56 \pm 0.18$, $b = 0.19 \pm 0.11$.
 Confidence interval provided for $\pm 2 \sigma$.
 
-% 1x figure here VpRHP
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{\includegraphics[width=1.35\textwidth]{./0400_suppl/VpRHP.pdf}}
+	\end{adjustbox}
+	\caption{
+		\textbf{Left:}~V\textsubscript{P} of the crystalline crust (thickness-weighted average of Pasyanos et al. (2014) data), computed along the nodes of each model column.
+		\textbf{Center:}~scatter plot of crustal V\textsubscript{P} against our crustal RHP estimate. The V\textsubscript{P}-RHP relationship by Hasterok and Webb (2017) is plotted in black. A log-linear fit to our data is plotted in purple. Dashed lines depict upper and lower confidence bounds (2 standard deviations).
+		\textbf{Right:}~V\textsubscript{P}-RHP estimate minus our estimate.}
+	\label{fig:VpRHP}
+\end{figure}
 
 \end{subappendices}

@@ -2,8 +2,8 @@
 \label{c:SigIs}
 
 \section*{Summary}
-\label{ss:SigIs:Summary}
-In order to perform geophysical inversions on the static gravity field, a signal separation procedure is required, i.e.~the effect of an a-priori mass distribution must be removed, isolating an anomalous field \parencites[e.g.][]{Tenzer2009}{Tenzer2012}{Sjoberg2013}[][and references therein]{Aitken2015}.
+\label{s:SigIs:Summary}
+In order to perform geophysical inversions on the static gravity field, a signal separation procedure is required, i.e.~the effect of an a-priori mass distribution must be removed, isolating an anomalous field \parencites[e.g.][]{Tenzer2009}{Tenzer2012refined}{Sjoberg2013}[][and references therein]{Aitken2015}.
 The observed field stripped of the forward-modelled attraction of these ``known masses'' constitutes the input of inverse gravity modelling.
 Any distribution of anomalous masses that results in the isolated field is a solution to the inverse problem.
 Common reductions include the well-known terrain correction, i.e.~landmasses and bathymetry \parencites{Hinze2003}{Hinze2005}, which can be further refined by stripping the effect of subsurface density variations \parencite{Vajda2008}.
@@ -25,7 +25,6 @@ Results include the probability density function of these reductions, from which
 
 \section{Definition and computation of data reductions}
 \label{s:SigIs:Defs}
-% teoria, definizioni, metodo SH e confronti con tesseroids
 
 \subsection{No-topography gravity disturbance}
 \label{ss:SigIs:Defs:NETC}
@@ -129,6 +128,7 @@ In the unlikely case we had a perfect density model for these above-Moho masses,
 
 The work by \textcite{Tenzer2009} is an example of a similar application: they compiled and presented a set of global maps of the gravity disturbance (obtained from the EGM08 global gravity model, \cite{Pavlis2012EGM2008})-- corrected for the {CRUST2.0} model \parencite{Bassin2000Crust20}.
 They also provided a crust reduction not depending on a-priori density models, using a decorrelation analysis between the crust--reduced disturbance and the Moho undulations.
+A further development of that analysis is presented in \texcite{Tenzer2012contrast}.
 
 \Textcite{Tenzer2009} also provided a global map of ellipsoid-- versus geoid--referenced topography and bathymetry corrected gravity disturbance.
 Differences reach upwards to $\pm~14$~\si{\milli Gal} over continents, with a morphology highly correlated to geoidal undulations, as expected.

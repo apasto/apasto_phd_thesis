@@ -1109,21 +1109,21 @@ Plot \textbf{a)} of Fig.~\ref{fig:2Deff} represents the surface heat flow, compu
 Where $z_0$ and $z_1$ are the $z$-coordinate of the surface and first sub-surface node, respectively. $z$ is defined positive downwards.
 The second term of the product is an arithmetic mean of the thermal conductivities of the two nodes.
 This numerical vertical heat flow resembles a near-surface heat flow measurement in a well, under ideal conditions.
+In plot \textbf{b)} of Fig.~\ref{fig:2Deff}, we compare $Q_C$ obtained by two methods:
+\begin{description}
+	\item[2D, blue curve:] the crustal component of surface heat flow derived from the model, computed as a difference between the heat flow at the sediment basement (boundary between `SEDS' and `UCC' layers) and the basal heat flow (boundary between `LCC' and `SCLM' layers). This follows the same convention outlined in eq.~\ref{eq:HF};
+	\item[1D, orange curve:] the crustal component computed as the integral of crustal heat production per unit of volume along the crustal thickness. This  resembles a 1D, column-wise, model. Notice the different response to the sharp step (left side).
+\end{description}
+In plot \textbf{c)} of Fig.~\ref{fig:2Deff}, we compare $Q_M$ obtained by two methods:
+\begin{description}
+	\item[2D, blue curve:] the basal heat flow as numerical heat flow at the Moho (boundary between `LCC' and `SCLM' layers);
+	\item[1D, orange curve:] basal heat flow interpreted as `reduced heat flow' in a 1D approach: we subtracted the column-wise 1D $Q_C$ to $Q_0$.
+	Notice how the misfit becomes larger near the edges of the thickened crust (both step and smooth transitions), while it is almost zero at its center.
+\end{description}
 
-In plot \textbf{b)}, we compare $Q_C$ obtained by two methods:\\
-\textbf{2D, blue curve}: the crustal component of surface heat flow derived from the model, computed as a difference between the heat flow at the sediment basement (boundary between `SEDS' and `UCC' layers) and the basal heat flow (boundary between `LCC' and `SCLM' layers). This follows the same convention outlined in eq.~\ref{eq:HF};\\
-\textbf{1D, orange curve}: the crustal component computed as the integral of crustal heat production per unit of volume along the crustal thickness. This  resembles a 1D, column-wise, model.\\
-Notice the different response to the sharp step (left side).
-
-In plot \textbf{c)}, we compare $Q_M$ obtained by two methods:\\
-\textbf{2D, blue curve}: the basal heat flow as numerical heat flow at the Moho (boundary between `LCC' and `SCLM' layers). ;\\
-\textbf{1D, orange curve}: basal heat flow interpreted as `reduced heat flow' in a 1D approach: we subtracted the column-wise 1D $Q_C$ to $Q_0$.\\
-Notice how the misfit becomes larger near the edges of the thickened crust (both step and smooth transitions), while it is almost zero at its center.
-
-Plot \textbf{d)} shows the temperature field as contours, in degrees Celsius.
+Plot \textbf{d)} of Fig.~\ref{fig:2Deff} shows the temperature field as contours, in degrees Celsius.
 The layer structure is plotted in the background.
-
-In plot \textbf{e)} we are showing the deviation from a purely vertical temperature gradient (angle $\alpha$).
+In plot \textbf{e)} of Fig.~\ref{fig:2Deff} we are showing the deviation from a purely vertical temperature gradient (angle $\alpha$).
 It was calculated with the following:
 
 \begin{equation}
@@ -1132,7 +1132,6 @@ It was calculated with the following:
 \end{equation}
 where $\nabla$ indicates the numerical gradient calculated between nodes of the temperature field.
 A sketch is included in the bottom of Fig.~\ref{fig:2Deff}.
-
 To improve the plot clarity, the sign of the horizontal gradient was discarded.
 Its direction is towards negative-$x$ in the left side of the plot, towards positive-$x$ in the right side -- i.e. part of heat flow is deviated around the thickened, hotter portion of crust.
 

@@ -1056,7 +1056,7 @@ Differences correlate with the actual (i.e. modelled) RHP values, but sharp vari
 	\begin{adjustbox}{center}
 	\fbox{
 		\includegraphics[
-			clip, trim=1cm 0.6cm 1cm 0.05cmcm,
+			clip, trim=1cm 0.6cm 1cm 0.05cm,
 			width=1.3\textwidth]{./0400_suppl/Qm_arrays.pdf}
 		}
 	\end{adjustbox}
@@ -1067,12 +1067,22 @@ Differences correlate with the actual (i.e. modelled) RHP values, but sharp vari
 \begin{figure}
 	\begin{adjustbox}{center}
 	\fbox{\includegraphics[
-		clip, trim=1cm 0.6cm 1cm 0.05cmcm,
+		clip, trim=1cm 0.6cm 1cm 0.05cm,
 		width=1.3\textwidth]{./0400_suppl/A1Darrays.pdf}
 		}
 	\end{adjustbox}
 	\caption{Crustal heat production computed a-posteriori using a 1D approximation, i.e. crustal heat flow divided by crustal thickness.}
 	\label{fig:AITN_A1D}
+\end{figure}
+
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{\includegraphics[
+		clip, trim=1cm 0.6cm 1cm 0.05cm,,
+		width=1.3\textwidth]{./0400_suppl/DACarrays.pdf}}
+	\end{adjustbox}
+	\caption{Difference between the crustal heat production as used in the 3D model (Fig.~\ref{fig:AITN_ACC}), and the a-posteriori 1D-computed heat production (Fig.~\ref{fig:AITN_A1D}).}
+	\label{fig:AITN_DAC}
 \end{figure}
 
 \FloatBarrier
@@ -1081,7 +1091,7 @@ Differences correlate with the actual (i.e. modelled) RHP values, but sharp vari
 \label{ss:ApplSup:MethodTests:HorQ}
 
 We include the result of a synthetic experiment showing the significance of non-vertical heat conduction.
-The forward model is parametrised with the same reference conductivity and heat production (first-guess) values adopted in the paper.
+The forward model is parametrised with the same reference conductivity and heat production (first-guess) values previously presented in section~\ref{s:Appl:Therm} and Tab.~\ref{tab:ThermParams}.
 It consists of a 600~\si{\kilo \metre} 2D x-z section.
 It is one-element thick along the y axis (normal to the section) and a zero-flux conditions is imposed on the front and back sides (y-wise).
 Therefore, it represent a model of infinite extent along the y-axis.

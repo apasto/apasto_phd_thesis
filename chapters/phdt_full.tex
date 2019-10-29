@@ -5,7 +5,12 @@
 
 % here: abstract, toc, etc
 % before adding those, see class documentation: koma-script/doc/scrguien.pdf
+
+% linkcolor set to black for the toc only
+\begingroup
+\hypersetup{linkcolor=black}
 \tableofcontents
+\endgroup
 
 % chapters
 \subincludefrom{./0100/}{phdt_0100}

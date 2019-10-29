@@ -1154,11 +1154,73 @@ The densities were updated according to the following:
     \rho(T,P) = \rho_0 (1 - \alpha_V \Delta T + \beta P) 
 \end{equation*}
 
-where $\rho_0$ is the initial density, $\alpha_V$ the volumetric coefficient of thermal expansion (in $K^{-1}$), $\Delta T$ the change in temperature, $\beta$ compressibility (in $Pa^{-1}$), and $P$ pressure (in $Pa$). We used a $\beta$ of $3 \times 10^{-11}$ and $1 \times 10^{-11} K^{-1}$ for the crust and lithospheric mantle (assumed peridotite), respectively, and a $\alpha_V$ of $2.4 \times 10^{-5} Pa^{-1}$ for both the crust and the lithospheric mantle.
+where $\rho_0$ is the initial density, $\alpha_V$ the volumetric coefficient of thermal expansion (in \si{\per \kelvin}), $\Delta T$ the change in temperature, $\beta$ compressibility (in \si{\per \pascal}), and $P$ pressure (in \si{\pascal}). We used a $\beta$ of \num{3e-11} and \SI{1e-11}{\per \kelvin} for the crust and lithospheric mantle (assumed peridotite), respectively, and a $\alpha_V$ of \SI{2.4e-5}{\per \pascal} for both the crust and the lithospheric mantle.
 
-The new inverted Moho, in Fig.~\ref{fig:RhoTP_MohoDepth}, shows a variation (after minus before) ranging from $-2.3$~\si{\kilo \metre} to $+3.4$~\si{\kilo \metre}, with an average of $-0.13$~\si{\kilo \metre} and a standard deviation of $0.75$~\si{\kilo \metre}. The range and variance of these discrepancies are less than the typical uncertainties of crustal thickness estimation ($\pm 5$ to $\pm 15$ percent, i.e. $\pm 2$ to $\pm 6$~\si{\kilo \metre} for a $40$~\si{\kilo \metre} thick crust, see \cite{Grad2009} and references therein).
+The new inverted Moho, in Fig.~\ref{fig:RhoTP_MohoDepth}, shows a variation (after minus before) ranging from \SI{-2.3}{\kilo \metre} to \SI[retain-explicit-plus]{+3.4}{\kilo \metre}, with an average of \SI{-0.13}{\kilo \metre} and a standard deviation of \SI{0.75}{\kilo \metre}.
+The range and variance of these discrepancies are less than the typical uncertainties of crustal thickness estimation ($\pm$\num{5} to $\pm$\num{15} percent, i.e. $\pm$\num{2} to $\pm$\SI{6}{\kilo \metre} for a \SI{40}{\kilo \metre} thick crust, see \cite{Grad2009} and references therein).
 
 % 4 figures here ... re-render, avoid onimage
+
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{
+		\includegraphics[
+			width=1.35\textwidth,
+			clip, trim=0.3cm 0.2cm 0.3cm 0cm]{./0400_suppl/RhoTP_RhoC.pdf}
+		}
+	\end{adjustbox}
+	\caption{Bulk density of the crystalline crust.
+	Left: from LITHO1.0.
+	Center: updated with $(T,P)$~effect, with the output of our thermal modelling. 
+	Right: $(T,P)$~effect contribution, updated density minus original density.}
+	\label{fig:RhoTP_RhoC}
+\end{figure}
+
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{
+		\includegraphics[
+			width=1.35\textwidth,
+			clip, trim=0.3cm 0.2cm 0.3cm 0cm]{./0400_suppl/RhoTP_RhoM.pdf}
+		}
+	\end{adjustbox}
+	\caption{Bulk density of the lithospheric mantle.
+	Left: from LITHO1.0.
+	Center: updated with $(T,P)$~effect, with the output of our thermal modelling.
+	Right: $(T,P)$~effect contribution, updated density minus original density.}
+	\label{fig:RhoTP_RhoM}
+\end{figure}
+
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{
+		\includegraphics[
+			width=1.35\textwidth,
+			clip, trim=0.3cm 0.2cm 0.3cm 0cm]{./0400_suppl/RhoTP_MohoContrast.pdf}
+		}
+	\end{adjustbox}
+	\caption{Moho contrast, expressed as bulk crust density (Fig.~\ref{fig:RhoTP_RhoC}) minus lithospheric mantle bulk density (Fig.~\ref{fig:RhoTP_RhoM}).
+	Left: from LITHO1.0.
+	Center: updated with $(T,P)$~effect, with the output of our thermal modelling. Right: $(T,P)$~effect contribution, updated density minus original density.}
+	\label{fig:RhoTP_MohoContrast}
+\end{figure}
+
+\begin{figure}
+	\begin{adjustbox}{center}
+	\fbox{
+		\includegraphics[
+			width=1.35\textwidth,
+			clip, trim=0.3cm 0.2cm 0.3cm 0cm]{./0400_suppl/RhoTP_MohoDepth.pdf}
+		}
+	\end{adjustbox}
+	\caption{Inverted Moho depth.
+	Left: using the density contrast from LITHO1.0, unmodified.
+	Center: using the density contrast updated with $(T,P)$~effect, with the output of our thermal modelling.
+	Right: $(T,P)$~effect contribution, updated Moho minus initial Moho estimate.}
+	\label{fig:RhoTP_MohoDepth}
+\end{figure}
+
+\FloatBarrier
 
 \section[Supplementary:~a-posteriori test of RHP relationships with other physical properties]{Supplementary: a-posteriori test of RHP relationships with other physical properties}
 \label{s:ApplSup:Rel}
@@ -1166,7 +1228,7 @@ The new inverted Moho, in Fig.~\ref{fig:RhoTP_MohoDepth}, shows a variation (aft
 \subsection{Relationship of RHP with density}
 \label{ss:ApplSup:Rel:Rho}
 
-In Fig.~\ref{fig:RhoRHP}, we are including a version of manuscript figure~14 "Cross plots between thickness of the crystalline crust (Moho depth minus basement depth), radioactive heat production (RHP) of the bulk crystalline crust, crustal component of heat flow ($Q_C$), and crust density".
+Fig.~\ref{fig:RhoRHP} provides an alternate representation of Fig.~\ref{fig:Qcrossplots}.
 Instead of the RHP~versus~density scatter plot (upper right axes), here we included a map of the spatial distribution of the bulk crustal density.
 The density of the samples in all the scatter plots (each sample a model column) is plotted with the same colour scale used in the density map.
 

@@ -94,7 +94,7 @@ We applied a global topography correction, computed as gravity disturbance, on a
 This was accomplished with the GrafLab software package \parencites{bucha2013GrafLab} and the spherical harmonics topography effect model {dV\_ELL\_RET2014} by \textcite{Rexer2016}, based on the {EARTH2014} global topography \parencite{Hirt2015}.
 We then subtracted this from the GGM gravity disturbance computed on the same grid.
 Both the spherical harmonics expansions where evaluated up to degree and order $280$.
-The reduction density for the topography correction was 2670~{kg~m\textsuperscript{-3}} for above-sea-level relief and 1030~{kg~m\textsuperscript{-3}} for oceans.
+The reduction density for the topography correction was 2670~\si{\kilo \gram \per \cubic \metre} for above-sea-level relief and 1030~\si{\kilo \gram \per \cubic \metre} for oceans.
 
 % isostatic effect
 As shown by \textcite{Szwillus2016}, the `global Bouguer anomaly' obtained with this procedure contains a significant long-wavelength bias due to the far-field effect of internal masses, including those involved in the isostatic compensation of topography (called \textit{isostatic effect}).
@@ -106,10 +106,10 @@ By querying the `{access\_litho}' program point-wise on a global regular {0.125}
 
 This procedure provided outlier values on some nodes.
 We removed the values of crustal density and $V_P$ in the lithospheric mantle outside the range defined by three standard deviations around the mean (i.e. $\overline{x} \pm 1.5 \sigma $, with $\overline{x}$ mean value).
-This implied keeping only the values of crustal density between 2500 and 3300~{kg~m\textsuperscript{-3}} and of lithospheric mantle $V_P$ between 7500 and 8800~{m~s\textsuperscript{-1}}.
+This implied keeping only the values of crustal density between 2500 and 3300~\si{\kilo \gram \per \cubic \metre} and of lithospheric mantle $V_P$ between 7500 and 8800~{m~s\textsuperscript{-1}}.
 Crustal depths of less than zero or more than 80~\si{\kilo \metre} where also considered obvious interpolation artefacts, and removed.
 
-We also compared each node value with a {1.5}~by~{1.5} degrees moving average (12 by 12 grid nodes). We deleted the values with over 10~\si{\kilo \metre}, 200~{kg~m\textsuperscript{-3}}, and 100~{m~s\textsuperscript{-1}} of absolute difference with the local moving average of depth, density, and $V_P$ respectively.
+We also compared each node value with a {1.5}~by~{1.5} degrees moving average (12 by 12 grid nodes). We deleted the values with over 10~\si{\kilo \metre}, 200~\si{\kilo \gram \per \cubic \metre}, and 100~{m~s\textsuperscript{-1}} of absolute difference with the local moving average of depth, density, and $V_P$ respectively.
 These criteria removed the {2.5}~\textperthousand~of the points sampled from {LITHO1.0}: 10198 points on a 1441~by~2881 global grid.
 Linear interpolation was used to fill in the removed nodes.
 
@@ -143,7 +143,7 @@ We therefore follow the approach used by \textcite{Sebera2018}, applying the lin
 \end{equation}
 with $V_P$ in m/s and $\rho$ in {kg~m\textsuperscript{-3}}.
 
-This yields an average contrast of 380~{kg~m\textsuperscript{-3}}, which we note is lower than the global estimates of 485~{kg~m\textsuperscript{-3}} by \textcite{Tenzer2012contrast} and of 448~$\pm$~187~{kg~m\textsuperscript{-3}} by \textcite{Sjoberg2011}.
+This yields an average contrast of 380~\si{\kilo \gram \per \cubic \metre}, which we note is lower than the global estimates of 485~\si{\kilo \gram \per \cubic \metre} by \textcite{Tenzer2012contrast} and of 448~$\pm$~187~\si{\kilo \gram \per \cubic \metre} by \textcite{Sjoberg2011}.
 A globally uniform linear velocity-to-density conversion is a simplified model, which disregards the concurring effects of temperature, pressure and composition.
 Nevertheless, we deemed it suitable to model a far-field, very long wavelength effect, which would be difficult to estimate otherwise \parencite[for a different approach, based on topography and the Airy-Heiskanen isostatic model, see][]{Grombein2016}.
 Small scale variations are expected to be significantly smoothed out, while still obtaining a more refined and observation-based estimate than the one that would result from a high-pass filter on the gravity model (e.g. by setting the low degree and order coefficients to zero, up to an arbitrary cut off degree).
@@ -168,7 +168,7 @@ The result is shown in Fig.~\ref{fig:g_red}~B.
 
 \subsection{Reduction for the sediment layer effect}
 \label{ss:Appl:GravSed}
-The low-density infill of sedimentary basins results in a negative bias of the Bouguer anomaly, since the topographic effect correction relies on the commonly used 2670~{kg~m\textsuperscript{-3}} crustal reference density \parencite{Hinze2003}.
+The low-density infill of sedimentary basins results in a negative bias of the Bouguer anomaly, since the topographic effect correction relies on the commonly used 2670~\si{\kilo \gram \per \cubic \metre} crustal reference density \parencite{Hinze2003}.
 Since a negative density contrast is expected at the Moho, not accounting for this bias would result in an over-estimation of the crustal thickness.
 We thus applied a \textit{sediment stripping correction} \parencite{Chen2014} to the gravity data, using the sediment thickness map provided in \textcite{Tesauro2008} in the study area (Fig.~\ref{fig:g_red}~C) and the rest of the European platform.
 The rest of the Earth is covered by the sediment thickness data included in {LITHO1.0} by \textcite{Pasyanos2014}.
@@ -197,7 +197,7 @@ Our depth-density curve lies between the one provided for the Pannonian Basin by
 
 This contribution was forward modelled with the same method used for the isostatic effect, through integration of discrete tesseroids.
 We modelled the depth-wise density variation by dividing each tesseroid radially, with a step coarsening with depth (from 50~m at the surface to 200~m at 8~\si{\kilo \metre} of depth and more).
-Each tesseroid density is equal to the contrast against a 2670~{kg~m\textsuperscript{-3}} reference crustal density.
+Each tesseroid density is equal to the contrast against a 2670~\si{\kilo \gram \per \cubic \metre} reference crustal density.
 The result is shown in Fig.~\ref{fig:g_red}~D.
 
 \subsection{Spectral-domain filtering of the computed reductions}
@@ -338,7 +338,7 @@ We adopt the lattice thermal conductivity ($k_{lat}$) model by \textcite{Xu2004}
 	k_{lat} = k_{298} \left( \frac{298}{T} \right)^n (1+ a P)
 \end{equation}
 where $T$ is temperature in K, $k_{298}$ the lattice conductivity at $298~K$ ($4.13~\textrm{W} \textrm{m}^{-1} \textrm{K}^{-1}$), $n$ an empirical fitting factor ($0.5$), $a$ the pressure dependency factor ($0.032~\textrm{GPa}^{-1}$), and $P$ pressure in GPa.
-We computed $P$ as a purely lithostatic pressure, by utilising the same sediment model used in the gravity reduction, a reference crust density of 2670~{kg~m\textsuperscript{-3}}, and the same lithospheric mantle density that we calculated in Eq.~\ref{eq:ACY400}.
+We computed $P$ as a purely lithostatic pressure, by utilising the same sediment model used in the gravity reduction, a reference crust density of 2670~\si{\kilo \gram \per \cubic \metre}, and the same lithospheric mantle density that we calculated in Eq.~\ref{eq:ACY400}.
 
 We account for the radiative component ($k_{rad}$) by adopting the model of \textcite{Hasterok2011cont}:
 
@@ -765,7 +765,7 @@ We perfomed a log-linear fit to our data, obtaining the following relationship, 
 \end{equation}
 The $2\sigma$ confidence interval of our fit is \num{-0.0022} to \SI{-0.0015}{(log_{10} \micro \watt \per \cubic \metre)(\kilo \gram \per \cubic \metre)^{-1}} for the slope and \num{0.14} to \SI{0.26}{\micro \watt \per \cubic \metre} for the intercept.
 $R^2$ is \num{0.1274}.
-We excluded the nodes with a bulk density lower than 2780~{kg~m\textsuperscript{-3}}, since they are underrepresented in our study area (less than 7\% of total nodes, clustered in the southeast corner).
+We excluded the nodes with a bulk density lower than 2780~\si{\kilo \gram \per \cubic \metre}, since they are underrepresented in our study area (less than 7\% of total nodes, clustered in the southeast corner).
 A negative relationship between density and RHP can be observed --it can be attributed to the increased content in heat producing elements in less dense, more felsic rocks \parencite{Hasterok2017_ign}.
 The two fits, albeit different, overlap in their uncertainty interval.
 A version of the scatter~plots of Fig.~\ref{fig:Qcrossplots} in which a colour scale is used to depict each node density, and a map of the bulk density of the crystalline crust in the study area are provided in the supplementary material (section~5, Fig.~S.14).

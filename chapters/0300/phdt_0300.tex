@@ -614,7 +614,7 @@ The densities of the modelled layers are thus expressed as density contrasts aga
 
 % slicing description
 For these tests, the \textit{ak135} model \parencites{Kennett1995_ak135}{Montagner1996} was adopted.
-The depth-density reference, in the tabular form provided in the {NMSOP-2} manual \parencite{Bormann2002}, was tailored for these experiments by computing the average density in selected ranges of depth, as shown in Fig.~\ref{fig:SigIs:Ref_ak135}.
+Its depth-density curve, sourced from the {NMSOP-2} manual \parencite{Bormann2002}, was tailored for these experiments by computing the average density in selected ranges of depth, as shown in Fig.~\ref{fig:SigIs:Ref_ak135}.
 These ranges define a set of shells of homogeneous density.
 The modelled layers were `sliced' according to these shells: in other words, an intersection was performed between the boundaries defining each layer and the reference shells boundaries (see Fig.~\ref{fig:SigIs:RefSlices}).
 By doing so, each layer of the input model was divided in a number of \textit{layer-slices} equal to the number of reference shells it intersects.
@@ -622,46 +622,54 @@ In each layer-slice the density contrast was expressed as the difference between
 
 \begin{figure}
     \begin{adjustbox}{center}
-    \begin{minipage}{1.2\textwidth}
-    \begin{center}
-    \begin{tabular}{cc}
-        \parbox[c]{0.6\textwidth}{
-    \fbox{
-        \includegraphics[
-                width=0.525\textwidth,
+        \fbox{
+            \includegraphics[
+                width=0.75\textwidth,
                 clip, trim=0.25cm 1.25cm 1.25cm 0cm
                 ]{VSconv/ak135_RefCol.pdf}
-    }} &      
-      \begin{tabular}{rl}
-        \toprule
-        \multicolumn{1}{c}{\textbf{Depth}} & \multicolumn{1}{c}{\textbf{Density}} \\
-        \multicolumn{1}{c}{\textbf{[\si{\kilo \metre}]}} & \multicolumn{1}{c}{\textbf{[\si{\gram \per \cubic \centi \metre}]}} \\
-        \midrule
-        0   & \multirow{2}{*}{2.670} \\
-        10  & \multirow{2}{*}{2.920} \\
-        18  & \multirow{2}{*}{3.611} \\
-        43  & \multirow{2}{*}{3.562} \\
-        60  & \multirow{2}{*}{3.523} \\
-        80  & \multirow{2}{*}{3.483} \\
-        100 & \multirow{2}{*}{3.446} \\
-        120 & \multirow{2}{*}{3.399} \\
-        165 & \multirow{2}{*}{3.348} \\
-        210 & \multirow{2}{*}{3.345} \\
-        260 & \multirow{2}{*}{3.389} \\
-        310 \\
-        \bottomrule
-      \end{tabular}
-    \end{tabular}
-
-      \caption[Depths and densities from the \textit{ak135} reference model, original and discretised.]{
-        \textbf{Blue}:~input depths and densities from the \textit{ak135} reference model \parencite{Kennett1995_ak135}, set at \SI{2.67}{\gram \per \cubic \centi \metre} at less than \SI{10}{\kilo \metre}.
-        \textbf{Orange}:~constant density layers obtained by averaging the \textit{ak135} model in discrete depth intervals.
-        These layer-discretised densities are shown in the accompanying table.}%
-    \label{fig:SigIs:Ref_ak135}
-    \end{center}
-    \end{minipage}
+        }
     \end{adjustbox}
+    \caption[Depths and densities from the \textit{ak135} reference model, original,layer-discretised and computed on {LITHO1.0} data.]{
+        \textbf{Blue}:~input depths and densities from the \textit{ak135} Earth reference model \parencite{Kennett1995_ak135}, set at \SI{2.67}{\gram \per \cubic \centi \metre} at less than \SI{10}{\kilo \metre}.
+        \textbf{Orange}:~constant density reference layers obtained by averaging the \textit{ak135} model in discrete depth intervals.
+        \textbf{Black}:~constant density reference layers obtained by averaging the \textit{LITHO1.0} \parencite{Pasyanos2014} model in the same discrete depth intervals of the orange curve.
+        The layer-discretised densities are shown in Tab.~\ref{tab:Ref_ak135}.}
+    \label{fig:SigIs:Ref_ak135}
 \end{figure}
+
+\begin{table}
+    \caption[AAA]{Average densities of the \textit{ak135} Earth reference model, obtained by interpolation in discrete depth intervals, and average densities derived from the \textit{LITHO1.0} global data, computed inside the same depth intervals).
+    See also Fig.~\ref{fig:SigIs:Ref_ak135}.}
+    \begin{adjustbox}{center}
+        \begingroup\setlength{\fboxsep}{0pt}
+        \colorbox{tablebackground}{%
+        \begin{tabular}{rll}
+            \toprule
+            \multicolumn{1}{c}{\textbf{Depth}} & \multicolumn{2}{c}{\textbf{Density}} \\
+            \multicolumn{1}{c}{\textbf{[\si{\kilo \metre}]}} & \multicolumn{2}{c}{\textbf{[\si{\gram \per \cubic \centi \metre}]}} \\
+            \midrule
+            & \multicolumn{1}{c}{\textit{ak135}} & \multicolumn{1}{c}{\textit{LITHO1.0}} \\
+            \midrule
+            0   & \multirow{2}{*}{2.670} & \multirow{2}{*}{2.670} \\
+            10  & \multirow{2}{*}{2.920} & \multirow{2}{*}{2.968} \\
+            18  & \multirow{2}{*}{3.631} & \multirow{2}{*}{3.111} \\
+            26  & \multirow{2}{*}{3.611} & \multirow{2}{*}{3.162} \\
+            35  & \multirow{2}{*}{3.590} & \multirow{2}{*}{3.214} \\
+            43  & \multirow{2}{*}{3.562} & \multirow{2}{*}{3.279} \\
+            60  & \multirow{2}{*}{3.523} & \multirow{2}{*}{3.301} \\
+            80  & \multirow{2}{*}{3.483} & \multirow{2}{*}{3.307} \\
+            100 & \multirow{2}{*}{3.446} & \multirow{2}{*}{3.310} \\
+            120 & \multirow{2}{*}{3.399} & \multirow{2}{*}{3.311} \\
+            165 & \multirow{2}{*}{3.348} & \multirow{2}{*}{3.311} \\
+            210 & \multirow{2}{*}{3.345} & \multirow{2}{*}{3.308} \\
+            260 & \multirow{2}{*}{3.389} & \multirow{2}{*}{3.301} \\
+            310 \\
+            \bottomrule
+        \end{tabular}}
+        \endgroup 
+    \end{adjustbox}
+    \label{tab:Ref_ak135}
+\end{table}
 
 \begin{figure}
     \begin{adjustbox}{center}

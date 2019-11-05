@@ -608,17 +608,28 @@ Still, since the main objective of these experiments is to assess an uncertainty
 \label{ss:SigIs:InModels:REF}
 
 As described in section~\ref{ss:SigIs:Defs:NETC}, the attraction of `anomalous masses' inside the planet is defined against the normal gravity  (Eq.~\ref{eq:red:Vdec2} and following).
-By assuming that the normal gravity arises from a `reference Earth' with ellipsoidal stratification and with no lateral inhomogeneities, we can express any density refinement to the normal gravity model as a contrast against this reference.
+By assuming that the normal gravity arises from a `reference Earth' with ellipsoidal stratification and with no lateral inhomogeneities, we can express any density refinement to the normal gravity model as a contrast against this `normal density reference'.
 As mentioned in section~\ref{ss:SigIs:Defs:Corrs} and as discussed by \textcite{Vajda2008}, this should be satisfactorily approximated by reference earth models. \nocite{Moritz1990} \nocite{Tscherning1981} % probably I am citing these elsewhere
-The densities of the modelled layers are thus expressed as density contrasts against a reference.
+%The densities of the modelled layers are therefore expressed as density contrasts against a reference.
 
 % slicing description
-For these tests, the \textit{ak135} model \parencites{Kennett1995_ak135}{Montagner1996} was adopted.
-Its depth-density curve, sourced from the {NMSOP-2} manual \parencite{Bormann2002}, was tailored for these experiments by computing the average density in selected ranges of depth, as shown in Fig.~\ref{fig:SigIs:Ref_ak135}.
-These ranges define a set of shells of homogeneous density.
-The modelled layers were `sliced' according to these shells: in other words, an intersection was performed between the boundaries defining each layer and the reference shells boundaries (see Fig.~\ref{fig:SigIs:RefSlices}).
+For all the sub-topography (i.e. sediments to lithospheric mantle) forward modelling performed here, a `normal density reference' was built, defined by a discretely layered reference column.
+The boundaries between layers in this column define a set of concentric shells with constant depth against the reference ellipsoid.
+The modelled layers in {LITHO1.0} were `sliced' according to these shells: in other words, an intersection was performed between the top/bottom boundaries defining each {LITHO1.0} layer and the reference shells boundaries (see Fig.~\ref{fig:SigIs:RefSlices}).
 By doing so, each layer of the input model was divided in a number of \textit{layer-slices} equal to the number of reference shells it intersects.
-In each layer-slice the density contrast was expressed as the difference between the density prescribed by the model at those coordinates and the density of the reference shell in that depth range.
+In each layer-slice the density contrast was expressed as the difference between the density prescribed by the model at those coordinates and the density of the reference shell covering that depth range.
+
+In order to build a reference density column, the density in each reference shell was computed by globally averaging the densities in the input model in the depth range defined by the shell.
+Averages were weighted for the portion of shell occupied by each layer of the model (e.g. if in a specific grid node, in the \num{10} to \SI{18}{km} depth range, the first kilometre is occupied by the layer `SEDS3' and the remainder by `CRUST1', the average density is computed accordingly) and for the cosine of the latitude of each grid node (to account for the convergence of parallels in a regular grid, in a spherical approximation).
+
+The maximum modelled depth was set to set to \SI{410}{\kilo \metre}, to account for the thickest lithosphere in {LITHO1.0}, \SI{320}{\kilo \metre} and a buffer for any additional depth introduced by the uncertainty-modelling perturbations.
+The volume between the bottom of the lithosphere and the maximum modelled depth was filled-in with a `reference asthenosphere' with a density of \SI{3300}{\kilo \gram \per \cubic \metre}.
+This a reference value which, albeit plausible \parencite[e.g.][]{Bormann2002}, is not directly constrained by the input data in any way - it is akin to the usual \SI{2670}{\kilo \gram \per \cubic \metre} adopted for the terrain correction \parencite{Hinze2003}.
+As discussed afterwards (section~\ref{ss:SigIs:Results:Discussion}), any unmodelled sub-lithospheric density variation shows up in the refined gravity residuals (superimposed with all the omissions in the input `known masses' of the lithosphere).
+
+The `normal density reference' tailored to {LITHO1.0} densities and the `asthenosphere fill-in' is presented in Fig.~\ref{fig:SigIs:Ref_ak135} (black line) and in Tab.~\ref{tab:Ref_ak135}.
+The depth-density curve from the \textit{ak135} model \parencites{Kennett1995_ak135}{Montagner1996} is plotted alongside (blue line, the data was sourced from the {NMSOP-2} manual \cite{Bormann2002}, which provides it in a tabular form).
+The \textit{ak135} model is also plotted as the average density in the same discrete depth intervals of the LITHO1.0-based density reference.
 
 \begin{figure}
     \begin{adjustbox}{center}

@@ -429,7 +429,7 @@ in which the terms refer to the labels in Tab.~\ref{tab:E2014fwdLayers}.
 \end{figure}
 
 \subsection{Lithospheric density model}
-\label{ss:SigIs:E2014fwd_TC_g_rad}
+\label{ss:SigIs:LITHOmodel}
 
 These experiments rely on the {LITHO1.0} model by \textcite{Pasyanos2014}, which expands on the results of CRUST5.1 \parencite{Mooney1998_Crust51}, CRUST2.0 \parencite{Bassin2000Crust20} and CRUST1.0 \parencite{Laske2012Crust10}.
 \Textcite{Pasyanos2014} provide a global model of the lithosphere, from the topography to the base of lithospheric mantle (lithosphere--asthenosphere boundary, LAB), parametrized vertically in a series of `geophysical layers'.
@@ -906,7 +906,7 @@ Cumulative standard deviation of $\Delta g_z$ at $l_{max}$ is \SI{1.23e-12}{\mil
 \label{ss:SigIs:Test:SEDS1}
 
 I am also including the output of another test: instead of the ``synthetic relief'' just shown in section~\ref{ss:SigIs:Test:FourBlocks}, here the real layer boundaries of a layer from LITHO1.0 \parencite{Pasyanos2014} was used, representing a real step of the forward modelling carried out in this chapter.
-The {SEDS1} layer is the most superficial among the layer modelled here (see the general model description in section~\ref{ss:SigIs:E2014fwd_TC_g_rad}).
+The {SEDS1} layer is the most superficial among the layer modelled here (see the general model description in section~\ref{ss:SigIs:LITHOmodel}).
 Representing the first of three sedimentary layers, it is derived from an updated version of the global sediment thickness map by \textcite{Laske1997_sediments}.
 The only difference with the modelled reductions (section \ref{s:SigIs:Results}) is that the prescribed depths were referred to a sphere (instead of the WGS84 ellipsoid), the observation points were also spherical (\SI{40}{\kilo \metre} above the sphere) and density has been imposed constant at \SI{2.17}{\gram \per \cubic \centi \metre} (modelled as a \SI{-0.50}{\gram \per \cubic \centi \metre} contrast against a \SI{2.17}{\gram \per \cubic \centi \metre} reference density).
 These three modifications simplified the generation of the corresponding tesseroids-discretised model and computation points grid, thus avoiding a potential source of discrepance in the direct comparison.

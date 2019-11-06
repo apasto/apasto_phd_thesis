@@ -627,9 +627,13 @@ The volume between the bottom of the lithosphere and the maximum modelled depth 
 This a reference value which, albeit plausible \parencite[e.g.][]{Bormann2002}, is not directly constrained by the input data in any way - it is akin to the usual \SI{2670}{\kilo \gram \per \cubic \metre} adopted for the terrain correction \parencite{Hinze2003}.
 As discussed afterwards (section~\ref{ss:SigIs:Results:Discussion}), any unmodelled sub-lithospheric density variation shows up in the refined gravity residuals (superimposed with all the omissions in the input `known masses' of the lithosphere).
 
-The `normal density reference' tailored to {LITHO1.0} densities and the `asthenosphere fill-in' is presented in Fig.~\ref{fig:SigIs:Ref_ak135} (black line) and in Tab.~\ref{tab:Ref_ak135}.
+The `normal density reference' obtained in this way ({LITHO1.0} densities and `asthenosphere fill-in') is presented in Fig.~\ref{fig:SigIs:Ref_ak135} (black line) and in Tab.~\ref{tab:Ref_ak135}.
 The depth-density curve from the \textit{ak135} model \parencites{Kennett1995_ak135}{Montagner1996} is plotted alongside (blue line, the data was sourced from the {NMSOP-2} manual \cite{Bormann2002}, which provides it in a tabular form).
 The \textit{ak135} model is also plotted as the average density in the same discrete depth intervals of the LITHO1.0-based density reference.
+
+The density reference built using the {LITHO1.0} densities is considerably lower than \textit{ak135}, especially in the \num{18} to \SI{210}{\kilo \metre} depth range.
+This arises from both omissions in the model and the constant \SI{3300}{\kilo \gram \per \cubic \metre} `asthenosphere fill-in' -- if \textit{ak135} was used as a fill-in instead, areas of thin lithosphere would contribute in raising the average.
+Nevertheless, this strategy was preferred since, by doing so, the gravity maps of forward modelled masses (in terms of contrast) and the GGM with applied reductions are not overwhelmed by the signal of thickened lower density crustal keels reaching in an high density upper asthenosphere resulting from \textit{ak135} global average, which is sensibly biased by the predominance of oceanic lithosphere in the Earth. 
 
 \begin{figure}
     \begin{adjustbox}{center}

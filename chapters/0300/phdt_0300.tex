@@ -700,22 +700,40 @@ Nevertheless, this strategy was preferred since, by doing so, the gravity maps o
     \label{fig:SigIs:RefSlices}
 \end{figure}
 
+\FloatBarrier
+
 \section{Assessment of uncertainty}
 \label{s:SigIs:Impl}
+
+Uncertainty in the `known masses' input data was estimated using Monte Carlo error propagation \parencite[][chapter 2.6]{Aster2018}.
+Depths of the boundaries, defining the layers in {LITHO1.0}, and the density grids associated with each layer were randomly perturbed according to a set of error assumptions, obtaining a population of input mass models.
+The gravity field of each of this mass models was forward modelled using the spectral layer-wise method described in this chapter, therefore obtaining a population of resulting gravity fields.
+To extract a metric of the spatial distribution of uncertainty and its magnitude, I then computed the standard deviation of the vertical component of gravity at each grid node of the ensemble of globally synthesized grids.
+
+As described in section~\ref{ss:SigIs:LITHOmodel}, {LITHO1.0} is provided with no information on uncertainty, nor on the spatial variability of data resolution.
+At the time of setting up and running this uncertainty assessment, the only crustal scale models providing error information where regional extent Moho depth models: e.g.~\textcite{Grad2009} and \textcite{Artemieva2013} for the European plate, \textcite{Steffen2017} in Greenland, \textcite{VanderMeijde2013} in South America, to name a few.
+% posso ricavare valori plausibili da moho globali
+% eshagh e GEMMA (leggo bene, diverso modo uncertainty)
+% così giustifico i miei valori
+% e cito valori Szwillus (2019) per lo stesso motivo
+
 % multiprocessing
 
 % spostati commenti seguenti da FWD
 % razionale per il metodo: random modelling
 
-% giustifico mio modello incertezza con valori che ha ottenuto Szwillus (2019)
-% altri data-aware uncertainty methods: Grad, EU, forse anche eunaseis artemieva
+% razionale per il numero di campioni: euristica, needs further validation for efficient use of computational resources
 
-% considerazioni globali uncertainty, da articolo LITHO1.0
 
+\FloatBarrier
 
 \section{Global reduction results}
 \label{s:SigIs:Results}
-% con valutazioni spettrali
+
+
+
+\subsection{Spectral domain comparison}
+\label{ss:SigIs:Results:Spectral}
 
 \subsection{Discussion}
 \label{ss:SigIs:Results:Discussion}
@@ -747,7 +765,7 @@ Nevertheless, this strategy was preferred since, by doing so, the gravity maps o
 % out of scope of these experiments
 %
 % CRUST-MANTLE a 18 km (media globale ak135) è molto sottile per continenti!
-
+% fwd con ak135 come fill in: sebera2014
 
 % altro appunto su ref densities: a cosa corrispondono ref densities da ak135 nelle conversioni Rho(VS, P)?
 

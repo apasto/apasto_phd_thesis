@@ -710,12 +710,29 @@ Depths of the boundaries, defining the layers in {LITHO1.0}, and the density gri
 The gravity field of each of this mass models was forward modelled using the spectral layer-wise method described in this chapter, therefore obtaining a population of resulting gravity fields.
 To extract a metric of the spatial distribution of uncertainty and its magnitude, I then computed the standard deviation of the vertical component of gravity at each grid node of the ensemble of globally synthesized grids.
 
+\subsection{Error model}
+\label{ss:SigIs:Impl:ErrorModel}
+
 As described in section~\ref{ss:SigIs:LITHOmodel}, {LITHO1.0} is provided with no information on uncertainty, nor on the spatial variability of data resolution.
-At the time of setting up and running this uncertainty assessment, the only crustal scale models providing error information where regional extent Moho depth models: e.g.~\textcite{Grad2009} and \textcite{Artemieva2013} for the European plate, \textcite{Steffen2017} in Greenland, \textcite{VanderMeijde2013} in South America, to name a few.
+At the time of setting up and running this uncertainty assessment, the only crustal scale models providing spatial error information were regional extent Moho depth models: e.g.~\textcite{Grad2009} and \textcite{Artemieva2013} for the European plate, \textcite{Steffen2017} in Greenland, \textcite{VanderMeijde2013} in South America, to name a few.
+
+In the design of this uncertainty assessment experiment, it was therefore decided to apply a spatially uniform error model for the depths and densities in the input mass model.
+The error on depth of the layer interfaces was modelled proportionally with the depth of each grid node, with a standard deviation of \SI{5}{\percent} of depth and a normal error density function.
+The error on density was similarly modelled, with a normal distribution with a standard deviation of \SI{100}{\kilo \gram \per \cubic \metre}.
+Lacking any direct tie to the availability and quality of the input data, these values represent a trade-off between well resolved areas and those that may result from fill-in of no-data grid nodes.
+
+% quali valori? commento seguente:
 % posso ricavare valori plausibili da moho globali
 % eshagh e GEMMA (leggo bene, diverso modo uncertainty)
 % così giustifico i miei valori
 % e cito valori Szwillus (2019) per lo stesso motivo
+
+It ought to be noted that the method proposed and tested here can be easily scaled to more complex error models.
+Both the recent availability of global models with uncertainty information provided \parencite[e.g.][]{Szwillus2019} and the possibility of global harmonisation of an ensemble of the aforementioned regional models leave plenty of room for further development.
+
+\subsection{Implementation}
+\label{ss:SigIs:Impl:Impl}
+% implementation
 
 % multiprocessing
 
@@ -723,7 +740,12 @@ At the time of setting up and running this uncertainty assessment, the only crus
 % razionale per il metodo: random modelling
 
 % razionale per il numero di campioni: euristica, needs further validation for efficient use of computational resources
+The number of necessary random draws is a trade-off between insufficient sampling of the error density function (due to low values) and computation time.
+It was chosen heuristically, choosing \num{5000}~draws as
 
+Empirical assessment of the behaviour of number of draws against quality of the estimation would be possible -- e.g. excessively low number of draws show an unrealistic short wavelength noise, arising from the uncorrelated perturbations of depth and density between adjacent grid nodes.
+The attenuation of this phenomenon with rising number of draws could be, in theory, assessed.
+It was left aside due to computational time constraints, since it would have required a significant number of full-scale uncertainty propagation model runs.
 
 \FloatBarrier
 

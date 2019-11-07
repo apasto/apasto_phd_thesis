@@ -732,20 +732,32 @@ Both the recent availability of global models with uncertainty information provi
 
 \subsection{Implementation}
 \label{ss:SigIs:Impl:Impl}
-% implementation
 
-% multiprocessing
+The forward modelling of each randomly perturbed mass model is independent from the other random draws -- in other words, Monte Carlo uncertainty propagation is an `embarrassingly parallel' problem \parencite[see e.g.][chapter 15]{Kontoghiorghes2005}.
+Therefore, the computation was carried out concurrently, using the \textit{multiprocessing} Python module.
 
-% spostati commenti seguenti da FWD
-% razionale per il metodo: random modelling
+The output of each forward modelling run, comprising the separated gravity effect of each slice of each input layer, adds up quickly in terms of memory requirement.
+Since the statistic we are interested in is the standard deviation at each grid node, a partition scheme was set up: the variance ($\sigma^2$) and average of the output at each grid node is computed in \num{100}-draw blocks and the individual outputs of each draw are then discarded.
+The standard deviation of a variable $X_i$, partitioned in a set of $g$ partitions, each obtained from $k$ draws, is the following \parencites{Chan1982}{Pebay2008}:
+\begin{equation}
+    \label{eq:StdAggregation}
+    \sigma(X_1,\dots,X_{g \cdot k}) =
+    \sqrt{
+        \frac{k-1}{gk-1}
+        \left(
+            \sum_{j=1}^{g} V_j + \frac{k(g-1)}{k-1} \mathrm{Var}(E_j)
+        \right)
+    }
+\end{equation}
+Where $E_j$ is the mean and $V_j$ is the variance computed inside each partition.
+$\mathrm{Var}(E_j)$ denotes the variance of the partition-averages.
 
-% razionale per il numero di campioni: euristica, needs further validation for efficient use of computational resources
-The number of necessary random draws is a trade-off between insufficient sampling of the error density function (due to low values) and computation time.
-It was chosen heuristically, choosing \num{5000}~draws as
-
+Choosing the number of necessary random draws requires a trade-off between insufficient sampling of the error density function (due to low values) and computation time.
 Empirical assessment of the behaviour of number of draws against quality of the estimation would be possible -- e.g. excessively low number of draws show an unrealistic short wavelength noise, arising from the uncorrelated perturbations of depth and density between adjacent grid nodes.
 The attenuation of this phenomenon with rising number of draws could be, in theory, assessed.
 It was left aside due to computational time constraints, since it would have required a significant number of full-scale uncertainty propagation model runs.
+A value of \num{5000}~draws was heuristically chosen, instead, observing no anomalous behaviour in the power of the higher degree and orders.
+% time requirement: 2 hours on 40 workers = 80 hours
 
 \FloatBarrier
 

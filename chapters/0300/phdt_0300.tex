@@ -787,12 +787,22 @@ The perceptually uniform `viridis' colour scale \parencite{Smith2015} was used.
 In the case of the forward modelled effect of the crystalline crust ($CRUST, g_z$, top map of Fig.~\ref{fig:SigIs:Res:CRUST}), the minimum values of some features is more than \SI{1000}{mGal} lower than the average value.
 For the sake of map clarity, the colour scale minimum was clipped at an higher value.
 The same map is plotted with the full range in Fig.~\ref{fig:SigIs:Res:CRUST_NonTrim}.
-An explanation for this behaviour is discussed afterwards.
+The explanation for this behaviour is discussed afterwards.
 
 An histogram accompanies each map, to provide a qualitative assessment of the data distribution.
 The vertical scale, which is omitted for clarity, represents linear bin counts, after cosine-of-latitude weighting.
 A global equal-area Mollweide projection was adopted in all maps.
 
+\paragraph{List of the presented maps}
+\begin{itemize}
+    \item Global gravity model: the gravity disturbance from the combined satellite-only GOCO06s model \parencite{Kvas2019GOCO06s_ICGEM}. \textit{[Fig.~\ref{fig:SigIs:Res:GGM_BG}, top]}
+    \item NETC disturbance, obtained by applying the terrain correction (Fig.~\ref{fig:E2014fwd_out_TC_g_rad}) to the global gravity model. \textit{[Fig.~\ref{fig:SigIs:Res:GGM_BG}, bottom]}
+    \item Sediment correction: cumulative effect of the layers SEDS1, SEDS2, and SEDS3. Sediment corrected NETC disturbance. \textit{[Fig.~\ref{fig:SigIs:Res:SEDS}]}
+    \item Consolidated crust correction: cumulative effect of the layers CRUST1, CRUST2, CRUST3. Whole-crust (sediments and consolidated crust) corrected NETC disturbance. \textit{[Fig.~\ref{fig:SigIs:Res:CRUST}]}
+    \item Consolidated lithospheric mantle correction: effect of the LID layer. Whole-lithosphere (sediments, consolidated crust, lithospheric mantle) corrected NETC disturbance. \textit{[Fig.~\ref{fig:SigIs:Res:LID}]}
+    \item Correction for the first \SI{80}{\kilo \metre}, including a constant density asthenosphere fill-in, and \num{0}-\SI{80}{\kilo \metre} corrected NETC. \textit{[Fig.~\ref{fig:SigIs:Res:Shallow}]}
+    \item Correction for the first \SI{310}{\kilo \metre}, including a constant density asthenosphere fill-in, and \num{0}-\SI{310}{\kilo \metre} corrected NETC. \textit{[Fig.~\ref{fig:SigIs:Res:Deep}]}
+\end{itemize}
 
 \begin{figure}
     \begin{adjustbox}{center}
@@ -802,12 +812,14 @@ A global equal-area Mollweide projection was adopted in all maps.
                     \put (0,65) {\textsf{\textbf{GGM}}}
                 \end{overpic} \\
                 \begin{overpic}[width=\textwidth]{maps/sig_isol/BG.pdf}
-                    \put (0,65) {\textsf{\textbf{BG}}}
+                    \put (0,65) {\textsf{\textbf{NETC}}}
                 \end{overpic}
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[TO DO.]{TO DO.}
+    \caption[TO DO.]{
+        \textbf{Top: GGM.} Input global gravity model: the combined, satellite-only, GOCO06s
+    }
     \label{fig:SigIs:Res:GGM_BG}
 \end{figure}
 
@@ -819,7 +831,7 @@ A global equal-area Mollweide projection was adopted in all maps.
                     \put (0,65) {\textsf{\textbf{SEDS, $\bm{g_z}$}}}
                 \end{overpic} \\
                 \begin{overpic}[width=\textwidth]{maps/sig_isol/BG_SedC.pdf}
-                    \put (0,65) {\textsf{\textbf{BG, SEDS corr.}}}
+                    \put (0,65) {\textsf{\textbf{NETC, SEDS corr.}}}
                 \end{overpic}
             \end{tabular}
         }
@@ -836,7 +848,7 @@ A global equal-area Mollweide projection was adopted in all maps.
                     \put (0,65) {\textsf{\textbf{CRUST, $\bm{g_z}$}}}
                 \end{overpic} \\
                 \begin{overpic}[width=\textwidth]{maps/sig_isol/BG_CrustC.pdf}
-                    \put (0,65) {\textsf{\textbf{BG, CRUST corr.}}}
+                    \put (0,65) {\textsf{\textbf{NETC, CRUST corr.}}}
                 \end{overpic}
             \end{tabular}
         }
@@ -858,6 +870,23 @@ A global equal-area Mollweide projection was adopted in all maps.
     \end{adjustbox}
     \caption[TO DO.]{This is the same quantity plotted in the top map of Fig.~\ref{fig:SigIs:Res:CRUST}, using a different colour scale, without clipping the most negative values.}
     \label{fig:SigIs:Res:CRUST_NonTrim}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/FWD_LIDT.pdf}
+                    \put (0,65) {\textsf{\textbf{LID, $\bm{g_z}$}}}
+                \end{overpic} \\
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/BG_LithoC.pdf}
+                    \put (0,65) {\textsf{\textbf{NETC, LID corr.}}}
+                \end{overpic}
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[TO DO.]{TO DO.}
+    \label{fig:SigIs:Res:LID}
 \end{figure}
 
 \begin{figure}
@@ -898,7 +927,7 @@ A global equal-area Mollweide projection was adopted in all maps.
 \subsection{Spectral domain comparison}
 \label{ss:SigIs:Results:Spectral}
 
-\subsubsection{Propagated uncertainty}
+\subsection{Propagated uncertainty}
 \label{ss:SigIs:Results:Uncertainty}
 
 \begin{figure}

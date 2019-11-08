@@ -766,6 +766,34 @@ A value of \num{5000}~draws was heuristically chosen, instead, observing no anom
 \section{Global reduction results}
 \label{s:SigIs:Results}
 
+
+
+% intro
+% how interpreted?
+
+The input gravity map ({GGM}, Fig.~\ref{fig:SigIs:Res:GGM_BG} top), the terrain-corrected disturbance (Fig.~\ref{fig:SigIs:Res:GGM_BG} bottom), and all the further refinements for lithospheric masses (the bottom maps in figures \ref{fig:SigIs:Res:SEDS} through \ref{fig:SigIs:Res:Deep}) are expressed as gravity disturbances ($\delta g$).
+$\delta g$, being a magnitude of a vector difference, is a scalar by definition (Eq.~\ref{eq:red:GravDist}).
+The forward-modelled gravity corrections (the top maps in figures \ref{fig:SigIs:Res:SEDS} through \ref{fig:SigIs:Res:Deep}), on the other hand, are the first-order derivative of the gravity potential arising from the modelled `known masses'.
+Being a three-component vector, only its vertical component $g_z$ is plotted -- being the most significant.
+Both the disturbances and the $g_z$ component of the corrections were synthesized on a global $n \times 2n$ grid at \SI{10}{\kilo \metre} over the {GRS80} ellipsoid.
+
+The colour scales were adapted to the range of values of each map, but no colour scale normalisation has been applied (i.e. there is no contrast enhancement using colour scale ``stretching'').
+Minimum and maximum values of the scales were set to the \num{0.001} and \num{0.999} quantile of the plotted values, respectively.
+By doing so, extreme values are clipped and do not skew the scale excessively.
+Quantiles were computed using cosine-of-latitude weighting.
+The actual minimum and maximum values are always printed below each map, along with the global average and standard deviation (both appropriately weighted for latitude).
+The perceptually uniform `viridis' colour scale \parencite{Smith2015} was used.
+
+In the case of the forward modelled effect of the crystalline crust ($CRUST, g_z$, top map of Fig.~\ref{fig:SigIs:Res:CRUST}), the minimum values of some features is more than \SI{1000}{mGal} lower than the average value.
+For the sake of map clarity, the colour scale minimum was clipped at an higher value.
+The same map is plotted with the full range in Fig.~\ref{fig:SigIs:Res:CRUST_NonTrim}.
+An explanation for this behaviour is discussed afterwards.
+
+An histogram accompanies each map, to provide a qualitative assessment of the data distribution.
+The vertical scale, which is omitted for clarity, represents linear bin counts, after cosine-of-latitude weighting.
+A global equal-area Mollweide projection was adopted in all maps.
+
+
 \begin{figure}
     \begin{adjustbox}{center}
         \fbox{

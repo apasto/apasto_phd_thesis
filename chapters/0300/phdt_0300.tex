@@ -719,15 +719,17 @@ At the time of setting up and running this uncertainty assessment, the only crus
 In the design of this uncertainty assessment experiment, it was therefore decided to apply a spatially uniform error model for the depths and densities in the input mass model.
 The error on depth of the layer interfaces was modelled proportionally with the depth of each grid node, with a standard deviation of \SI{5}{\percent} of depth and a normal error density function.
 The error on density was similarly modelled, with a normal distribution with a standard deviation of \SI{100}{\kilo \gram \per \cubic \metre}.
-Lacking any direct tie to the availability and quality of the input data, these values represent a trade-off between well resolved areas and those that may result from fill-in of no-data grid nodes.
+%Lacking any direct tie to the availability and quality of the input data, these values represent a trade-off between well resolved areas and those that may result from fill-in of no-data grid nodes.
 
 % quali valori? commento seguente:
 % posso ricavare valori plausibili da moho globali
-% eshagh e GEMMA (leggo bene, diverso modo uncertainty)
+% Eshagh2011 e GEMMA (leggo bene, diverso modo uncertainty)
 % così giustifico i miei valori
 % e cito valori Szwillus (2019) per lo stesso motivo
+% \parencite{Reguzzoni2015}
+% \parencite{Eshagh2011}
 
-It ought to be noted that the method proposed and tested here can be easily scaled to more complex error models.
+It should be noted that the method proposed and tested here can be easily scaled to more complex error models.
 Both the recent availability of global models with uncertainty information provided \parencite[e.g.][]{Szwillus2019} and the possibility of global harmonisation of an ensemble of the aforementioned regional models leave plenty of room for further development.
 
 \subsection{Implementation}
@@ -764,10 +766,132 @@ A value of \num{5000}~draws was heuristically chosen, instead, observing no anom
 \section{Global reduction results}
 \label{s:SigIs:Results}
 
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/GGMin.pdf}
+                    \put (0,65) {\textsf{\textbf{GGM}}}
+                \end{overpic} \\
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/BG.pdf}
+                    \put (0,65) {\textsf{\textbf{BG}}}
+                \end{overpic}
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[TO DO.]{TO DO.}
+    \label{fig:SigIs:Res:GGM_BG}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/FWD_SedsT.pdf}
+                    \put (0,65) {\textsf{\textbf{SEDS, $\bm{g_z}$}}}
+                \end{overpic} \\
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/BG_SedC.pdf}
+                    \put (0,65) {\textsf{\textbf{BG, SEDS corr.}}}
+                \end{overpic}
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[TO DO.]{TO DO.}
+    \label{fig:SigIs:Res:SEDS}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/FWD_CrustT_trim.pdf}
+                    \put (0,65) {\textsf{\textbf{CRUST, $\bm{g_z}$}}}
+                \end{overpic} \\
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/BG_CrustC.pdf}
+                    \put (0,65) {\textsf{\textbf{BG, CRUST corr.}}}
+                \end{overpic}
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[TO DO.]{TO DO.}
+    \label{fig:SigIs:Res:CRUST}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/FWD_CrustT.pdf}
+                    \put (0,65) {\textsf{\textbf{CRUST, $\bm{g_z}$}}}
+                    \put (82,65) {\textsf{\textbf{(full extent)}}}
+                \end{overpic}
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[TO DO.]{This is the same quantity plotted in the top map of Fig.~\ref{fig:SigIs:Res:CRUST}, using a different colour scale, without clipping the most negative values.}
+    \label{fig:SigIs:Res:CRUST_NonTrim}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/FWD_shallowT.pdf}
+                    \put (0,65) {\textsf{\textbf{0--80~km, $\bm{g_z}$}}}
+                \end{overpic} \\
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/BG_ShallowC.pdf}
+                    \put (0,65) {\textsf{\textbf{BG, 0--80~km corr.}}}
+                \end{overpic}
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[TO DO.]{TO DO.}
+    \label{fig:SigIs:Res:Shallow}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/FWD_deepT.pdf}
+                    \put (0,65) {\textsf{\textbf{0--310~km, $\bm{g_z}$}}}
+                \end{overpic} \\
+                \begin{overpic}[width=\textwidth]{maps/sig_isol/BG_DeepC.pdf}
+                    \put (0,65) {\textsf{\textbf{BG, 0--310~km corr.}}}
+                \end{overpic}
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[TO DO.]{TO DO.}
+    \label{fig:SigIs:Res:Deep}
+\end{figure}
 
 
 \subsection{Spectral domain comparison}
 \label{ss:SigIs:Results:Spectral}
+
+\subsubsection{Propagated uncertainty}
+\label{ss:SigIs:Results:Uncertainty}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \begin{overpic}[width=0.75\textwidth]{maps/sig_isol/UNC_Seds.pdf}
+                    \put (0,64) {\textsf{\textbf{$\bm{\sigma}$(SEDS)}}}
+                \end{overpic} \\
+                \begin{overpic}[width=0.75\textwidth]{maps/sig_isol/UNC_Crust.pdf}
+                    \put (0,64) {\textsf{\textbf{$\bm{\sigma}$(CRUST)}}}
+                \end{overpic} \\
+                \begin{overpic}[width=0.75\textwidth]{maps/sig_isol/UNC_LID.pdf}
+                    \put (0,64) {\textsf{\textbf{$\bm{\sigma}$(LID)}}}
+                \end{overpic}
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[TO DO.]{TO DO.}
+    \label{fig:SigIs:Res:UncertaintyMaps}
+\end{figure}
 
 \subsection{Discussion}
 \label{ss:SigIs:Results:Discussion}

@@ -770,6 +770,9 @@ A value of \num{5000}~draws was heuristically chosen, instead, observing no anom
 
 % intro
 % how interpreted?
+% lmax=300, synth on lmax=360 grid
+% gentle cut
+% all show forward-modelled effect against reference, as outlined in (rif.)
 
 The input gravity map ({GGM}, Fig.~\ref{fig:SigIs:Res:GGM_BG} top), the terrain-corrected disturbance (Fig.~\ref{fig:SigIs:Res:GGM_BG} bottom), and all the further refinements for lithospheric masses (the bottom maps in figures \ref{fig:SigIs:Res:SEDS} through \ref{fig:SigIs:Res:Deep}) are expressed as gravity disturbances ($\delta g$).
 $\delta g$, being a magnitude of a vector difference, is a scalar by definition (Eq.~\ref{eq:red:GravDist}).
@@ -795,7 +798,7 @@ A global equal-area Mollweide projection was adopted in all maps.
 
 \paragraph{List of the presented maps}
 \begin{itemize}
-    \item Global gravity model: the gravity disturbance from the combined satellite-only GOCO06s model \parencite{Kvas2019GOCO06s_ICGEM}. \textit{[Fig.~\ref{fig:SigIs:Res:GGM_BG}, top]}
+    \item Global gravity model: the gravity disturbance from the combined satellite-only GOCO06s model \parencite{Kvas_GOCO06s_dataset}. \textit{[Fig.~\ref{fig:SigIs:Res:GGM_BG}, top]}
     \item NETC disturbance, obtained by applying the terrain correction (Fig.~\ref{fig:E2014fwd_out_TC_g_rad}) to the global gravity model. \textit{[Fig.~\ref{fig:SigIs:Res:GGM_BG}, bottom]}
     \item Sediment correction: cumulative effect of the layers SEDS1, SEDS2, and SEDS3. Sediment corrected NETC disturbance. \textit{[Fig.~\ref{fig:SigIs:Res:SEDS}]}
     \item Consolidated crust correction: cumulative effect of the layers CRUST1, CRUST2, CRUST3. Whole-crust (sediments and consolidated crust) corrected NETC disturbance. \textit{[Fig.~\ref{fig:SigIs:Res:CRUST}]}
@@ -817,8 +820,9 @@ A global equal-area Mollweide projection was adopted in all maps.
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[TO DO.]{
-        \textbf{Top: GGM.} Input global gravity model: the combined, satellite-only, GOCO06s
+    \caption[Map of the global gravity model $\delta g$ and NETC $\delta g$.]{
+        \textbf{Top: GGM.} Gravity disturbance of the input global gravity model: the combined, satellite-only, GOCO06s model \parencite{Kvas_GOCO06s_dataset}.
+        \textbf{Bottom: NETC.} No Ellipsoidal Topography corrected gravity disturbance, resulting from applying the forward-modelled Earth2014 \parencite{Hirt2015} data to the GGM.
     }
     \label{fig:SigIs:Res:GGM_BG}
 \end{figure}
@@ -836,7 +840,10 @@ A global equal-area Mollweide projection was adopted in all maps.
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[TO DO.]{TO DO.}
+    \caption[Map of the effect of sediments ($g_z$) and the NETC $\delta g$ corrected for it.]{
+        \textbf{Top: SEDS, $g_z$.} Vertical component of the forward-modelled effect of the three sediments layer in {LITHO1.0}.
+        \textbf{Bottom: NETC, SEDS corrected.} The NETC $\delta g$ (Fig.~\ref{fig:SigIs:Res:GGM_BG}~bottom) corrected for the effect of sediments.
+    }
     \label{fig:SigIs:Res:SEDS}
 \end{figure}
 
@@ -853,7 +860,11 @@ A global equal-area Mollweide projection was adopted in all maps.
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[TO DO.]{TO DO.}
+    \caption[Map of the effect of the consolidated crust ($g_z$) and the NETC $\delta g$ corrected for the whole crust (including sediments).]{
+        \textbf{Top: CRUST, $g_z$.} Vertical component of the forward-modelled effect of the three consolidated crust layer in {LITHO1.0}.
+        The minimum value of the colour scale was clipped at \SI{-700}{mGal}. A map covering the full extent is shown in Fig.~\ref{fig:SigIs:Res:CRUST_NonTrim}.
+        \textbf{Bottom: NETC, whole-crust corrected.} The NETC $\delta g$ (Fig.~\ref{fig:SigIs:Res:GGM_BG}~bottom) corrected for the cumulative effect of sediments and consolidated crust (i.e. for the \textit{whole crust}).
+    }
     \label{fig:SigIs:Res:CRUST}
 \end{figure}
 
@@ -868,7 +879,11 @@ A global equal-area Mollweide projection was adopted in all maps.
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[TO DO.]{This is the same quantity plotted in the top map of Fig.~\ref{fig:SigIs:Res:CRUST}, using a different colour scale, without clipping the most negative values.}
+    \caption[Map of the effect of the consolidated crust ($g_z$), full extent version.]{
+        \textbf{CRUST, $g_z$.} Vertical component of the forward-modelled effect of the three consolidated crust layer in {LITHO1.0}.
+        This is the same quantity plotted in the top map of Fig.~\ref{fig:SigIs:Res:CRUST}.
+        Here a different colour scale is used and the full extent of values is plotted, without clipping the most negative values.
+        }
     \label{fig:SigIs:Res:CRUST_NonTrim}
 \end{figure}
 
@@ -885,7 +900,10 @@ A global equal-area Mollweide projection was adopted in all maps.
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[TO DO.]{TO DO.}
+    \caption[Map of the effect of the lithospheric mantle ($g_z$) and the NETC $\delta g$ corrected for the whole lithosphere (including sediments and crust).]{
+        \textbf{Top: LID, $g_z$.} Vertical component of the forward-modelled effect of the lithospheric mantle, the `LID' layer in {LITHO1.0}.
+        \textbf{Bottom: NETC, whole-lithosphere corrected.} The NETC $\delta g$ (Fig.~\ref{fig:SigIs:Res:GGM_BG}~bottom) corrected for the cumulative effect of the whole lithosphere: sediments, consolidated crust, lithospheric mantle.
+    }
     \label{fig:SigIs:Res:LID}
 \end{figure}
 
@@ -902,7 +920,10 @@ A global equal-area Mollweide projection was adopted in all maps.
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[TO DO.]{TO DO.}
+    \caption[Map of the effect of the first \SI{80}{\kilo \metre} of forward-modelled masses and NETC $\delta g$ corrected for them.]{
+        \textbf{Top: first \SI{80}{\kilo \metre}, $g_z$.} Vertical component of the forward-modelled effect of the first \SI{80}{\kilo \metre} of depth. This includes sediments, consolidated crust, lithospheric mantle, and a reference-density (\SI{3300}{\kilo \gram \per \cubic \metre} asthenosphere.
+        \textbf{Bottom: NETC, first \SI{80}{\kilo \metre} corrected.} The NETC $\delta g$ (Fig.~\ref{fig:SigIs:Res:GGM_BG}~bottom) corrected for the cumulative effect of the first \SI{80}{\kilo \metre} of depth.
+    }
     \label{fig:SigIs:Res:Shallow}
 \end{figure}
 
@@ -919,13 +940,19 @@ A global equal-area Mollweide projection was adopted in all maps.
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[TO DO.]{TO DO.}
+    \caption[Map of the effect of the first \SI{310}{\kilo \metre} of forward-modelled masses and NETC $\delta g$ corrected for them.]{
+        \textbf{Top: first \SI{310}{\kilo \metre}, $g_z$.} Vertical component of the forward-modelled effect of the first \SI{310}{\kilo \metre} of depth. This includes sediments, consolidated crust, lithospheric mantle, and a reference-density (\SI{3300}{\kilo \gram \per \cubic \metre} asthenosphere.
+        \textbf{Bottom: NETC, first \SI{310}{\kilo \metre} corrected.} The NETC $\delta g$ (Fig.~\ref{fig:SigIs:Res:GGM_BG}~bottom) corrected for the cumulative effect of the first \SI{310}{\kilo \metre} of depth.
+    }
     \label{fig:SigIs:Res:Deep}
 \end{figure}
 
+\FloatBarrier
 
 \subsection{Spectral domain comparison}
 \label{ss:SigIs:Results:Spectral}
+
+\FloatBarrier
 
 \subsection{Propagated uncertainty}
 \label{ss:SigIs:Results:Uncertainty}
@@ -946,9 +973,11 @@ A global equal-area Mollweide projection was adopted in all maps.
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[TO DO.]{TO DO.}
+    \caption[Propagated uncertainties: maps of standard deviation in each node for sediments, crust, and lithospheric mantle.]{Propagated uncertainties of sediments (SEDS), consolidated crust (CRUST), and lithospheric mantle (LID), expressed with the standard deviation ($\sigma$) in each grid-point in the ensemble of forward-modelled models in the Monte Carlo uncertainty propagation scheme.}
     \label{fig:SigIs:Res:UncertaintyMaps}
 \end{figure}
+
+\FloatBarrier
 
 \subsection{Discussion}
 \label{ss:SigIs:Results:Discussion}

@@ -824,7 +824,7 @@ A global equal-area Mollweide projection was adopted in all maps.
     \end{adjustbox}
     \caption[Map of the global gravity model $\delta g$ and NETC $\delta g$.]{
         \textbf{Top: GGM.} Gravity disturbance of the input global gravity model: the combined, satellite-only, GOCO06s model \parencite{Kvas_GOCO06s_dataset}.
-        \textbf{Bottom: NETC.} No Ellipsoidal Topography corrected gravity disturbance, resulting from applying the forward-modelled Earth2014 \parencite{Hirt2015} data to the GGM.
+        \textbf{Bottom: NETC.} No Ellipsoidal Topography corrected gravity disturbance, resulting from applying the forward-modelled Earth2014 \parencite{Hirt2015} data (shown in Fig.~\ref{fig:E2014fwd_out_TC_g_rad}) to the GGM.
     }
     \label{fig:SigIs:Res:GGM_BG}
 \end{figure}
@@ -948,6 +948,19 @@ A global equal-area Mollweide projection was adopted in all maps.
     }
     \label{fig:SigIs:Res:Deep}
 \end{figure}
+
+Albeit a thorough geophysical interpretation would require an inversion of the refined disturbances obtained here, their meaning in a solid-earth modelling framework can be qualitatively described.
+
+The sediment-corrected NETC disturbance (Fig.~\ref{fig:SigIs:Res:SEDS}, bottom) shifts the uncorrected NETC (i.e. the disturbance corrected for a constant density topography: Fig.~\ref{fig:SigIs:Res:GGM_BG}, bottom) towards positive values -- in other words, it corrects for the mass deficit introduced by the fill-in of basins.
+Note that the sediment density prescribed by the three SED layers in LITHO1.0 is always lower that the reference densities.
+Apart for areas of very thick sediment cover, the domain of sediments is the first reference shell, for the most part (up to \SI{10}{\km} depth, \SI{2.67}{\gram \per \centi \metre \squared} reference).
+
+The sediment-corrected NETC retains the bi-modal distribution which characterises the uncorrected NETC, likely arising from the ocean-continent dichotomy of the terrain correction (Fig.~\ref{fig:E2014fwd_out_TC_g_rad}).
+
+When this kind of correction is applied in the context of inverse modelling of the crustal thickness \parencites[e.g.][]{Tenzer2014regional}{Eshagh2017}, it prevents mapping the intra-crustal mass deficit to an excessively deep Moho -- i.e. by explaining a negative residual gravity disturbance with the negative mass anomaly that a deep crustal keel provides.
+
+% crust corrected
+
 
 \FloatBarrier
 

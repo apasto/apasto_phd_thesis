@@ -99,4 +99,19 @@
   linkcolor=linkblue,
   citecolor=linkblue}
 
+% define '\textlabel'
+% to create dummy-chapter labels of other chapters,
+% in single chapter drafts
+% from https://tex.stackexchange.com/a/54857
+% edited: instead of printing and storing label
+%         only store it, with no output
+%
+\makeatletter
+\newcommand*{\textlabel}[2]{%
+  \edef\@currentlabel{#1}% Set target label
+  \phantomsection% Correct hyper reference link
+  \label{#2}% Store label (without printing it)
+}
+\makeatother
+
 \input{../../common/hyperref_biblatex} % link on whole citation (only on year otherwise)

@@ -5,13 +5,13 @@
 \section*{Summary}
 \label{s:Appl:Summary}
 Since the completion of the Gravity field and steady-state Ocean Circulation Explorer mission (GOCE), global gravity models of uniform quality and coverage are available.
-We investigate their potential of being useful tools for estimating the thermal structure of the continental lithosphere, through simulation and real-data test in Central-Eastern Europe across the Trans-European Suture Zone.
+In this chapter, their potential of being useful tools for estimating the thermal structure of the continental lithosphere is assessed, through a real-data test in Central-Eastern Europe, across the Trans-European Suture Zone.
 Heat flow, measured near the Earth surface, is the result of the superposition of a complex set of contributions, one of them being the heat production occurring in the crust.
 The crust is enriched in radioactive elements respect to the underlying mantle and crustal thickness is an essential parameter in isolating the thermal contribution of the crust.
 Obtaining reliable estimates of crustal thickness through inversion of GOCE-derived gravity models has already proven feasible, especially when weak constraints from other observables are introduced.
-We test a way to integrate this in a geothermal framework, building a three dimensional, steady state, solid Earth conductive heat transport model, from the lithosphere-asthenosphere boundary to the surface.
-This thermal model is coupled with a crust-mantle boundary depth resulting from inverse modelling, after correcting the gravity model for the effects of topography, far-field isostatic roots and sediments.
-We employ a mixed space- and spectral-domain based forward modelling strategy to ensure full spectral coherency between the limited spectral content of the gravity model and the reductions.
+A way to integrate this in a geothermal framework was tested, building a three dimensional, steady state, solid Earth conductive heat transport model, from the lithosphere-asthenosphere boundary to the surface.
+This thermal model is coupled with a crust-mantle boundary depth resulting from inverse modelling of gravity, after correcting the gravity model for the effects of topography, far-field isostatic roots and sediments.
+A mixed space- and spectral-domain based forward modelling strategy was employed to ensure full spectral coherency between the limited spectral content of the gravity model and the reductions.
 Deviations from a direct crustal thickness to crustal heat production relationship are accommodated using a subsequent substitution scheme, constrained by surface heat flow measurements, where available.
 The result is a three-dimensional model of the lithosphere characterised in temperature, radiogenic heat, and thermal conductivity.
 It provides added information respect to the lithospheric structure and sparse heat flow measurements alone, revealing a satisfactory coherence with the geologic features in the area and their controlling effect on the conductive heat transport.
@@ -64,7 +64,7 @@ In this area the available estimates of lithospheric thickness range from about 
 This lithospheric geometry is overlaid by a remarkable assortment of crustal features.
 These conditions result in a wide range of measured surface heat flow values (see section~\ref{ss:Appl:ThermInput}), ranging from 16 to 195~\si{\milli \watt \per \square \metre} (mean: 57~\si{\milli \watt \per \square \metre}).
 The measurements towards the extremes of this range and short-wavelength variations were attenuated with a spatial-domain filter, since it is expected that they are arising from non-conductive heat transport (e.g. hydrology, shallow melts).
-The regional grid of filtered surface heat flow measurements so obtained (see section~\ref{ss:Appl:DiscTherm:HF}) constitutes the dependent variable of our fitting procedure.
+The regional grid of filtered surface heat flow measurements so obtained (see section~\ref{ss:Appl:DiscTherm:HF}) constitutes the dependent variable of the fitting procedure presented here.
 
 \begin{figure}
     \begin{adjustbox}{center}
@@ -115,7 +115,7 @@ This dataset was then low-pass filtered through convolution with a Gaussian kern
 This equals to a {0.5} filter response at {3.4}~degrees.
 This was applied as an anti-aliasing filter, prior to downsampling the depth and density data to a {0.5}~by~{0.5} grid.
 With these three steps (oversampling, outlier processing, and low-pass filtering) of the data extracted from {LITHO1.0} I aimed at removing any artefacts that may arise due to re-gridding on a rectangular longitude-latitude grid.
-Since our target is computing and removing a low degree effect, I consider such a drastic smoothing of input data justified.
+Since the target is computing and removing a low degree effect, I consider such a drastic smoothing of input data justified.
 
 I then blanked out the grid over a `study area' defined by 40 to 60 degrees latitude, 10 to 40 degrees longitude.
 This area and subsequent crops, which I applied due to edge effects or re-projections, is shown in Fig.~\ref{fig:extents}.
@@ -190,8 +190,8 @@ Where $\rho_{G}$ and $\rho_{W}$ represent the density of the grain matrix and of
 This reduction is critically dependent on two quantities: the estimates on the sedimentary cover thickness, and the spatial distribution of density in it.
 Geological heterogeneities (e.g. lithology, basin history, cementation) result in deviations from general depth-compaction laws \parencite{allen2013basin}, hindering the reliability of universal trends.
 
-I computed our sediment effect estimate using the following values: $\rho_G = \SI{2670}{\kilo \gram \per \cubic \metre}$, $\rho_W = \SI{1030}{\kilo \gram \per \cubic \metre}$ (brine), $\phi_0 = \num{0.5}$, $p = \SI{4}{\kilo \metre}$ ($1/p = \SI{0.25}{\per \kilo \metre}$).
-Our depth-density curve lies between the one provided for the Pannonian Basin by \textcite{Kaban2010} ($\phi_0 = \num{0.4}$, $p = \SI{2.375}{\kilo \metre}$), and the compaction behaviour of shaly sandstones provided in \parencite{allen2013basin} ($\phi_0 = \num{0.56}$, $p = \SI{2.5}{\kilo \metre}$).
+I computed a sediment effect estimate using the following values: $\rho_G = \SI{2670}{\kilo \gram \per \cubic \metre}$, $\rho_W = \SI{1030}{\kilo \gram \per \cubic \metre}$ (brine), $\phi_0 = \num{0.5}$, $p = \SI{4}{\kilo \metre}$ ($1/p = \SI{0.25}{\per \kilo \metre}$).
+This depth-density curve lies between the one provided for the Pannonian Basin by \textcite{Kaban2010} ($\phi_0 = \num{0.4}$, $p = \SI{2.375}{\kilo \metre}$), and the compaction behaviour of shaly sandstones provided in \parencite{allen2013basin} ($\phi_0 = \num{0.56}$, $p = \SI{2.5}{\kilo \metre}$).
 
 This contribution was forward modelled with the same method used for the isostatic effect, through integration of discrete tesseroids.
 I modelled the depth-wise density variation by dividing each tesseroid radially, with a step coarsening with depth (from 50~m at the surface to 200~m at 8~\si{\kilo \metre} of depth and more).
@@ -227,7 +227,7 @@ $D$ and $\Delta \rho$ are not estimated by the inversion itself and require inte
 I have extracted them from the global {LITHO1.0} model \parencite{Pasyanos2014}, adopting the average Moho depth in the study area (43.9~\si{\kilo \metre}) as $D$ and a 4-degree low-pass filtered Moho contrast, as computed in section \ref{ss:Appl:GravTopoIso}.
 The density contrast map is shown in the right map of Fig.~\ref{fig:INVinput}.
 Density is a temperature dependent parameter, due to the effect of thermal expansion \parencite{allen2013basin}.
-Since our strategy includes the temperature distribution in the lithosphere among the outputs, I could update the density model accordingly (using a thermal expansion model) and re-compute the Moho depth estimate, iteratively.
+Since the strategy presented here includes the temperature distribution in the lithosphere among the outputs, I could update the density model accordingly (using a thermal expansion model) and re-compute the Moho depth estimate, iteratively.
 This has been tested for, resulting in local variations of up to \SI{3.4}{\kilo \metre}, with a standard variation of \SI{0.75}{\kilo \metre} after one iteration (see section~\ref{ss:ApplSup:MethodTests:MohoDeltaRho}).
 Owing to the much larger uncertainties in Moho estimates \parencite[\textpm~5 to \textpm~15 percent, see ][]{Grad2009} and the additional parameter uncertainties involved, I opted to omit the thermal effect on density.
 
@@ -236,7 +236,7 @@ Therefore, that average-free gravity anomaly is interpreted as deviations of the
 
 \section{Thermal modelling}
 \label{s:Appl:Therm}
-Our modelling is based on the assumption of steady state, three-dimensional heat conduction from the thermal-LAB to surface, on which the radioactive heat production is superimposed.
+The thermal modelling presented here is based on the assumption of steady state, three-dimensional heat conduction from the thermal-LAB to surface, on which the radioactive heat production is superimposed.
 
 Both heat production and thermal conductivity are non uniform in the domain.
 This means solving the heat equation for a inhomogeneous media, in the following vector form:
@@ -261,7 +261,7 @@ I adopt a reference thermal conductivity model of sediments, upper and lower cry
 It includes standard values, at surface conditions, and models of their dependency on temperature and pressure.
 Conductivity overall is strongly controlled by lithological properties such as mineralogy, porosity, free and bound water content \parencites{allen2013basin}{schon2011handbook}.
 These properties in turn are highly variable parameters, due to the large crustal heterogeneity.
-This a-priori reference may not describe the exact distribution of parameters in each of our model column.
+This a-priori reference may not describe the exact distribution of parameters in each of the model column.
 It also should not be interpreted as a `mean model' of thermal conductivity in the study area, since it samples a local geological setting that is realistically expected to be significantly skewed in respect to a global average.
 Nevertheless, it provides a reference, not unlike reference models used in seismic tomography -- deviations from it can be expressed as anomalies and it provides a consistent benchmark to perform comparison with other strategies.
 The parameters and describing laws are summarised in Tab.~\ref{tab:ThermParams}.
@@ -416,7 +416,7 @@ The data and the interpolated extents are shown in Fig.~\ref{fig:LAB}.
 	\begin{adjustbox}{center}
 	\includegraphics[width=1.2\textwidth]{./0400/LAB_LITHO.pdf}
 	\end{adjustbox}
-	\caption[Depth of lithosphere-asthenosphere boundary (LAB), as provided in LITHO1.0.]{Depth of lithosphere-asthenosphere boundary (LAB) in km, as provided in LITHO1.0 \parencite{Pasyanos2014}. \textbf{Black polygon:}~interpolation extents. \textbf{Red polygon:}~extents of our thermal model. \textbf{Blue squares:}~LITHO1.0 data nodes.}
+	\caption[Depth of lithosphere-asthenosphere boundary (LAB), as provided in LITHO1.0.]{Depth of lithosphere-asthenosphere boundary (LAB) in km, as provided in LITHO1.0 \parencite{Pasyanos2014}. \textbf{Black polygon:}~interpolation extents. \textbf{Red polygon:}~extents of the thermal model. \textbf{Blue squares:}~LITHO1.0 data nodes.}
 	\label{fig:LAB}
 \end{figure}
 
@@ -424,7 +424,7 @@ The chosen temperature is an approximation arising from the thermal definition o
 This boundary temperature is therefore tied to a rheological definition, separating the mantle from the rigid lithospheric domain, where convection is not sustainable and tectonic plates move coherently \parencite{Steinberger2016}.
 Common choices range from the mantle solidus temperature, which is pressure- and composition-dependent, to fractions of it, due to the evidence that even comparatively small melt percentages result in the seismic velocity drop associated with the LAB.
 The heat flow sensitivity to the chosen LAB temperature is small in respect to uncertainties in heat flow measurement or modelling -- therefore, a thermal-LAB depth inverted from surface heat flow has an associated error in the order of tens of kilometres \parencite{Afonso2013multiobsI}.
-When tested in our forward modelling setup, the difference in terms of Moho heat flow of a thermal-LAB temperature of \SI{1300}{\celsius} versus \SI{1200}{\celsius} is 1.44~\si{\milli \watt \per \square \metre}, for the same 150~\si{\kilo \metre} deep LAB ($Q_M$ of 17.05 and 15.61~\si{\milli \watt \per \square \metre}, respectively).
+When tested in the forward modelling setup, the difference in terms of Moho heat flow of a thermal-LAB temperature of \SI{1300}{\celsius} versus \SI{1200}{\celsius} is 1.44~\si{\milli \watt \per \square \metre}, for the same 150~\si{\kilo \metre} deep LAB ($Q_M$ of 17.05 and 15.61~\si{\milli \watt \per \square \metre}, respectively).
 
 \textcite{Pasyanos2014} included prior information in their surface wave inversion, as a starting model which was then perturbated.
 This data includes ``tectonic regions, crustal thickness from receiver functions and other information, upper mantle velocities from traveltime models, and thermotectonic information'' \parencite[p. 2154, ][]{Pasyanos2014}.
@@ -495,22 +495,23 @@ The sediment thickness (Fig.~\ref{fig:g_red}~C) ranges from zero to 16.3~\si{\ki
 The western half of the area is characterised by thick sedimentary covers: between the Caledonides Foredeep and the Baltic Basin (NW corner, 11~\si{\kilo \metre} maximum), and along the Carpathians Foredeep, up to the very deep, but localised, Focşani Depression (16.3~\si{\kilo \metre} maximum).
 The Pripyat-Dnieper-Donets basin lies in the north-eastern part of the area.
 Basement depth reaches a maximum of 5~\si{\kilo \metre} there.
-The forward-modelled sediments effect, reaches a maximum of -102~mGal using our compaction parameters.
+The forward-modelled sediments effect, reaches a maximum of -102~mGal using the aforementioned compaction parameters.
 The depth-dependent exponential decay of compaction implies that the highest sensitivity of the gravity effect occurs in the first 6--8~\si{\kilo \metre} of thickness, where both the basement depth and the density modelling are critical, with the variance in the latter dominating the gravity signal \parencite{Kaban2010}.
 
-The gravity footprint of masses at distance is such that the minimum sediment effect value is -24.7~mGal, instead of zero, even over areas with little to no sedimentary cover.
+The gravity footprint of masses at distance is such that the minimum sediment effect value is \SI{-24.7}{mGal}, instead of zero, even over areas with little to no sedimentary cover.
 
 I assumed a uniform sediment compaction model and a set of depth-dependence parameters which, albeit a realistic compromise, does not reflect the exact characteristics of any of the basins in the study area.
 This unmodelled variability is a source of uncertainty, which is usually addressed with integration with local well data, where available.
-The depth-density curve that \textcite{Kaban2010} provide for the Pannonian Basin ($\phi_0 = 0.4$ and $p = 2.375$~{km}, while ours is $\phi_0 = 0.5$ and $p = 4$~{km}) describes sediments which are less porous at the surface and that compacted faster with increasing depth.
-This means a smaller gravity correction for the same sediment thickness.
+The depth-density curve that \textcite{Kaban2010} provide for the Pannonian Basin is defined by $\phi_0 = 0.4$ and $p = 2.375$~{km}, while the parameter used here are $\phi_0 = 0.5$ and $p = 4$~{km}.
+Their \parencite{Kaban2010} curve describes sediments which are less porous at the surface and that compacted faster with increasing depth.
+This means that for the same sediment thickness, a smaller gravity correction is obtained.
 
-The sediment correction computed over the entire study area with those parameters is on average 22.8~mGal smaller, up to a maximum of 48.8~mGal, over the absolute maximum of sediment thickness, the aforementioned Focşani Depression.
-The standard deviation of the difference is 9W.4~mGal.
-Over the Pannonian Basin (about 5.2~\si{\kilo \metre} of sediments), our correction is 33~mGal larger.
-Therefore, the inverted crustal thickness using \textcite{Kaban2010} compaction model is consistently thicker, on average by 842~m.
-Resorting again to the Pannonian Basin as a benchmark, the estimate with those parameters is up to 2.4~\si{\kilo \metre} thicker.
-In absolute terms, this means that the adopted compaction model results in a 39.0~\si{\kilo \metre} Moho there, while the basin-specific one results in 41.2~\si{\kilo \metre} --even our less compacted model is not enough to fully explain the Pannonian Basin thinning, as it is discussed afterwards (section~\ref{ss:Appl:DiscGravComp}).
+The sediment correction computed over the entire study area with those parameters is on average \SI{22.8}{mGal} smaller, up to a maximum of \SI{48.8}{mGal}, over the absolute maximum of sediment thickness, the aforementioned Focşani Depression.
+The standard deviation of the difference is \SI{9.4}{mGal}.
+Over the Pannonian Basin (about \SI{5.2}{\kilo \metre} of sediments), the correction using \textcite{Kaban2010} parameters is \SI{33}{mGal} smaller.
+Therefore, the inverted crustal thickness using \textcite{Kaban2010} compaction model is consistently thicker, on average by \SI{842}{\metre}.
+Resorting again to the Pannonian Basin as a benchmark, the estimate with those parameters is up to \SI{2.4}{\kilo \metre} thicker.
+In absolute terms, this means that the adopted compaction model results in a \SI{39.0}{\kilo \metre} Moho there, while their \textit{basin-specific} one results in \SI{41.2}{\kilo \metre} --even the less compacted model that I adopted is not enough to fully explain the Pannonian Basin thinning sensed by other crustal models, as it is discussed afterwards (section~\ref{ss:Appl:DiscGravComp}).
 
 \subsection{Moho estimate}
 \label{ss:Appl:DiscGravMoho}
@@ -566,9 +567,9 @@ I observe a thin crust under the Pannonian Basin (PB, south-west corner of the s
 \subsection{Comparisons and critical aspects}
 \label{ss:Appl:DiscGravComp}
 
-I adopt three different crustal models as benchmarks for our Moho depth estimate: the European Moho depth by \textcite{Grad2009}, the global GOCE-based model GEMMA by \textcite{Reguzzoni2015}, and the global lithospheric model {LITHO1.0} by \textcite{Pasyanos2014}, which is based on surface wave dispersion.
+I adopt three different crustal models as benchmarks for the inverted Moho depth estimate: the European Moho depth by \textcite{Grad2009}, the global GOCE-based model GEMMA by \textcite{Reguzzoni2015}, and the global lithospheric model {LITHO1.0} by \textcite{Pasyanos2014}, which is based on surface wave dispersion.
 While the existence of completely independent models is unlikely, I expect a satisfyingly low degree of inter-dependence between these three, since they are based on different observables and strategies.
-These models and the differences from our estimate are shown in the maps of Fig.~\ref{fig:MohoComparisons}.
+These models and the differences from this chapter estimate are shown in the maps of Fig.~\ref{fig:MohoComparisons}.
 The difference is expressed as the depth estimate of this work minus the compared Moho.
 
 \begin{figure}
@@ -576,7 +577,7 @@ The difference is expressed as the depth estimate of this work minus the compare
 	\fbox{\includegraphics[width=1.2\textwidth]{./0400/MohoComp8.pdf}}
 	\end{adjustbox}
 	\caption[Comparisons of inverted Moho with three selected crustal models.]{Comparisons with three selected crustal models: \textbf{A)}~European Moho depth by \textcite{Grad2009}, \textbf{B)}~GEMMA GOCE-based global Moho by \textcite{Reguzzoni2015}, \textbf{C)}~{LITHO1.0} global surface-wave-dispersion model by \textcite{Pasyanos2014}.
-	First row: Moho depths. Second row: differences, expressed as our depth estimate minus the compared Moho. Third row: uncertainty estimates (not available for {LITHO1.0} depths).
+	First row: Moho depths. Second row: differences, expressed as the inverted depth estimate minus the compared Moho. Third row: uncertainty estimates (not available for {LITHO1.0} depths).
 	Lower-right corner: geological features, see Fig.~\ref{fig:INVMoho}.}
 	\label{fig:MohoComparisons}
 \end{figure}
@@ -588,7 +589,7 @@ It is the highest resolution model among these three.
 The model by \textcite{Reguzzoni2015}, a global estimate of crustal thickness (and associated uncertainty), is based on data from GOCE, albeit with a different strategy from the one used here, including a novel inversion algorithm.
 It is by design highly independent from seismic data (`weakly constrained'), requiring only at least $M+1$ a-priori Moho depths for an Earth divided in $M$ geological provinces.
 
-I have already used the {LITHO1.0} \parencite{Pasyanos2014} model in our procedure: in the gravity reduction phase to compute a global crustal root effect (`isostatic effect') and in the inversion, where it provided the reference depth (average Moho depth in the study area) and the starting $\Delta \rho$ map.
+I have already mentioned and utilised the {LITHO1.0} \parencite{Pasyanos2014} model in this chapter procedure: in the gravity reduction phase to compute a global crustal root effect (`isostatic effect') and in the inversion, where it provided the reference depth (average Moho depth in the study area) and the starting $\Delta \rho$ map.
 For these reasons, care must be taken in interpreting the comparison: e.g. the average difference is almost zero due to the chosen average reference depth.
 
 I performed each comparison by downsampling the higher resolution grid to the lower resolution one, between the model obtained in this work and the compared one.
@@ -597,12 +598,12 @@ The comparison with LITHO1.0 was also performed on a \SI{0.5}{\degree}~grid, due
 
 I summarise the difference range, mean, median, and standard deviation in Tab.~\ref{tab:MohoCompStats}.
 The mean difference is directly controlled by the inversion reference depth parameter.
-It is positive (i.e. our Moho is deeper) for both \textcite{Grad2009} and \textcite{Reguzzoni2015} models, by 3.7 and 5.0~\si{\kilo \metre} respectively.
+It is positive (i.e. my inverted Moho is deeper) for both \textcite{Grad2009} and \textcite{Reguzzoni2015} models, by 3.7 and 5.0~\si{\kilo \metre} respectively.
 This partly explains the consistently positive difference over the areas of thin crust.
 The distribution of differences against the three models is never symmetric: the difference between mean and median indicates a positive skew for \textcite{Grad2009} and \textcite{Reguzzoni2015} and a negative skew against the Moho of \textcite{Pasyanos2014}.
 
 \begin{table}
-    \caption[Statistics of differences between the Moho depth estimate and the three benchmarks.]{Statistics of differences between our Moho depth estimate and the three benchmarks. Our estimate minus the compared Moho depth, expressed in \si{\kilo \metre}.}
+    \caption[Statistics of differences between the Moho depth estimate and the three benchmarks.]{Statistics of differences between the inverted Moho depth estimate and the three benchmarks. This chapter estimate minus the compared Moho depth, expressed in \si{\kilo \metre}.}
     \begin{adjustbox}{center}
     \begingroup\setlength{\fboxsep}{0pt}
     \colorbox{tablebackground}{%
@@ -620,26 +621,26 @@ The distribution of differences against the three models is never symmetric: the
 	\label{tab:MohoCompStats}
 \end{table}
 
-In terms of geological structures, our Moho depth model uniformly under-estimates the crustal thinning under the Pannonian basin: it reaches a minimum thickness ranging from 25 to 35~\si{\kilo \metre} in all the three compared models, while ours stops at 39~\si{\kilo \metre}.
+In terms of geological structures, the Moho depth I obtained uniformly under-estimates the crustal thinning under the Pannonian basin: in the three compared models it reaches a minimum thickness ranging from 25 to 35~\si{\kilo \metre}, while mine stops at 39~\si{\kilo \metre}.
 Such a discrepancy may be explained by an insufficient correction for the sedimentary infill (which would require an even less compacted depth-density model, as discussed before) or by the complex Moho structure in extensional settings \parencite[e.g. due to underplating, see][]{OReilly2013}, which is resolved differently by seismic methods.
 
-The thickened root of the Carpathians is not resolved in the Moho by \textcite{Grad2009}, while it is present in our model and in the ones by \textcite{Reguzzoni2015} and \textcite{Pasyanos2014}.
+The thickened root of the Carpathians is not resolved in the Moho by \textcite{Grad2009}, while it is present in my model and in the ones by \textcite{Reguzzoni2015} and \textcite{Pasyanos2014}.
 Its absence in the seismic model could be an artefact of locally poor coverage, a strong point for adopting gravity-derived models even in relatively well-surveyed areas.
 
 I observe a thin NW-SE lineament, from the centre of the study area towards the lower half, in the GEMMA model (\textbf{B}), which is not resolved by the other models.
-It is also resolved by our model, and corresponds to a similar lineament in the GOCE data, then enhanced by the sediment correction.
-There is a 5 to 10~\si{\kilo \metre} positive misfit between GEMMA and our model, along this lineament.
+It is also resolved by my model, and corresponds to a similar lineament in the GOCE data, then enhanced by the sediment correction.
+There is a 5 to 10~\si{\kilo \metre} positive misfit between GEMMA and my model, along this lineament.
 I speculate it may be originated by the different sediment reduction models, which the authors also applied before inversion.
 A thinner crust may result from a larger estimate (in thickness and/or in density) of the effect of the infill of the Carpathians Foredeep.
 
 The misfits are uniformly less over the NE portion of the study area, roughly corresponding to the Russian Platform.
 The sensibly thinner crust of the Pripyat-Dnieper-Donets rift is resolved only by the GEMMA model, while it is fainter in the Moho by \textcite{Grad2009}.
-Our model also resolves that, albeit with the aforementioned underestimation of thinning.
-The discrepancy with GEMMA can be attributed to their use of geological provinces, through a variable density scale factor for each one. Such a strategy allows to accommodate the sharp differences in Moho contrast of different tectonic regimes, albeit with the added issues of depending on surface data.
+The thermal model also resolves that, albeit with the aforementioned underestimation of thinning.
+The discrepancy with {GEMMA} can be attributed to their use of geological provinces, through a variable density scale factor for each one. Such a strategy allows to accommodate the sharp differences in Moho contrast of different tectonic regimes, albeit with the added issues of depending on surface data.
 
-Some small-scale Moho undulations in the Russian Platform are resolved by ours and the first two compared models, albeit with different magnitude.
-They are not present in the LITHO1.0 Moho and are the source of the large localised negative misfits (up to -15~\si{\kilo \metre}).
-The absence of such small features (about 1~arc-degree across) can be attributed to the lower resolution of LITHO1.0.
+Some small-scale Moho undulations in the Russian Platform are resolved by the Moho obtained here and the first two compared models, albeit with different magnitude.
+They are not present in the {LITHO1.0} Moho and are the source of the large localised negative misfits (up to -15~\si{\kilo \metre}).
+The absence of such small features (about 1~arc-degree across) can be attributed to the lower resolution of {LITHO1.0}.
 
 The misfit with the other models arises due to the unaccounted density variations throughout the crust, which bias the inversion results, and from density variations in the mantle that I am not separating from the crustal contribution.
 The former, the intra-crustal masses, can be partly addressed with data integration, where available: it is the case of the sediment stripping reduction I computed and applied.
@@ -734,17 +735,17 @@ I resort to the cross-plots of Fig.~\ref{fig:Qcrossplots} to better show this.
 	\fbox{\includegraphics[width=1.2\textwidth]{./0400/crossplots_tight.pdf}}
 	\end{adjustbox}
 	\caption[Cross plots between thickness of the crystalline crust, RHP of the bulk crystalline crust, crustal component of heat flow, and crust density.]{Cross plots between thickness of the crystalline crust (Moho depth minus basement depth), radioactive heat production (RHP) of the bulk crystalline crust, crustal component of heat flow ($Q_C$), and crust density. The line overlaid on scatter~plots \textbf{A)} to \textbf{C)} represents the first guess, using the a-priori constant RHP.
-	Plot \textbf{D)}: bulk density of the crystalline crust plotted against the radioactive heat production (RHP). The density-heat production relationship by \textcite{Hasterok2017_ign} is plotted in black. Our fit is plotted in purple. Dashed lines depict upper and lower confidence bounds.}
+	Plot \textbf{D)}: bulk density of the crystalline crust plotted against the radioactive heat production (RHP). The density-heat production relationship by \textcite{Hasterok2017_ign} is plotted in black. The fit with this chapter data is plotted in purple. Dashed lines depict upper and lower confidence bounds.}
 	\label{fig:Qcrossplots}
 \end{figure}
 
 The line overlain to scatter~plots \textbf{A} to \textbf{C} represents the results of the first guess, in a perfect crustal thickness to crustal heat flow relationship, with no lateral variations in RHP.
-Two behaviours of departure from the first guess line can be observed: the first, a cluster which has most of its points confined between 35 and 40~\si{\kilo \metre} of thickness, increased its RHP value with respect to the first guess.
+Two distinct behaviours of departure from the first guess line can be observed: the first, a cluster which has most of its points confined between 35 and 40~\si{\kilo \metre} of thickness, increased its RHP value with respect to the first guess.
 It corresponds to those heat flow values found in the extensional basins, as shown in the maps of Fig.~\ref{fig:Qresults}.
 The other, which involves the remainder of points, is considerably scattered along a trend of inverse proportionality between crustal thickness and RHP, opposite to the first guess.
 This weak negative relationship is a common finding of studies on relationships between heat flow and crustal thickness \parencites{Cermak1993}{Mareschal2013}.
 
-As described before, our RHP fill-in method relies on the interpolation of fitted RHP, which is available in cells where surface heat flow measurements are available, over cells where there are none.
+As described before, the RHP fill-in method presented here relies on the interpolation of fitted RHP, which is available in cells where surface heat flow measurements are available, over cells where there are none.
 I assumed that $A$, the RHP per unit of volume, is uncorrelated to crustal thickness.
 Therefore, the interpolation does not take into account Moho undulations.
 As shown in plot \textbf{B)} of the crossplots figure (Fig.~\ref{fig:Qcrossplots}), I observe a negative proportionality between Moho depth and fitted RHP.
@@ -753,27 +754,27 @@ Nevertheless, it should be interpreted with caution.
 There is an issue with the attribution of heat flow misfit to crustal or mantle sources, which I address in the next section.
 
 In Fig.~\ref{fig:Qcrossplots}~\textbf{D} I plotted the fitted RHP of this work against the bulk density of LITHO1.0 \parencite{Pasyanos2014} crystalline crust, computed by thickness-weighted averaging of the three crustal layers.
-I did so in order to compare our result to the density to heat production relationship provided by \textcite{Hasterok2017_ign}: $\log_{10} A = -0.0027 (\rho - 2700) + 0.53 $ (plotted in black).
-In contrast to our indirect estimates, their results are based on geochemical data of more than {100,000} samples.
-I perfomed a log-linear fit to our data, obtaining the following relationship, plotted in purple:
+I did so in order to compare my result to the density to heat production relationship provided by \textcite{Hasterok2017_ign}: $\log_{10} A = -0.0027 (\rho - 2700) + 0.53 $ (plotted in black).
+In contrast to my indirect estimates, their results are based on geochemical data of more than {100,000} samples.
+I perfomed a log-linear fit to the fitted RHP data, obtaining the following relationship, plotted in purple:
 
 \begin{equation}
 	\label{eq:RHP_RHO_fit}
 	\log_{10} A = -0.0019 (\rho - 2700) + 0.20
 \end{equation}
-The $2\sigma$ confidence interval of our fit is \num{-0.0022} to \SI{-0.0015}{(log_{10} \micro \watt \per \cubic \metre)(\kilo \gram \per \cubic \metre)^{-1}} for the slope and \num{0.14} to \SI{0.26}{\micro \watt \per \cubic \metre} for the intercept.
+The $2\sigma$ confidence interval of this fit is \num{-0.0022} to \SI{-0.0015}{(log_{10} \micro \watt \per \cubic \metre)(\kilo \gram \per \cubic \metre)^{-1}} for the slope and \num{0.14} to \SI{0.26}{\micro \watt \per \cubic \metre} for the intercept.
 $R^2$ is \num{0.1274}.
-I excluded the nodes with a bulk density lower than 2780~\si{\kilo \gram \per \cubic \metre}, since they are underrepresented in our study area (less than 7\% of total nodes, clustered in the southeast corner).
+I excluded the nodes with a bulk density lower than 2780~\si{\kilo \gram \per \cubic \metre}, since they are underrepresented in the study area (less than 7\% of total nodes, clustered in the southeast corner).
 A negative relationship between density and RHP can be observed --it can be attributed to the increased content in heat producing elements in less dense, more felsic rocks \parencite{Hasterok2017_ign}.
 The two fits, albeit different, overlap in their uncertainty interval.
 A version of the scatter~plots of Fig.~\ref{fig:Qcrossplots} in which a colour scale is used to depict each node density, and a map of the bulk density of the crystalline crust in the study area are provided in the appendix (section~\ref{s:ApplSup:Rel}, Fig.~\ref{fig:RhoRHP}).
 
-I also compared our RHP estimate with the V\textsubscript{P} to heat production conversion provided in \textcite{Hasterok2017_ign}, using their log-linear relationship for the continental crust ($\log_{10} A = -0.70 (V_{P} - 6) + 0.48$).
-Due to the relationship between density and V\textsubscript{P}, the pattern is similar to what I just discussed concerning density. A similar trend of negative correlation is observed, with the our result shifted toward lower values: $\log_{10} A = -0.56 (V_{P} - 6) + 0.19$.
-The geochemistry-based linear fit and the one that I obtained by linear regression on our inverted data again overlap in their $2\sigma$ uncertainty interval.
-The V\textsubscript{P}-converted RHP is consistently higher than our estimate over the whole area (mean \SI[retain-explicit-plus]{+0.42}{\micro \watt \per \cubic \metre}, with a local maximum of \SI[retain-explicit-plus]{+1.84}{\micro \watt \per \cubic \metre} in the southeastern corner of the area (local cluster with V\textsubscript{P} less than \SI{6.2}{\kilo \metre \per \second}.
-Our RHP estimate is higher than the converted one only in the Pannonian Basin (difference of up to \SI{-0.59}{\micro \watt \per \cubic \metre}).
-A figure with a scatter plot of V\textsubscript{P} and RHP, accompanying maps and further details on the log-linear fit to our data are provided in the appendix material (section~\ref{s:ApplSup:Rel}).
+I also compared this fitted-RHP estimate with the V\textsubscript{P} to heat production conversion provided in \textcite{Hasterok2017_ign}, using their log-linear relationship for the continental crust ($\log_{10} A = -0.70 (V_{P} - 6) + 0.48$).
+Due to the relationship between density and V\textsubscript{P}, the pattern is similar to what I just discussed concerning density. A similar trend of negative correlation is observed, with the the results presented here shifted toward lower values: $\log_{10} A = -0.56 (V_{P} - 6) + 0.19$.
+The geochemistry-based linear fit and the one that I obtained by linear regression on the inverted data again overlap in their $2\sigma$ uncertainty interval.
+The V\textsubscript{P}-converted RHP is consistently higher than my estimate over the whole area (mean \SI[retain-explicit-plus]{+0.42}{\micro \watt \per \cubic \metre}, with a local maximum of \SI[retain-explicit-plus]{+1.84}{\micro \watt \per \cubic \metre} in the southeastern corner of the area (local cluster with V\textsubscript{P} less than \SI{6.2}{\kilo \metre \per \second}.
+The inverted RHP estimate (i.e.~constrained by crustal thickness, surface heat flow and thermal modelling) is higher than the $V\textsubscript{P}$-converted one only in the Pannonian Basin (difference of up to \SI{-0.59}{\micro \watt \per \cubic \metre}).
+A figure with a scatter plot of V\textsubscript{P} and RHP, accompanying maps and further details on the log-linear fit to my data are provided in the appendix material (section~\ref{s:ApplSup:Rel}).
 
 \subsection{Partitioning of heat flow between crust and mantle sources}
 \label{ss:Appl:DiscTherm:Partition}
@@ -786,7 +787,7 @@ A figure with a scatter plot of V\textsubscript{P} and RHP, accompanying maps an
 	\label{fig:QM}
 \end{figure}
 
-Since our strategy is based on the assumption that all the surface heat flow misfit can be attributed to omitted crustal heat production, I analyse what this implies for the partition between the crustal contribution ($Q_C$) and the basal, mantle-borne, heat flow component ($Q_M$, Fig.~\ref{fig:QM}).
+Since the strategy presented here is based on the assumption that all the surface heat flow misfit can be attributed to omitted crustal heat production, I analyse what this implies for the partition between the crustal contribution ($Q_C$) and the basal, mantle-borne, heat flow component ($Q_M$, Fig.~\ref{fig:QM}).
 This has also been referred to as `partition coefficient'. \textcite{Hasterok2016} expressed it as the basal to surface heat flow ratio.
 Here I have adopted the crustal to surface heat flow ratio ($Q_C:Q_0$) as a partition metric.
 I also define the basal heat flow as the heat flow through the crust-mantle boundary, since I am including lateral variations of heat production in the lower crust.
@@ -880,7 +881,7 @@ There, a combination of thin sedimentary cover, a cold crystalline crust, and a 
 \subsection{Sensitivity of the result to crustal thickness}
 \label{ss:Appl:DiscTherm:Sens}
 
-In Fig.~\ref{fig:CompCheckMoho} I present the comparison of the results obtained with a flat Moho (44~\si{\kilo \metre}, the average of our Moho depth estimate) and a synthetic `checkerboard Moho'.
+In Fig.~\ref{fig:CompCheckMoho} I present the comparison of the results obtained with a flat Moho (44~\si{\kilo \metre}, i.e. the average of the inverted Moho depth estimate) and a synthetic `checkerboard Moho'.
 The latter alternates between \num{40} and \SI{48}{\kilo \metre} of thickness, on \num{120}~by~\SI{120}{\kilo \metre} tiles.
 I plotted the difference between fitted RHP, basal heat flow, and temperature at \SI{30}{\kilo \metre}.
 The difference is expressed as the value obtained with the flat-Moho model minus the value obtained with the checkerboard-Moho one, i.e. positive values indicate larger results in the latter.
@@ -894,13 +895,13 @@ As a reference for the alternating pattern, the south-west corner is a thin tile
 	\label{fig:CompCheckMoho}
 \end{figure}
 
-The differences in fitted RHP ($\Delta A$, left map of Fig.~\ref{fig:CompCheckMoho}) are at most one order of magnitude smaller than the range of variation in RHP observed in our model.
+The differences in fitted RHP ($\Delta A$, left map of Fig.~\ref{fig:CompCheckMoho}) are at most one order of magnitude smaller than the range of variation in RHP observed in the model (Fig.~\ref{fig:Aresults}).
 In the majority of cases, a difference of $\pm$\SI{0.04}{\micro \watt \per \cubic \metre} in RHP per unit of volume is enough to compensate a $\pm$\SI{4}{\kilo \metre} variation in crustal thickness.
 The RHP increases (negative difference) for a thinner crust.
 The sensitivity of RHP fitting with respect to the Moho model seems low --this is an expected consequence of all the non crust-correlated RHP variance that I had fitted for.
 Larger values (in absolute terms) are observed in cells where the $Q_C:Q_0$ indicates a thermal regime dominated by the crustal contribution (larger values in the right map of Fig.~\ref{fig:QM}).
 
-Differences in basal heat flow ($\Delta Q_M$, central map of Fig.~\ref{fig:CompCheckMoho}) are of comparable magnitude to those observed in our thermal model.
+Differences in basal heat flow ($\Delta Q_M$, central map of Fig.~\ref{fig:CompCheckMoho}) are of comparable magnitude to those observed in the thermal model (Fig.~\ref{fig:QM}).
 A thinner crust results in an increased $Q_M$, and vice versa.
 There is a subtle variation superimposed on the checkerboard pattern, which becomes more evident in the temperature differences ($\Delta T(30~\mathrm{km}$, right map of Fig.~\ref{fig:CompCheckMoho}).
 These are distributed in a zero-average $\pm$\SI{37}{\celsius} range.
@@ -908,21 +909,21 @@ A thinner crust tile results in increased temperature, and vice versa, following
 The differences attenuate from a full-range alternating pattern in the south-west portion of the area to almost zero in the north-east part.
 In contrast to what I observed with $\Delta A$, there is no evident relationship with $Q_C:Q_0$, while the controlling factors appear to be the lithospheric thickness and surface heat flow (which are correlated).
 
-I also tested using a different crustal model: the seismic Moho by \textcite{Grad2009}, that I had already compared with our satellite-only estimate in Fig.~\ref{fig:MohoComparisons} and discussed in section~\ref{ss:Appl:DiscGravMoho}.
+I also tested the effect of using a different crustal model: the seismic Moho by \textcite{Grad2009}, that I had already compared with the satellite-only estimate presented in this chapter, in Fig.~\ref{fig:MohoComparisons} and discussed in section~\ref{ss:Appl:DiscGravMoho}.
 In Fig.~\ref{fig:CompGradMoho} I have plotted the differences of three modelling outputs, using the same scheme of the `checkerboard Moho' figure.
-Those differences are expressed as: results using our Moho estimate minus results using \textcite{Grad2009}, i.e. a negative difference where the latter results in a larger value.
+Those differences are expressed as: results using my Moho estimate minus results using \textcite{Grad2009}, i.e. a negative difference where the latter results in a larger value.
 
 \begin{figure}
 	\begin{adjustbox}{center}
 	\fbox{\includegraphics[width=1.35\textwidth]{./0400/GradMoho_arrays.pdf}}
 	\end{adjustbox}
-	\caption[Thermal results comparison between our Moho model and the one by \textcite{Grad2009}.]{Thermal results comparison between our Moho model and the one by \textcite{Grad2009}. Differences in bulk crustal RHP ($\Delta A$), basal heat flow ($\Delta Q_M$), and temperature at 30~\si{\kilo \metre} depth ($\Delta T(30~\mathrm{km})$) are expressed as results using our Moho minus results using the compared one. The south-west checkerboard tile is a thin tile (40~\si{\kilo \metre}).}
+	\caption[Thermal results comparison between my Moho model and the one by \textcite{Grad2009}.]{Thermal results comparison between my Moho model and the one by \textcite{Grad2009}. Differences in bulk crustal RHP ($\Delta A$), basal heat flow ($\Delta Q_M$), and temperature at 30~\si{\kilo \metre} depth ($\Delta T(30~\mathrm{km})$) are expressed as results using my Moho minus results using the compared one. The south-west checkerboard tile is a thin tile (40~\si{\kilo \metre}).}
 	\label{fig:CompGradMoho}
 \end{figure}
 
 In the $\Delta A$ map of Fig.~\ref{fig:CompGradMoho}, I observe a local minimum of \SI{1.2}{\micro \watt \per \cubic \metre} in the Pannonian Basin.
-The shallower Moho by \textcite{Grad2009} (24.4~\si{\kilo \metre} minimum, compared to 39.9~\si{\kilo \metre} in our Moho model) has been compensated with an higher RHP, to obtain the same $Q_C$ with a smaller crustal volume.
-There are localised spots of positive $\Delta A$, corresponding to structures where our Moho model is thinner (see A) column plots in Fig.~\ref{fig:MohoComparisons}).
+The shallower Moho by \textcite{Grad2009} (24.4~\si{\kilo \metre} minimum, compared to 39.9~\si{\kilo \metre} in my Moho model) has been compensated with an higher RHP, to obtain the same $Q_C$ with a smaller crustal volume.
+There are localised spots of positive $\Delta A$, corresponding to structures where the inverted Moho model is thinner (see A) column plots in Fig.~\ref{fig:MohoComparisons}).
 The $Q_M$ and $\Delta T(30~\mathrm{km}$ maps show a similar pattern: the thinner crust of \textcite{Grad2009} results in more basal heat flow under the Pannonian Basin and higher temperatures, up to \SI[retain-explicit-plus]{+180}{\celsius}.
 
 Crustal geometry therefore exerts significant effect on heat transport and temperature distribution, and, to a lesser extent, on the results of RHP fitting.
@@ -932,7 +933,7 @@ Therefore, a reliable crust estimate appears of utmost importance in their model
 \label{s:Appl:Concl}
 
 I have presented the outcome of a comprehensive gravity-thermal strategy: from the geophysical data reduction of a global gravity model relying on GOCE observations to a regional-scale estimate of crustal thickness, which I then included in a steady-state thermal forward model and a subsequent substitution radioactive heat production fitting technique.
-Our crustal thickness estimate and the available surface heat flow measurements acted as main constraints.
+The inverted crustal thickness estimate and the available surface heat flow measurements acted as main constraints.
 
 The gravity reductions that I computed and applied involve global modelling, through a combination of space-domain forward modelling and spectral-domain filtering to ensure full spectral consistency with the band-limited global gravity model.
 The Moho undulations that I obtained by inversion of the anomaly that I isolated resulted in a crustal thickness model which resolves most of the features found in the three benchmarks \parencites{Grad2009}{Reguzzoni2015}{Pasyanos2014}, albeit with discrepancies arising from differences in methods and data.
@@ -1155,8 +1156,8 @@ To improve the plot clarity, the sign of the horizontal gradient was discarded: 
 \subsection{Effect of a temperature-dependent Moho density contrast}
 \label{ss:ApplSup:MethodTests:MohoDeltaRho}
 
-To assess the effect of temperature on the densities used in our Moho depth estimates, I have tested the effect of re-computing the Moho density contrast using the results of our thermal modelling.
-The densities were updated according to the following:
+To assess the effect of temperature on the densities used in the inverted Moho depth estimates, I have tested the effect of re-computing the Moho density contrast using the thermal modelling results.
+The densities were updated according to the following, from \textcite{allen2013basin}:
 
 \begin{equation*}
     \rho(T,P) = \rho_0 (1 - \alpha_V \Delta T + \beta P) 
@@ -1177,7 +1178,7 @@ The range and variance of these discrepancies are less than the typical uncertai
 	\end{adjustbox}
 	\caption[Bulk density of the crystalline crust, effect of temperature dependence.]{Bulk density of the crystalline crust.
 	Left: from LITHO1.0.
-	Center: updated with $(T,P)$~effect, with the output of our thermal modelling. 
+	Center: updated with $(T,P)$~effect, with the output of the thermal modelling. 
 	Right: $(T,P)$~effect contribution, updated density minus original density.}
 	\label{fig:RhoTP_RhoC}
 \end{figure}
@@ -1192,7 +1193,7 @@ The range and variance of these discrepancies are less than the typical uncertai
 	\end{adjustbox}
 	\caption[Bulk density of the lithospheric mantle, effect of temperature dependence.]{Bulk density of the lithospheric mantle.
 	Left: from LITHO1.0.
-	Center: updated with $(T,P)$~effect, with the output of our thermal modelling.
+	Center: updated with $(T,P)$~effect, with the output of the thermal modelling.
 	Right: $(T,P)$~effect contribution, updated density minus original density.}
 	\label{fig:RhoTP_RhoM}
 \end{figure}
@@ -1207,7 +1208,7 @@ The range and variance of these discrepancies are less than the typical uncertai
 	\end{adjustbox}
 	\caption[Moho contrast, effect of temperature dependence.]{Moho contrast, expressed as bulk crust density (Fig.~\ref{fig:RhoTP_RhoC}) minus lithospheric mantle bulk density (Fig.~\ref{fig:RhoTP_RhoM}).
 	Left: from LITHO1.0.
-	Center: updated with $(T,P)$~effect, with the output of our thermal modelling. Right: $(T,P)$~effect contribution, updated density minus original density.}
+	Center: updated with $(T,P)$~effect, with the output of the thermal modelling. Right: $(T,P)$~effect contribution, updated density minus original density.}
 	\label{fig:RhoTP_MohoContrast}
 \end{figure}
 
@@ -1221,7 +1222,7 @@ The range and variance of these discrepancies are less than the typical uncertai
 	\end{adjustbox}
 	\caption[Inverted Moho depth, effect of temperature dependence.]{Inverted Moho depth.
 	Left: using the density contrast from LITHO1.0, unmodified.
-	Center: using the density contrast updated with $(T,P)$~effect, with the output of our thermal modelling.
+	Center: using the density contrast updated with $(T,P)$~effect, with the output of the thermal modelling.
 	Right: $(T,P)$~effect contribution, updated Moho minus initial Moho estimate.}
 	\label{fig:RhoTP_MohoDepth}
 \end{figure}
@@ -1250,7 +1251,7 @@ The density of the samples in all the scatter plots (each sample a model column)
 \subsection[Relationship of RHP with VP]{Relationship of RHP with V\textsubscript{P}}
 \label{ss:ApplSup:Rel:VP}
 
-Fig.~\ref{fig:VpRHP} shows the comparison between our inverted RHP estimate and the output of \parencite{Hasterok2017_ign} V\textsubscript{P}-RHP relationship (using data for the continental crust), as discussed at the end of section~\ref{ss:Appl:DiscTherm:FWD}.
+Fig.~\ref{fig:VpRHP} shows the comparison between the inverted RHP estimate and the output of \parencite{Hasterok2017_ign} V\textsubscript{P}-RHP relationship (using data for the continental crust), as discussed at the end of section~\ref{ss:Appl:DiscTherm:FWD}.
 Log-linear fits are in the following form (Eq.~4 in \cite{Hasterok2017_ign}):
 
 \begin{equation*}
@@ -1267,8 +1268,8 @@ Confidence interval provided for $\pm 2 \sigma$.
 	\end{adjustbox}
 	\caption[Relationship of RHP with V\textsubscript{P}, difference with fitted RHP.]{
 		\textbf{Left:}~V\textsubscript{P} of the crystalline crust (thickness-weighted average of \cite{Pasyanos2014} data), computed along the nodes of each model column.
-		\textbf{Center:}~scatter plot of crustal V\textsubscript{P} against our crustal RHP estimate. The V\textsubscript{P}-RHP relationship by \cite{Hasterok2017_ign} is plotted in black. A log-linear fit to our data is plotted in purple. Dashed lines depict upper and lower confidence bounds (2 standard deviations).
-		\textbf{Right:}~V\textsubscript{P}-RHP estimate minus our estimate.}
+		\textbf{Center:}~scatter plot of crustal V\textsubscript{P} against the inverted crustal RHP estimate. The V\textsubscript{P}-RHP relationship by \cite{Hasterok2017_ign} is plotted in black. A log-linear fit to the inverted data is plotted in purple. Dashed lines depict upper and lower confidence bounds ($\pm$2 standard deviations).
+		\textbf{Right:}~V\textsubscript{P}-RHP estimate minus the inverted estimate.}
 	\label{fig:VpRHP}
 \end{figure}
 

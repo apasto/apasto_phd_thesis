@@ -3,8 +3,18 @@
 
 \begin{document}
 
-% here: abstract, toc, etc
-% before adding those, see class documentation: koma-script/doc/scrguien.pdf
+% front matter, frontespizio (official pdf, externally produced)
+% (won't bother re-drawing it in LaTeX)
+% this should also be useful when including a signed-scanned version of it
+\frontmatter
+\thispagestyle{empty}
+\begingroup
+\begin{adjustbox}{center}
+    \includegraphics[
+        clip, trim=2cm 5cm 2cm 1.4cm,
+        width=1.2\textwidth]{frontespizio.pdf}
+\end{adjustbox}
+\endgroup
 
 % linkcolor set to black for the toc only
 \begingroup
@@ -12,7 +22,11 @@
 \tableofcontents
 \endgroup
 
+% preface: summary and acknowledgements
+\subincludefrom{./0050_preface/}{phdt_0050_preface}
+
 % chapters
+\mainmatter
 \subincludefrom{./0100/}{phdt_0100}
 \subincludefrom{./0200/}{phdt_0200}
 \subincludefrom{./0300/}{phdt_0300}
@@ -20,7 +34,7 @@
 \subincludefrom{./0500/}{phdt_0500}
 
 % here: everything before coda
-
+\backmatter
 \input{./0000_fulltext_components/phdt_full_coda.tex}
 
 \end{document}

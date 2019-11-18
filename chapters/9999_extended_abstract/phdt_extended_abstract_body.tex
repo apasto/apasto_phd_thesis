@@ -17,7 +17,7 @@ Empirical relationships from velocity and/or density to heat production have dev
 In addition, multi-observable modelling \parencites[e.g.][]{Mather2018}{Afonso2019} is regularly employed to improve the understanding on the subsurface distribution of temperature and thermal parameters, exploiting their effect on directly sensed quantities (e.g.~topography, gravity, seismic, and electromagnetic observations).
 \\
 
-The gravity field is particularly sensitive to variations in crustal thickness, arising from the significant density contrast at the Moho (a global average of \SI{485}{\kilo \gram \per \cubic \metre} according to \cite{Tenzer2012}, of \num{448}~$\pm$~\SI{187}{\kilo \gram \per \cubic \metre} according to \cite{Sjoberg2011}, to name two).
+The gravity field is particularly sensitive to variations in crustal thickness, arising from the significant density contrast at the Moho (a global average of \SI{485}{\kilo \gram \per \cubic \metre} according to \cite{Tenzer2012contrast}, of \num{448}~$\pm$~\SI{187}{\kilo \gram \per \cubic \metre} according to \cite{Sjoberg2011}, to name two).
 Compared with the problematically sampled heat flow, gravity data benefits from a much more uniform coverage, instead.
 While high resolution terrestrial data suffers from the same data availability issues that affect heat flow, models derived from satellite gravimetry missions provide an unprecedented spatial homogeneity in sampling and in data quality.
 The global gravity models (GGMs) derived from the European Space Agency Gravity field and steady-state Ocean Circulation Explorer mission \parencite[GOCE,][]{Floberghagen2011_goce} provide a ppm-level accuracy for $g$ with a resolution of about \SI{70}{\kilo \metre} at the Earth surface \parencites{Brockmann2014}{Kvas_GOCO06s_dataset}.
@@ -47,14 +47,12 @@ Therefore, an uncertainty-aware signal isolation process, i.e.~a process providi
 In chapter~3 of this dissertation I deal with this issue, presenting the results of a Monte Carlo error propagation \parencite{Aster2018} of a global reduction for lithospheric masses (from the terrain correction to the lithosphere-asthenosphere boundary).
 The experiments results are preceded by a brief introduction on gravity corrections (revolving on the ellipsoid-referenced disturbances defined by \cite{Vajda2008}) and on the adopted spectral-domain forward modelling method (a layer-wise arrangement of the code by \cite{Wieczorek2018}).
 The chapter is complemented by a series of validation tests against spatial-domain forward modelling of test mass distributions.
-
 The tested strategy, albeit relying on a simplified uniform model of error distribution, proved fit for purpose at the target resolution (maximum degree and order of 280, aimed at data reduction of satellite-only models) and may be easily scaled to more complex schemes.
 \\
 
 An application test in Central-Eastern europe, across the Trans-European Suture Zone is presented in the last chapter.
-It integrates a combined satellite-only GGM, data reductions including a mixed spatial- and spectral-domain forward modelling scheme (to include the regional sediment thickness model by \cite{EuCRUST07} in the global reductions), and available heat flow measurements \parencite{globalHF}.
+It integrates a combined satellite-only GGM, data reductions including a mixed spatial- and spectral-domain forward modelling scheme (to include the regional sediment thickness model by \cite{Tesauro2008} in the global reductions), and available heat flow measurements \parencite{globalHF}.
 It resulted in a 3D lithospheric model of temperature and thermal parameters, fitting available data and providing added information respect to the structure of the lithosphere.
-
 The modelled thermal regime is coherent with what geological inference expects and with other models of the area, keeping into account the limitations of a method which relies on as little a-priori data as possible, by design.
 The model is accompanied by a sensitivity test of the results to the crustal thickness estimate ---to quantify the role of the information inverted from gravity.
 The gravity-derived Moho is benchmarked against existing crustal models in the area, obtained through different methods \parencites{Grad2009}{Pasyanos2014}{Reguzzoni2015}.

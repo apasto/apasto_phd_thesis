@@ -973,15 +973,19 @@ It is spread out on a distribution which reaches \SI{-1478}{mGal} on the Himalay
 As expected, the extreme values are observed under the areas with the deepest Moho: e.g. the aforementioned Himalaya, the Andes, the Zagros belt.
 More localised thickening (e.g. Alps and Dinarides) does not reach similar values, it however results in local minima.
 Note that the average thickness of the whole crust in the input model is equal to \SI{22.1}{\kilo \metre} (Tab.~\ref{tab:LithoLayersGroups}).
-Since the reference density model (Fig.~\ref{fig:SigIs:Ref_ak135}) is based on the average densities of the input model, this means that any crustal mass under that average depth results in a negative crustal correction.
-Compared to that average, localised crustal thickening is an outlier in the average of the deeper reference shells (e.g. below \SI{50}{\kilo \metre}) -- therefore, relatively few nodes of lower (crustal) density, respect to the mantle, cannot shift the average density by much.
-The consequence is that deep crustal keels result in large density contrast (against the reference), thus large forward modelled gravity corrections.
+Since the reference density model (Fig.~\ref{fig:SigIs:Ref_ak135}) is based on the average densities of the input model, a rule-of-thumb for interpreting this result is that any crustal mass under that average depth results in a negative crustal correction.
+This simple interpretation disregards lateral variations in density, which are the reason for the negative crustal signal even in some oceanic areas, where LITHO1.0 prescribes less than average densities.
+
+Compared to the average density (shell-wise), localised crustal thickening is an outlier respect to the average of the deeper reference shells (e.g. below \SI{50}{\kilo \metre}) -- therefore, relatively few nodes of crustal density, lower respect to the mantle, cannot shift the average density by much.
+The consequence is that deep crustal keels result in large density contrast, thus large forward modelled gravity corrections.
 To preserve clarity in the colour-scale representation of less extreme values (i.e. those in the \num{-400} to \SI[retain-explicit-plus]{+79}{mGal} range), the range in the top map of Fig.~\ref{fig:SigIs:Res:CRUST} is clipped at \SI{-700}{mGal}.
 The full range is plotted in Fig.~\ref{fig:SigIs:Res:CRUST_NonTrim}, with a different colour map.
 
-A bi-modal distribution, superposition of an ocean and a continent member, can be identified at least qualitatively.
+A bi-modal distribution, superposition of an ocean and a continent member, can be identified - the continent distribution showing a much wider distribution.
 The gravity effect ($g_z$) in all grid-nodes over continents is consistently negative.
-Over oceans are still negative, at about \SI{-70}{mGal}
+Over oceans, part of the signal is positive.
+Fig.~\ref{fig:} shows an histogram of the crustal $g_z$ effect with above-sea-level and below-sea-level nodes separated.
+Albeit a degree of mixing between oceanic and continental masses is unavoidable, the two aforementioned terms are evident (average and standard deviation, oceans: $\overline{g_z}$ \SI{-92.2}{mGal}, $\sigma(g_z)$ \SI{87.5}{mGal}; continents: $\overline{g_z}$ \SI{-406.9}{mGal}, $\sigma(g_z)$ \SI{179.2}{mGal}).
 
 % perché ho negativo in oceani?
 % perché ho densità CRUST3 minori di media a quota CRUST3

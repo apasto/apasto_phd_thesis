@@ -114,3 +114,18 @@
 
 \input{./../common/hyperref_biblatex} % link on whole citation (only on year otherwise)
 
+% subappendix "appendices" header in toc
+% see https://tex.stackexchange.com/a/120723
+\AtBeginEnvironment{subappendices}{%
+% \chapter*{Appendix} % optional: "Appendix" chapter heading
+\addcontentsline{toc}{chapter}{Appendices}
+%\counterwithin{figure}{section} % optional: section specific counters
+%\counterwithin{table}{section}
+}
+
+% if section specific counters are on, they need to be reset after subappendix ends
+% see https://tex.stackexchange.com/a/407185
+% \AtEndEnvironment{subappendices}{%
+% \counterwithout{figure}{section}
+% \counterwithout{table}{section}
+% }

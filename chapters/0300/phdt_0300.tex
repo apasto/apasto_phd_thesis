@@ -975,12 +975,12 @@ Note that the average thickness of the whole crust in the input model is equal t
 Since the reference density model (Fig.~\ref{fig:SigIs:Ref_ak135}) is based on the average densities of the input model, a rule-of-thumb for interpreting this result is that any crustal mass under that average depth results in a negative crustal correction.
 This simple interpretation disregards lateral variations in density, which are the reason for the negative crustal signal even in some oceanic areas, where LITHO1.0 prescribes less than average densities.
 
-Compared to the average density (shell-wise), localised crustal thickening is an outlier respect to the average of the deeper reference shells (e.g. below \SI{50}{\kilo \metre}) -- therefore, relatively few nodes of crustal density, lower respect to the mantle, cannot shift the average density by much.
+Compared to the average density (shell-wise), localised crustal thickening is an outlier respect to the average of the deeper reference shells (e.g. below \SI{50}{\kilo \metre}) -- therefore, relatively few nodes with crustal density at high depths cannot shift the average density of deep shells by much.
 The consequence is that deep crustal keels result in large density contrast, thus large forward modelled gravity corrections.
 To preserve clarity in the colour-scale representation of less extreme values (i.e. those in the \num{-400} to \SI[retain-explicit-plus]{+79}{mGal} range), the range in the top map of Fig.~\ref{fig:SigIs:Res:CRUST} is clipped at \SI{-700}{mGal}.
 The full range is plotted in Fig.~\ref{fig:SigIs:Res:CRUST_NonTrim}, with a different colour map.
 
-A bi-modal distribution, superposition of an ocean and a continent member, can be identified - the continent distribution showing a much wider distribution.
+A bi-modal distribution, superposition of an ocean and a continent member, can be identified - the continent distribution showing a much wider dispersion.
 The gravity effect ($g_z$) in all grid-nodes over continents is consistently negative.
 Over oceans, part of the signal is positive.
 Fig.~\ref{fig:} shows an histogram of the crustal $g_z$ effect with above-sea-level and below-sea-level nodes separated.
@@ -998,14 +998,39 @@ The \textit{whole-crust corrected NETC} -- the NETC disturbance refined for the 
 %assuming a perfect model of known-masses
 % interpretazione
 
+\FloatBarrier
 
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \includegraphics[
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        width=0.85\textwidth
+                    ]{maps/OC_histograms/FWD_SedsT.pdf}\\
+                    \midrule
+                    \includegraphics[
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        width=0.85\textwidth
+                    ]{maps/OC_histograms/FWD_CrustT.pdf}\\
+                    \midrule
+                    \includegraphics[
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        width=0.85\textwidth
+                    ]{maps/OC_histograms/FWD_LIDT.pdf}\\
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[Temp caption.]{Temp caption.}
+    \label{fig:SigIs:Res:HistFwdCrust}
+\end{figure}
 
-
+\FloatBarrier
 
 \subsection{Spectral domain comparison}
 \label{ss:SigIs:Results:Spectral}
 
-\FloatBarrier
+
 
 \subsection{Propagated uncertainty}
 \label{ss:SigIs:Results:Uncertainty}

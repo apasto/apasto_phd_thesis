@@ -1006,23 +1006,72 @@ The \textit{whole-crust corrected NETC} -- the NETC disturbance refined for the 
             \begin{tabular}{c}
                 \includegraphics[
                         clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
-                        width=0.85\textwidth
+                        width=0.8\textwidth
                     ]{maps/OC_histograms/FWD_SedsT.pdf}\\
                     \midrule
                     \includegraphics[
                         clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
-                        width=0.85\textwidth
+                        width=0.8\textwidth
                     ]{maps/OC_histograms/FWD_CrustT.pdf}\\
                     \midrule
                     \includegraphics[
                         clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
-                        width=0.85\textwidth
+                        width=0.8\textwidth
                     ]{maps/OC_histograms/FWD_LIDT.pdf}\\
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[Temp caption.]{Temp caption.}
+    \caption[Histograms of the SEDS, CRUST, LID corrections.]{
+        Histograms of the forward modelled effect of sediments (`{SEDS}', Fig.~\ref{fig:SigIs:Res:SEDS},~top), consolidated crust (`{cons.~CRUST}', Fig.~\ref{fig:SigIs:Res:CRUST},~top), and lithospheric mantle (`{LID}', Fig.~\ref{fig:SigIs:Res:LID},~top).
+        Nodes over oceans (blue) and continents (orange) are counted separately. Their bars are plotted stacked.
+    }
     \label{fig:SigIs:Res:HistFwdCrust}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \includegraphics[
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        width=0.8\textwidth
+                    ]{maps/OC_histograms/GGMin.pdf}\\
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[Histogram of the disturbance from the input global gravity model.]{
+        Histograms of gravity disturbance of the input global gravity model: the combined, satellite-only, GOCO06s model \parencite{Kvas_GOCO06s_dataset}.
+        Nodes over oceans (blue) and continents (orange) are counted separately. Their bars are plotted stacked.
+    }
+    \label{fig:SigIs:Res:HistGGMin}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \includegraphics[
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        width=0.8\textwidth
+                    ]{maps/OC_histograms/BG.pdf}\\
+                    \midrule
+                    \includegraphics[
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        width=0.8\textwidth
+                    ]{maps/OC_histograms/BG_ShallowC.pdf}\\
+                    \midrule
+                    \includegraphics[
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        width=0.8\textwidth
+                    ]{maps/OC_histograms/BG_DeepC.pdf}\\
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[Histograms of the NETC disturbances, including the first \num{80} and \SI{310}{\kilo \metre} corrections.]{
+        Histograms of the NETC disturbances, from the top plot: after the simple terrain correction (Fig.~\ref{fig:SigIs:Res:GGM_BG} bottom), after correcting for the first \SI{80}{\kilo \metre} (Fig.~\ref{fig:SigIs:Res:Shallow} bottom), after correcting for the first \SI{310}{\kilo \metre} (Fig.~\ref{fig:SigIs:Res:Deep} bottom).
+        Nodes over oceans (blue) and continents (orange) are counted separately. Their bars are plotted stacked.
+    }
+    \label{fig:SigIs:Res:HistBGs}
 \end{figure}
 
 \FloatBarrier
@@ -1053,6 +1102,35 @@ The \textit{whole-crust corrected NETC} -- the NETC disturbance refined for the 
     \end{adjustbox}
     \caption[Propagated uncertainties: maps of standard deviation in each node for sediments, crust, and lithospheric mantle.]{Propagated uncertainties of sediments (SEDS), consolidated crust (CRUST), and lithospheric mantle (LID), expressed with the standard deviation ($\sigma$) in each grid-point in the ensemble of forward-modelled models in the Monte Carlo uncertainty propagation scheme.}
     \label{fig:SigIs:Res:UncertaintyMaps}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \includegraphics[
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        width=0.8\textwidth
+                    ]{maps/OC_histograms/UNC_Seds.pdf}\\
+                    \midrule
+                    \includegraphics[
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        width=0.8\textwidth
+                    ]{maps/OC_histograms/UNC_Crust.pdf}\\
+                    \midrule
+                    \includegraphics[
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        width=0.8\textwidth
+                    ]{maps/OC_histograms/UNC_LID.pdf}\\
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[Histograms of the propagated uncertainties, for SEDS, CRUST, and LID.]{
+        Histograms of the propagated uncertainties ($\sigma$) of the corrections: sediments (`{SEDS}'), consolidated crust (`{CRUST}'), and lithospheric mantle (`{LID}').
+        The respective maps are shown in Fig.~\ref{fig:SigIs:Res:UncertaintyMaps}.
+        Nodes over oceans (blue) and continents (orange) are counted separately. Their bars are plotted stacked.
+    }
+    \label{fig:SigIs:Res:HistBGs}
 \end{figure}
 
 \FloatBarrier

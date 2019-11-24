@@ -129,10 +129,8 @@ In the unlikely case we had a perfect density model for these above-Moho masses,
 The work by \textcite{Tenzer2009} is an example of a similar application: they compiled and presented a set of global maps of the gravity disturbance (obtained from the EGM08 global gravity model, \cite{Pavlis2012EGM2008})-- corrected for the {CRUST2.0} model \parencite{Bassin2000Crust20}.
 They also provided a crust reduction not depending on a-priori density models, using a decorrelation analysis between the crust--reduced disturbance and the Moho undulations.
 A further development of that analysis is presented in \textcite{Tenzer2012contrast}.
-
 \Textcite{Tenzer2009} also provided a global map of ellipsoid-- versus geoid--referenced topography and bathymetry corrected gravity disturbance.
 Differences reach upwards to $\pm~14$~\si{\milli Gal} over continents, with a morphology highly correlated to geoidal undulations, as expected.
-
 The methodology of \textcite{Tenzer2009} is the basis of the later work by \textcite{Tenzer2019}, which extended the forward modelling from {CRUST2.0} to {LITHO1.0} \parencite{Pasyanos2014}.
 
 In crustal thickness modelling, signal isolation is obtained by concurrently correcting for masses in the upper crust (sediments included) and in the upper mantle ---as it has been done to obtain the global model {GEMMA} \parencites{Reguzzoni2013}{Reguzzoni2015}.
@@ -442,7 +440,7 @@ The following physical properties are provided in each of the layers, for each o
 In each node, the properties inside each layer are constant in the radial direction.
 
 Thickness and properties of the crust and lithospheric mantle in {LITHO1.0} are the result of a targeted--grid--search based inversion of surface wave dispersion maps.
-Their starting model is based on the data in {CRUST1.0} \parencite{Laske2012Crust10}, an updated version of the sediment model by \textcite{Laske1997_sediments}, an updated crustal thickness from undisclosed 1D seismic profiles (active source and receiver function studies), the lithospheric thickness by \textcite{Pasyanos2005}, the upper mantle velocity from {LLNL-G3Dv3} \parencite{Simmons2012_LLNL}, pure--gravity based crustal thickness in Antarctica \parencite{Block2009} and other locations lacking seismic data (undisclosed).
+Their starting model is based on the data in {CRUST1.0} \parencite{Laske2012Crust10}, an updated version of the sediment model by \textcite{Laske1997_sediments}, an updated crustal thickness from undisclosed 1D seismic profiles (active source and receiver function studies), the lithospheric thickness by \textcite{Pasyanos2005}, the upper mantle velocity from {LLNL-G3Dv3} \parencite{Simmons2012_LLNL}, pure--gravity based crustal thickness in Antarctica \parencite{Block2009} and in other locations lacking seismic data (undisclosed).
 The lithospheric thickness in \textcite{Pasyanos2005} was in turn constrained by continental heat--flow based estimates by \textcite{Artemieva2006} and oceanic lithospheric cooling \parencite{Turcotte1982_geodynamics}.
 
 \begin{table}
@@ -462,7 +460,7 @@ The lithospheric thickness in \textcite{Pasyanos2005} was in turn constrained by
 
 \begin{table}
     \caption[Thickness and density of grouped layers from {LITHO1.0}.]{
-        Average and standard deviation of thickness and density of grouped layers from {LITHO1.0} \parencite{Pasyanos2014}. See Tab.~\ref{tab:LithoLayers} for the non aggregated layers and notes on computation. Standard deviations are shown in parentheses.
+        Average and standard deviation of thickness and density of grouped layers from {LITHO1.0} \parencite{Pasyanos2014}. See Tab.~\ref{tab:LithoLayers} for the non-grouped layers and notes on computation. Standard deviations ($1 \cdot \sigma$) are shown in parentheses.
     }
     \begin{adjustbox}{center}
         \input{tab_LithoLayersGroup.tex}
@@ -483,7 +481,7 @@ The recent global crustal thickness by \textcite{Szwillus2019} was also consider
 Nevertheless, while {LITHO1.0} is lacking in those two aspects, it was still adopted as our reference density model, owing to:
 (1) its integration with a global sediment thickness model;
 (2) its seismic multi--observable nature, which takes advantage of the sensitivity to discontinuities of controlled--source and receiver functions, from prior models, and the sensitivity to ``bulk Earth properties'' ---from which density can be derived--- of surface waves;
-(3) its relative independence from gravity data: aiming at preventing any circular reference (i.e. correcting gravity data with models which were inverted from gravity), full independence would be ideal. While {LITHO1.0} is not free from local gravity--based \textit{fill-ins} (Antarctica and other undisclosed locations), the inversion starting models and inversion strategy of \textcite{Pasyanos2014} is predominantly based on seismic data.
+(3) its relative independence from gravity data: aiming at preventing any circular reference (i.e. correcting gravity data with models which were inverted from gravity), full independence would be ideal. While {LITHO1.0} is not free from local gravity--based \textit{fill-ins} (in Antarctica and other undisclosed locations), the inversion starting models and inversion strategy of \textcite{Pasyanos2014} is predominantly based on seismic data.
 It is for this particular reason that multi--observable models that include global gravity models among their input data were left out, such as the recent \textit{LithoRef18} model \parencite{Afonso2019}.
 
 In summary, {LITHO1.0} is a reasonable compromise model, fit for this methodological test, albeit affected by the aforementioned pitfalls.
@@ -498,11 +496,11 @@ The extraction of a velocity-converted density in the LID is the subject of the 
 Regarding data uncertainty, no space--wise error information is provided, neither any information on data quality (e.g. distance to data or sources of the starting model).
 These experiments therefore resorted to a simplified error model, which is described in section~\ref{s:SigIs:Impl}.
 
-The water and ice layers were discarded, since {Earth2014} \parencite{Hirt2015} relies on updated and revised data.
+The `water' and `ice' layers were discarded, since {Earth2014} \parencite{Hirt2015} relies on updated and revised data.
 Therefore, the top of the solid--Earth layers of {LITHO1.0} (starting from the first sedimentary layer) has been re-referenced to {Earth2014} bedrock (\texttt{BED} surface, see Tab.~\ref{tab:E2014fwdSurfaces} and \cite{Hirt2015_Earth2014readme}).
 
 As already mentioned for the terrain correction, this data also needs to be gridded in a format compatible with the chosen gravity forward modelling: an equally spaced $n \times 2n$ grid, consistent with \textcite{Driscoll1994} sampling theorem.
-Triangulation from the original tessellated data to geographic coordinates was performed using the {Stripy} package \parencites{Moresi2019}{Moresi2019_zenodo} and {litho1pt0} \parencite{Moresi2019_litho1pt0}, a Python interface to {LITHO1.0}.
+Triangulation from the original tessellated data to geographic coordinates was performed using the \textit{Stripy} package \parencites{Moresi2019}{Moresi2019_zenodo} and \textit{litho1pt0} \parencite{Moresi2019_litho1pt0}, a Python interface to {LITHO1.0}.
 
 \subsection{Velocity--density conversion in the lithospheric mantle}
 \label{ss:SigIs:InModels:SCLM}
@@ -606,7 +604,7 @@ Conversion results, condensed after slicing using a thickness-weighted average, 
 
 It must be noted that this conversion strategy was set up to enable propagation of lithospheric mantle inhomogeneities, as sensed by a model that provides only velocities.
 I deemed a constant velocity-to-density scaling factor as an excessive simplification, since it would have ignored the lateral variations due to tectonothermal ages and the radial ones due to pressure dependence.
-Still, since the main objective of these experiments is to assess an uncertainty modelling method, comprehensive thermochemical modelling was left out.
+Still, since the main objective of these experiments is to assess a modelling method for global reductions and propagation of their uncertainties, comprehensive thermochemical modelling was left out.
 
 \subsection{Reference densities: layered normal Earth}
 \label{ss:SigIs:InModels:REF}
@@ -802,7 +800,8 @@ An histogram accompanies each map, to provide a qualitative assessment of the da
 The vertical scale, which is omitted for clarity, represents linear bin counts, after cosine-of-latitude weighting.
 A global equal-area Mollweide projection was adopted in all maps.
 
-\paragraph{List of the presented maps}
+\newpage
+\paragraph*{List of the presented maps}
 \begin{itemize}
     \item Global gravity model: the gravity disturbance from the combined satellite-only GOCO06s model \parencite{Kvas_GOCO06s_dataset}. \textit{[Fig.~\ref{fig:SigIs:Res:GGM_BG}, top]}
     \item NETC disturbance, obtained by applying the terrain correction (Fig.~\ref{fig:E2014fwd_out_TC_g_rad}) to the global gravity model. \textit{[Fig.~\ref{fig:SigIs:Res:GGM_BG}, bottom]}
@@ -818,7 +817,7 @@ A global equal-area Mollweide projection was adopted in all maps.
         \fbox{
             \begin{tabular}{c}
                 \begin{overpic}[width=\textwidth]{maps/sig_isol/GGMin.pdf}
-                    \put (0,65) {\textsf{\textbf{GGM}}}
+                    \put (0,65) {\textsf{\textbf{GGM $\bm{\delta g}$}}}
                 \end{overpic} \\
                 \begin{overpic}[width=\textwidth]{maps/sig_isol/BG.pdf}
                     \put (0,65) {\textsf{\textbf{NETC}}}

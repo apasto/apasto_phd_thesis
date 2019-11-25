@@ -26,31 +26,19 @@ These kind of models, together with other geophysical constraints, have already 
 
 This basis provided the motivation to perform an assessment on how satellite gravity data can contribute to thermal modelling.
 I devise and test a strategy to constrain the crustal radioactive heat production (RHP) using gravity-derived Moho depths and the available heat flow data \parencite{globalHF}, with the aim of overcoming the issues with heat flow interpolation over areas devoid of measurements.
-\\
-
-Following an introductory chapter, in chapter~2 of this thesis I deal with the details and documentation of the ad-hoc thermal forward model.
-Its main component is a 3D central-finite-differences solver for the steady-state heat diffusion equation in rectangularly discretised domains, with non-uniform heat production and conductivity.
-Over a standard `box` configuration, it allows for non-flat constant temperature (Dirichlet) boundaries: topography and isotherm lithosphere base, for these purposes.
-It is complemented by a set of functions to translate a plain-text layered definition file of the lithosphere model to a volume parametrised in terms of thermal conductivity, heat production, density, and grid definitions.
-Temperature, pressure, and depth-dependency of the input parameters can be defined.
-The adopted rectangular discretisation allows for directly calling spatial-domain gravity forward modelling (prism-defined, thus completely coherent with the model elements).
-Particular attention was paid to the model efficiency, chiefly in building the coefficient matrix of the finite differences.
-This allowed to employ it in an iterative subsequent-substitution parameter fitting scheme, which is the basis of the aforementioned crustal-thickness based RHP inversion.
-\\
-
-The application part involved a gravity data reduction strategy, content of chapter~3, to isolate the Moho undulation signal, and the above ad-hoc thermal forward model.
+This strategy relies on gravity data reduction, the content of chapter~\ref{c:SigIs}, in order to isolate the Moho undulation signal, and on a thermal forward model, which was developed ad-hoc.
 Moho signal isolation is part of the general topic of signal separation in the observed static gravity field, i.e. stripping the effect of an assumed mass distribution to isolate an anomalous potential, usually attributed to the enquired phenomenon \parencites{Mikuska2007}{Sjoberg2013}{Aitken2015}[][, to name a few]{Tenzer2019}.
 Uncertainties in the a-priori masses, such as unmodelled spatial variability in density, accumulate in the reductions and are propagated to the reduced data and to the inversion results.
 Incomplete and inexact geological knowledge cannot be avoided, thus a perfect data reduction is unrealistic.
 
 Therefore, an uncertainty-aware signal isolation process, i.e.~a process providing error estimates alongside its reduced gravity data, is a necessary step in estimating confidence of the inversion results, in statistical terms.
-In chapter~3 of this dissertation I deal with this issue, presenting the results of a Monte Carlo error propagation \parencite{Aster2018} of a global reduction for lithospheric masses (from the terrain correction to the lithosphere-asthenosphere boundary).
+In chapter~\ref{c:SigIs} of this dissertation I deal with this issue, presenting the results of a Monte Carlo error propagation \parencite{Aster2018} of a global reduction for lithospheric masses (from the terrain correction to the lithosphere-asthenosphere boundary).
 The experiments results are preceded by a brief introduction on gravity corrections (revolving on the ellipsoid-referenced disturbances defined by \cite{Vajda2008}) and on the adopted spectral-domain forward modelling method (a layer-wise arrangement of the code by \cite{Wieczorek2018}).
 The chapter is complemented by a series of validation tests against spatial-domain forward modelling of test mass distributions.
 The tested strategy, albeit relying on a simplified uniform model of error distribution, proved fit for purpose at the target resolution (maximum degree and order of 280, aimed at data reduction of satellite-only models) and may be easily scaled to more complex schemes.
 \\
 
-An application test in Central-Eastern europe, across the Trans-European Suture Zone is presented in the last chapter.
+An application test in Central-Eastern europe, across the Trans-European Suture Zone is presented in chapter~\ref{c:ThermAppl}.
 It integrates a combined satellite-only GGM, data reductions including a mixed spatial- and spectral-domain forward modelling scheme (to include the regional sediment thickness model by \cite{Tesauro2008} in the global reductions), and available heat flow measurements \parencite{globalHF}.
 It resulted in a 3D lithospheric model of temperature and thermal parameters, fitting available data and providing added information respect to the structure of the lithosphere.
 The modelled thermal regime is coherent with what geological inference expects and with other models of the area, keeping into account the limitations of a method which relies on as little a-priori data as possible, by design.
@@ -60,10 +48,14 @@ Since no prior information on density-to-RHP relationship was included, the outp
 Albeit complicated by wide uncertainties, a satisfying overlap between the two data fits was observed.
 \\
 
+An appendix (chapter~\ref{c:ThermModel}) is dedicated to the description of the ad-hoc thermal forward model.
+Its main component is a 3D central-finite-differences solver for the steady-state heat diffusion equation in rectangularly discretised domains, with non-uniform heat production and conductivity.
+Over a standard `box` configuration, it allows for non-flat constant temperature (Dirichlet) boundaries: topography and isotherm lithosphere base, for these purposes.
+It is complemented by a set of functions to translate a plain-text layered definition file of the lithosphere model to a volume parametrised in terms of thermal conductivity, heat production, density, and grid definitions.
+Temperature, pressure, and depth-dependency of the input parameters can be defined.
+The adopted rectangular discretisation allows for directly calling spatial-domain gravity forward modelling (prism-defined, thus completely coherent with the model elements).
+Particular attention was paid to the model efficiency, chiefly in building the coefficient matrix of the finite differences.
+This allowed to employ it in an iterative subsequent-substitution parameter fitting scheme, on which the aforementioned crustal-thickness based RHP inversion is based on.
+
 \nocite{Pastorutti2019}
-
-
-
-
-
 

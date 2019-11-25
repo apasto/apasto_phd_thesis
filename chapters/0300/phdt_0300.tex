@@ -995,23 +995,43 @@ This mis-compensation results in a significant bias towards negative values, whi
 This is the rationale for the ``up to a maximum depth'' shell-wise corrections (Fig.~\ref{fig:SigIs:Res:Shallow} and \ref{fig:SigIs:Res:Deep}), discussed in the following section~\ref{sss:SigIs:Results:Maps:Shellwise}.
 
 The \textit{whole-crust corrected NETC} -- the NETC disturbance refined for the sedimentary and crustal masses -- is shown in the bottom map of Fig.~\ref{fig:SigIs:Res:CRUST}.
-
-The local minima of the NETC in areas of high topography are over-compensated by the crustal correction, resulting in the largest values in the distribution (above about \SI[retain-explicit-plus]{+700}{mGal}).
-Quality assessment of the input data is beyond the objectives of these tests.
-Anyway, this over-compensation, which is a deviation from isostatic equilibrium, can be attributed to two likely causes: either the densities and/or thickness estimated in {LITHO1.0} are erroneous, or isostatic compensation is reached at depths higher than the crust-mantle boundary.
-% qui utile citazione [!!!] [!!!] [!!!]
-% \parencites{Martinec1994}{Bagherbandi2012}
-Without excessive speculation, the actual situation can be expected to be a superposition of the two `culprits': part a ``known-mass model omission error'', part local deviations from general models.
+The local minima of the NETC in areas of high topography are over-compensated by the crustal correction (we may say `over-corrected'), resulting in the largest values in the distribution (above about \SI[retain-explicit-plus]{+700}{mGal}).
+Quality assessment of {LITHO1.0} data is beyond the objectives of these tests, as is inversion of the input gravity models to improve the data quality -- which has been shown to provide promising results \parencite[see e.g. ][]{Sjoberg2011}.
+Anyway, this over-correction results in a residual-NETC that deviates from what could be expected from isostatic equilibrium.
+Such a postive residual may arise due to two different sources: the densities and/or thickness provided in {LITHO1.0} may be erroneous, or the observed gravity signal and the estimated depth of boundaries (such as the Moho) may be influenced by non-isostatic effects \parencite[as defined by ][]{Bagherbandi2012}.
+Isostatic compensation may be also reached at depths higher than the crust-mantle boundary \parencite{Martinec1994}.
+Without excessive speculation, the actual situation can be expected to be a superposition of the two `culprits': part a `known-mass-model error', part non-isostatic effects.
+It follows that the better the known-mass-model, the better the assessment of compensation mechanism, and vice versa.
 
 % LID
 \subsubsection{Lithospheric mantle correction}
 \label{sss:SigIs:Results:Maps:LID}
-Lithospheric mantle correction, \textbf{placeholder}.
+The forward-modelled correction for the lithospheric mantle (LID) is shown in Fig.~\ref{fig:SigIs:Res:CRUST}, top.
+The whole range of resulting values is positive, ranging from \num{113} to \SI{762}{mGal}, with a global average of \SI{329}{mGal}.
+This implies that the density of the lithospheric mantle is consistently higher than the average density of the reference slices, at least when evaluated cumulatively.
+The oceans-continents partitioned stacked histogram (bottom plot of Fig.~\ref{fig:SigIs:Res:HistFwdCrust}) highlights the two superimposed distributions: oceans (average \SI{344}{mGal}) and continents (average \SI{288}{mGal}). The latter presents a tail towards positive values, which skews the average, and a mode at around \SI{180}{mGal}.
+A strong degree of mixing between the contribution of continental and oceanic masses can be expected, due to the large footprint of the attraction of deep masses, upward-continued at \SI{10}{\kilo \metre} of ellipsoidal height.
+
+However, no strong ocean-continent dicothomy can be identified, neither in the spatial distribution or in the historgrams: the lithospheric thickness is mostly unrelated to the surface topography, the dominant pattern being instead defined by deep cratonic keels, areas of younger continental lithosphere, and oceans.
+The contribution of the oceanic lithospheric mantle to this correction is small, due to its small relative thickness.
+
+The whole-lithosphere corrected NETC is shown in the bottom map of Fig.~\ref{fig:SigIs:Res:CRUST}.
+The lithospheric mantle correction shifted the average from \SI{537}{mGal} (crust-corrected disturbance) to \SI{209}{mGal}, thus at least partially compensating the large positive residuals of the former.
+However, areas of high topography and thick crustal roots are not accompanied by lithospheric thickening, which instead occurs over cratons.
+Therefore, the higher mountain ranges still account for all the localised values on the high end of the range (more than \SI{600}{mGal}) -- their aforementioned `crustal over-correction' is only partially compensated by the opposed-sign LID correciton.
+
+Cratons all lie towards the negative end of the residual disturbance.
+Cold cratonic keels, denser than average (see the VS-converted density map in Fig.~\ref{fig:SigIs:LID_VS-density_map}), should result in a positive gravity signal that removes the cratonic `signature' in the lithosphere-free NETC disturbance -- assuming there is no influence on the sub-lithospheric densities.
+This could also be an `over-correction', in this case biased towards too high densities assigned to the lithospheric mantle underneath cratons.
 
 % shallow and deep
 \subsubsection{Shell-wise corrections}
 \label{sss:SigIs:Results:Maps:Shellwise}
-Shell-wise corrections, \textbf{placeholder}.
+
+% richiamo al fatto che 3300 è riferimento
+
+% commento istogrammi
+% che differenza tra shallow e deep?
 
 % differenza che permane: la maggiorparte (10 mGal circa) arriva da primo strato (2670 vs 2681)
 % metto tabella delle medie per ogni shell, ce l'ho quasi pronta!

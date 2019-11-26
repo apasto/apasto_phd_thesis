@@ -1061,7 +1061,7 @@ Such a large, consistent bias is likely arising from the assumption of the const
         \fbox{
             \begin{tabular}{c}
                 \includegraphics[
-                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm,
                         width=0.8\textwidth
                     ]{maps/OC_histograms/GGMin.pdf}\\
             \end{tabular}
@@ -1081,17 +1081,17 @@ Such a large, consistent bias is likely arising from the assumption of the const
         \fbox{
             \begin{tabular}{c}
                 \includegraphics[
-                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm,
                         width=0.8\textwidth
                     ]{maps/OC_histograms/FWD_SedsT.pdf}\\
                     \midrule
                     \includegraphics[
-                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm,
                         width=0.8\textwidth
                     ]{maps/OC_histograms/FWD_CrustT.pdf}\\
                     \midrule
                     \includegraphics[
-                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm,
                         width=0.8\textwidth
                     ]{maps/OC_histograms/FWD_LIDT.pdf}\\
             \end{tabular}
@@ -1109,17 +1109,17 @@ Such a large, consistent bias is likely arising from the assumption of the const
         \fbox{
             \begin{tabular}{c}
                 \includegraphics[
-                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm,
                         width=0.8\textwidth
                     ]{maps/OC_histograms/BG.pdf}\\
                     \midrule
                     \includegraphics[
-                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm,
                         width=0.8\textwidth
                     ]{maps/OC_histograms/BG_ShallowC.pdf}\\
                     \midrule
                     \includegraphics[
-                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm
+                        clip, trim=0.9cm 0.65cm 1.2cm 0.9cm,
                         width=0.8\textwidth
                     ]{maps/OC_histograms/BG_DeepC.pdf}\\
             \end{tabular}
@@ -1137,7 +1137,67 @@ Such a large, consistent bias is likely arising from the assumption of the const
 \subsection{Spectral domain comparison}
 \label{ss:SigIs:Results:Spectral}
 
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{%
+        \includegraphics[
+                clip, trim=0.2cm 0.35cm 0.1cm 0.1cm,
+                width=1.2\textwidth
+            ]{maps/spectra/DegVar_ALL.pdf}}
+    \end{adjustbox}
+    \caption[Degree variance spectra of the SH coefficients for the GGM and the forward modelled corrections.]{
+        Degree variance spectra of the spherical harmonics coefficients (for gravity) of:
+        \textbf{{GGM}:}~$\delta g$ of the global gravity model {GOCO06s},
+        \textbf{{TC}:}~NETC terrain correction, including ice and water stripping,
+        \textbf{{SEDS}:}~sediment layers effect,
+        \textbf{{CRUST}:}~consolidated crust layers effect,
+        \textbf{{LID}:}~lithospheric mantle effect.
+        The half wavelength scale is provided for the Earth surface, along the equator.}
+    \label{fig:SigIs:Spec:DegVarAll}
+\end{figure}
 
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{%
+        \includegraphics[
+                clip, trim=0.2cm 0.35cm 0.1cm 0.1cm,
+                width=1.2\textwidth
+            ]{maps/spectra/DegVar_ShallowDeep.pdf}}
+    \end{adjustbox}
+    \caption[Degree variance spectra of the SH coefficients for the two shell-wise reductions.]{
+        Degree variance spectra of the spherical harmonics coefficients (for gravity) of the two shell-wise reductions (shown in Fig.~\ref{fig:SigIs:Res:Shallow} and~\ref{fig:SigIs:Res:Deep}, top).
+        \textbf{{GGM}:}~$\delta g$ of the global gravity model {GOCO06s},
+        \textbf{{TC}:}~NETC terrain correction, including ice and water stripping.
+        }
+    \label{fig:SigIs:Spec:DegVarSD}
+\end{figure}
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \fbox{
+            \begin{tabular}{c}
+                \includegraphics[
+                     clip, trim=0.2cm 0.35cm 0.1cm 0.1cm,
+                     width=1.2\textwidth
+                 ]{maps/spectra/XCorr_sep.pdf}\\
+                \includegraphics[
+                    clip, trim=0.2cm 0.35cm 0.1cm 7.5cm,
+                    width=1.2\textwidth
+                ]{maps/spectra/XCorr_SD.pdf}\\
+            \end{tabular}
+        }
+    \end{adjustbox}
+    \caption[Temp caption.]{
+        Degree correlation coefficients (\textbf{CC}, $S_{fg}$ of Eq.~\ref{eq:DegVarCross}) between the $\delta g$ of the global gravity model {GOCO06s} and the forward-modelled corrections.
+        Top panel: terrain correction.
+        Middle panel:
+        \textbf{{SEDS}:} sedimentary layers,
+        \textbf{{whole CRUST}:} consolidated crust and sedimentary layers,
+        \textbf{{whole LITHO}:} whole crust and lithospheric mantle.
+        Bottom panel: shell-wise correction, up to \num{80} and \SI{310}{\kilo \metre}, including fill-in asthenosphere.
+        }
+    \label{fig:SigIs:Res:XCorr}
+\end{figure}
 
 \subsection{Propagated uncertainty}
 \label{ss:SigIs:Results:Uncertainty}
@@ -1190,6 +1250,18 @@ Such a large, consistent bias is likely arising from the assumption of the const
     }
     \label{fig:SigIs:Res:HistUncertainty}
 \end{figure}
+
+% \begin{figure}
+%     \begin{adjustbox}{center}
+%         \fbox{%
+%         \includegraphics[
+%                 clip, trim=0.2cm 0.35cm 0.1cm 0.1cm,
+%                 width=1.2\textwidth
+%             ]{maps/spectra/DegVar_UNC.pdf}}
+%     \end{adjustbox}
+%     \caption[Temp caption.]{Temp caption.}
+%     \label{fig:SigIs:Spec:DegVarUNC}
+% \end{figure}
 
 \FloatBarrier
 

@@ -3,35 +3,18 @@
 	head={Crustal RHP, heat flow and temperature field in Central Europe}]{Estimating the crustal heat production, surface heat flow and lithospheric temperature field in Central Europe}
 \label{c:ThermAppl}
 
-\section*{Summary}
+\section*{Chapter summary}
 \label{s:Appl:Summary}
-Since the completion of the Gravity field and steady-state Ocean Circulation Explorer mission (GOCE), global gravity models of uniform quality and coverage are available.
-In this chapter, their potential of being useful tools for estimating the thermal structure of the continental lithosphere is assessed, through a real-data test in Central-Eastern Europe, across the Trans-European Suture Zone.
+In this chapter, the potential of a satellite-only global gravity model as a useful tools for estimating the thermal structure of the continental lithosphere is assessed, through a real-data test in Central-Eastern Europe, across the Trans-European Suture Zone.
 Heat flow, measured near the Earth surface, is the result of the superposition of a complex set of contributions, one of them being the heat production occurring in the crust.
 The crust is enriched in radioactive elements respect to the underlying mantle and crustal thickness is an essential parameter in isolating the thermal contribution of the crust.
-Obtaining reliable estimates of crustal thickness through inversion of GOCE-derived gravity models has already proven feasible, especially when weak constraints from other observables are introduced.
-A way to integrate this in a geothermal framework was tested, building a three dimensional, steady state, solid Earth conductive heat transport model, from the lithosphere-asthenosphere boundary to the surface.
+Obtaining reliable estimates of crustal thickness through inversion of GOCE-derived GGMs has already proven feasible, especially when weak constraints from other observables are introduced.
+A way to integrate this in a geothermal framework was tested, building a 3D, steady state, solid Earth conductive heat transport model, from the lithosphere-asthenosphere boundary to the surface.
 This thermal model is coupled with a crust-mantle boundary depth resulting from inverse modelling of gravity, after correcting the gravity model for the effects of topography, far-field isostatic roots and sediments.
 A mixed space- and spectral-domain based forward modelling strategy was employed to ensure full spectral coherency between the limited spectral content of the gravity model and the reductions.
 Deviations from a direct crustal thickness to crustal heat production relationship are accommodated using a subsequent substitution scheme, constrained by surface heat flow measurements, where available.
-The result is a three-dimensional model of the lithosphere characterised in temperature, radiogenic heat, and thermal conductivity.
+The result is a 3D volume of the lithosphere characterised in temperature, radiogenic heat, and thermal conductivity.
 It provides added information respect to the lithospheric structure and sparse heat flow measurements alone, revealing a satisfactory coherence with the geologic features in the area and their controlling effect on the conductive heat transport.
-
-\paragraph*{Foreword.}
-The technique applied in this chapter stems from the thermal model described in the supplementary chapter~\ref{c:ThermModel} and shares part of the strategies devised for the gravity data reduction strategy presented in chapter~\ref{c:SigIs}.
-A set preliminary results was presented as an oral communication at the 2017 EGU General Assembly \parencite{Pastorutti2017_EGUoral}.
-Those first tests, which were applied along a south-north transect from the western Alps to the Upper Rhine Graben, were then extended to the more complex thermal modelling scheme described in this dissertation.
-Afterwards, the iterative radioactive heat production fitting strategy was devised, a test being presented as a poster at 2018 EGU General Assembly \parencite{Pastorutti2018_EGUposter}.
-
-The integrated application, in the form presented in this chapter, was further enhanced with an in depth discussion of its results and of the rationale for the choice of parameters.
-It also benefited of a revised gravity data reduction scheme, developed in parallel with the experiments of chapter~\ref{c:SigIs} and exploiting its results (albeit in a mixed spatial-spectral, regional-global scheme, as described in section~\ref{s:Appl:Grav}).
-This application, edited in a suitable manuscript form, was submitted to Geophysical Journal International on 26~February~2019.
-
-The paper: \citetitle{Pastorutti2019} \parencite{Pastorutti2019} has been accepted for publication in Geophysical Journal International on 25~July~2019, following peer review.
-The paper \textit{version of record} is available online at doi:~\href{https://doi.org/10.1093/gji/ggz344}{10.1093/gji/ggz344}.
-
-As mentioned in the `Data Availability' statement of that paper, the data sets of the results are available as an open data repository (doi:\href{https://doi.org/10.5281/zenodo.3358901}{10.5281/zenodo.3358901}).
-The repository includes: a volume of temperature, pressure, radioactive heat production, thermal conductivity, and density of the lithosphere in the study area; a Matlab/Octave function to extract 2D sections and 1D vertical plots of physical properties from the volume (as shown in Fig.~\ref{fig:AAsection} and \ref{fig:AAsectionCols}); gravity input data and applied reductions; and the inverted Moho depth.
 
 \section{Introduction}
 \label{s:Appl:Intro}
@@ -82,15 +65,15 @@ This lithospheric geometry is overlaid by a remarkable assortment of crustal fea
 These conditions result in a wide range of measured surface heat flow values (see section~\ref{ss:Appl:ThermInput}), ranging from 16 to 195~\si{\milli \watt \per \square \metre} (mean: 57~\si{\milli \watt \per \square \metre}).
 The measurements towards the extremes of this range and short-wavelength variations were attenuated with a spatial-domain filter, since it is expected that they are arising from non-conductive heat transport (e.g. hydrology, shallow melts).
 The regional grid of filtered surface heat flow measurements so obtained (see section~\ref{ss:Appl:DiscTherm:HF}) constitutes the dependent variable of the fitting procedure presented here.
-
-\begin{figure}
+\begin{figure}[hb]
     \begin{adjustbox}{center}
-    \includegraphics[width=1.2\textwidth]{./0400/extents.pdf}
+    \includegraphics[width=1.1\textwidth]{./0400/extents.pdf}
     \end{adjustbox}
     \caption[Gravity modelling: extents of the modelled areas.]{Extents of the modelled areas. \textbf{A)} area outside of which the far-field gravity effect of crustal root (isostatic effect) was modelled. \textbf{B)} computation area for the gravity signal and reductions. \textbf{C)} extents of the inversion results and thermal model (UTM~35N grid).}
 	\label{fig:extents}
 \end{figure}
 
+\FloatBarrier
 \section{Gravity model processing and inversion}
 \label{s:Appl:Grav}
 

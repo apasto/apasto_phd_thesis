@@ -1018,7 +1018,7 @@ The contribution of the oceanic lithospheric mantle to this correction is small,
 The whole-lithosphere corrected NETC is shown in the bottom map of Fig.~\ref{fig:SigIs:Res:CRUST}.
 The lithospheric mantle correction shifted the average from \SI{537}{mGal} (crust-corrected disturbance) to \SI{209}{mGal}, thus at least partially compensating the large positive residuals of the former.
 However, areas of high topography and thick crustal roots are not accompanied by lithospheric thickening, which instead occurs over cratons.
-Therefore, the higher mountain ranges still account for all the localised values on the high end of the range (more than \SI{600}{mGal}) -- their aforementioned `crustal over-correction' is only partially compensated by the opposed-sign LID correciton.
+Therefore, the higher mountain ranges still account for all the localised values on the high end of the range (more than \SI{600}{mGal}) -- their aforementioned `crustal over-correction' is only partially compensated by the opposed-sign LID correction.
 
 Cratons all lie towards the negative end of the residual disturbance.
 Cold cratonic keels, denser than average (see the VS-converted density map in Fig.~\ref{fig:SigIs:LID_VS-density_map}), should result in a positive gravity signal that removes the cratonic `signature' in the lithosphere-free NETC disturbance -- assuming there is no influence on the sub-lithospheric densities.
@@ -1027,16 +1027,34 @@ This could also be an `over-correction', in this case biased towards too high de
 % shallow and deep
 \subsubsection{Shell-wise corrections}
 \label{sss:SigIs:Results:Maps:Shellwise}
+The forward-modelled corrections and the subsequent reductions to the disturbance described until now aim at removing the effect of a known-mass distribution up to a layer boundary: the basement separating sediments and consolidated crust, the Moho separating crust and mantle, the lithosphere-asthenosphere boundary.
 
-% richiamo al fatto che 3300 è riferimento
+Supposing a perfect known-mass model was employed, each resulting corrected gravity disturbance would contain only the attraction of masses below the chosen layer boundary: the corrected volumes above it would be effectively `filled' by a density equal to the one in the \textit{normal Earth} we are reducing our data to.
+Since reference densities are defined using global shell-wise averages, a consequence of this approach is that the forward modelled corrections are biased towards the modelled masses (e.g. the lower density crust), therefore the corrected gravity disturbance is biased towards the unmodelled masses (e.g. the higher density asthenosphere under oceans, at depths occupied by crust elsewhere).
 
-% commento istogrammi
-% che differenza tra shallow e deep?
+By forward-modelling masses up to a maximum depth, instead of a undulating layer boundary, zero-average corrections are obtained (provided that reference densities are equal to the global average density in the reference shells).
+This is achieved by summing the separate gravity contribution of layers in slices up to a chosen deepest shell.
+This is easily implemented, since the innermost iteration of forward modelling already occurs, for each layer, in separated layer `slices' (as described in section~\ref{ss:SigIs:InModels:REF}).
+A `reference asthenosphere' (\SI{3300}{\kilo \gram \per \cubic \metre}) fills in the non-modelled volume (i.e. not provided in {LITHO1.0}) between the bottom of the lithosphere and the chosen maximum depth.
+As previously described, it was also accounted for when calculating the average densities in the reference shells.
 
-% differenza che permane: la maggiorparte (10 mGal circa) arriva da primo strato (2670 vs 2681)
-% metto tabella delle medie per ogni shell, ce l'ho quasi pronta!
+Two shell-wise correction and corrected NETC are provided: a `shallow' one up to \SI{80}{\kilo \metre}, in Fig.~\ref{fig:SigIs:Res:Shallow}, and a `deep' one up to \SI{310}{\kilo \metre}, in Fig.~\ref{fig:SigIs:Res:Deep}.
+The former contains all crustal masses, and part of the lithospheric mantle and reference asthenosphere. The latter also covers all the lithospheric mantle.
 
-\FloatBarrier
+Both the forward-modelled corrections present consistently positive values over oceans, which where absent in previous figures.
+The average of forward-modelled correction is offset from zero (\SI[retain-explicit-plus]{+11.32}{mGal} and \SI[retain-explicit-plus]{+13.24}{mGal}, respectively).
+The largest contribution comes from the first slice (topography to \SI{10}{\kilo \metre} depth), which accounts for \SI[retain-explicit-plus]{+10}{mGal}.
+Zero-offsets up to $\pm$\SI{1.5}{mGal} are observed in the other shells.
+
+% The most striking differences in the corrected disturbances are observed over oceans.
+% The first-\SI{80}{\kilo \metre} corrected NETC (Fig.~\ref{fig:SigIs:Res:Shallow}, bottom), compared with crust-corrected NETC (Fig.~\ref{fig:SigIs:Res:CRUST}, bottom), shows less-positive values over oceans (average here: \SI{276.4}{mGal}, crust-only average: \SI{550.5}{mGal}).
+% A similar difference can be observed for the first-\SI{310}{\kilo \metre} corrected NETC, over oceans (average here: \SI{304.8}{mGal}, lithosphere-only average: \SI{205.7}{mGal}).
+
+% risultato quindi rispiecchia maggiormente distribuzione normale del GGMin in ingresso, faccio riferimento a histogram Fig.~\ref{fig:SigIs:Res:HistGGMin}
+
+The global averages of both first-\SI{80}{\kilo \metre} and first-\SI{310}{\kilo \metre} corrected NETC is positive, at \num{307} and \SI{305}{mGal}, respectively.
+This reflects a mass excess, therefore a mass deficit in the modelled corrections.
+Such a large, consistent bias is likely arising from the assumption of the constant \SI{3300}{\kilo \gram} fill-in asthenosphere, lower than commonly adopted Earth reference models (see Fig.~\ref{fig:SigIs:Ref_ak135} for a comparison with \textit{ak135}).
 
 \begin{figure}
     \begin{adjustbox}{center}
@@ -1055,6 +1073,8 @@ This could also be an `over-correction', in this case biased towards too high de
     }
     \label{fig:SigIs:Res:HistGGMin}
 \end{figure}
+
+\FloatBarrier
 
 \begin{figure}
     \begin{adjustbox}{center}

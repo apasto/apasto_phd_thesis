@@ -1056,8 +1056,8 @@ Zero-offsets up to $\pm$\SI{1.5}{mGal} are observed in the other shells.
 
 The global averages of both first-\SI{80}{\kilo \metre} and first-\SI{310}{\kilo \metre} corrected NETC is positive, at \num{307} and \SI{305}{mGal}, respectively.
 Due to the small deviation from zero-average of the applied corrections, this is almost the same average as the constant density `simple' NETC (Fig.~\ref{fig:SigIs:Res:GGM_BG} bottom, \SI{319}{mGal}).
-This reflects a mass excess, thus a mass deficit in the modelled corrections.
-Such a large, consistent bias may be arising from the assumption of the constant \SI{3300}{\kilo \gram} fill-in asthenosphere, lower than commonly adopted Earth reference models (see Fig.~\ref{fig:SigIs:Ref_ak135} for a comparison with \textit{ak135}).
+%This reflects a mass excess, thus a mass deficit in the modelled corrections.
+%Such a large, consistent bias may be arising from the assumption of the constant \SI{3300}{\kilo \gram} fill-in asthenosphere, lower than commonly adopted Earth reference models (see Fig.~\ref{fig:SigIs:Ref_ak135} for a comparison with \textit{ak135}).
 
 \begin{figure}
     \begin{adjustbox}{center}
@@ -1140,6 +1140,16 @@ Such a large, consistent bias may be arising from the assumption of the constant
 \subsection{Spectral domain comparison}
 \label{ss:SigIs:Results:Spectral}
 
+% In order to
+
+% The power spectra of the
+% expressed as degree variances (section~\ref{ss:SigIs:Fwd:Spectrum}, Eq.~\ref{eq:DegVar}) in Fig.~\ref{fig:SigIs:Spec:DegVarAll}
+
+% consistent with
+% monotonically decreasing
+
+% seconda figura: shell-wise
+
 \begin{figure}
     \begin{adjustbox}{center}
         \fbox{%
@@ -1174,6 +1184,24 @@ Such a large, consistent bias may be arising from the assumption of the constant
         }
     \label{fig:SigIs:Spec:DegVarSD}
 \end{figure}
+
+Degree cross-correlation (CC), as expressed in Eq.~\ref{eq:DegVarCross} are commonly employed for spectral cross-validation between gravity models \parencite[e.g.]{Rexer2016} or between gravity models and topography \parencites{Wieczorek2007}{Hirt2012TopoIso}.
+Here, in Fig.~\ref{fig:SigIs:Res:XCorr}, the input GGM disturbance is cross-correlated with the forward-modelled corrections: the NETC terrain correction (top panel); the effect of sediments, the whole crust (sediments and consolidated crust), and the whole lithosphere (whole crust and lithospheric mantle).
+%By doing so, I aimed at
+% how much the reduction signal correlates
+% note: different interpretation than topography
+% also different from isostasy (sempre Hirt2012TopoIso)
+% correlation is not always expected
+% neither it should be interpreted as data quality
+% (perché altrimenti sarebbe tutto correlato con topo)
+% crosta completa: correla con topo? poco
+% termina a SH degree 40, con un CC di 0.3
+% risultato consistente con Hirt2012TopoIso
+% e spazialmente con quanto osservato su mappe
+% sedimenti: 0.3 SH degree 60, maggiore
+% discorso su SEGNO!
+
+
 
 \begin{figure}
     \begin{adjustbox}{center}

@@ -991,7 +991,7 @@ The gravity effect ($g_z$) in all grid-nodes over continents is consistently neg
 Over oceans, part of the signal distribution lies over positive values -- the average there is \SI{-92.19}{mGal} and values are less spread out ($\sigma =$~\SI{87.5}{mGal}).
 Mixing between the modelled signal oceanic and continental masses is unavoidable, due to the effect of distant masses and upward continuation.
 In addition, we must keep in mind that modelling only the effect of the crust neglects the other masses in the same reference shells: the lithospheric mantle and the asthenosphere, of higher density.
-This mis-compensation results in a significant bias towards negative values, which results in a negative global average -- therefore even areas with little to none contribution to the crustal correction are negative-shifted, such as the thin, relatively dense, oceanic crust.
+This mis-compensation results in a significant bias towards negative values, which results in a negative global average -- therefore even areas with little to no contribution to the crustal correction are negative-shifted, such as the thin, relatively dense, oceanic crust.
 This is the rationale for the ``up to a maximum depth'' shell-wise corrections (Fig.~\ref{fig:SigIs:Res:Shallow} and \ref{fig:SigIs:Res:Deep}), discussed in the following section~\ref{sss:SigIs:Results:Maps:Shellwise}.
 
 The \textit{whole-crust corrected NETC} -- the NETC disturbance refined for the sedimentary and crustal masses -- is shown in the bottom map of Fig.~\ref{fig:SigIs:Res:CRUST}.
@@ -1021,8 +1021,10 @@ However, areas of high topography and thick crustal roots are not accompanied by
 Therefore, the higher mountain ranges still account for all the localised values on the high end of the range (more than \SI{600}{mGal}) -- their aforementioned `crustal over-correction' is only partially compensated by the opposed-sign LID correction.
 
 Cratons all lie towards the negative end of the residual disturbance.
-Cold cratonic keels, denser than average (see the VS-converted density map in Fig.~\ref{fig:SigIs:LID_VS-density_map}), should result in a positive gravity signal that removes the cratonic `signature' in the lithosphere-free NETC disturbance -- assuming there is no influence on the sub-lithospheric densities.
+Cold cratonic keels, denser than average (see the V\textsubscript{S}-converted density map in Fig.~\ref{fig:SigIs:LID_VS-density_map}), should result in a positive gravity signal that removes the cratonic `signature' in the lithosphere-free NETC disturbance -- assuming there is no influence on the sub-lithospheric densities.
 This could also be an `over-correction', in this case biased towards too high densities assigned to the lithospheric mantle underneath cratons.
+The mineralogical differences of cratonic lithosphere result in a `compositional signature' \parencite[see e.g.][]{Simmons2010}, which implies sensible petrophyiscal differences, including the velocity to density relationship and the Poisson's ratio \parencite{Guerri2015}.
+Therefore, this over-corrected result suggests that different parameters in the conversion setup (section~\ref{ss:SigIs:InModels:SCLM}), resulting in lower densities, may be required to correctly reduce the gravity signal of cratons.
 
 % shallow and deep
 \subsubsection{Shell-wise corrections}
@@ -1032,7 +1034,7 @@ The forward-modelled corrections and the subsequent reductions to the disturbanc
 Supposing a perfect known-mass model was employed, each resulting corrected gravity disturbance would contain only the attraction of masses below the chosen layer boundary: the corrected volumes above it would be effectively `filled' by a density equal to the one in the \textit{normal Earth} we are reducing our data to.
 Since reference densities are defined using global shell-wise averages, a consequence of this approach is that the forward modelled corrections are biased towards the modelled masses (e.g. the lower density crust), therefore the corrected gravity disturbance is biased towards the unmodelled masses (e.g. the higher density asthenosphere under oceans, at depths occupied by crust elsewhere).
 
-By forward-modelling masses up to a maximum depth, instead of a undulating layer boundary, zero-average corrections are obtained (provided that reference densities are equal to the global average density in the reference shells).
+By forward-modelling masses up to a maximum depth, instead of an undulating layer boundary, zero-average corrections are obtained (provided that reference densities are equal to the global average density in the reference shells).
 This is achieved by summing the separate gravity contribution of layers in slices up to a chosen deepest shell.
 This is easily implemented, since the innermost iteration of forward modelling already occurs, for each layer, in separated layer `slices' (as described in section~\ref{ss:SigIs:InModels:REF}).
 A `reference asthenosphere' (\SI{3300}{\kilo \gram \per \cubic \metre}) fills in the non-modelled volume (i.e. not provided in {LITHO1.0}) between the bottom of the lithosphere and the chosen maximum depth.
@@ -1041,7 +1043,7 @@ As previously described, it was also accounted for when calculating the average 
 Two shell-wise correction and corrected NETC are provided: a `shallow' one up to \SI{80}{\kilo \metre}, in Fig.~\ref{fig:SigIs:Res:Shallow}, and a `deep' one up to \SI{310}{\kilo \metre}, in Fig.~\ref{fig:SigIs:Res:Deep}.
 The former contains all crustal masses, and part of the lithospheric mantle and reference asthenosphere. The latter also covers all the lithospheric mantle.
 
-Both the forward-modelled corrections present consistently positive values over oceans, which where absent in previous figures.
+Both the forward-modelled corrections present consistently positive values over oceans, which were absent in previous figures.
 The average of forward-modelled correction is offset from zero (\SI[retain-explicit-plus]{+11.32}{mGal} and \SI[retain-explicit-plus]{+13.24}{mGal}, respectively).
 The largest contribution comes from the first slice (topography to \SI{10}{\kilo \metre} depth), which accounts for \SI[retain-explicit-plus]{+10}{mGal}.
 Zero-offsets up to $\pm$\SI{1.5}{mGal} are observed in the other shells.

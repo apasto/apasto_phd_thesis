@@ -1040,12 +1040,12 @@ This is easily implemented, since the innermost iteration of forward modelling a
 A `reference asthenosphere' (\SI{3300}{\kilo \gram \per \cubic \metre}) fills in the non-modelled volume (i.e. not provided in {LITHO1.0}) between the bottom of the lithosphere and the chosen maximum depth.
 As previously described, it was also accounted for when calculating the average densities in the reference shells.
 
-Two shell-wise correction and corrected NETC are provided: a `shallow' one up to \SI{80}{\kilo \metre}, in Fig.~\ref{fig:SigIs:Res:Shallow}, and a `deep' one up to \SI{310}{\kilo \metre}, in Fig.~\ref{fig:SigIs:Res:Deep}.
+Two shell-wise correction and corrected NETC are provided: a `shallow' one down to \SI{80}{\kilo \metre}, in Fig.~\ref{fig:SigIs:Res:Shallow}, and a `deep' one down to \SI{310}{\kilo \metre}, in Fig.~\ref{fig:SigIs:Res:Deep}.
 The former contains all crustal masses, and part of the lithospheric mantle and reference asthenosphere. The latter also covers all the lithospheric mantle.
 
 Both the forward-modelled corrections present consistently positive values over oceans, which were absent in previous figures.
-The average of forward-modelled correction is offset from zero (\SI[retain-explicit-plus]{+11.32}{mGal} and \SI[retain-explicit-plus]{+13.24}{mGal}, respectively).
-The largest contribution comes from the first slice (topography to \SI{10}{\kilo \metre} depth), which accounts for \SI[retain-explicit-plus]{+10}{mGal}.
+The global average of the forward-modelled correction is offset from zero (\SI[retain-explicit-plus]{+11.32}{mGal} for the first \SI{80}{\kilo \metre} and \SI[retain-explicit-plus]{+13.24}{mGal}, for the first \SI{310}{\kilo \metre}).
+The largest off-average contribution comes from the first slice (topography to \SI{10}{\kilo \metre} depth), which accounts for \SI[retain-explicit-plus]{+10}{mGal} -- this is due to the difference between the actual {LITHO1.0} average density in that slice (\SI{2681}{\kilo \gram \per \cubic \metre}) and the imposed reference density ((\SI{2670}{\kilo \gram \per \cubic \metre}), as described in section~\ref{ss:SigIs:InModels:REF}.
 Zero-offsets up to $\pm$\SI{1.5}{mGal} are observed in the other shells.
 
 % The most striking differences in the corrected disturbances are observed over oceans.
@@ -1055,8 +1055,9 @@ Zero-offsets up to $\pm$\SI{1.5}{mGal} are observed in the other shells.
 % risultato quindi rispiecchia maggiormente distribuzione normale del GGMin in ingresso, faccio riferimento a histogram Fig.~\ref{fig:SigIs:Res:HistGGMin}
 
 The global averages of both first-\SI{80}{\kilo \metre} and first-\SI{310}{\kilo \metre} corrected NETC is positive, at \num{307} and \SI{305}{mGal}, respectively.
-This reflects a mass excess, therefore a mass deficit in the modelled corrections.
-Such a large, consistent bias is likely arising from the assumption of the constant \SI{3300}{\kilo \gram} fill-in asthenosphere, lower than commonly adopted Earth reference models (see Fig.~\ref{fig:SigIs:Ref_ak135} for a comparison with \textit{ak135}).
+Due to the small deviation from zero-average of the applied corrections, this is almost the same average as the constant density `simple' NETC (Fig.~\ref{fig:SigIs:Res:GGM_BG} bottom, \SI{319}{mGal}).
+This reflects a mass excess, thus a mass deficit in the modelled corrections.
+Such a large, consistent bias may be arising from the assumption of the constant \SI{3300}{\kilo \gram} fill-in asthenosphere, lower than commonly adopted Earth reference models (see Fig.~\ref{fig:SigIs:Ref_ak135} for a comparison with \textit{ak135}).
 
 \begin{figure}
     \begin{adjustbox}{center}

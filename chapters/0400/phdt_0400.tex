@@ -79,7 +79,7 @@ The regional grid of filtered surface heat flow measurements so obtained (see se
 
 The crustal thickness estimation employed here is based on the solution of a gravity to Moho undulation inverse problem.
 Its input signal is a reduced gravity disturbance from a global gravity model, which I pre-processed by computing and subtracting the contribution of topography, of far-field isostatic effects, and of the basement-to-topography sedimentary overburden.
-With these reductions I aim at obtaining an anomalous gravity quantity, then interpreted as the effect of the varying depth of a crust-to-mantle boundary.
+These reductions are aimed at obtaining an anomalous gravity quantity, then interpreted as the effect of the varying depth of a crust-to-mantle boundary, under the Vening Meinesz isostatic hypothesis \parencite{VeningMeinesz1931}.
 
 I have used the {GO\_CONS\_GCF\_2\_TIM\_r5} release \parencites{Brockmann2014}{Pail2011GOCE}{GOCETIMr5datasheet} of the global gravity model derived from the European Space Agency's \textit{Gravity field and steady-state Ocean Circulation Explorer mission} (GOCE), providing a ppm-level accuracy for $g$ with a half-wavelength resolution of about 70~\si{\kilo \metre} \parencite{Floberghagen2011_goce}.
 This release comprises both GNSS tracking data --which dominate the gravity field solution up to spherical harmonic degree 30-- and observations of the on-board gradiometer, which cover the smaller spatial scales (higher degrees and orders).
@@ -100,7 +100,7 @@ This is different from what would be obtained when processing local gravity data
 
 I adopted one of the strategies suggested in \textcite{Szwillus2016}: accounting for the isostatic effect from masses outside of the study area.
 I have chosen the {LITHO1.0} model \parencite{Pasyanos2014} as a global reference crustal root model.
-By querying the `{access\_litho}' program point-wise on a global regular {0.125}~by~{0.125} degree grid, I extracted the crust-mantle boundary depth (`CRUST3' layer), its density, and $V_P$ in the lithospheric mantle (`LID' layer).
+By querying the `{access\_litho}' program point-wise on a global regular {0.125}~by~{0.125} degree grid, I extracted the crust-mantle boundary depth (bottom of the `CRUST3' layer), its density, and $V_P$ in the lithospheric mantle (`LID' layer).
 
 This procedure provided outlier values on some nodes.
 I removed the values of crustal density and $V_P$ in the lithospheric mantle outside the range defined by three standard deviations around the mean (i.e. $\overline{x} \pm 1.5 \sigma $, with $\overline{x}$ mean value).
@@ -114,7 +114,7 @@ Linear interpolation was used to fill in the removed nodes.
 This dataset was then low-pass filtered through convolution with a Gaussian kernel with a cut-off wavelength of 4~degrees, i.e. the wavelength at which the filter response value is $\exp(-0.5)$.
 This equals to a {0.5} filter response at {3.4}~degrees.
 This was applied as an anti-aliasing filter, prior to downsampling the depth and density data to a {0.5}~by~{0.5} grid.
-With these three steps (oversampling, outlier processing, and low-pass filtering) of the data extracted from {LITHO1.0} I aimed at removing any artefacts that may arise due to re-gridding on a rectangular longitude-latitude grid.
+With these three steps (oversampling, outlier processing, and low-pass filtering) of the data extracted from {LITHO1.0}, I aimed at removing any artefacts that may arise due to re-gridding on a rectangular longitude-latitude grid.
 Since the target is computing and removing a low degree effect, I consider such a drastic smoothing of input data justified.
 
 I then blanked out the grid over a `study area' defined by 40 to 60 degrees latitude, 10 to 40 degrees longitude.
@@ -483,13 +483,15 @@ These two plots serve as a qualitative indicator of the signal distribution, whi
 	\label{tab:GravDescrStats}
 \end{table}
 
-The cumulative effect of the reductions shifted the gravity signal towards positive values, resulting in a 80.8~mGal increase of the average value.
+The cumulative effect of the reductions shifted the gravity signal towards positive values, resulting in a \SI{80.8}{mGal} increase of the average value.
 The global topography effect (Fig.~\ref{fig:g_red}~A) is negative over most of the study area, except the most central parts of large high topography areas: the Carpathians (centre-south of the study area), the Bohemian massif, and the easternmost portion of the Alps, at the western edge of the study area.
-The average topography in the area, from the {EARTH2014} model at full resolution, is 220~m.
-It ranges from -113~m (small northern portion of the Black Sea, sampled on the southern edge) to 2109~m (Mt.~Moldoveanu, SE Carpathians).
+The average topography in the area, from the {EARTH2014} model at full resolution, is \SI{220}{\metre}.
+It ranges from \SI{-113}{\metre} (small northern portion of the Black Sea, sampled on the southern edge) to \SI{2109}{\metre} (Mt.~Moldoveanu, SE Carpathians).
 
-The crustal root effect outside of the study area (`isostatic effect', Fig.~\ref{fig:g_red}~B) is dominated by a east-west negative gradient, ranging from 68 to 54~mGal over a 20~degrees longitude range.
+The crustal root effect outside of the study area (`isostatic effect', Fig.~\ref{fig:g_red}~B) is dominated by a east-west negative gradient, ranging from \num{68} to \SI{54}{mGal} over a 20~degrees longitude range.
 The north-south gradient is negligible.
+A more complex velocity conversion method, based on thermodynamic modelling \parencite{Connolly2005}, is presented and utilised in chapter~\ref{c:SigIs}.
+When adopted here, the results range from from \num{72} to \SI{90}{mGal} (a \SI{18}{mGal} range, compared to the \SI{14}{mGal} range of the correction computed here).
 
 The sediment thickness (Fig.~\ref{fig:g_red}~C) ranges from zero to 16.3~\si{\kilo \metre}, with an average of 3.1~\si{\kilo \metre}.
 The western half of the area is characterised by thick sedimentary covers: between the Caledonides Foredeep and the Baltic Basin (NW corner, 11~\si{\kilo \metre} maximum), and along the Carpathians Foredeep, up to the very deep, but localised, Focşani Depression (16.3~\si{\kilo \metre} maximum).

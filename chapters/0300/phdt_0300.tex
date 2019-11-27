@@ -1153,6 +1153,14 @@ It is only after including the forward-modelled shells down to \SI{310}{\kilo \m
 
 % seconda figura: shell-wise
 
+% deg var semplici (non le xcorr, sono dopo)
+% CONSIDERAZIONE IMPORTANTE:
+% segnale a bassi gradi implica che
+% 1) cut off non garantisce di isolare segnale profondo mantello
+% 2) con compensazione isostatica però mi aspetterei la uno sia vera...
+% 3) punto a segnale mantello con queste correzioni?
+%    ...attenzione: introduco errore anche nei bassi gradi
+
 \begin{figure}
     \begin{adjustbox}{center}
         \fbox{%
@@ -1204,8 +1212,6 @@ Here, in Fig.~\ref{fig:SigIs:Res:XCorr}, the input GGM disturbance is cross-corr
 % sedimenti: 0.3 SH degree 60, maggiore
 % discorso su SEGNO!
 
-
-
 \begin{figure}
     \begin{adjustbox}{center}
         \fbox{
@@ -1233,6 +1239,8 @@ Here, in Fig.~\ref{fig:SigIs:Res:XCorr}, the input GGM disturbance is cross-corr
     \label{fig:SigIs:Res:XCorr}
 \end{figure}
 
+
+\FloatBarrier
 \subsection{Propagated uncertainty}
 \label{ss:SigIs:Results:Uncertainty}
 

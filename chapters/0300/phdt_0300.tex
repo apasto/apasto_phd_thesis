@@ -616,7 +616,7 @@ As mentioned in section~\ref{ss:SigIs:Defs:Corrs} and as discussed by \textcite{
 
 % slicing description
 For all the sub-topography (i.e. sediments to lithospheric mantle) forward modelling performed here, a `normal density reference' was built, defined by a discretely layered reference column.
-The boundaries between layers in this column define a set of concentric shells with constant depth against the reference ellipsoid.
+The boundaries between layers in this column define a set of concentric shells, referred to the reference ellipsoid.
 The modelled layers in {LITHO1.0} were `sliced' according to these shells: in other words, an intersection was performed between the top/bottom boundaries defining each {LITHO1.0} layer and the reference shells boundaries (see Fig.~\ref{fig:SigIs:RefSlices}).
 By doing so, each layer of the input model was divided in a number of \textit{layer-slices} equal to the number of reference shells it intersects.
 In each layer-slice the density contrast was expressed as the difference between the density prescribed by the model at those coordinates and the density of the reference shell covering that depth range.
@@ -633,7 +633,7 @@ The volume between the bottom of the lithosphere and the maximum modelled depth 
 This a reference value which, albeit plausible \parencite[e.g.][]{Bormann2002}, is not directly constrained by the input data in any way - it is akin to the usual \SI{2670}{\kilo \gram \per \cubic \metre} adopted for the terrain correction \parencite{Hinze2003}.
 As discussed afterwards (section~\ref{s:SigIs:Results}), any unmodelled sub-lithospheric density variation shows up in the refined gravity residuals (superimposed with all the omissions in the input `known masses' of the lithosphere).
 
-The `normal density reference' obtained in this way ({LITHO1.0} densities and `asthenosphere fill-in') is presented in Fig.~\ref{fig:SigIs:Ref_ak135} (black line) and in Tab.~\ref{tab:Ref_ak135}.
+The `normal density reference' obtained in this way (average {LITHO1.0} densities and `asthenosphere fill-in') is presented in Fig.~\ref{fig:SigIs:Ref_ak135} (black line) and in Tab.~\ref{tab:Ref_ak135}.
 The depth-density curve from the \textit{ak135} model \parencites{Kennett1995_ak135}{Montagner1996} is plotted alongside (blue line, the data was sourced from the {NMSOP-2} manual \cite{Bormann2002}, which provides it in a tabular form).
 The \textit{ak135} model is also plotted as the average density in the same discrete depth intervals of the LITHO1.0-based density reference.
 
@@ -713,7 +713,7 @@ Nevertheless, this strategy was preferred since, by doing so, the gravity maps o
 
 Uncertainty in the `known masses' input data was estimated using Monte Carlo error propagation \parencite[][chapter 2.6]{Aster2018}.
 Depths of the boundaries, defining the layers in {LITHO1.0}, and the density grids associated with each layer were randomly perturbed according to a set of error assumptions, obtaining a population of input mass models.
-The gravity field of each of this mass models was forward modelled using the spectral layer-wise method described in this chapter, therefore obtaining a population of resulting gravity fields.
+The gravity field of each of these mass models was forward modelled using the spectral layer-wise method described in this chapter, therefore obtaining a population of resulting gravity fields.
 To extract a metric of the spatial distribution of uncertainty and its magnitude, I then computed the standard deviation of the vertical component of gravity at each grid node of the ensemble of globally synthesized grids.
 
 \subsection{Error model}
@@ -778,7 +778,7 @@ A value of \num{5000}~draws was heuristically chosen, instead, observing no anom
 \label{ss:SigIs:Results:Maps}
 
 The input gravity map ({GGM}, Fig.~\ref{fig:SigIs:Res:GGM_BG} top), the terrain-corrected disturbance (Fig.~\ref{fig:SigIs:Res:GGM_BG} bottom), and all the further refinements for lithospheric masses (the bottom maps in figures \ref{fig:SigIs:Res:SEDS} through \ref{fig:SigIs:Res:Deep}) are expressed as gravity disturbances ($\delta g$).
-$\delta g$, being a magnitude of a vector difference, is a scalar by definition (Eq.~\ref{eq:red:GravDist}).
+$\delta g$, being a difference of a vector magnitudes, is a scalar by definition (Eq.~\ref{eq:red:GravDist}).
 The forward-modelled gravity corrections (the top maps in figures \ref{fig:SigIs:Res:SEDS} through \ref{fig:SigIs:Res:Deep}), on the other hand, are the first-order derivative of the gravity potential arising from the modelled `known masses'.
 Being a three-component vector, only its vertical component $g_z$ is plotted -- being the most significant.
 Both the disturbances and the $g_z$ component of the corrections were synthesized on a global $n \times 2n$ grid at \SI{10}{\kilo \metre} over the {GRS80} ellipsoid.
@@ -791,7 +791,7 @@ Quantiles were computed using cosine-of-latitude weighting.
 The actual minimum and maximum values are always printed below each map, along with the global average and standard deviation (both appropriately weighted for latitude).
 The perceptually uniform `viridis' colour scale \parencite{Smith2015} was used.
 
-In the case of the forward modelled effect of the crystalline crust (`CRUST,~g\textsubscript{z}', top map of Fig.~\ref{fig:SigIs:Res:CRUST}), the minimum values of some features is more than \SI{1000}{mGal} lower than the average value.
+In the case of the forward modelled effect of the crystalline crust (`CRUST,~g\textsubscript{z}', top map of Fig.~\ref{fig:SigIs:Res:CRUST}), the minimum values of some features are more than \SI{1000}{mGal} lower than the average value.
 For the sake of map clarity, the colour scale minimum was clipped at an higher value.
 The same map is plotted with the full range in Fig.~\ref{fig:SigIs:Res:CRUST_NonTrim}.
 The explanation for this behaviour is discussed afterwards.

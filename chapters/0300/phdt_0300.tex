@@ -1216,30 +1216,31 @@ In the case of the model adopted here \parencite[GOCO06s][]{Kvas_GOCO06s_dataset
 Loss of signal at high degrees is therefore not unexpected, and should be accounted for when applying reductions and formulating inverse problems on the reduced gravity quantities.
 Failing to do so would map the omitted short wavelength gravity signal to the anomalous mass distribution sought for, resulting in artifact arising from the difference in formal resolution between input model and reductions.
 
-Loss of terrain-gravity correlation occurs also at low degrees, where they are usually attribued to deep density inhomogeneities \parencite{Kaban2004} not associated with an expression in topography.
+Loss of terrain-gravity correlation occurs also at low degrees (less than \num{10}), where they are usually attribued to deep density inhomogeneities \parencite{Kaban2004} not associated with an expression in topography.
 
+Interpreting correlations between the input GGM and the forward-modelled masses from LTIHO1.0 (middle and bottom panel of Fig.~\ref{fig:SigIs:Res:XCorr}) is less straighforward.
+% RIVEDERE QUESTA PARTE ISOSTATICA
+%Under the hypothesis that the non-reduced GGM
+%lithospheric masses should be 
+%Cross correlation coefficients enable to assess
 
+Both the whole-crust and whole-lithosphere corrections do not result in CCs higher than \num{0.2} above SH degree \num{60} (equal to an half wavelength of about \SI{330}{\kilo \metre}, \SI{3}{arc-degrees}).
+The sediments correction alone still correlates (more thant the \num{0.2} threshold adopted here) up to SH degree \num{110} (equal to an half wavelength of about \SI{180}{\kilo \metre}, \SI{1.6}{arc-degrees}).
+The chosen threshold, albeit arbitrary, discriminates a spectral band with consistently non-zero GGM-correction correlation from the uncorrelated higher degrees.
+The effective bandwidth so obtained are less than the \SI{1}{arc-degree} discretisation LITHO1.0 is provided in.
 
+% sign
+The sign of CCs above degree \num{10} is consistently positive for the whole-crust and whole-lithosphere corrections, from SH degree \num{3} to the upper bound of their effective bandwidth.
+Such a correlation does not necessarily imply compensation of topography by the modelled masses -- it is observed despite the over-correction behaviour observed for the forward-modelled crust masses (section~\ref{sss:SigIs:Results:Maps:CRUST}).
+Correlation coefficients are negative for most of the degrees of the sediment correction, a pattern which can be speculated as resulting from correlation between basins and low topography.
 
-% "formal resolution"
-% conseguenza: correzioni devono tener conto di questo
-% sebbene potenza a tali gradi sia limitata
-% quando confrontata con modelling a scala globale (questi esperimenti)
-% non-necessaria per applicazioni geofisiche a questa scala
+The pattern of the shell-wise corrections CCs (bottom panel of Fig.~\ref{fig:SigIs:Res:XCorr}) is coherent with the whole-lithosphere cross-correlation, with the same effective bandwidth (there is effectively no short-wavelength energy added by the asthenosphere fill-in).
+Relatively strong correlation, of alternating sign, is observed in the \num{1}--\num{10} SH degree range, where TC-GGM correlation is low.
+This may indicate that part of the low-degree field is, at least in part, due to the longest wavelengths of lithospheric structures, superimposed to the contribution of lower masses.
 
-%By doing so, I aimed at
-% how much the reduction signal correlates
-% note: different interpretation than topography
-% also different from isostasy (sempre Hirt2012TopoIso)
-% correlation is not always expected
-% neither it should be interpreted as data quality
-% (perché altrimenti sarebbe tutto correlato con topo)
-% crosta completa: correla con topo? poco
-% termina a SH degree 40, con un CC di 0.3
-% risultato consistente con Hirt2012TopoIso
-% e spazialmente con quanto osservato su mappe
-% sedimenti: 0.3 SH degree 60, maggiore
-% discorso su SEGNO!
+% QUI: fare crust vs lid CC
+% idealmente, ridotte dovrebbero non correllare
+% cito lavoro su delta rho decorrelato (tenzer?)
 
 \begin{figure}
     \begin{adjustbox}{center}
@@ -1359,6 +1360,11 @@ Loss of terrain-gravity correlation occurs also at low degrees, where they are u
 % questioni isostatiche: summary and conclusions Sebera 2018
 % ricordarsi che Sebera 2018 non è reductions, è forward assoluto (no contrasti)
 
+% "formal resolution"
+% conseguenza: correzioni devono tener conto di questo
+% sebbene potenza a tali gradi sia limitata
+% quando confrontata con modelling a scala globale (questi esperimenti)
+% non-necessaria per applicazioni geofisiche a questa scala
 
 % SCELTA REFERENCE, differenza è media (circa media)
 % note su rilevanza densità media

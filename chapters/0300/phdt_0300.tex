@@ -1140,24 +1140,30 @@ It is only after including the forward-modelled shells down to \SI{310}{\kilo \m
 
 \subsection{Spectral domain comparison}
 \label{ss:SigIs:Results:Spectral}
+In addition to the synthesized grid of the modelled corrections and reduced disturbances, I resort to the spectra of degree variances (section~\ref{ss:SigIs:Fwd:Spectrum}, Eq.~\ref{eq:DegVar}) and degree cross-correlation (Eq.~\ref{eq:DegVarCross}) to compare the energy level of the corrections in different spectral bands.
+Degree variances and cross correlation were computed up to $l_{max}$ \num{280}.
 
-% In order to
+Fig.~\ref{fig:SigIs:Spec:DegVarAll} shows the degree variances of the attraction of the forward-modelled corrections against the degree variances of the GGM disturbance.
+The power density of the former become less than the latter (the GGM) at degree $l$ \num{35} for sediments, \num{97} for the consolidated crust, and \num{72} for the lithospheric mantle.
+The power of the modelled terrain correction is always higher than the one of the GGM disturbance and of all the modelled {LITHO1.0} layers.
 
-% The power spectra of the
-% expressed as degree variances (section~\ref{ss:SigIs:Fwd:Spectrum}, Eq.~\ref{eq:DegVar}) in Fig.~\ref{fig:SigIs:Spec:DegVarAll}
+The degree variances of the shell-wise corrections are plotted in Fig.~\ref{fig:SigIs:Spec:DegVarSD}, where the spectra of the GGM and TC are kept for reference.
+The degree variance of both these corrections becomes less thant the one of the GGM at SH degree \num{138}, a different pattern respect to the isolated layer-wise effect.
 
-% consistent with
-% monotonically decreasing
+All the corrections, except sediments, exceed the power of the GGM disturbance at the lowest degrees.
+Sometimes truncation of global models at low degrees is employed as a low-pass filter to pursue isolation of sub-lithospheric or sub-crustal signals \parencites[e.g.]{Deschamps2001}{Simmons2010}.
+Such a significant contribution of crustal and lithospheric corrections warrants caution in doing so, as pointed out by \cite{Kaban2004}.
+The magnitude of uncertainties involved (discussed in section~\ref{ss:SigIs:Results:Uncertainty}) and the effects of mass under- and over-correction, as described when discussing the reduced disturbances (section~\ref{ss:SigIs:Results:Maps}) further corroborate this interpretation.
 
-% seconda figura: shell-wise
+% considerable overlap with mantle flow effects (citazioni)
+% Pekeris 1935, Hager 1985
+% citazioni lì sopra le due: opposing effects di mantle flow e surface effects
+% In favour
+% complete compensation of isostatic and non-isostatic effects
+% low-pass filtered non-reduced gravity disturbance
+% under a compensation depth
+% as argued... input models... overcorrection
 
-% deg var semplici (non le xcorr, sono dopo)
-% CONSIDERAZIONE IMPORTANTE:
-% segnale a bassi gradi implica che
-% 1) cut off non garantisce di isolare segnale profondo mantello
-% 2) con compensazione isostatica però mi aspetterei la uno sia vera...
-% 3) punto a segnale mantello con queste correzioni?
-%    ...attenzione: introduco errore anche nei bassi gradi
 
 \begin{figure}
     \begin{adjustbox}{center}
@@ -1194,8 +1200,33 @@ It is only after including the forward-modelled shells down to \SI{310}{\kilo \m
     \label{fig:SigIs:Spec:DegVarSD}
 \end{figure}
 
-Degree cross-correlation (CC), as expressed in Eq.~\ref{eq:DegVarCross} are commonly employed for spectral cross-validation between gravity models \parencite[e.g.]{Rexer2016} or between gravity models and topography \parencites{Wieczorek2007}{Hirt2012TopoIso}.
-Here, in Fig.~\ref{fig:SigIs:Res:XCorr}, the input GGM disturbance is cross-correlated with the forward-modelled corrections: the NETC terrain correction (top panel); the effect of sediments, the whole crust (sediments and consolidated crust), and the whole lithosphere (whole crust and lithospheric mantle).
+\FloatBarrier
+
+Degree cross-correlation (CC), as expressed in Eq.~\ref{eq:DegVarCross}, are commonly employed for spectral cross-validation between gravity models \parencite[e.g.][]{Rexer2016} or between a gravity model and topography \parencites{Wieczorek2007}{Hirt2012TopoIso}.
+Here, in Fig.~\ref{fig:SigIs:Res:XCorr}, the input GGM disturbance is cross-correlated with the forward-modelled corrections: the terrain correction (top panel); the effect of sediments, the whole crust (sediments and consolidated crust), and the whole lithosphere (whole crust and lithospheric mantle).
+
+By doing so I aimed at getting a metric on how much the input signal is `explained', thus reduced by, each correction.
+The top panel of Fig.~\ref{fig:SigIs:Res:XCorr} shows the degree-cross correlation between the terrain correction and the input disturbance.
+An almost constant CC, at \num[retain-explicit-plus]{+0.75}, is observed from SH degree 20 onwards: this reproduces a common finding in topographic evalutation \parencites{Hirt2012TopoIso}{Hirt2010} of gravity models on Earth.
+Topography is generally considered as the dominant source of gravity signal at short scale \parencite{Forsberg1981}.
+
+There is a loss in spectral power towards the higher degrees, which becomes noticeable from about $l=$\num{230} onwards.
+This decline is a direct consequence of the lower signal-to-noise ratio that satellite-only GGM solutions can provide at these short wavelengths.
+In the case of the model adopted here \parencite[GOCO06s][]{Kvas_GOCO06s_dataset}, the system of normal equations used to combine the input data (GOCE, GRACE, LEO orbits, and SLR) impose a Kaula regularization \parencite{Pail2010_GOCO01S} from degree and order \num{150} onwards -- a compromise between energy content in less accurately estimated high degrees and otherwise increasing GGM errors.
+Loss of signal at high degrees is therefore not unexpected, and should be accounted for when applying reductions and formulating inverse problems on the reduced gravity quantities.
+Failing to do so would map the omitted short wavelength gravity signal to the anomalous mass distribution sought for, resulting in artifact arising from the difference in formal resolution between input model and reductions.
+
+Loss of terrain-gravity correlation occurs also at low degrees, where they are usually attribued to deep density inhomogeneities \parencite{Kaban2004} not associated with an expression in topography.
+
+
+
+
+% "formal resolution"
+% conseguenza: correzioni devono tener conto di questo
+% sebbene potenza a tali gradi sia limitata
+% quando confrontata con modelling a scala globale (questi esperimenti)
+% non-necessaria per applicazioni geofisiche a questa scala
+
 %By doing so, I aimed at
 % how much the reduction signal correlates
 % note: different interpretation than topography
@@ -1312,6 +1343,14 @@ Here, in Fig.~\ref{fig:SigIs:Res:XCorr}, the input GGM disturbance is cross-corr
 % vs "a gusci"
 % esempio taglio a massima profondità Moho
 % v. appunti 20190821
+
+% LISTA punti 1-5 in Kaban 2004 : isostatic anomalies sources
+% 1. Density heterogeneities in the upper crust (internal load), which are unknown and not considered in the isostatic model, e.g. sedimentary layers or deviations of the upper crust density from the nominal value.
+% 2. Density heterogeneities in the lower crust/upper mantle that differ from the adopted compensation scheme (e.g. Airy).
+% 3. Deep density heterogeneities located below the level of the isostatic compensation.
+% 4. disturbances of the isostatic equilibrium which can also be attributed to: (a) local disturbances due to the rigidity of the lithosphere (regional compensation of local load); (b) deep dynamic effects (dynamic sup- port of topography by mantle convection); and (c) visco-elastic response to time-varying loads (e.g. postglacial rebound).
+% 5. Errors in the initial data sets used.
+
 
 % considerazioni su input bandwidth: sposto a discussione
 % for in detail, reader is referred to Hirt and Kuhn 2017

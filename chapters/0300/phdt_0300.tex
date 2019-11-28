@@ -230,9 +230,7 @@ Eq.~\ref{eq:SHfwd:coeffs} includes a Taylor series expansion of the power of the
 If the sum is carried out up to its upper bound of the sum, $l+3$, it provides an exact solution.
 However, the number of terms grows linearly with $l$.
 Therefore, a truncation value $n_{max}$ is typically chosen, under the assumption that higher terms become more and more smaller \parencite{Wieczorek2007}.
-
-However, \textcite{Balmino2012} and \textcite{Hirt2017} found that when a certain degree is reached, ``the energy of succeeding terms is larger than of the previous''.
-They found this phenomenon to become significant around degree \num{1000} ---way above this experiment objective, which is limited by the maximum degree of satellite-only potential models (less than \num{300} as of March~2019).
+As observed by \textcite{Balmino2012} (for Earth topographic potential) and \textcite{Hirt2017} (for the Moon case), this holds true only outside of the Brillouin sphere. Monotonic decrease in variance terms is not guaranteed for adimensional degree variances on the reference sphere: when a certain degree is reached, ``the energy of succeeding terms is larger than of the previous'' \parencite{Hirt2017}. They found this phenomenon to become significant around degree \num{1000} ---way above this experiment objective, which is limited by the maximum degree of satellite-only potential models (less than \num{300} as of March~2019).
 
 The convergence of expansions of this kind has been rigorously studied by \textcite{Sun2001}, among others.
 For a maximum degree $l = \num{360}$, a $n_{max}$ of \num{2} was shown to already provide less than \SI{1}{\percent} error ---in the case of topography.

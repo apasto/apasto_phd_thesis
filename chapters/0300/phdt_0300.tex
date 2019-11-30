@@ -1302,12 +1302,12 @@ The results of the reduction uncertainty propagation scheme, as described in sec
 Three global maps of correction-standard-deviation are plotted in Fig.~\ref{fig:SigIs:Res:UncertaintyMaps}, from the top: sediments (SEDS1, SEDS2, SEDS3), consolidated crust (CRUST1, CRUST2, CRUST3), and lithospheric mantle (LID).
 
 A direct consequence of the simple uniform uncertainty model is the direct proportionality between uncertainty and the thickness of the modelled layers.
-Dependence of depth-uncertainty with the depth of layer boundaries and the \SI{100}{\kilo \gram} standard deviation of density uncertainty, add up.
+Dependence of depth-uncertainty with the depth of layer boundaries and the \SI{100}{\kilo \gram \per \cubic \metre} standard deviation of density uncertainty, add up.
 The consequence is that the deeper and thicker a layer, the larger its contribution to uncertainty in a given location.
 
 The scatter plots of Fig.~\ref{fig:SigIs:Res:UncertaintyScatterPlots} present this proportionality pattern, which however deviates from simple linarity.
 The patterns are complicated by the concurrent contributions of 
-: (1) different composing layers (in the case of sediments and crust, 3 layers each), (2) lateral variations in density in each layer, (3) different contrast respect to the reference density in each shell of the refence model, (4) large footprint of deep and far-field masses, especially in areas of sharp lateral contrasts (e.g. ocean margins).
+: (1)~different composing layers (in the case of sediments and crust, 3 layers each), (2)~lateral variations in density in each layer, (3)~different contrast respect to the reference density in each shell of the refence model, (4)~large footprint of deep and far-field masses, especially in areas of sharp lateral contrasts (e.g. ocean margins).
 The LID layer, which is characterised localised bodies with high contrast (cratonic keels at large depths and patches of shallow dense lithospheric mantle in oceans), deviates from linear proportionality more significantly than the sediments and crust.
 
 To avoid over-representation of nodes at high latitudes, the markers in the scatter plots of Fig.~\ref{fig:SigIs:Res:UncertaintyScatterPlots} were obtained by re-sampling the layer thickness and uncertainty maps on the regularly-spaced global grid (\SI{2}{arc-degree} spacing) by \textcite{Davies2012}.
@@ -1315,9 +1315,6 @@ To avoid over-representation of nodes at high latitudes, the markers in the scat
 % note per equal-area-sampling:
 % centroidi di rettangoli 2x2 gradi (all'equatore), area costante = circa 50000 km^2
 % da Davies2012
-
-% histograms
-% Fig.~\ref{fig:SigIs:Res:HistUncertainty}
 
 \begin{figure}
     \begin{adjustbox}{center}
@@ -1355,6 +1352,39 @@ To avoid over-representation of nodes at high latitudes, the markers in the scat
     \caption[Layer thickness versus propagated uncertainty scatter plots.]{Layer thickness versus propagated uncertainty (SD, one standard deviation) scatter plots.}
     \label{fig:SigIs:Res:UncertaintyScatterPlots}
 \end{figure}
+
+\FloatBarrier
+
+The spatial distribution of uncertainty values and their surface-weighted probability density function -- as plotted in the histograms beneath the maps (Fig.~\ref{fig:SigIs:Res:UncertaintyMaps}) and in Fig.~\ref{fig:SigIs:Res:HistUncertainty} -- bears a qualitative similarity with the histograms of the forward-modelled corrections, especially for the partition pattern of oceans and continents.
+
+The average standard deviation for the sediment correction is \SI{2.5}{mGal} (oceans: \SI{2.7}{mGal}, continents: \SI{1.9}{mGal}), with tails reaching values over \SI{10}{mGal} only directly above thick sedimentary basins.
+The uncertainty in crust correction is an order of magnitude larger, with a marked ocean-continent dicothomy.
+Due to the thickness-uncertainty relationship, discussed before, larger values are observed over thicker crust, therefore all the higher part of the range is covered by nodes on above-sea-level landmasses (global average: \SI{18.3}{mGal}, oceans: \SI{13.0}{mGal}, continents: \SI{32.1}{mGal}).
+Unsurprisingly, the crustal correction uncertainty reaches its largest values in the same regions where the crustal correction itself has its extremes: chiefly, the Himalaian range (up to \SI{72}{mGal}).
+The uncertainty of the lithospheric mantle correction loses most of the ocean-continent dicothomy, since the layer itself is not strongly correlated with surface topography.
+While the maximum value is less than the one of $\sigma(\textrm{CRUST})$, the average is higher (\SI{21}{mGal}) and there is less dispersion, due to the lithospheric mantle effect lacking any localised `outliers'.
+
+% conseguenze qui
+% un range +/- 2 sigma di [media continentale]
+% limitato effetto per i soli continenti [cito esempio di Kaban2004]
+% migliora con relazioni locali [riferimento a capitolo paper]
+% interpretando la correzione crostale come modello iniziale per crosta
+% esempio per raffinare modelli sismici [valuto se opportuno citare Eshagh]
+% calcolo piastra di Bouguer [citazione?] equivalente a +/- 2 sigma media continentale crosta
+
+Taking into account a $\pm 2 \sigma$ range (covering the \SI{95}{\percent} of the values, under the normally distributed error imposed here) and crustal thickness modelling as a potential application (e.g. the case involved in chapter~\ref{c:ThermAppl}), the uncertainty introduced by the sediment correction remains relatively small if compared to other contributions.
+%Consider a % QUI ESEMPIO CROSTA! (e vedi commenti sopra)
+% media seds = 2.5, *4 = 10 mGal
+% contrasto 485 kg/m3 (Tenzer2012)
+% H = deltagrav / (2 Pi rho G) = about 492 m
+
+The crustal and lithospheric-mantle correction, on the other hand, are a significant source of error.
+% esempio portato: media su continenti 32 mGal *4 = 128 mGal
+% come sopra, ottengo 6297 m
+% potrei perdermi in esempi di inversione di sfere... ma non lo farò
+% faccio invece riferimento al fatto che nel capitolo termico faccio riferimento alla sensibilità all'errore sulla crosta
+% e al fatto che le "cose funzionano ancora"
+% inoltre, nelle conclusioni finali, viene fatto test con tutto assieme (MA NON LO ANTICIPO QUI)
 
 \begin{figure}
     \begin{adjustbox}{center}

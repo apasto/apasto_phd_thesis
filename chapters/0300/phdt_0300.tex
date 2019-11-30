@@ -1262,9 +1262,6 @@ This may indicate that part of the low-degree field is, at least in part, due to
 
 \FloatBarrier
 
-% QUI: fare crust vs lid CC
-% idealmente, ridotte dovrebbero non correllare
-% cito lavoro su delta rho decorrelato (tenzer?)
 \begin{figure}[hb]
     \begin{adjustbox}{center}
         \fbox{
@@ -1272,14 +1269,30 @@ This may indicate that part of the low-degree field is, at least in part, due to
                 \includegraphics[
                     clip, trim=0.2cm 0.35cm 0.1cm 7.5cm,
                     width=1.2\textwidth
-                ]{maps/spectra/XCorr_ISO.pdf}\\
+                ]{maps/spectra/XCorr_ISOSD.pdf}\\
             \end{tabular}
         }
     \end{adjustbox}
-    \caption[Degree correlation coefficients (CC) between the uncompensated NETC and the crust- and lithosphere-corrected NETC.]{Degree correlation coefficients (\textbf{CC}, $S_{fg}$ of Eq.~\ref{eq:DegVarCross}) between the terrain-correction only NETC disturbance and the NETC corrected for the crust and lithosphere.}
+    \caption[Degree correlation coefficients (CC) between the uncompensated NETC and the shell-wise corrected NETC disturbances.]{Degree correlation coefficients (\textbf{CC}, $S_{fg}$ of Eq.~\ref{eq:DegVarCross}) between the terrain-correction only NETC disturbance and shell-wise corrected no-topography disturbances.}
     \label{fig:SigIs:Res:XCorrISO}
 \end{figure}
 
+A different type of degree correlation coefficients is plotted in Fig.~\ref{fig:SigIs:Res:XCorrISO}: the NETC disturbance corrected for the first \SI{80}{\kilo \metre} shell (Fig.~\ref{fig:SigIs:Res:Shallow}, bottom) and the NETC disturbance corrected for the first \SI{310}{\kilo \metre} shell (Fig.~\ref{fig:SigIs:Res:Deep}, bottom) are cross-correlated with the non-corrected NETC (Fig.~\ref{fig:SigIs:Res:GGM_BG}, bottom).
+
+We can interpret the NETC before any further correction (i.e. only TC applied, Fig.~\ref{fig:SigIs:Res:GGM_BG}) as the attraction of masses compensating the topography, plus a superposition of non-isostatic signals (deep masses, mantle flow) -- this is the well known \parencite{VeningMeinesz1931} isostasy hypothesis, albeit formulated for refined gravity disturbances, instead of gravity anomalies.
+Therefore, perfect compensation by the forward-modelled masses would imply that a refined no-topography disturbance (e.g. for the crust, or for the first \SI{80}{km}) should correlate less with the original disturbance -- part of its signal being compensated by a correction of opposing sign.
+
+On the contrary, high correlation values are the consequence of non-complete compensation of the topography-stripped signal, due to omission of the compensating bodies in the input `known mass' model (e.g. a wrong Moho depth) and under-/over-correction due to erroneous density estimates, as it has been discussed when describing the output maps (section~\ref{ss:SigIs:Results:Maps}).
+Non-correction can be also attributed to compensation at deeper depths or superposition of non-isostatic effects.
+
+It must be noted that the global bias in average gravity that a `wrong' reference density model introduces is confined to the zero-degree term which is not part of the correlations computed here.
+
+Correlation coefficients are steady at around \num[retain-explicit-plus]{+0.7} between degree \num{70} and \num{200}, a spectral band with no meaningful signal contained in the input models (as previously mentioned).
+Above degree \num{200} the coefficients increase, reaching almost complete correlation at the high end of the spectrum -- as discussed before, here the input GGM signal is attenuated, most of the power spectral density being due to the applied terrain correction.
+
+The lowest CC values are observed in the degrees below \num{30}.
+The first \SI{80}{\kilo \metre} corrected disturbance shows negative CC in that range, supposedly the consequence of the observed over-correction of high topography, already evident in the crust-corrected maps.
+The different pattern of the first \SI{310}{\kilo \metre} corrected disturbance can be attributed to the long-wavelength contribution of thick cratons, which lack a well-identifiable signature in the simple NETC.
 
 \FloatBarrier
 \subsection{Propagated uncertainty}

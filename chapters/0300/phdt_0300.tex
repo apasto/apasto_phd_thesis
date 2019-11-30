@@ -1302,9 +1302,22 @@ The results of the reduction uncertainty propagation scheme, as described in sec
 Three global maps of correction-standard-deviation are plotted in Fig.~\ref{fig:SigIs:Res:UncertaintyMaps}, from the top: sediments (SEDS1, SEDS2, SEDS3), consolidated crust (CRUST1, CRUST2, CRUST3), and lithospheric mantle (LID).
 
 A direct consequence of the simple uniform uncertainty model is the direct proportionality between uncertainty and the thickness of the modelled layers.
-The effect of dependence of depth-uncertainty with the depth of layer boundaries is added to the fixed \SI{100}{\kilo \gram} standard deviation of density uncertainty, therefore: the deeper and thicker the layer, the larger its contribution to uncertainty.
+Dependence of depth-uncertainty with the depth of layer boundaries and the \SI{100}{\kilo \gram} standard deviation of density uncertainty, add up.
+The consequence is that the deeper and thicker a layer, the larger its contribution to uncertainty in a given location.
+
+The scatter plots of Fig.~\ref{fig:SigIs:Res:UncertaintyScatterPlots} present this proportionality pattern, which however deviates from simple linarity.
+The patterns are complicated by the concurrent contributions of 
+: (1) different composing layers (in the case of sediments and crust, 3 layers each), (2) lateral variations in density in each layer, (3) different contrast respect to the reference density in each shell of the refence model, (4) large footprint of deep and far-field masses, especially in areas of sharp lateral contrasts (e.g. ocean margins).
+The LID layer, which is characterised localised bodies with high contrast (cratonic keels at large depths and patches of shallow dense lithospheric mantle in oceans), deviates from linear proportionality more significantly than the sediments and crust.
+
+To avoid over-representation of nodes at high latitudes, the markers in the scatter plots of Fig.~\ref{fig:SigIs:Res:UncertaintyScatterPlots} were obtained by re-sampling the layer thickness and uncertainty maps on the regularly-spaced global grid (\SI{2}{arc-degree} spacing) by \textcite{Davies2012}.
+
+% note per equal-area-sampling:
+% centroidi di rettangoli 2x2 gradi (all'equatore), area costante = circa 50000 km^2
+% da Davies2012
 
 % histograms
+% Fig.~\ref{fig:SigIs:Res:HistUncertainty}
 
 \begin{figure}
     \begin{adjustbox}{center}
@@ -1324,6 +1337,23 @@ The effect of dependence of depth-uncertainty with the depth of layer boundaries
     \end{adjustbox}
     \caption[Propagated uncertainties: maps of standard deviation in each node for sediments, crust, and lithospheric mantle.]{Propagated uncertainties of sediments (SEDS), consolidated crust (CRUST), and lithospheric mantle (LID), expressed with the standard deviation ($\sigma$) in each grid-point in the ensemble of forward-modelled models in the Monte Carlo uncertainty propagation scheme.}
     \label{fig:SigIs:Res:UncertaintyMaps}
+\end{figure}
+
+\begin{figure} % using rasterized PDF->PNG due to size constraints
+    \begin{adjustbox}{center}
+            \begin{tabular}{c}
+                \includegraphics[width=\textwidth%
+                    ]{unc_thickness/UNCvsTHK_Seds.png}\\
+                \midrule
+                \includegraphics[width=\textwidth%
+                    ]{unc_thickness/UNCvsTHK_Crust.png}\\
+                \midrule
+                \includegraphics[width=\textwidth%
+                    ]{unc_thickness/UNCvsTHK_LID.png}\\
+            \end{tabular}
+    \end{adjustbox}
+    \caption[Layer thickness versus propagated uncertainty scatter plots.]{Layer thickness versus propagated uncertainty (SD, one standard deviation) scatter plots.}
+    \label{fig:SigIs:Res:UncertaintyScatterPlots}
 \end{figure}
 
 \begin{figure}

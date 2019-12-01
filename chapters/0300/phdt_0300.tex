@@ -310,7 +310,7 @@ When $f$ is provided as a grid of discrete points, the integral of Eq.~\ref{eq:G
 For these tests we utilised $n \times 2n$ grids (expressed as latitude times longitude) compliant to \textcite{Driscoll1994} sampling theorem.
 Grids of this kind are also known as ``equally spaced''.
 For such grids, the numerical solution to Eq.~\ref{eq:GSHA} is obtained through along--latitude FFT first, then by integration over longitude for each degree and order \parencites{Sneeuw1994}{Wieczorek2007}.
-The transform on a $n \times 2n$ \textcite{Driscoll1994} grid is exact if $f$ is bandlimited to a maximum degree of $n/2 - 1$.
+The transform on a $n \times 2n$ \textcite{Driscoll1994} grid is exact if $f$ is band-limited to a maximum degree of $n/2 - 1$.
 
 \subsection{Power spectrum and correlations between functions}
 \label{ss:SigIs:Fwd:Spectrum}
@@ -697,10 +697,10 @@ Nevertheless, this strategy was preferred since, by doing so, the gravity maps o
         }
     \end{adjustbox}
     \caption[Sketch describing the `slicing' of layers according to a reference density model.]{
-        Sketch describing the `slicing' of layers according to a reference density model (a concentric depthwise succession of constant density shells).
+        Sketch describing the `slicing' of layers according to a reference density model (a concentric depth-wise succession of constant density shells).
         The input, non-partitioned, layer is defined by top and bottom surfaces $r_{top}$ and $r_{bot}$, expressed as radius.
         The portion of layer in the $i$-th reference shell is expressed as separate top and bottom sub-surfaces $r_{ti}$ and $r_{bi}$.
-        Where no part of the layer interesects a reference shell, i.e. where there is no mass to model, the two surfaces coincide.}
+        Where no part of the layer intersects a reference shell, i.e. where there is no mass to model, the two surfaces coincide.}
     \label{fig:SigIs:RefSlices}
 \end{figure}
 
@@ -996,7 +996,7 @@ The \textit{whole-crust corrected NETC} -- the NETC disturbance refined for the 
 The local minima of the NETC in areas of high topography are over-compensated by the crustal correction (we may say `over-corrected'), resulting in the largest values in the distribution (above about \SI[retain-explicit-plus]{+700}{mGal}).
 Quality assessment of {LITHO1.0} data is beyond the objectives of these tests, as is inversion of the input gravity models to improve the data quality -- which has been shown to provide promising results \parencite[see e.g. ][]{Sjoberg2011}.
 Anyway, this over-correction results in a residual-NETC that deviates from what could be expected from isostatic equilibrium.
-Such a postive residual may arise due to two different sources: the densities and/or thickness provided in {LITHO1.0} may be erroneous, or the observed gravity signal and the estimated depth of boundaries (such as the Moho) may be influenced by non-isostatic effects \parencite[as defined by ][]{Bagherbandi2012}.
+Such a positive residual may arise due to two different sources: the densities and/or thickness provided in {LITHO1.0} may be erroneous, or the observed gravity signal and the estimated depth of boundaries (such as the Moho) may be influenced by non-isostatic effects \parencite[as defined by ][]{Bagherbandi2012}.
 Isostatic compensation may be also reached at depths higher than the crust-mantle boundary \parencite{Martinec1994}.
 Without excessive speculation, the actual situation can be expected to be a superposition of the two `culprits': part a `known-mass-model error', part non-isostatic effects.
 It follows that the better the known-mass-model, the better the assessment of compensation mechanism, and vice versa.
@@ -1010,7 +1010,7 @@ This implies that the density of the lithospheric mantle is consistently higher 
 The oceans-continents partitioned stacked histogram (bottom plot of Fig.~\ref{fig:SigIs:Res:HistFwdCrust}) highlights the two superimposed distributions: oceans (average \SI{344}{mGal}) and continents (average \SI{288}{mGal}). The latter presents a tail towards positive values, which skews the average, and a mode at around \SI{180}{mGal}.
 A strong degree of mixing between the contribution of continental and oceanic masses can be expected, due to the large footprint of the attraction of deep masses, upward-continued at \SI{10}{\kilo \metre} of ellipsoidal height.
 
-However, no strong ocean-continent dicothomy can be identified, neither in the spatial distribution or in the historgrams: the lithospheric thickness is mostly unrelated to the surface topography, the dominant pattern being instead defined by deep cratonic keels, areas of younger continental lithosphere, and oceans.
+However, no strong ocean-continent dichotomy can be identified, neither in the spatial distribution or in the histograms: the lithospheric thickness is mostly unrelated to the surface topography, the dominant pattern being instead defined by deep cratonic keels, areas of younger continental lithosphere, and oceans.
 The contribution of the oceanic lithospheric mantle to this correction is small, due to its small relative thickness.
 
 The whole-lithosphere corrected NETC is shown in the bottom map of Fig.~\ref{fig:SigIs:Res:CRUST}.
@@ -1148,7 +1148,7 @@ The power density of the former become less than the latter (the GGM) at degree 
 The power of the modelled terrain correction is always higher than the one of the GGM disturbance and of all the modelled {LITHO1.0} layers.
 
 The degree variances of the shell-wise corrections are plotted in Fig.~\ref{fig:SigIs:Spec:DegVarSD}, where the spectra of the GGM and TC are kept for reference.
-The degree variance of both these corrections becomes less thant the one of the GGM at SH degree \num{138}, a different pattern respect to the isolated layer-wise effect.
+The degree variance of both these corrections becomes less than the one of the GGM at SH degree \num{138}, a different pattern respect to the isolated layer-wise effect.
 
 All the corrections, except sediments, exceed the power of the GGM disturbance at the lowest degrees.
 Sometimes truncation of global models at low degrees is employed as a low-pass filter to pursue isolation of sub-lithospheric or sub-crustal signals \parencites[e.g.]{Deschamps2001}{Simmons2010}.
@@ -1207,20 +1207,20 @@ Here, in Fig.~\ref{fig:SigIs:Res:XCorr}, the input GGM disturbance is cross-corr
 
 By doing so I aimed at getting a metric on how much the input signal is `explained', thus reduced by, each correction.
 The top panel of Fig.~\ref{fig:SigIs:Res:XCorr} shows the degree-cross correlation between the terrain correction and the input disturbance.
-An almost constant CC, at \num[retain-explicit-plus]{+0.75}, is observed from SH degree 20 onwards: this reproduces a common finding in topographic evalutation \parencites{Hirt2012TopoIso}{Hirt2010} of gravity models on Earth.
+An almost constant CC, at \num[retain-explicit-plus]{+0.75}, is observed from SH degree 20 onwards: this reproduces a common finding in topographic evaluation \parencites{Hirt2012TopoIso}{Hirt2010} of gravity models on Earth.
 Topography is generally considered as the dominant source of gravity signal at short scale \parencite{Forsberg1981}.
 
 There is a loss in spectral power towards the higher degrees, which becomes noticeable from about $l=$\num{230} onwards.
 This decline is a direct consequence of the lower signal-to-noise ratio that satellite-only GGM solutions can provide at these short wavelengths.
 In the case of the model adopted here \parencite[GOCO06s][]{Kvas_GOCO06s_dataset}, the system of normal equations used to combine the input data (GOCE, GRACE, LEO orbits, and SLR) impose a Kaula regularization \parencite{Pail2010_GOCO01S} from degree and order \num{150} onwards -- a compromise between energy content in less accurately estimated high degrees and otherwise increasing GGM errors.
 Loss of signal at high degrees is therefore not unexpected, and should be accounted for when applying reductions and formulating inverse problems on the reduced gravity quantities.
-Failing to do so would map the omitted short wavelength gravity signal to the anomalous mass distribution sought for, resulting in artifact arising from the difference in formal resolution between input model and reductions.
+Failing to do so would map the omitted short wavelength gravity signal to the anomalous mass distribution sought for, resulting in artefact arising from the difference in formal resolution between input model and reductions.
 
-Loss of terrain-gravity correlation occurs also at low degrees (less than \num{10}), where they are usually attribued to deep density inhomogeneities \parencite{Kaban2004} not associated with an expression in surface topography.
+Loss of terrain-gravity correlation occurs also at low degrees (less than \num{10}), where they are usually attributed to deep density inhomogeneities \parencite{Kaban2004} not associated with an expression in surface topography.
 
 Correlations between the input GGM and the forward-modelled masses from {LITHO1.0} (middle and bottom panel of Fig.~\ref{fig:SigIs:Res:XCorr}) are much smaller and decay to non-correlation at lower degrees.
 Both the whole-crust and whole-lithosphere corrections do not result in CCs higher than \num{0.2} above SH degree \num{60} (equal to an half wavelength of about \SI{330}{\kilo \metre}, \SI{3}{arc-degrees}).
-The sediments correction alone still correlates (more thant the \num{0.2} threshold adopted here) up to SH degree \num{110} (equal to an half wavelength of about \SI{180}{\kilo \metre}, \SI{1.6}{arc-degrees}).
+The sediments correction alone still correlates (more than the \num{0.2} threshold adopted here) up to SH degree \num{110} (equal to an half wavelength of about \SI{180}{\kilo \metre}, \SI{1.6}{arc-degrees}).
 The chosen threshold, albeit arbitrary, discriminates a spectral band with consistently non-zero GGM-correction correlation from the uncorrelated higher degrees.
 The effective bandwidth so obtained are less than the \SI{1}{arc-degree} discretisation LITHO1.0 is provided in.
 
@@ -1305,9 +1305,9 @@ A direct consequence of the simple uniform uncertainty model is the direct propo
 Dependence of depth-uncertainty with the depth of layer boundaries and the \SI{100}{\kilo \gram \per \cubic \metre} standard deviation of density uncertainty, add up.
 The consequence is that the deeper and thicker a layer, the larger its contribution to uncertainty in a given location.
 
-The scatter plots of Fig.~\ref{fig:SigIs:Res:UncertaintyScatterPlots} present this proportionality pattern, which however deviates from simple linarity.
+The scatter plots of Fig.~\ref{fig:SigIs:Res:UncertaintyScatterPlots} present this proportionality pattern, which however deviates from simple linearity.
 The patterns are complicated by the concurrent contributions of 
-: (1)~different composing layers (in the case of sediments and crust, 3 layers each), (2)~lateral variations in density in each layer, (3)~different contrast respect to the reference density in each shell of the refence model, (4)~large footprint of deep and far-field masses, especially in areas of sharp lateral contrasts (e.g. ocean margins).
+: (1)~different composing layers (in the case of sediments and crust, 3 layers each), (2)~lateral variations in density in each layer, (3)~different contrast respect to the reference density in each shell of the reference model, (4)~large footprint of deep and far-field masses, especially in areas of sharp lateral contrasts (e.g. ocean margins).
 The LID layer, which is characterised localised bodies with high contrast (cratonic keels at large depths and patches of shallow dense lithospheric mantle in oceans), deviates from linear proportionality more significantly than the sediments and crust.
 
 To avoid over-representation of nodes at high latitudes, the markers in the scatter plots of Fig.~\ref{fig:SigIs:Res:UncertaintyScatterPlots} were obtained by re-sampling the layer thickness and uncertainty maps on the regularly-spaced global grid (\SI{2}{arc-degree} spacing) by \textcite{Davies2012}.
@@ -1360,10 +1360,10 @@ To avoid over-representation of nodes at high latitudes, the markers in the scat
 The spatial distribution of uncertainty values and their surface-weighted probability density function -- as plotted in the histograms beneath the maps (Fig.~\ref{fig:SigIs:Res:UncertaintyMaps}) and in Fig.~\ref{fig:SigIs:Res:HistUncertainty} -- bears a qualitative similarity with the histograms of the forward-modelled corrections, especially for the partition pattern of oceans and continents.
 
 The average standard deviation for the sediment correction is \SI{2.5}{mGal} (oceans: \SI{2.7}{mGal}, continents: \SI{1.9}{mGal}), with tails reaching values over \SI{10}{mGal} only directly above thick sedimentary basins.
-The uncertainty in crust correction is an order of magnitude larger, with a marked ocean-continent dicothomy.
+The uncertainty in crust correction is an order of magnitude larger, with a marked ocean-continent dichotomy.
 Due to the thickness-uncertainty relationship, discussed before, larger values are observed over thicker crust, therefore all the higher part of the range is covered by nodes on above-sea-level landmasses (global average: \SI{18.3}{mGal}, oceans: \SI{13.0}{mGal}, continents: \SI{32.1}{mGal}).
 Unsurprisingly, the crustal correction uncertainty reaches its largest values in the same regions where the crustal correction itself has its extremes: chiefly, the Himalaian range (up to \SI{72}{mGal}).
-The uncertainty of the lithospheric mantle correction loses most of the ocean-continent dicothomy, since the layer itself is not strongly correlated with surface topography.
+The uncertainty of the lithospheric mantle correction loses most of the ocean-continent dichotomy, since the layer itself is not strongly correlated with surface topography.
 While the maximum value is less than the one of $\sigma(\textrm{CRUST})$, the average is higher (\SI{21}{mGal}) and there is less dispersion, due to the lithospheric mantle effect lacking any localised `outliers'.
 
 % conseguenze qui
@@ -1377,8 +1377,8 @@ While the maximum value is less than the one of $\sigma(\textrm{CRUST})$, the av
 Taking into account a $\pm 2 \sigma$ range (covering the \SI{95}{\percent} of the values, under the normally distributed error imposed here) and crustal thickness modelling as a potential application (e.g. the case involved in chapter~\ref{c:ThermAppl}), the uncertainty introduced by the sediment correction remains relatively small if compared to other contributions.
 For a `rule-of-thumb' assessment, I adopt the first-order term of the attraction of a spherical Bouguer shell ($A = 4 \pi G \rho H$, \cite{Vanicek2001}) as an approximated conversion between the uncertainty range and an `equivalent Moho depth' (arranged as $\Delta H = 4 \sigma (A) / (4 \pi G \Delta \rho)$).
 Using a \SI[retain-explicit-plus]{+485}{\kilo \gram \per \cubic \metre} crust-mantle contrast \parencite{Tenzer2012contrast}, a \SI{10}{mGal} $4 \sigma$ range results in a uncertainty interval of about \SI{245}{\metre}.
-For comparision, \textcite{Grad2012} reports an \SI{85}{\percent} confidence interval of $\pm$\SI{2}{\kilo \metre} for a \SI{20}{\kilo \metre} thick crust, $\pm$\SI{4}{\kilo \metre} for a \SI{60}{\kilo \metre} thick crust
-(for receiver functions on the well-surveryed European Plate).
+For comparison, \textcite{Grad2012} reports an \SI{85}{\percent} confidence interval of $\pm$\SI{2}{\kilo \metre} for a \SI{20}{\kilo \metre} thick crust, $\pm$\SI{4}{\kilo \metre} for a \SI{60}{\kilo \metre} thick crust
+(for receiver functions on the well-surveyed European Plate).
 Note, however, that this error estimate disregards the uncertainties introduced by the gravity inverse problem.
 % media seds = 2.5, *4 = 10 mGal
 % contrasto 485 kg/m3 (Tenzer2012)
@@ -1447,7 +1447,7 @@ In order to perform velocity-to-density conversion in the lithospheric mantle (w
 Reductions were modelled as density contrasts against an ad-hoc reference density model, discretised in concentric shells respect to the {GRS80} ellipsoid.
 The reference density in each shell was computed according to {LITHO1.0} densities and a reference constant-density asthenosphere fill-in.
 By doing so, the biases that exist between the input density model and commonly adopted reference earth models (e.g. {ak135}) were not propagated to the forward modelled corrections.
-This involved parititioning each layer according to the `reference-slices' and modelling the `sliced' gravity effect separately.
+This involved partitioning each layer according to the `reference-slices' and modelling the `sliced' gravity effect separately.
 This procedure also provided novel grouped statistics on the average depth and densities of {LITHO1.0} layers (Tab.~\ref{tab:LithoLayersGroups}).
 
 The forward-modelled corrections were applied to the combined satellite-only global gravity model GOCO06s \parencites{Kvas_GOCO06s_dataset}{Kvas2019GOCO06s_EGU}.
@@ -1455,16 +1455,16 @@ They are presented as global maps of gravity effect of the modelled layers (i.e.
 In addition to layer-wise corrections (grouped in sediments, consolidated crust, and lithospheric mantle), two selected `shell-wise' corrections are included.
 The `shell-wise' corrections, instead of modelling masses up to the bottom boundary of the bottom-most layer, include all the modelled layers plus the fill-in asthenosphere up to a constant ellipsoidal depth.
 Biases due to the non-modelled volumes are therefore avoided.
-The residual gravity disturbance obtained from such corrections could be empoyed in inverse modelling of lithospheric and sub-lithospheric `anomalous masses' respect to the model used for correction and the fill-in reference asthenosphere.
+The residual gravity disturbance obtained from such corrections could be employed in inverse modelling of lithospheric and sub-lithospheric `anomalous masses' respect to the model used for correction and the fill-in reference asthenosphere.
 
 Maps are accompanied by histograms with constant-area weighted counts.
-Global averages have also been provided, separated for nodes over oceans and continents, enabling a quantitative separation of the already apparent ocean-continent dicothomy in the modelled layers.
+Global averages have also been provided, separated for nodes over oceans and continents, enabling a quantitative separation of the already apparent ocean-continent dichotomy in the modelled layers.
 The corrections obtained highlight some of the issues regarding the `known-masses' model {LITHO1.0}, particularly regarding isostatic compensation of topographic masses.
 Two aspects, over-correction in areas of very thick crust and non-modelled compositional effects of cratonic keels, could be identified and are briefly discussed.
 
 A spectral-domain assessment of the modelled quantities was also performed.
 Degree cross-correlation coefficients between the input gravity model and the obtained corrections were computed.
-Leaving isostatic analysis in the spectral domain aside -- it would call for a more rigorous analysis \parencites[e.g.][]{McKenzie1997}{Kaban2004} -- the assessment perfomed here provided an useful estimate on the effective bandwith of the {LITHO1.0} model, which decayed to near-zero correlation coefficients at spherical harmonics degrees less than what its \SI{1}{arc-degree} nominal resolution could provide.
+Leaving isostatic analysis in the spectral domain aside -- it would call for a more rigorous analysis \parencites[e.g.][]{McKenzie1997}{Kaban2004} -- the assessment performed here provided an useful estimate on the effective bandwidth of the {LITHO1.0} model, which decayed to near-zero correlation coefficients at spherical harmonics degrees less than what its \SI{1}{arc-degree} nominal resolution could provide.
 This finding suggests that localised assessment of degree cross-correlations (e.g. with multitaper spectral estimation, such as the method by \cite{Wieczorek2007multitaper}) could provide interesting metrics on the actual resolution of global crust/lithosphere models with undisclosed data sources.
 
 Cross-correlation of the terrain correction with the input global gravity, an assessment that has been already performed for other GGMs and terrain models \parencite[e.g.][]{Hirt2012TopoIso}, reminded of the loss of spectral power that satellite-only GGMs have at higher degrees -- this calls for adequate attenuation of the forward-modelled solid-Earth reductions.
@@ -1557,18 +1557,18 @@ As it is shown later, the satisfactory results of the direct comparison and the 
 \label{ss:SigIs:Test:FourBlocks}
 
 A synthetic mass distribution was defined, made up of four 2$\times$2~degree ``blocks'', each \SI{1}{\kilo \metre} thick.
-Set on a sphere with radius equal to WGS84 semi-major axis (\SI{6378.137}{\kilo \metre}), two blocks rise above it, the remaining two below it, arranged in a checkerboard fashion.
+Set on a sphere with radius equal to WGS84 semi-major axis (\SI{6378.137}{\kilo \metre}), two blocks rise above it, the remaining two below it, arranged in a checker board fashion.
 The bodies above the sphere radius have a density of $+$\SI{1}{\gram \per \cubic \centi \metre}, those below have a density of \SI{-1}{\gram \per \cubic \centi \metre}.
-The resulting relief map is plotted in Fig.~\ref{fig:SpatSpecComp:4B_DepthMap}, zoomed in on the area covered by the blocks (centered on \SI{47}{\degree N}, \SI{47}{\degree E}).
+The resulting relief map is plotted in Fig.~\ref{fig:SpatSpecComp:4B_DepthMap}, zoomed in on the area covered by the blocks (centred on \SI{47}{\degree N}, \SI{47}{\degree E}).
 The grid covers the whole globe and contains no other masses.
 Owing to the limited bandwidth requirement of the input grids for the spectral method (section~\ref{ss:SigIs:Fwd:SHtransform}), the original square-wave shaped relief map was low-pass filtered with a Gaussian kernel (impulse response equal to $e^{-1/2}$ at \SI{4}{\degree}).
 All the three forward modelling methods tested employ a \SI{0.0625}{\degree}$\times$\SI{0.0625}{\degree} equally spaced global grid.
 
-A section along the \SI{48}{\degree N} parallel is plotted in Fig.~\ref{fig:SpatSpecComp:4B_sections}, which shows the three ways in which the mass distributions have been expressd:
+A section along the \SI{48}{\degree N} parallel is plotted in Fig.~\ref{fig:SpatSpecComp:4B_sections}, which shows the three ways in which the mass distributions have been expressed:
 \begin{enumerate}
 \item[a)] \textbf{one relief}, input for the unmodified spectral-domain method of \textcite{Wieczorek2007}. The reference sphere radius $D$ is set equal to the zero-relief sphere radius (\SI{6378.137}{\kilo \metre}). The input density is set uniform everywhere: its effect is negative in areas with negative relief, due to the $\rho h$ product (Eq.~\ref{eq:SHfwd:reliefSH}).
 \item[b)] \textbf{layer-wise} setup: positive- and negative-relief volumes are modelled as two separate layers. The reference sphere radius $D$ is set equal to the highest relief. The aforementioned zero-relief sphere serves as the bottom boundary for the positive relief layer and as the top boundary for the negative relief one. Input density is positive above zero (red fill) and negative below (blue fill) -- as mentioned in the strategy description, density signs are then reversed in the forward-modelling function, since height in respect to $D$ is negative.
-\item[c)] spatial-domain \textbf{tesseroids} discretisation: the relief was turned into discrete spherical tesseroids, sized with the same grid spacing as the input grid and centered on the grid nodes (\textit{grid registration}). Forward modelling was carried out with the Tesseroids code \parencites{Uieda2016}{UiedaTesseroids}.
+\item[c)] spatial-domain \textbf{tesseroids} discretisation: the relief was turned into discrete spherical tesseroids, sized with the same grid spacing as the input grid and centred on the grid nodes (\textit{grid registration}). Forward modelling was carried out with the Tesseroids code \parencites{Uieda2016}{UiedaTesseroids}.
 \end{enumerate}
 
 \begin{figure} % 4 blocks, depth map
@@ -1604,7 +1604,7 @@ A section along the \SI{48}{\degree N} parallel is plotted in Fig.~\ref{fig:Spat
 Figure~\ref{fig:SpatSpecComp:4B_g_maps} shows the results and direct comparison between spectral-domain (method \textbf{a)}) and spatial-domain (method \textbf{c)}).
 The difference between the spectral and spatial output (spatial minus spectral $g_z$, lower left panel) lies inside a \num{-0.92} to \SI{0.92}{\milli Gal} range.
 It is affected by the characteristic side lobes (\textit{ringing}) which arise due to the boxcar truncation of the spherical harmonic expansion \parencite{BarthelmesGentleCut2008}.
-Applying a linerly decreasing weight (from 1 to 0) to all coefficients from degree 200 to 360 results in the differences plotted in the lower right panel.
+Applying a linearly decreasing weight (from 1 to 0) to all coefficients from degree 200 to 360 results in the differences plotted in the lower right panel.
 This \textit{gentle cut} truncation was applied both to the coefficients resulting from the spectral method and to the results of Tesseroids modelling, by transforming the global grids in a spherical harmonics expansion, applying the truncation and synthesizing $g_z$.
 The filtered $\Delta g_z$ is distributed between \num{-0.0184} and \SI{0.0181}{\milli Gal}.
 
@@ -1675,7 +1675,7 @@ It is expressed cumulatively, reaching a maximum of \SI{0.512}{\milli Gal} at $l
 
 \paragraph*{Four blocks test, single relief against layer-wise method}
 In addition to the spectral-domain (method \textbf{a)}) against spatial-domain (method \textbf{c)}) comparison, the consistency between two spectra-domain methods was tested: the unmodified relief-forward-modelling of \textcite{Wieczorek2007} (method \textbf{a)}) and its implementation as a layer-wise approach (method \textbf{b)}).
-The results, expressed in terms of power spectra (degree variances of the potential) and spectrum of $g_z$ differences (cumulative degreee standard deviation) are shown in Fig.~\ref{fig:SpatSpecComp:4B_dv_spec_relief}.
+The results, expressed in terms of power spectra (degree variances of the potential) and spectrum of $g_z$ differences (cumulative degree standard deviation) are shown in Fig.~\ref{fig:SpatSpecComp:4B_dv_spec_relief}.
 The two strategies converge to identical results, the only discrepancy likely arising from computational precision.
 Cumulative standard deviation of $\Delta g_z$ at $l_{max}$ is \SI{1.23e-12}{\milli Gal}.
 
@@ -1688,7 +1688,7 @@ I am also including the output of another test: instead of the ``synthetic relie
 The {SEDS1} layer is the most superficial among the layers modelled here (see the general model description in section~\ref{ss:SigIs:LITHOmodel}).
 Representing the first of three sedimentary layers, it is derived from an updated version of the global sediment thickness map by \textcite{Laske1997_sediments}.
 The only difference with the modelled reductions (section \ref{s:SigIs:Results}) is that the prescribed depths were referred to a sphere (instead of the WGS84 ellipsoid), the observation points were also spherical (\SI{40}{\kilo \metre} above the sphere) and density has been imposed constant at \SI{2.17}{\gram \per \cubic \centi \metre} (modelled as a \SI{-0.50}{\gram \per \cubic \centi \metre} contrast against a \SI{2.67}{\gram \per \cubic \centi \metre} reference density).
-These three modifications simplified the generation of the corresponding tesseroids-discretised model and computation points grid, thus avoiding a potential source of discrepance in the direct comparison.
+These three modifications simplified the generation of the corresponding tesseroids-discretised model and computation points grid, thus avoiding a potential source of discrepancy in the direct comparison.
 
 The direct comparison on synthesized $g_z$ maps is shown in Fig.~\ref{fig:SpatSpecComp:SEDS1_g_maps}.
 Differences, expressed as Tesseroids-modelled $g_z$ minus spectral-domain layer-wise modelled $g_z$, are shown in the lower map.
@@ -1747,7 +1747,7 @@ The cumulative standard deviation of  $\Delta g_z$ at $l_{max}$ is \SI{0.016}{\m
 %\label{ss:SigIs:Test:Outcome}
 
 Overall, the two tests that were presented here show a satisfactory agreement between the spatial-domain method (adopted as a benchmark) and the layer-wise spectral-domain technique that was employed in computing the reductions and uncertainty-propagation of this chapter.
-Misfit levels, both in a synthetic 2$\times$2 checkerboard test and with a realistic global layer, are small enough to exceed the application requirements: they lie below the uncertainties involved in the input mass distribution data.
+Misfit levels, both in a synthetic 2$\times$2 checker board test and with a realistic global layer, are small enough to exceed the application requirements: they lie below the uncertainties involved in the input mass distribution data.
 In addition, the layer-wise spectral-domain modelling technique, which relies on the superposition of the effects of the top and bottom surfaces of a layer, was shown to provide identical results to the single relief modelling provided in SHTOOLS \parencite{Wieczorek2018}.
 
 The direct comparison of spatial- and spectral-domain methods also allowed to quantify and compare the computational time requirements, which has been the rationale for preferring the faster spectral-domain method for the Monte Carlo uncertainty propagation.

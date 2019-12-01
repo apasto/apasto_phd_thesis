@@ -1448,21 +1448,36 @@ Reductions were modelled as density contrasts against an ad-hoc reference densit
 The reference density in each shell was computed according to {LITHO1.0} densities and a reference constant-density asthenosphere fill-in.
 By doing so, the biases that exist between the input density model and commonly adopted reference earth models (e.g. {ak135}) were not propagated to the forward modelled corrections.
 This involved parititioning each layer according to the `reference-slices' and modelling the `sliced' gravity effect separately.
-This procedure also provided, collaterally, novel statistics on the average depth and densities of {LITHO1.0} layers, taken individually and grouped (tables~\ref{tab:LithoLayers} and~\ref{tab:LithoLayersGroups}).
+This procedure also provided novel grouped statistics on the average depth and densities of {LITHO1.0} layers (Tab.~\ref{tab:LithoLayersGroups}).
 
 The forward-modelled corrections were applied to the combined satellite-only global gravity model GOCO06s \parencites{Kvas_GOCO06s_dataset}{Kvas2019GOCO06s_EGU}.
 They are presented as global maps of gravity effect of the modelled layers (i.e. attraction of the modelled masses) and of the incrementally corrected gravity disturbance of the global gravity model.
 In addition to layer-wise corrections (grouped in sediments, consolidated crust, and lithospheric mantle), two selected `shell-wise' corrections are included.
-%The `shell-wise' corrections
+The `shell-wise' corrections, instead of modelling masses up to the bottom boundary of the bottom-most layer, include all the modelled layers plus the fill-in asthenosphere up to a constant ellipsoidal depth.
+Biases due to the non-modelled volumes are therefore avoided.
+The residual gravity disturbance obtained from such corrections could be empoyed in inverse modelling of lithospheric and sub-lithospheric `anomalous masses' respect to the model used for correction and the fill-in reference asthenosphere.
 
-% histogram, statistics
-% una frase su qualità e significato dei risultati
-% accenno a over-correction
+Maps are accompanied by histograms with constant-area weighted counts.
+Global averages have also been provided, separated for nodes over oceans and continents, enabling a quantitative separation of the already apparent ocean-continent dicothomy in the modelled layers.
+The corrections obtained highlight some of the issues regarding the `known-masses' model {LITHO1.0}, particularly regarding isostatic compensation of topographic masses.
+Two aspects, over-correction in areas of very thick crust and non-modelled compositional effects of cratonic keels, could be identified and are briefly discussed.
 
-% assessment con SH
+A spectral-domain assessment of the modelled quantities was also performed.
+Degree cross-correlation coefficients between the input gravity model and the obtained corrections were computed.
+Leaving isostatic analysis in the spectral domain aside -- it would call for a more rigorous analysis \parencites[e.g.][]{McKenzie1997}{Kaban2004} -- the assessment perfomed here provided an useful estimate on the effective bandwith of the {LITHO1.0} model, which decayed to near-zero correlation coefficients at spherical harmonics degrees less than what its \SI{1}{arc-degree} nominal resolution could provide.
+This finding suggests that localised assessment of degree cross-correlations (e.g. with multitaper spectral estimation, such as the method by \cite{Wieczorek2007multitaper}) could provide interesting metrics on the actual resolution of global crust/lithosphere models with undisclosed data sources.
 
-% uncertainty
-% accenno a prossimo capitolo
+Cross-correlation of the terrain correction with the input global gravity, an assessment that has been already performed for other GGMs and terrain models \parencite[e.g.][]{Hirt2012TopoIso}, reminded of the loss of spectral power that satellite-only GGMs have at higher degrees -- this calls for adequate attenuation of the forward-modelled solid-Earth reductions.
+
+Propagation of errors in the depth of layer boundaries and layer densities was carried out with a Monte-Carlo technique \parencite{Aster2018}, a parallel computation scheme and a memory-lean partition strategy.
+It has proven successful in providing a propagated uncertainty estimate, quantified with the standard deviation of the correction values in each node of the synthesized global gravity maps.
+The input error model that has been adopted is based on a simple depth-dependent error in depth estimation and in a fixed standard deviation value for the normally-distributed error in density.
+Anyway, the method that I have devised may be easily scaled to more complex models of the spatial distribution of errors, based on quality and availability of data \parencite[such as in the regional model by][]{Molinari2011} and/or a geostatistics-based estimation of variance \parencite[e.g.][]{Szwillus2019}.
+Error covariance between nearby nodes is also an aspect that warrants further investigation.
+
+% accenno a prossimo capitolo?
+
+This chapter is accompanied with a supplementary section (\ref{s:SigIs:Test}), in which the adopted spectral-domain forward modelling method is compared with spatial-domain forward modelling, in a set of synthetic test cases.
 
 % *** appunti per discussion ***
 % confronto con tenzer2009 (e 2015)

@@ -1437,6 +1437,33 @@ Adopting the same Bouguer-shell conversion, the average $4 \sigma$ of the crusta
 
 \FloatBarrier
 
+\section{Conclusions}
+\label{s:SigIs:Conclusions}
+In this chapter I have presented a method for fast forward modelling of mass distributions in the lithosphere, relying on a layer-wise modelling strategy based on \textcite{Wieczorek2007} spherical harmonics formulas.
+Forward modelled gravity corrections to the gravity disturbance, aimed at stripping gravity measurements, were computed for the complete terrain effect (according to the rock, water, and ice {EARTH2014} model by \cite{Hirt2015}) and for the sediments, crust and lithospheric mantle (according to the {LITHO1.0} model by \cite{Pasyanos2014}).
+
+In order to perform velocity-to-density conversion in the lithospheric mantle (where {LITHO1.0} does not provide the spatial distribution density), thermodynamic modelling was performed with {Perple\_X} \parencite{Connolly2005} on a simplified two-member global compositional model \parencite{Griffin2009}.
+
+Reductions were modelled as density contrasts against an ad-hoc reference density model, discretised in concentric shells respect to the {GRS80} ellipsoid.
+The reference density in each shell was computed according to {LITHO1.0} densities and a reference constant-density asthenosphere fill-in.
+By doing so, the biases that exist between the input density model and commonly adopted reference earth models (e.g. {ak135}) were not propagated to the forward modelled corrections.
+This involved parititioning each layer according to the `reference-slices' and modelling the `sliced' gravity effect separately.
+This procedure also provided, collaterally, novel statistics on the average depth and densities of {LITHO1.0} layers, taken individually and grouped (tables~\ref{tab:LithoLayers} and~\ref{tab:LithoLayersGroups}).
+
+The forward-modelled corrections were applied to the combined satellite-only global gravity model GOCO06s \parencites{Kvas_GOCO06s_dataset}{Kvas2019GOCO06s_EGU}.
+They are presented as global maps of gravity effect of the modelled layers (i.e. attraction of the modelled masses) and of the incrementally corrected gravity disturbance of the global gravity model.
+In addition to layer-wise corrections (grouped in sediments, consolidated crust, and lithospheric mantle), two selected `shell-wise' corrections are included.
+%The `shell-wise' corrections
+
+% histogram, statistics
+% una frase su qualità e significato dei risultati
+% accenno a over-correction
+
+% assessment con SH
+
+% uncertainty
+% accenno a prossimo capitolo
+
 % *** appunti per discussion ***
 % confronto con tenzer2009 (e 2015)
 % statico-no-uncertainty

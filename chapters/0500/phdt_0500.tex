@@ -1,3 +1,91 @@
-\chapter{Concluding remarks}
+\chapter{Conclusions}
 \label{c:Conclusions}
 % citazione possibile qui, con \dictum[autore]{testo}
+
+The research presented in this dissertation dealt with the application of satellite-only gravity models to an assessment of temperature distribution in the continental lithosphere and surface heat flow.
+In the context of using gravity to perform inference on the physics of the sub-surface, I have provided contributions in the following topics:
+\begin{itemize}
+    \item forward modelling of models of sub-surface density, pursuing signal isolation in gravity data;
+    \item crustal-thickness constrained geothermal modelling, aimed at using a result of gravity inversion to turn sparse measurements of surface heat flow in a complete thermal volume. 
+\end{itemize}
+
+% intro alle conclusioni: motivazione (che poi riprenderò in introduzione)
+Interest in addressing such a problem stemmed from the striking
+together with qualitative
+
+Existing literature on integrated geophysical modelling
+
+surface heat flow on its own provides a weak constraint
+for the inverse modelling of lithospheric structures
+and the distribution of temperature at depth
+
+most of
+
+on the other hand, the surface heat flow spatial distribution
+controlled by structures at depth
+
+allows for
+quality of forward modelling
+fit for purpose (e.g. geothermal application, petroleum system modelling)
+% citazioni (es scheck wanderoth)
+% e poi accenno a strength, reologia
+
+% passo a questione: fitting of RHP
+The thermal modelling strategy of chapter~\ref{c:ThermAppl} was thus devised, relying on a lean forward operator (appendix~\ref{c:ThermModel}).
+
+Uncertainty in crustal thickness
+% accenno che Kaban2004 called for cose del genere, in ambito gravità
+
+% fine "introduzione delle conclusioni", passo a ciò che ho fatto
+
+Starting from these premises
+
+% risultati
+
+The methodology described in chapter~\ref{c:SigIs} and the associated data-reduction experiments provide an efficient framework for turning global mass distribution models in global gravity reductions, a fundamental step in the gravity inverse problems involved in solid-Earth geophysics.
+The relief forward modelling method by \textcite{Wieczorek2007} was employed in a `layer-wise' configuration, based on the difference between the gravity field of the bottom and top boundaries defining a layer.
+The proposed method competes with spatial-domain forward modelling, especially in at the comparatively low resolutions imposed by the current state-of-the-art both in satellite only gravity models and global compilations of subsurface data.
+
+In the forward-modelling test I carried out, the input densities were modelled as contrasts against a reference density model.
+Common solutions for this aspect involve the computation of average densities from the layers of the input model, e.g. of the whole crust \parencites{Tenzer2015}{Tenzer2019}.
+Here, a novel solution was designed and implemented: the reference density model is defined in concentric shells of constant thickness.
+Since each shell may intersect different layers, with large differences in layer-wise average densities, this strategy enabled the concurrent modelling of different layers referred to the same reference.
+When average densities are compiled using complete shells, if necessary filling in the portion not included in the input model (e.g. the sub-lithospheric mantle) with a reference value, zero-average shell-wise corrections can be computed.
+
+The obtained result is a whole-lithosphere reduction field, in spherical harmonics and synthesised global maps of gravity corrections.
+It was applied to the combined satellite-only {GOCO06s} \parencite{Kvas_GOCO06s_dataset}, for which the residual gravity disturbances are presented, after reduction.
+Spectral domain comparisons were performed between the modelled masses and the input gravity model.
+Among their results, the effective bandwidth of the input density model was assessed: there is a sudden decay in degree cross-correlations between SH degree \num{60} and \num{110} (half-wavelengths of \num{3} to \num{1.6} arc degree).
+
+Pursuing the objective of estimating what is the error introduced by data reductions, a Monte Carlo uncertainty propagation scheme was set up and tested with a simplified error model for the input data.
+It may be scaled to more complex error models.
+
+The thermal application of chapter~\ref{c:ThermAppl} made extensive use of the method and findings of the data reduction strategy, chiefly in two steps of the Moho signal isolation procedure:
+(1) in modelling the far-field `isostatic effect', to remove the long-wavelength component that affects gravity data from GGM after correcting them with global terrain effect models; (2) in harmonising the more detailed regional sediment thickness model that was utilised inside the study area \parencite[{EuCRUST},][]{Tesauro2008} with a global low-resolution model \parencite[{LITHO1.0},][]{Pasyanos2014}, in order to perform spectral-domain filtering on a global spherical harmonics model of sediments correction.
+
+% qui passo a termico
+After the gravity data reduction step, the thermal strategy relies on inversion of the isolated Moho signal.
+Thickness of the consolidated crust is the quantity that enables the fill-in of the areas devoid of surface heat flow measurements, after fitting the radioactive heat production in cells with measurements.
+The obtained Moho images a crustal morphology which is comparable with other models in the regions, adopted as benchmarks.
+Gravity based method have a well proven record in retrieval of crustal thickness, showing their most promising results in integrated inverse modelling strategies \parencites[e.g.][]{Eshagh2011}{Reguzzoni2015}, combining data from different geophysical observables.
+Here, by design, the performance of a satellite-only approach was assessed, relying as less as reasonably possible on other sources.
+
+% dettagli modello termico
+A 3D finite-difference thermal forward operator for solving the steady state heat equation has been developed for the purposes of this research.
+It allows a radioactive heat production inversion technique, which progresses iteratively through a succession of 1D approximations and subsequent substitution of the parameter sought for.
+It enabled the production of a complete volume of temperature and thermal parameters in the study area, resulting in a gravity-controlled, physics-based, fill-in of the no-data cells -- both at surface and in depth.
+
+% dai finding fatti in questa tesi, propongo che
+The findings of the experiments and applications described in this dissertation suggest that:
+\begin{itemize}
+    \item aaa % qui magari messi come: finding -> suggest that, based on finding
+    \item % prendo dalla lista delle conclusioni del termico!
+\end{itemize}
+
+% seguente: INTEGRATO NELL'ITEMIZE QUI SOPRA
+% inoltre [further work]
+% sottolineando che queste non sono idee a caso
+% ma arrivano dai finding in questa tesi
+
+% global per vincolare bassi gradi - ma qual è l'effetto locale dell'errore?
+

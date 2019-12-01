@@ -1375,14 +1375,20 @@ While the maximum value is less than the one of $\sigma(\textrm{CRUST})$, the av
 % calcolo piastra di Bouguer [citazione?] equivalente a +/- 2 sigma media continentale crosta
 
 Taking into account a $\pm 2 \sigma$ range (covering the \SI{95}{\percent} of the values, under the normally distributed error imposed here) and crustal thickness modelling as a potential application (e.g. the case involved in chapter~\ref{c:ThermAppl}), the uncertainty introduced by the sediment correction remains relatively small if compared to other contributions.
-%Consider a % QUI ESEMPIO CROSTA! (e vedi commenti sopra)
+For a `rule-of-thumb' assessment, I adopt the first-order term of the attraction of a spherical Bouguer shell ($A = 4 \pi G \rho H$, \cite{Vanicek2001}) as an approximated conversion between the uncertainty range and an `equivalent Moho depth' (arranged as $\Delta H = 4 \sigma (A) / (4 \pi G \Delta \rho)$).
+Using a \SI[retain-explicit-plus]{+485}{\kilo \gram \per \cubic \metre} crust-mantle contrast \parencite{Tenzer2012contrast}, a \SI{10}{mGal} $4 \sigma$ range results in a uncertainty interval of about \SI{245}{\metre}.
+For comparision, \textcite{Grad2012} reports an \SI{85}{\percent} confidence interval of $\pm$\SI{2}{\kilo \metre} for a \SI{20}{\kilo \metre} thick crust, $\pm$\SI{4}{\kilo \metre} for a \SI{60}{\kilo \metre} thick crust
+(for receiver functions on the well-surveryed European Plate).
+Note, however, that this error estimate disregards the uncertainties introduced by the gravity inverse problem.
 % media seds = 2.5, *4 = 10 mGal
 % contrasto 485 kg/m3 (Tenzer2012)
-% H = deltagrav / (2 Pi rho G) = about 492 m
+% H = deltagrav / (2 Pi rho G) = about 492 m (Bouguer plate, half of shell)
 
 The crustal and lithospheric-mantle correction, on the other hand, are a significant source of error.
+Adopting the same Bouguer-shell conversion, the average $4 \sigma$ of the crustal correction over continents (\SI{128}{mGal}) results in about \SI{3150}{\metre} of equivalent-Moho uncertainty range (again, this accounts only for the contribution of reductions).
 % esempio portato: media su continenti 32 mGal *4 = 128 mGal
 % come sopra, ottengo 6297 m
+
 % potrei perdermi in esempi di inversione di sfere... ma non lo farò
 % faccio invece riferimento al fatto che nel capitolo termico faccio riferimento alla sensibilità all'errore sulla crosta
 % e al fatto che le "cose funzionano ancora"

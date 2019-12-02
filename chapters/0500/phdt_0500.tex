@@ -2,45 +2,25 @@
 \label{c:Conclusions}
 % citazione possibile qui, con \dictum[autore]{testo}
 
-The research presented in this dissertation dealt with the application of satellite-only gravity models to an assessment of temperature distribution in the continental lithosphere and surface heat flow.
-In the context of using gravity to perform inference on the physics of the sub-surface, I have provided contributions in the following topics:
+The research presented in this dissertation dealt with the application of satellite-only gravity models to modelling of the temperature distribution in the continental lithosphere and surface heat flow.
+In the wider context of using gravity to perform inference on the structure of the planet interior, I have provided contributions in the following topics:
 \begin{itemize}
-    \item forward modelling of models of sub-surface density, pursuing signal isolation in gravity data;
-    \item crustal-thickness constrained geothermal modelling, aimed at using a result of gravity inversion to turn sparse measurements of surface heat flow in a complete thermal volume. 
+    \item forward modelling of prior models of sub-surface density, pursuing signal isolation in gravity data;
+    \item crustal-thickness-constrained geothermal modelling, aimed at using a result of gravity inversion to turn the sparse measurements of surface heat flow in a complete thermal volume, adding information at surface and in depth.
 \end{itemize}
 
 % intro alle conclusioni: motivazione (che poi riprenderò in introduzione)
-Interest in addressing such a problem stemmed from the striking
-together with qualitative
+Interest in addressing such a problem stems from the difference between regional scale gravity (e.g.~about~\SI{100}{\kilo \metre}) and surface heat flow measurements.
+The former is an observable that can benefit from unparalleled global homogeneity in sampling and quality, thanks to satellite gravity missions.
+The latter suffers from the well-known spatial sampling issues that affect all terrestrial measurements.
 
-Existing literature on integrated geophysical modelling
+Consequently, when starting to enquiry if \emph{``gravity may fill-in the heat flow blanks''}, the main research question was formulated: \emph{``can we use gravity and thermal modelling to provide a physics-based interpolation of surface heat flow?''}.
 
-surface heat flow on its own provides a weak constraint
-for the inverse modelling of lithospheric structures
-and the distribution of temperature at depth
+The methodology developed here aimed at assessing this, starting from an a-priori experimental constrain: reliance on external data, other than satellite-gravity models and surface heat flow, should be kept at a reasonable minimum.
+Therefore, as discussed in depth in chapter~\ref{c:ThermAppl}, the results are unavoidably affected by the well-known issues of non-uniqueness that are commonly addressed with multi-observable modelling \parencite{Afonso2013multiobsI}, such as partition between basal heat flow and crustal heat production.
 
-most of
-
-on the other hand, the surface heat flow spatial distribution
-controlled by structures at depth
-
-allows for
-quality of forward modelling
-fit for purpose (e.g. geothermal application, petroleum system modelling)
-% citazioni (es scheck wanderoth)
-% e poi accenno a strength, reologia
-
-% passo a questione: fitting of RHP
-The thermal modelling strategy of chapter~\ref{c:ThermAppl} was thus devised, relying on a lean forward operator (appendix~\ref{c:ThermModel}).
-
-Uncertainty in crustal thickness
-% accenno che Kaban2004 called for cose del genere, in ambito gravità
-
-% fine "introduzione delle conclusioni", passo a ciò che ho fatto
-
-Starting from these premises
-
-% risultati
+However, even under the limiting conditions imposed, the results have provided a satisfactory consistency with current knowledge of the modelled study area, across the Trans-European Suture Zone -- a relatively well surveyed zone, compared to most of the Earth surface.
+The proposed method could thus be scaled to surface heat flow fill-in in areas devoid of measurements, fully exploiting the potential of gravity models.
 
 The methodology described in chapter~\ref{c:SigIs} and the associated data-reduction experiments provide an efficient framework for turning global mass distribution models in global gravity reductions, a fundamental step in the gravity inverse problems involved in solid-Earth geophysics.
 The relief forward modelling method by \textcite{Wieczorek2007} was employed in a `layer-wise' configuration, based on the difference between the gravity field of the bottom and top boundaries defining a layer.
@@ -75,6 +55,7 @@ A 3D finite-difference thermal forward operator for solving the steady state hea
 It allows a radioactive heat production inversion technique, which progresses iteratively through a succession of 1D approximations and subsequent substitution of the parameter sought for.
 It enabled the production of a complete volume of temperature and thermal parameters in the study area, resulting in a gravity-controlled, physics-based, fill-in of the no-data cells -- both at surface and in depth.
 
+% qui: "IN SUMMARY..."
 % dai finding fatti in questa tesi, propongo che
 The findings of the experiments and applications described in this dissertation suggest that:
 \begin{itemize}
@@ -89,3 +70,50 @@ The findings of the experiments and applications described in this dissertation 
 
 % global per vincolare bassi gradi - ma qual è l'effetto locale dell'errore?
 
+%%% TEMP
+
+and when compared with another crust-constrained approach
+relationship
+
+% issues with that
+% gravity small formal error, largest part due to reductions
+% heat flow not very sensitive
+
+
+to 
+addressed with geostatistical methods
+In summary:
+could a method
+could this method lean
+therefore
+provide
+carries an associated uncertainty
+
+Existing literature on integrated geophysical modelling
+
+surface heat flow on its own provides a weak constraint
+for the inverse modelling of lithospheric structures
+and the distribution of temperature at depth
+
+most of
+
+on the other hand, the surface heat flow spatial distribution
+controlled by structures at depth
+
+allows for
+quality of forward modelling
+fit for purpose (e.g. geothermal application, petroleum system modelling)
+% citazioni (es scheck wanderoth)
+% e poi accenno a strength, reologia
+
+% passo a questione: fitting of RHP
+The thermal modelling strategy of chapter~\ref{c:ThermAppl} was thus devised, relying on a lean forward operator (appendix~\ref{c:ThermModel}).
+
+Uncertainty in crustal thickness
+% accenno che Kaban2004 called for cose del genere, in ambito gravità
+
+% fine "introduzione delle conclusioni", passo a ciò che ho fatto
+
+Starting from these premises
+
+% risultati

@@ -47,13 +47,14 @@ The thermal application of chapter~\ref{c:ThermAppl} made extensive use of the m
 After the gravity data reduction step, the thermal strategy relies on inversion of the isolated Moho signal.
 Thickness of the consolidated crust is the quantity that enables the fill-in of the areas devoid of surface heat flow measurements, after fitting the radioactive heat production in cells with measurements.
 The obtained Moho images a crustal morphology which is comparable with other models in the regions, adopted as benchmarks.
-Gravity based method have a well proven record in retrieval of crustal thickness, showing their most promising results in integrated inverse modelling strategies \parencites[e.g.][]{Eshagh2011}{Reguzzoni2015}, combining data from different geophysical observables.
+Gravity based methods have a well proven record in retrieval of crustal thickness, showing their most promising results in integrated inverse modelling strategies \parencites[e.g.][]{Eshagh2011}{Reguzzoni2015}, combining data from different geophysical observables.
 Here, by design, the performance of a satellite-only approach was assessed, relying as less as reasonably possible on other sources.
 
 % dettagli modello termico
 A 3D finite-difference thermal forward operator for solving the steady state heat equation has been developed for the purposes of this research.
 It allows a radioactive heat production inversion technique, which progresses iteratively through a succession of 1D approximations and subsequent substitution of the parameter sought for.
 It enabled the production of a complete volume of temperature and thermal parameters in the study area, resulting in a gravity-controlled, physics-based, fill-in of the no-data cells -- both at surface and in depth.
+\\
 
 % qui: "IN SUMMARY..."
 % dai finding fatti in questa tesi, propongo che
@@ -77,10 +78,24 @@ In summary, with the findings of the experiments and applications carried out in
     \end{description}
 
     \item \textsf{\textbf{Satellite-only gravity for thermal modelling:}}
-    aaa.
-    Integration with external data sources included: a sedimentary reduction using a basement depth model (local and global), a low-resolution Moho density contrast model, and removal of the distant isostatic effect using a global crustal model.
+    \begin{itemize}
+        \item The suitability of gravity as an independent constraint in thermal modelling was demonstrated in this thesis with a proof-of-concept regional application.
+        The continental lithosphere poses lots of issues due to local heterogeneities that superimpose over the necessary simplification of general models.
+        Reality deviates from a simple two-layer crust-mantle model, and thermal parameters are no exception in this -- the vertical distribution of radioactive elements being only a first-order approximation \parencites{Jaupart2003}{Alessio2018deepRHP} and active tectonics hindering the applicability of steady-state modelling.
+        The thermal strategy mentioned above was designed to overcome these issues, at least in part.
+        A compromise between uniform coverage and resolution is required -- a direct consequence of the band-limited input data provided by the input gravity data.
+        In addition, uncertainties in the a-priori data reductions are one to two orders of magnitude larger than the \si{mGal}-level cumulative formal errors of the GGMs.
+        Nevertheless, data from a state-of-the-art satellite-only GGM have been shown suitable for this purpose.
+        \item  The thermal application included a bare-minimum integration with external data sources: a sedimentary reduction using a basement depth model (local and global), a low-resolution Moho density contrast model, removal of the distant isostatic effect using a global crustal model, and a thermal lithospheric thickness provided by a surface wave inversion model.
+        Most of these data sets are available at least at low resolution globally, albeit assessing their data quality can be non trivial.
+        The data-reduction forward modelling presented in this thesis, in addition to the computation of global corrections and uncertainty propagation, proposes spectral comparison as a tool to assess coherency in effective bandwidth between input gravity models and reductions.
+    \end{itemize}
     \begin{description}
-        \item[\quad Further development] Aaa.
+        \item[\quad Further development]
+            Scaling the thermal modelling framework to larger extents, e.g. on all the continental crust using a moving-window approach, is its natural further step.
+            While unavailability of terrestrial data is not easily overcome, uncertainty-aware modelling can at least provide ``error bars'' on the output of a modelling strategy.
+            Propagation of uncertainties in the reductions to the final thermal estimate is surely an aspect that warrants further investigation.
+            The lean modelling tools that the modelling work flow presented here is composed of throughout (from gravity reduction to thermal modelling) could easily allow such a development.
     \end{description}
 \end{enumerate}
 

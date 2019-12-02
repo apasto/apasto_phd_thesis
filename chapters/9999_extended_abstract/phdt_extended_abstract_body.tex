@@ -48,13 +48,14 @@ Since no prior information on density-to-RHP relationship was included, the outp
 Albeit complicated by wide uncertainties, a satisfying overlap between the two data fits was observed.
 \\
 
-An appendix (chapter~\ref{c:ThermModel}) is dedicated to the description of the ad-hoc thermal forward model.
-Its main component is a 3D central-finite-differences solver for the steady-state heat diffusion equation in rectangularly discretised domains, with non-uniform heat production and conductivity.
-Over a standard `box` configuration, it allows for non-flat constant temperature (Dirichlet) boundaries: topography and isotherm lithosphere base, for these purposes.
-It is complemented by a set of functions to translate a plain-text layered definition file of the lithosphere model to a volume parametrised in terms of thermal conductivity, heat production, density, and grid definitions.
-Temperature, pressure, and depth-dependency of the input parameters can be defined.
-The adopted rectangular discretisation allows for directly calling spatial-domain gravity forward modelling (prism-defined, thus completely coherent with the model elements).
-Particular attention was paid to the model efficiency, chiefly in building the coefficient matrix of the finite differences.
-This allowed to employ it in an iterative subsequent-substitution parameter fitting scheme, on which the aforementioned crustal-thickness based RHP inversion is based on.
+% left out in version for review
+% An appendix (chapter~\ref{c:ThermModel}) is dedicated to the description of the ad-hoc thermal forward model.
+% Its main component is a 3D central-finite-differences solver for the steady-state heat diffusion equation in rectangularly discretised domains, with non-uniform heat production and conductivity.
+% Over a standard `box` configuration, it allows for non-flat constant temperature (Dirichlet) boundaries: topography and isotherm lithosphere base, for these purposes.
+% It is complemented by a set of functions to translate a plain-text layered definition file of the lithosphere model to a volume parametrised in terms of thermal conductivity, heat production, density, and grid definitions.
+% Temperature, pressure, and depth-dependency of the input parameters can be defined.
+% The adopted rectangular discretisation allows for directly calling spatial-domain gravity forward modelling (prism-defined, thus completely coherent with the model elements).
+% Particular attention was paid to the model efficiency, chiefly in building the coefficient matrix of the finite differences.
+% This allowed to employ it in an iterative subsequent-substitution parameter fitting scheme, on which the aforementioned crustal-thickness based RHP inversion is based on.
 
 \nocite{Pastorutti2019}

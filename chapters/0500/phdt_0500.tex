@@ -1,4 +1,4 @@
-\chapter{Conclusions}
+\chapter{Conclusions and outlook}
 \label{c:Conclusions}
 % citazione possibile qui, con \dictum[autore]{testo}
 
@@ -57,63 +57,30 @@ It enabled the production of a complete volume of temperature and thermal parame
 
 % qui: "IN SUMMARY..."
 % dai finding fatti in questa tesi, propongo che
-The findings of the experiments and applications described in this dissertation suggest that:
-\begin{itemize}
-    \item aaa % qui magari messi come: finding -> suggest that, based on finding
-    \item % prendo dalla lista delle conclusioni del termico!
-\end{itemize}
+In summary, with the findings of the experiments and applications carried out in this dissertation, I have shown that:
+\begin{enumerate}
+    \item \textsf{\textbf{Thermal modelling strategy:}}
+    a radioactive heat production fitting strategy, constrained by uniformly-sampled crustal thickness and sparsely-sampled surface heat flow, can provide added thermal information on areas lacking direct measurements, either because they are not yet available (surface heat flow) or are logistically not feasible (temperature at depth).
+    Estimates are comparable with the results of petrophysical relationships.
+    In terms of open issues, the tests demonstrated how uncertainty in crustal thickness is more critical the higher the estimated basal heat flow ($Q_{M}$). In addition, the ambiguity in $Q_{M}$ separation is affected by the potentially unstable behaviour of temperature-dependent thermal conductivity.
+    \begin{description}
+        \item[\quad Further development] Multivariate and probabilistic inversion seems justified even for an inverse problem constrained only by two observables (gravity and heat flow). Topography, another observable not suffering from sampling issues (at this scale) could provide added informations in assessing the basal heat flow: the effective elastic thickness.
+        In addition, the predictive performance of the physics-based fill-in strategy could be quantitatively assessed against the simple interpolation of surface heat flow values, resorting to cross-validation methods \parencite[e.g.][, chapter~1]{Bishop2006ML}
+    \end{description}
 
-% seguente: INTEGRATO NELL'ITEMIZE QUI SOPRA
-% inoltre [further work]
-% sottolineando che queste non sono idee a caso
-% ma arrivano dai finding in questa tesi
+    \item \textsf{\textbf{Moho inversion for regional thermal modelling:}}
+    A well-tested procedure was employed to invert a Moho depth from the isolated gravity signal, in local cartesian coordinates.
+    The performance of this crustal thickness estimate are comparable with those obtained by using an integrated seismic based Moho: it is successful in resolving the deep structures controlling the shallow thermal regime and in providing a uniformly-sampled quantity for the RHP-fitting strategy.
+    Results are significantly better than those provided by a checker board Moho test, with higher sensitivity in cells of higher heat flow.
+    \begin{description}
+        \item[\quad Further development] The effect of temperature on density, and then on Moho inversion, was assessed using the output of the forward thermal model: it results in variations of \SI{-12.2}{\percent} to \SI[retain-explicit-plus]{+14.8}{\percent} respect to the Moho inversion that disregarded the thermal effect. While this is deemed an acceptable uncertainty, it would make sense to not discard the temperature information that this modelling method provides. This is also suggested by the existing research on thermal effects on crustal gravity modelling have already provided  results \parencite[e.g.][]{Bagherbandi2017thermal}.
+    \end{description}
 
-% global per vincolare bassi gradi - ma qual è l'effetto locale dell'errore?
+    \item \textsf{\textbf{Satellite-only gravity for thermal modelling:}}
+    aaa.
+    Integration with external data sources included: a sedimentary reduction using a basement depth model (local and global), a low-resolution Moho density contrast model, and removal of the distant isostatic effect using a global crustal model.
+    \begin{description}
+        \item[\quad Further development] Aaa.
+    \end{description}
+\end{enumerate}
 
-%%% TEMP
-
-and when compared with another crust-constrained approach
-relationship
-
-% issues with that
-% gravity small formal error, largest part due to reductions
-% heat flow not very sensitive
-
-
-to 
-addressed with geostatistical methods
-In summary:
-could a method
-could this method lean
-therefore
-provide
-carries an associated uncertainty
-
-Existing literature on integrated geophysical modelling
-
-surface heat flow on its own provides a weak constraint
-for the inverse modelling of lithospheric structures
-and the distribution of temperature at depth
-
-most of
-
-on the other hand, the surface heat flow spatial distribution
-controlled by structures at depth
-
-allows for
-quality of forward modelling
-fit for purpose (e.g. geothermal application, petroleum system modelling)
-% citazioni (es scheck wanderoth)
-% e poi accenno a strength, reologia
-
-% passo a questione: fitting of RHP
-The thermal modelling strategy of chapter~\ref{c:ThermAppl} was thus devised, relying on a lean forward operator (appendix~\ref{c:ThermModel}).
-
-Uncertainty in crustal thickness
-% accenno che Kaban2004 called for cose del genere, in ambito gravità
-
-% fine "introduzione delle conclusioni", passo a ciò che ho fatto
-
-Starting from these premises
-
-% risultati

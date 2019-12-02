@@ -1,2 +1,54 @@
-\chapter{Introduction}
+\chapter{Introduction and motivation}
 \label{c:Intro}
+
+The thermal structure of Earth's interior, the heat transport mechanisms involved and the heat flow observed near its surface are parameters of utmost importance in understanding the phenomena involved in geodynamics and the underlying driving forces.
+Temperature is also a parameter of direct interest in the exploitation of heat, as a source of geothermal energy or as a critical factor in hydrocarbon system modelling.
+
+Direct measurements are technologically limited to the first kilometres of depth, and carrying them out is a costly task.
+Therefore, the spatial distribution of samples is uneven and often biased towards areas of anomalously high surface heat flow \parencite{Mareschal2013}.
+The collection and maintenance of the publicly available data is an ongoing effort, spanning multiple decades \parencite{Lee1965}.
+
+For these reasons most of the knowledge on the thermal structure of the subsurface relies on the integrated analysis of indirect proxies, such as the petrologic information inferred from xenoliths, data inferred from seismological observables, and other physical or chemical quantities for which a temperature dependence is known \parencites{fischer2010lab}{Vila2010}{Afonso2013multiobsI}.
+
+Satellite-derived gravity models have already shown promising results in integrated geophysical modelling of regional heat flow \parencite{Bouman2015}.
+The resolution and spatial homogeneity of the data obtained by the European Space Agency Gravity field and steady-state Ocean Circulation Explorer mission \parencites[GOCE, ][]{Floberghagen2011_goce}{vanderMeijde2015} suggest that it may be a suitable tool in continental-scale thermal estimates.
+
+While the temperature field in the solid Earth and the measured gravity field are not related by any direct physical law, mass distributions sensed by gravity can be a controlling factor for the temperature distribution at depth.
+The temperature-density and temperature-velocity relationships provide satisfactory insights in the thermal state of the mantle \parencites{Priestley2006}{Cammarano2011}, but the crust is dominated by the heterogeneous distribution of heat produced by decay of radioactive elements \parencite{Jaupart2016}, superimposed with the dynamic effects of transients (i.e. when thermal equilibrium has not yet been reached) and non-conductive heat transfer mechanisms: advection and fluid circulation.
+
+The gravity field anomalies due to variations in crustal thickness are among the largest signals sensed by satellite-borne gravity measurements.
+The observation error in satellite-only GOCE-based gravity models propagates to a theoretical \SI{0.1}{\kilo \metre} uncertainty in Moho determination, ignoring the much larger error contribution due to non-exact density distribution models \parencite{braitenberg2011goce}.
+
+Therefore, estimating the crustal contribution to the surface heat flow by assuming a `standard heat production' and scaling it with crustal thickness is tempting.
+Nevertheless, available evidence suggest against such a simple relationship \parencites{Mareschal2013}{Alessio2018deepRHP}.
+However, crustal thickness variations on their own successfully isolate tectonothermal age groups, terranes, and geological provinces.
+An example of this was shown in \textcite{Grad2009}, through spatial filtering of their European Plate Moho model at different wavelengths.
+
+Hence, the strategy devised in this dissertation stems from the assumption that in contiguous areas of similar crustal thickness, interpreted as contiguous geological provinces, consistent thermal parameters can be expected --provided that both the crustal thickness modelling and the thermal analysis are carried out at the same spatial scale.
+The fundamental hypothesis is that the `thermal omission error' due to the unmodelled short-wavelength variability in thermal characteristics should be smaller when this local dependence of heat production on crustal thickness is included.
+
+% qui: riassumo motivation + lista obiettivi
+% stesso schema usato in Conclusions?
+Motivated by these premises, the \textbf{core objectives} of the research hereby presented are the following:
+\begin{enumerate}
+    % \item[Thermal modelling strategy]
+    % \item[Moho inversion for regional thermal modelling]
+    % \item[Satellite-only gravity for thermal modelling]
+    \item the \textbf{definition of a thermal modelling scheme} to implement and test the strategy outlined in the previous paragraphs. In order to do so, I need to set up a thermal `forward operator' (i.e. a solver for the steady state heat equation), an iterative fitting strategy for the radioactive heat production, and the parametrisation of the thermal volumes.
+    \item the \textbf{application of a gravity inversion procedure} for regional estimates of crustal thickness, which is the gravity-derived quantity that constrains the thermal -- the other constrain being the sparsely sampled surface heat flow.
+    \item the \textbf{signal isolation} of the gravity effect of crust-mantle boundary undulations from the gravity signal as provided in a chosen satellite-only gravity model.
+\end{enumerate}
+
+% due paragrafi che dicono come sono stati messi in pratica gli obiettivi
+% qui riassumo capitolo grav
+%When defining the requirements of the forward modelling scheme for gravity corrections, particular attention was devoted to spectral coherency between the modelled reductions and input gravity models.
+%By doing so I aimed at avoiding two potential pitfalls of regional modelling: the omission of longer wavelengths, at the lower of the spectrum
+In chapter~\ref{c:SigIs}, the gravity reduction scheme is defined and tested using the globally available {LITHO1.0} model \parencite{Pasyanos2014}.
+It is accompanied by a brief introduction on the definition of the gravity functionals and the adopted ellipsoid-referenced corrections.
+In addition to providing the means for the gravity reductions, then utilised in the thermal application, it also includes a spectral assessment of the modelled corrections and a strategy for error propagation of uncertainties in the depths and densities of the input models.
+
+% qui riassumo capitolo termico
+In chapter~\ref{c:ThermAppl}, an application of the aforementioned thermal strategy is presented: a test on a study area in central-eastern Europe, crossing the Trans-European Suture Zone, a diffuse boundary between the young lithosphere of the European Plate and the Russian Platform.
+Coherently with the objective of assessing the performance of the satellite-only gravity model in providing suitable thermal results, external a-priori information is kept to a reasonable minimum.
+I assessed how a strategy based on crustal thickness (inverted from the global gravity model data) and the available surface heat flow measurements can provide a joint estimate of crustal heat production.
+Trough interpolation of this heat production estimate I filled in those crustal columns which are devoid of surface heat flow measurements and provide a complete model of temperature at depth -- added information that surface heat measurements alone can not provide.

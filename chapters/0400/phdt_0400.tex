@@ -18,36 +18,52 @@ It provides added information respect to the lithospheric structure and sparse h
 
 \section{Introduction}
 \label{s:Appl:Intro}
-The thermal structure of Earth's interior, the heat transport mechanisms involved and the heat flow observed near its surface are parameters of utmost importance in understanding the phenomena involved in geodynamics and the underlying driving forces.
-Temperature is also a parameter of direct interest in the exploitation of heat, as a source of geothermal energy or as a critical factor in hydrocarbon system modelling.
+% The thermal structure of Earth's interior, the heat transport mechanisms involved and the heat flow observed near its surface are parameters of utmost importance in understanding the phenomena involved in geodynamics and the underlying driving forces.
+% Temperature is also a parameter of direct interest in the exploitation of heat, as a source of geothermal energy or as a critical factor in hydrocarbon system modelling.
 
-Direct measurements are technologically limited to the first kilometres of depth, and carrying them out is a costly task.
-Therefore, the spatial distribution of samples is uneven and often biased towards areas of anomalously high surface heat flow \parencite{Mareschal2013}.
-The collection and maintenance of the publicly available data is an ongoing effort, spanning multiple decades \parencite{Lee1965}.
+% Direct measurements are technologically limited to the first kilometres of depth, and carrying them out is a costly task.
+% Therefore, the spatial distribution of samples is uneven and often biased towards areas of anomalously high surface heat flow \parencite{Mareschal2013}.
+% The collection and maintenance of the publicly available data is an ongoing effort, spanning multiple decades \parencite{Lee1965}.
 
-For these reasons most of the knowledge on the thermal structure of the subsurface relies on the integrated analysis of indirect proxies, such as the petrologic information inferred from xenoliths, data inferred from seismological observables, and other physical or chemical quantities for which a temperature dependence is known \parencites{fischer2010lab}{Vila2010}{Afonso2013multiobsI}.
+% For these reasons most of the knowledge on the thermal structure of the subsurface relies on the integrated analysis of indirect proxies, such as the petrologic information inferred from xenoliths, data inferred from seismological observables, and other physical or chemical quantities for which a temperature dependence is known \parencites{fischer2010lab}{Vila2010}{Afonso2013multiobsI}.
 
-Satellite-derived gravity models have already shown promising results in integrated geophysical modelling of regional heat flow \parencite{Bouman2015}.
-The resolution and spatial homogeneity of the data obtained by the European Space Agency Gravity field and steady-state Ocean Circulation Explorer mission \parencites[GOCE, ][]{Floberghagen2011_goce}{vanderMeijde2015} suggest that it may be a suitable tool in continental-scale thermal estimates.
+% Satellite-derived gravity models have already shown promising results in integrated geophysical modelling of regional heat flow \parencite{Bouman2015}.
+% The resolution and spatial homogeneity of the data obtained by the European Space Agency Gravity field and steady-state Ocean Circulation Explorer mission \parencites[GOCE, ][]{Floberghagen2011_goce}{vanderMeijde2015} suggest that it may be a suitable tool in continental-scale thermal estimates.
 
-While the temperature field in the solid Earth and the measured gravity field are not related by any direct physical law, mass distributions sensed by gravity can be a controlling factor for the temperature distribution at depth.
-The temperature-density and temperature-velocity relationships provide satisfactory insights in the thermal state of the mantle \parencites{Priestley2006}{Cammarano2011}, but the crust is dominated by the heterogeneous distribution of heat produced by decay of radioactive elements \parencite{Jaupart2016}, superimposed with the dynamic effects of transients (i.e. when thermal equilibrium has not yet been reached) and non-conductive heat transfer mechanisms: advection and fluid circulation.
+% While the temperature field in the solid Earth and the measured gravity field are not related by any direct physical law, mass distributions sensed by gravity can be a controlling factor for the temperature distribution at depth.
+% The temperature-density and temperature-velocity relationships provide satisfactory insights in the thermal state of the mantle \parencites{Priestley2006}{Cammarano2011}, but the crust is dominated by the heterogeneous distribution of heat produced by decay of radioactive elements \parencite{Jaupart2016}, superimposed with the dynamic effects of transients (i.e. when thermal equilibrium has not yet been reached) and non-conductive heat transfer mechanisms: advection and fluid circulation.
 
-The gravity field anomalies due to variations in crustal thickness are among the largest signals sensed by satellite-borne gravity measurements.
-The observation error in satellite-only GOCE-based gravity models propagates to a theoretical 0.1~\si{\kilo \metre} uncertainty in Moho determination, ignoring the much larger error contribution due to non-exact density distribution models \parencite{braitenberg2011goce}.
+% The gravity field anomalies due to variations in crustal thickness are among the largest signals sensed by satellite-borne gravity measurements.
+% The observation error in satellite-only GOCE-based gravity models propagates to a theoretical 0.1~\si{\kilo \metre} uncertainty in Moho determination, ignoring the much larger error contribution due to non-exact density distribution models \parencite{braitenberg2011goce}.
 
-Therefore, estimating the crustal contribution to the surface heat flow by assuming a `standard heat production' and scaling it with crustal thickness is tempting.
-Nevertheless, available evidence suggest against such a simple relationship \parencite{Mareschal2013}.
-However, crustal thickness variations on their own successfully isolate tectonothermal age groups, terranes, and geological provinces.
-An example of this was shown in \textcite{Grad2009}, through spatial filtering of their European Plate Moho model at different wavelengths.
+% Therefore, estimating the crustal contribution to the surface heat flow by assuming a `standard heat production' and scaling it with crustal thickness is tempting.
+% Nevertheless, available evidence suggest against such a simple relationship \parencite{Mareschal2013}.
+% However, crustal thickness variations on their own successfully isolate tectonothermal age groups, terranes, and geological provinces.
+% An example of this was shown in \textcite{Grad2009}, through spatial filtering of their European Plate Moho model at different wavelengths.
 
-Hence, the strategy devised here stems from the assumption that in contiguous areas of similar crustal thickness, interpreted as contiguous geological provinces, consistent thermal parameters can be expected --provided that both the crustal thickness modelling and the thermal analysis are carried out at the same spatial scale.
-The fundamental hypothesis is that the `thermal omission error' due to the unmodelled short-wavelength variability in thermal characteristics should be smaller when this local dependence of heat production on crustal thickness is included.
+% Hence, the strategy devised here stems from the assumption that in contiguous areas of similar crustal thickness, interpreted as contiguous geological provinces, consistent thermal parameters can be expected --provided that both the crustal thickness modelling and the thermal analysis are carried out at the same spatial scale.
+% The fundamental hypothesis is that the `thermal omission error' due to the unmodelled short-wavelength variability in thermal characteristics should be smaller when this local dependence of heat production on crustal thickness is included.
 
-Keeping a-priori information to a reasonable minimum, I assess how a strategy based on crustal thickness inverted from a GOCE-based global gravity model and the available surface heat flow measurements can provide a joint estimate of crustal heat production.
-Trough interpolation of this heat production estimate I fill in those crustal columns which are devoid of surface heat flow measurements and provide a complete model of temperature at depth -- added information that surface heat measurements alone can not provide. 
+% Keeping a-priori information to a reasonable minimum, I assess how a strategy based on crustal thickness inverted from a GOCE-based global gravity model and the available surface heat flow measurements can provide a joint estimate of crustal heat production.
+% Trough interpolation of this heat production estimate I fill in those crustal columns which are devoid of surface heat flow measurements and provide a complete model of temperature at depth -- added information that surface heat measurements alone can not provide. 
 
-I integrate satellite gravity and direct surface heat flow data with a map of sediment thickness (topography to crystalline basement), as provided by \textcite{Tesauro2008} and the depth of the lithosphere-asthenosphere boundary (LAB), as estimated from surface wave inversion by \textcite{Pasyanos2014}.
+The application presented in this chapter consists of a gravity data reduction and Moho inversion phase, which I describe in section~\ref{s:Appl:Grav}, followed by a thermal modelling and parameter fitting phase, described in section~\ref{s:Appl:Therm}.
+%The gravity reduction relies on the spherical-harmonics-based methodology described in chapter~\ref{c:SigIs}, which is integrated by spatial-domain modelling of more detailed information inside the study area.
+The thermal modelling procedure tested here uses crustal thickness, as inverted from gravity, and surface heat flow measurements. The former is available uniformly inside the study area, while the latter, as discussed afterwards, suffers from inhomogeneous sampling.
+The main research objective of the method presented here is overcoming the sampling problems of surface heat flow in areas devoid of measurements.
+This is achieved through iterative fitting of surface heat flow (where available) by subsequent substitution of crustal radioactive heat production estimates, as described in section~\ref{ss:Appl:ThermRHP}.
+In each iteration of the 3D~thermal forward model the misfit between modelled and observed surface heat flow is fitted for using a 1D column-wise approximation.
+Compared with simple interpolation of the surface heat flow, the fitted RHP values are interpolated, instead, and assigned to crustal columns of different thickness.
+
+Satellite gravity data and direct surface heat flow data are integrated with a regional map of sediment thickness (topography to crystalline basement), as provided by \textcite{Tesauro2008}, by the global sediment thickness and Moho depth from the {LITHO1.0} model \parencite{Pasyanos2014}, and the depth of the lithosphere-asthenosphere boundary (LAB), as estimated from surface wave inversion, also from \textcite{Pasyanos2014}.
+
+The study area (Fig.~\ref{fig:geosetting} and~\ref{fig:extents}) is located in central-eastern Europe, encompassing different geological contexts and thermal regimes.
+It is bounded by a box limited by \num{45}~to~\SI{55}{\degree N}, \num{15}~to~\SI{35}{\degree E}, transitioning from Phanerozoic lithosphere (Polish-German basin, Carpathians, Pannonian Basin) interested by extension events and orogeny to the Russian platform, crossing the Trans-European Suture Zone \parencite[TESZ,][]{Jones2010}.
+In this area the available estimates of lithospheric thickness range from about 50~\si{\kilo \metre} to values in excess of 250~\si{\kilo \metre} across a steep transition zone, approximately 300~\si{\kilo \metre} wide.
+This lithospheric geometry is overlaid by a remarkable assortment of crustal features.
+These conditions result in a wide range of measured surface heat flow values (see section~\ref{ss:Appl:ThermInput}), ranging from 16 to 195~\si{\milli \watt \per \square \metre} (mean: 57~\si{\milli \watt \per \square \metre}).
+The measurements towards the extremes of this heat flow range and short-wavelength variations were attenuated with a spatial-domain filter, since it is expected that they are arising from non-conductive heat transport (e.g. hydrology, shallow melts).
+The regional grid of filtered surface heat flow measurements so obtained (see section~\ref{ss:Appl:DiscTherm:HF}) constitutes the dependent variable of the fitting procedure presented here.
 
 \begin{figure}
     \begin{adjustbox}{center}
@@ -57,14 +73,6 @@ I integrate satellite gravity and direct surface heat flow data with a map of se
     \label{fig:geosetting}
 \end{figure}
 
-The method I am presenting consists of a gravity data reduction and Moho inversion phase, which I describe in section~\ref{s:Appl:Grav}, followed by a thermal modelling and parameter fitting phase, described in section~\ref{s:Appl:Therm}.
-I have tested the procedure on a study area (Fig.~\ref{fig:geosetting} and~\ref{fig:extents}) in central-eastern Europe, encompassing different geological contexts and thermal regimes.
-It is bounded by a box limited by \num{45}~to~\SI{55}{\degree N}, \num{15}~to~\SI{35}{\degree E}, transitioning from Phanerozoic lithosphere (Polish-German basin, Carpathians, Pannonian Basin) interested by extension events and orogeny to the Russian platform, crossing the Trans-European Suture Zone \parencite[TESZ,][]{Jones2010}.
-In this area the available estimates of lithospheric thickness range from about 50~\si{\kilo \metre} to values in excess of 250~\si{\kilo \metre} across a steep transition zone, approximately 300~\si{\kilo \metre} wide.
-This lithospheric geometry is overlaid by a remarkable assortment of crustal features.
-These conditions result in a wide range of measured surface heat flow values (see section~\ref{ss:Appl:ThermInput}), ranging from 16 to 195~\si{\milli \watt \per \square \metre} (mean: 57~\si{\milli \watt \per \square \metre}).
-The measurements towards the extremes of this range and short-wavelength variations were attenuated with a spatial-domain filter, since it is expected that they are arising from non-conductive heat transport (e.g. hydrology, shallow melts).
-The regional grid of filtered surface heat flow measurements so obtained (see section~\ref{ss:Appl:DiscTherm:HF}) constitutes the dependent variable of the fitting procedure presented here.
 \begin{figure}[hb]
     \begin{adjustbox}{center}
     \includegraphics[width=1.1\textwidth]{./0400/extents.pdf}

@@ -1,2 +1,10 @@
 \chapter{Supplementary: a forward operator for lithospheric thermal modelling}
 \label{c:ThermModel}
+
+The thermal forward modelling that the fitting strategy of chapter~\ref{c:ThermAppl} relies on is a finite-difference solver for the steady-state heat equation.
+We can express it in the following vector form:
+\begin{equation}
+    \label{suppl:eq:heateq}
+    \bm{\nabla} \cdot ( k(\bm{x}) \bm{\nabla} T(\bm{x}) ) = - A(\bm{x})
+\end{equation}
+With $k$ thermal conductivity (isotropic), $T$ temperature, $A$ heat production per unit of volume, and $\bm{x}$ position vector.

@@ -261,7 +261,7 @@ A zero flux Neumann boundary condition \parencite{smith1985} is imposed along th
 Upper and bottom boundaries are Dirichlet conditions \parencite{smith1985}, which I set to \SI{15}{\celsius} (surface temperature) and \SI{1200}{\celsius} (LAB temperature, see section~\ref{sss:Appl:ThermInputLAB}), respectively.
 To accommodate for a non-flat morphology of these two boundaries, the Jacobian matrix coefficients of all nodes above topography or below the LAB are set to identities (i.e. the temperature of those nodes is fixed).
 The solver input consists of the grid definition, the $\mathbf{k}$ and $\mathbf{A}$ arrays, and boundary conditions.
-The finite difference system of linear equations is solved with Matlab built-in Cholesky decomposition for sparse arrays \parencite{Davis2006}.
+The finite difference system of linear equations is solved with the Matlab built-in \textit{UMFPACK} factorization for sparse arrays \parencite{Davis2006}.
 
 \subsection{Thermal conductivity model}
 \label{ss:Appl:ThermCond}

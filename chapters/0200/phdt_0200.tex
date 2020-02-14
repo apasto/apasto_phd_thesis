@@ -337,21 +337,102 @@ This implies that 2-D `sections' or 1-D `columns' can be also modelled with this
 
 \section{Building the coefficient matrix}
 \label{s:ThermModel:FD_CoeffMatrix}
-As mentioned in section~\ref{s:ThermModel:FD_LinSyst}, the temperature at neighbour nodes that appear in the FD formulation of the heat equation (Eq.~\ref{suppl:eq:FD_fluxes_complete_k}) must be expressed separately.
+As mentioned in section~\ref{s:ThermModel:FD_LinSyst}, the temperature at neighbour nodes that appear in the FD formulation of the heat equation (Eq.~\ref{suppl:eq:FD_fluxes_complete_k}) must be expressed in separate terms, i.e. the equation must be rearranged in the `explicit form' for $T$.
+Starting again with the first term only (the one dealing with the two neighbours along $x$), as an example:
+\begin{align}
+\begin{split}  
+    \label{suppl:eq:FD_fluxes_complete_k_x_term}
+    & 2 \frac{
+        \left(
+            \displaystyle \frac{k_0 + k_3}{2}
+            \displaystyle \frac{T_0 - T_3}{s_{x,b}}
+        \right ) -
+        \left(
+            \displaystyle \frac{k_4 + k_0}{2}
+            \displaystyle \frac{T_4 - T_0}{s_{x,f}}
+        \right )
+    }{s_{x,b} + s_{x,f}} = \\[2ex]
+    = &
+    \frac{
+        \displaystyle\frac{(k_0 + k_3) (T_0 - T_3)}{s_{x,b}} -
+        \displaystyle\frac{(k_4 + k_0) (T_4 - T_0)}{s_{x,f}}
+        }
+    {s_{x,b} + s_{x,f}} = \\[2ex]
+    = &
+    \frac{(k_0 + k_3) (T_0 - T_3)}{s_{x,b} (s_{x,b} + s_{x,f})} -
+    \frac{(k_4 + k_0) (T_4 - T_0)}{s_{x,f} (s_{x,b} + s_{x,f})} = \\[2ex]
+    = &
+    \frac{T_0 (k_0 + k_3)}{s_{x,b} (s_{x,b} + s_{x,f})} -
+    \frac{T_3 (k_0 + k_3)}{s_{x,b} (s_{x,b} + s_{x,f})} + \\
+    & - \frac{T_4 (k_4 + k_0)}{s_{x,f} (s_{x,b} + s_{x,f})} +
+    \frac{T_0 (k_4 + k_0)}{s_{x,f} (s_{x,b} + s_{x,f})} = \\[2ex]
+    = &
+    T_0 \left(
+        \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})} +
+        \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})}
+    \right) + \\
+    & - T_3 \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})}
+    - T_4 \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} =
+\end{split}
+\end{align}
 
+Therefore, the coefficients in $\bm{L}$ are:
+\begin{align}
+    \label{suppl:eq:L_coefficients_x_term}
+    0: &&\quad \bm{L}_{r(u,v,w),r(u,v,w)} = & \left(
+        \frac{k_0 + k_3}{s_{x,r} (s_{x,b} + s_{x,f})} +
+        \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} \right) \\[2ex]
+    3: &&\quad \bm{L}_{r(u,v,w),r(u,v-1,w)} = & - \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})} \\[2ex]
+    4: &&\quad \bm{L}_{r(u,v,w),r(u,v+1,w)} = & - \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})}
+\end{align}
+remembering that the global index for neighbour-$3$ and neighbour-$4$ (one grid step along $x$) are given by Eq.~\ref{suppl:eq:GlobalIndex}.
 
-% C'È PASSAGGIO A ESPLICITO, PER AVERE COEFFICIENTI CHE MOLTIPLICANO T
-% ADESSO ATTENZIONE A DISCORSO VARIABLE STEP, VEDO APPUNTI!
-% qui soluzione, anche se lunga (tutta esplicita)
+The coefficients for the terms regarding the neighbours along $y$ and along $z$ follow from similar derivations, which are omitted for brevity.
+The result is:
+\begin{align}
+    \label{suppl:eq:L_coefficients_y_z_terms}
+    5: &&\quad \bm{L}_{r(u,v,w),r(u,v,w-1)} = & - \frac{k_0 + k_5}{s_{y,b} (s_{y,b} + s_{y,f})} \\[2ex]
+    6: &&\quad \bm{L}_{r(u,v,w),r(u,v,w+1)} = & - \frac{k_6 + k_0}{s_{y,f} (s_{y,b} + s_{y,f})} \\[2ex]
+    1: &&\quad \bm{L}_{r(u,v,w),r(u-1,v,w)} = & - \frac{k_0 + k_1}{s_{z,b} (s_{z,b} + s_{z,f})} \\[2ex]
+    2: &&\quad \bm{L}_{r(u,v,w),r(u+2,v,w)} = & - \frac{k_2 + k_0}{s_{z,f} (s_{z,b} + s_{z,f})}
+\end{align}
+
+\FloatBarrier
+
+\paragraph*{Contents of the coefficient matrix}
+The structure of the sparse matrix $\bm{L}$ may be better understood by showing the position of its non-zero elements.
+Fig.~\ref{suppl:fig:L_coefficients_full} shows the non-zero elements of the coefficient matrix for a \num{79}~$\times$~\num{75}~$\times$~\num{104} node model ($x \times y \times z$).
+The size of $\bm{L}$ in this case is \num{616200}~$\times$~\num{616200}, with \num{3588570} non-zero elements over a total of about \num{3.8e11} elements (its sparsity ratio is on the order of \num{e-6}).
+The coefficient structure of each equation is not discernible at this scale.
+Fig.~\ref{suppl:fig:L_coefficients_zoom} shows a zoom in towards the first ten thousands of elements of a relatively smaller model with part of its structure labelled.
+Note that the adjacent elements of the matrix are still too close to be plotted, therefore the inner node equations appear to have \num{5} terms instead of \num{7}.
 
 % figura "spy" con elementi non-zero (fare esempi, fermando il solver)
 % provo una cross-correlation matrix a posteriori, del modello?
+
+\begin{figure}
+    \begin{adjustbox}{center}
+        \includegraphics[width=\textwidth]{./0200/coefficient_matrix_full.pdf}
+    \end{adjustbox}
+    \caption[temp short caption]{temp long caption}
+    \label{suppl:fig:L_coefficients_full}
+\end{figure}
+
+\begin{figure}[h]
+    \begin{adjustbox}{center}
+        \includegraphics[width=\textwidth]{./0200/coefficient_matrix_zoom.pdf}
+    \end{adjustbox}
+    \caption[temp short caption]{temp long caption}
+    \label{suppl:fig:L_coefficients_zoom}
+\end{figure}
 
 % valutare se le successive sono necessarie
 %\section{Matlab implementation}
 %\label{s:ThermModel:Implementation}
 % vectorized global index
 % identificazione dei boundary
+% (dai coefficienti) note that, for computational efficency, the denominator in each fraction can be rewritten
+
 
 % \section{Definition of lithospheric volumes}
 % \label{s:ThermModel:MakeVol}

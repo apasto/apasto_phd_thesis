@@ -141,7 +141,7 @@ We can now write the FD approximation for the fluxes in Eq.~\ref{suppl:eq:steady
     \label{suppl:eq:FD_fluxes}
     2 \frac{Q_{x,b} - Q_{x,f}}{s_{x,b} + s_{x,f}} +
     2 \frac{Q_{y,b} - Q_{y,f}}{s_{y,b} + s_{y,f}} +
-    2 \frac{Q_{z,b} - Q_{y,f}}{s_{z,b} + s_{z,f}} = A
+    2 \frac{Q_{z,b} - Q_{y,f}}{s_{z,b} + s_{z,f}} = A_0
 \end{equation}
 
 It is now the turn of FD approximation of the $Q_{m,n}$ fluxes at the staggered nodes.
@@ -185,7 +185,7 @@ By doing so for all the remaining $Q_{m,n}$ fluxes at staggered nodes around nod
     2 \frac{
             \left( -k_{z,b} \displaystyle \frac{T_0 - T_1}{s_{z,b}} \right ) -
             \left( -k_{z,f} \displaystyle \frac{T_2 - T_0}{s_{z,f}} \right )
-        }{s_{z,b} + s_{z,f}} &= A
+        }{s_{z,b} + s_{z,f}} &= A_0
 \end{split}
 \end{align}
 Further expressing the averaged conductivities at staggered nodes $k_{m,n}$, we obtain:
@@ -220,7 +220,7 @@ Further expressing the averaged conductivities at staggered nodes $k_{m,n}$, we 
                 \displaystyle \frac{k_2 + k_0}{2}
                 \displaystyle \frac{T_2 - T_0}{s_{z,f}}
             \right )
-        }{s_{z,b} + s_{z,f}} &= A
+        }{s_{z,b} + s_{z,f}} &= A_0
 \end{split}
 \end{align}
 
@@ -259,38 +259,100 @@ In computational terms, it is a direct solver.
 For an increasing number of dimensions and model nodes it may result in an unmanageable amount of memory.
 The call to a fall-back alternative, an iterative solver \parencite[the generalized minimal residual method, \textit{gmres}, see][]{Saad1986gmres}, has been included in the code, but it never occurred to require resorting to it, in the experiments described here.
 
+\paragraph*{Indexing in the coefficient matrix}
+The form of the system (Eq.~\ref{suppl:eq:FD_LinSyst_form}) requires that each $T_i$ that appears in the equation of each node is expressed in a separate term, multiplied by a coefficient $L_i$.
+This results in an equation in the general form $\sum (L_i T_i) = R_r$, an equation for each $r$-row of $\bm{L}$.
+The coefficients of each equation are then placed in the proper column of $\bm{L}$, i.e. the column corresponding to the element of vector $\bm{T}$ that they multiply.
 
+Using the $r$-th row of the coefficient matrix $\bm{L}$ as an example, expressing the coefficients in the left-hand-side of the equation of the $r$-th node of the model, we can formulate the following.
+The coefficient that multiplies the temperature in the $r$-th node is in $L_{r(0),r(0)}$. This is $T_0$ in the heat equation for an inner node (Eq.~\ref{suppl:eq:FD_fluxes_complete_k}).
+Leaving the issue of indexing aside for a moment -- for the sake of clarity -- we call $r(i)$ the index related to the $i$-th neighbour in the notation of Eq.~\ref{suppl:eq:FD_fluxes_complete_k}.
+The structure of this $r$-th row of $\bm{L}$ will be:
+\begin{equation*}
+    \setcounter{MaxMatrixCols}{20}
+    \label{suppl:eq:FD_LinSyst_RowExampleNoIndex}
+    \mathclap{%
+    \begin{matrix}
+        \cdots & L_{r(0),r(5)} & \cdots & L_{r(0),r(3)} & \cdots & L_{r(0),r(1)} & L_{r(0),r(0)} & L_{r(0),r(2)} & \cdots & L_{r(0),r(4)} & \cdots & L_{(0),r(6)} & \cdots
+    \end{matrix}}
+\end{equation*}
+The ellipses ($\cdots$) indicate zero elements in the sparse matrix.
 
-% therefore, transforming implies
-% expressing T in an explicit form
-% coefficients in L
+In order to fill the coefficient matrix, the geometric coordinates of each node in the 3-D mesh must be transformed to a \textit{global index} $r$ that expresses its position in $\bm{T}_r$, $\bm{L}_{r,r}$, $\bm{R}_r$.
+This is trivial for a rectilinear mesh, by knowing the number of nodes along each axis ($x_n$, $y_n$, $z_n$) and the defined axis ordering ($z$, then $x$, then $y$, in this case).
+The vectors of grid steps along each axis, which are not necessarily constant, are known and provide a linear map between axis coordinates ($z,x,y$) and element along the axis ($u,v,w$).
+The \textit{global index} for a node in $u,v,w$ is therefore:
+\begin{equation}
+    \label{suppl:eq:GlobalIndex}
+    r(u,v,w) = (w-1) x_n z_n + (v-1) z_n + u
+\end{equation}
+when $u,v,w$ are counted starting from \num{1}.
+Therefore, moving to the next node:
+\begin{itemize}
+    \item along $z$ implies changing $r$ by one;
+    \item along $x$ implies changing $r$ by $z_n$;
+    \item along $y$ implies changing $r$ by $x_n$~times~$z_n$.
+\end{itemize}
+An example for a 3~$\times$~3 model is shown in Fig.~\ref{suppl:fig:GridIndexing}.
+
+\begin{figure}[h]
+    \begin{adjustbox}{center}
+        \fbox{
+            \includegraphics[width=1.1\textwidth]{./0200/grid_indexing.pdf}
+        }
+    \end{adjustbox}
+    \caption[Cartesian coordinates and global indexing on a 3~$\times$~3 mesh.]{Cartesian coordinates and global indexing, illustrated for a 3~$\times$~3 mesh. The value of $r(u,v,w)$ (Eq.~\ref{suppl:eq:GlobalIndex}) is shown beside each node square. Three examples of node-by-node movement are shown.}
+    \label{suppl:fig:GridIndexing}
+\end{figure}
+
+\FloatBarrier
+
+\paragraph*{Boundary conditions}
+Two types of boundary conditions are specified for the nodes at the boundary of the model mesh:
+\begin{itemize}
+    \item at the top and bottom boundaries, temperature is set: a first-type (Dirichlet) boundary condition in the form $T(\mathrm{boundary}) = T$;
+    \item at the vertical boundaries (the sides normal to the $x$ and $y$ axes), zero-flux is set: a second-type (Neumann) boundary condition in the form $\partial T / \partial x = 0$ (where $x$ is the cartesian axis the boundary is normal to).
+\end{itemize}
+
+\subparagraph*{First type: boundary temperature}
+In the matrix form of the system of linear equations, the first-type boundary condition for the $r$-th node results in the following equation:
+\begin{equation}
+    \label{suppl:eq:BoundaryT_NodeEq}
+    1 \cdot T(r) = T_b
+\end{equation}
+where $T_b$ is the temperature at the boundary (in this work, either the surface temperature or the lithosphere-asthenosphere boundary temperature).
+This results in only one coefficient for the $r$-th row in the coefficient matrix~$\bm{L}$: $\bm{L}_{r,r} = 1$.
+In the general case, the topography and the base of the lithosphere are not flat.
+This is achieved by imposing the same condition, using coefficients, to all the inner mesh nodes at and above the topography and at and below the lithosphere-asthenosphere boundary.
+An alternative formulation for the bottom boundary is to provide it flat with a varying temperature -- this use case, which was implemented but not employed in this work, allows to use the type of depth-slice data which can be inferred from e.g. seismic tomography.
+As a side note, the physical meaning of this type of boundary, in steady state, is that the heat transfer and heat production from the base of the lithosphere to the topography is not increasing the temperature of the atmosphere (or ocean) above the latter, nor decreasing the temperature of the asthenosphere beneath the former -- this is a fundamental assumption of steady state thermal modelling.
+
+\subparagraph*{Second type: no heat flux boundary}
+Imposing a zero heat flux means that no temperature gradient should be present across the boundary: i.e. given a temperature $T_0$ at the boundary node (global index $r_0$) and a temperature $T_1$ at an additional node outside the boundary (global index $r_1$), then $T_0 - T_1 = 0$.
+In the matrix form of the system of linear equations, this results in:
+\begin{equation}
+    \label{suppl:eq:BoundaryQ_NodeEq}
+    1 \cdot T(r_0) - 1 \cdot T(r_1) = 0
+\end{equation}
+Thus we now have two coefficients for the $r_0$-th row in the coefficient matrix~$\bm{L}$: $\bm{L}_{r_0,r_0} = 1$ and $\bm{L}_{r_0,r_1} = -1$.
+Note that zero horizontal flux would be observed for a model which is infinitely uniform along the zero-flux axis.
+This implies that 2-D `sections' or 1-D `columns' can be also modelled with this 3-D implementation, provided that the mesh is built accordingly.
+
+\paragraph*{FD heat equation coefficients}
 
 % C'È PASSAGGIO A ESPLICITO, PER AVERE COEFFICIENTI CHE MOLTIPLICANO T
 % ADESSO ATTENZIONE A DISCORSO VARIABLE STEP, VEDO APPUNTI!
 % qui soluzione, anche se lunga (tutta esplicita)
 
-% qui passaggio a sistema equazioni lineari
+% figura "spy" con elementi non-zero (fare esempi, fermando il solver)
+% provo una cross-correlation matrix a posteriori, del modello?
 
-% dopo: boundary conditions
+% valutare se le successive sono necessarie
+%\section{Matlab implementation}
+%\label{s:ThermModel:Implementation}
 
-% dopo: assi, indicizzazione
+% vectorized global index
+% identificazione dei boundary
 
-\begin{figure}[hb]
-    \begin{adjustbox}{center}
-        \fbox{
-            \includegraphics[width=\textwidth]{./0200/grid_indexing.pdf}
-        }
-    \end{adjustbox}
-    \caption[Temp short caption.]{Temp long caption.}
-    \label{suppl:fig:GridIndexing}
-\end{figure}
-
-% dopo: struttura matrice dei coefficienti
-
-% dopo: non-flat bottom and top boundaries
-
-% TITOLO DA DECIDERE
-% INOLTRE, SE DECIDO DI LASCIARE FUORI QUESTA SEZIONE
-% QUESTO CAPITOLO VA SENZA SECTIONS
 % \section{Definition of lithospheric volumes}
 % \label{s:ThermModel:MakeVol}

@@ -228,12 +228,8 @@ We started with the FD discretisation of fluxes at the central node (Eq.~\ref{su
 This is called a `conservative finite-difference discretisation', which allows for variable thermal conductivity.
 \textcite{Gerya2010} provides a thorough explanation on its rationale, using the Stokes equation with variable viscosity and the Lagrangian heat conservation equation (non-steady state) as examples.
 
-\section[
-    tocentry={From the FD formulation to a system of linear equations},
-    head={From the FD formulation to a system of linear equations}
-    ]{From the finite difference formulation to a system of linear equations}
+\section{Definition of the system of linear equations}
 \label{s:ThermModel:FD_LinSyst}
-
 With the derivation described in the previous section, a finite-difference approximation for the steady-state heat equation was obtained for one node, surrounded by a neighbour in each Cartesian direction.
 In order to turn that into a thermal model, we need to transform the FD formulations of each node into a system of linear equations.
 In addition, the boundary conditions must be defined and specified in the appropriate form.
@@ -307,14 +303,15 @@ An example for a 3~$\times$~3 model is shown in Fig.~\ref{suppl:fig:GridIndexing
 
 \FloatBarrier
 
-\paragraph*{Boundary conditions}
+\section{Boundary conditions}
+\label{s:ThermModel:FD_BoundaryConditions}
 Two types of boundary conditions are specified for the nodes at the boundary of the model mesh:
 \begin{itemize}
     \item at the top and bottom boundaries, temperature is set: a first-type (Dirichlet) boundary condition in the form $T(\mathrm{boundary}) = T$;
     \item at the vertical boundaries (the sides normal to the $x$ and $y$ axes), zero-flux is set: a second-type (Neumann) boundary condition in the form $\partial T / \partial x = 0$ (where $x$ is the cartesian axis the boundary is normal to).
 \end{itemize}
 
-\subparagraph*{First type: boundary temperature}
+\paragraph*{First type: boundary temperature}
 In the matrix form of the system of linear equations, the first-type boundary condition for the $r$-th node results in the following equation:
 \begin{equation}
     \label{suppl:eq:BoundaryT_NodeEq}
@@ -327,7 +324,7 @@ This is achieved by imposing the same condition, using coefficients, to all the 
 An alternative formulation for the bottom boundary is to provide it flat with a varying temperature -- this use case, which was implemented but not employed in this work, allows to use the type of depth-slice data which can be inferred from e.g. seismic tomography.
 As a side note, the physical meaning of this type of boundary, in steady state, is that the heat transfer and heat production from the base of the lithosphere to the topography is not increasing the temperature of the atmosphere (or ocean) above the latter, nor decreasing the temperature of the asthenosphere beneath the former -- this is a fundamental assumption of steady state thermal modelling.
 
-\subparagraph*{Second type: no heat flux boundary}
+\paragraph*{Second type: no heat flux boundary}
 Imposing a zero heat flux means that no temperature gradient should be present across the boundary: i.e. given a temperature $T_0$ at the boundary node (global index $r_0$) and a temperature $T_1$ at an additional node outside the boundary (global index $r_1$), then $T_0 - T_1 = 0$.
 In the matrix form of the system of linear equations, this results in:
 \begin{equation}
@@ -338,7 +335,10 @@ Thus we now have two coefficients for the $r_0$-th row in the coefficient matrix
 Note that zero horizontal flux would be observed for a model which is infinitely uniform along the zero-flux axis.
 This implies that 2-D `sections' or 1-D `columns' can be also modelled with this 3-D implementation, provided that the mesh is built accordingly.
 
-\paragraph*{FD heat equation coefficients}
+\section{Building the coefficient matrix}
+\label{s:ThermModel:FD_CoeffMatrix}
+As mentioned in section~\ref{s:ThermModel:FD_LinSyst}, the temperature at neighbour nodes that appear in the FD formulation of the heat equation (Eq.~\ref{suppl:eq:FD_fluxes_complete_k}) must be expressed separately.
+
 
 % C'È PASSAGGIO A ESPLICITO, PER AVERE COEFFICIENTI CHE MOLTIPLICANO T
 % ADESSO ATTENZIONE A DISCORSO VARIABLE STEP, VEDO APPUNTI!
@@ -350,7 +350,6 @@ This implies that 2-D `sections' or 1-D `columns' can be also modelled with this
 % valutare se le successive sono necessarie
 %\section{Matlab implementation}
 %\label{s:ThermModel:Implementation}
-
 % vectorized global index
 % identificazione dei boundary
 

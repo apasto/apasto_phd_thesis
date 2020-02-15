@@ -379,13 +379,14 @@ Starting again with the first term only (the one dealing with the two neighbours
 Therefore, the coefficients in $\bm{L}$ are:
 \begin{align}
     \label{suppl:eq:L_coefficients_x_term}
-    0: &&\quad \bm{L}_{r(u,v,w),r(u,v,w)} = & \left(
-        \frac{k_0 + k_3}{s_{x,r} (s_{x,b} + s_{x,f})} +
-        \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} \right) \\[2ex]
+    % 0 here is incomplete, missing part from y and z terms
+    % 0: &&\quad \bm{L}_{r(u,v,w),r(u,v,w)} = & \left(
+    %     \frac{k_0 + k_3}{s_{x,r} (s_{x,b} + s_{x,f})} +
+    %     \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} \right) \\[2ex]
     3: &&\quad \bm{L}_{r(u,v,w),r(u,v-1,w)} = & - \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})} \\[2ex]
     4: &&\quad \bm{L}_{r(u,v,w),r(u,v+1,w)} = & - \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})}
 \end{align}
-remembering that the global index for neighbour-$3$ and neighbour-$4$ (one grid step along $x$) are given by Eq.~\ref{suppl:eq:GlobalIndex}.
+keeping in mind that the global indexes $r$ for neighbour-$3$ and neighbour-$4$ (one grid step along $x$) are given by Eq.~\ref{suppl:eq:GlobalIndex}.
 
 The coefficients for the terms regarding the neighbours along $y$ and along $z$ follow from similar derivations, which are omitted for brevity.
 The result is:
@@ -397,32 +398,44 @@ The result is:
     2: &&\quad \bm{L}_{r(u,v,w),r(u+2,v,w)} = & - \frac{k_2 + k_0}{s_{z,f} (s_{z,b} + s_{z,f})}
 \end{align}
 
+By grouping the $T_0$ terms obtained in Eq.~\ref{suppl:eq:FD_fluxes_complete_k_x_term} for $x$-neighbours and their analogues for $y$- and $z$-neighbours (omitted), we obtain the coefficient on the diagonal:
+\begin{align}
+    \label{suppl:eq:L_coefficients_diagonal_full}
+    0: &&\quad \bm{L}_{r(u,v,w),r(u,v,w)} = &
+    \left(
+        \frac{k_0 + k_3}{s_{x,r} (s_{x,b} + s_{x,f})} +
+        \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} \right) & + \nonumber \\[2ex]
+    && + & \left(
+        \frac{k_0 + k_5}{s_{y,r} (s_{y,b} + s_{y,f})} +
+        \frac{k_6 + k_0}{s_{y,f} (s_{y,b} + s_{y,f})} \right) & + \nonumber \\[2ex]
+    && + & \left(
+        \frac{k_0 + k_1}{s_{z,r} (s_{z,b} + s_{z,f})} +
+        \frac{k_2 + k_0}{s_{z,f} (s_{z,b} + s_{z,f})} \right)
+\end{align}
+
 \FloatBarrier
 
 \paragraph*{Contents of the coefficient matrix}
 The structure of the sparse matrix $\bm{L}$ may be better understood by showing the position of its non-zero elements.
 Fig.~\ref{suppl:fig:L_coefficients_full} shows the non-zero elements of the coefficient matrix for a \num{79}~$\times$~\num{75}~$\times$~\num{104} node model ($x \times y \times z$).
-The size of $\bm{L}$ in this case is \num{616200}~$\times$~\num{616200}, with \num{3588570} non-zero elements over a total of about \num{3.8e11} elements (its sparsity ratio is on the order of \num{e-6}).
+The size of $\bm{L}$ in this case is \num{616200}~$\times$~\num{616200}, with \num{3588570} non-zero elements over a total of about \num{3.8e11} elements (its sparsity ratio is about of \num{9e-6}).
 The coefficient structure of each equation is not discernible at this scale.
 Fig.~\ref{suppl:fig:L_coefficients_zoom} shows a zoom in towards the first ten thousands of elements of a relatively smaller model with part of its structure labelled.
 Note that the adjacent elements of the matrix are still too close to be plotted, therefore the inner node equations appear to have \num{5} terms instead of \num{7}.
 
-% figura "spy" con elementi non-zero (fare esempi, fermando il solver)
-% provo una cross-correlation matrix a posteriori, del modello?
-
-\begin{figure}
+\begin{figure}[hb]
     \begin{adjustbox}{center}
-        \includegraphics[width=\textwidth]{./0200/coefficient_matrix_full.pdf}
+        \includegraphics[width=0.9\textwidth]{./0200/coefficient_matrix_full.pdf}
     \end{adjustbox}
-    \caption[temp short caption]{temp long caption}
+    \caption[Example showing the non-zero elements of the coefficient matrix]{Example showing the non-zero elements of the coefficient matrix $\bm{L}$ for a \num{616200}-node model. Note that at this scale it appears as a symmetrical banded matrix: this is not the case, due to the boundary conditions.}
     \label{suppl:fig:L_coefficients_full}
 \end{figure}
 
 \begin{figure}[h]
     \begin{adjustbox}{center}
-        \includegraphics[width=\textwidth]{./0200/coefficient_matrix_zoom.pdf}
+        \includegraphics[width=0.9\textwidth]{./0200/coefficient_matrix_zoom.pdf}
     \end{adjustbox}
-    \caption[temp short caption]{temp long caption}
+    \caption[Zoomed-in portion of an example of coefficient matrix, labelled.]{Zoomed-in portion of an example of coefficient matrix $\bm{L}$, with the non-zero elements plotted as dots. The different arrangements of coefficients for the equations of inner nodes and boundaries are labelled. Note that the zoom level here is still not sufficient to resolve the elements adjacent to the diagonal, i.e. the coefficients for neighbour nodes along $z$.}
     \label{suppl:fig:L_coefficients_zoom}
 \end{figure}
 

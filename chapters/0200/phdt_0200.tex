@@ -91,14 +91,22 @@ For the sake of clarity, we indicate each of these heat flux components as $Q_x$
     \left(-k \frac{\partial T}{\partial z} \bm{\hat{k}} \right) =
     Q_x \bm{\hat{i}} + Q_y \bm{\hat{j}} + Q_z \bm{\hat{k}}
 \end{equation}
-By substituting this into the $k \bm{\nabla}^2 T$ term of Eq.~\ref{suppl:eq:steadystatefullheateq_simplified}, we get:
-\begin{equation}
+By substituting this into the $k \bm{\nabla}^2 T$ term of Eq.~\ref{suppl:eq:steadystatefullheateq_simplified} we get:
+\begin{align}
     \label{suppl:eq:steadystatefullheateq_simplified_Q}
-    - \frac{\partial}{\partial x} Q_x -
-    \frac{\partial}{\partial x} Q_y -
-    \frac{\partial}{\partial x} Q_z = A
-\end{equation}
-Note that we also flipped the sign of both sides of the equation, to obtain a positive right-hand-side.
+    -1 \cdot (k \bm{\nabla}^2 T) = & -1 \cdot (- A) \nonumber \\
+    -k \bm{\nabla}^2 T = & A \nonumber \\
+    \bm{\nabla} (-k \bm{\nabla} T) = & A \nonumber \\
+    \frac{\partial}{\partial x} Q_x +
+    \frac{\partial}{\partial x} Q_y +
+    \frac{\partial}{\partial x} Q_z = & A
+\end{align}
+% \begin{equation}
+%     \label{suppl:eq:steadystatefullheateq_simplified_Q}
+%     \frac{\partial}{\partial x} Q_x +
+%     \frac{\partial}{\partial x} Q_y +
+%     \frac{\partial}{\partial x} Q_z = A
+% \end{equation}
 
 Turning to finite differences, Eq.~\ref{suppl:eq:steadystatefullheateq_simplified_Q} can be expressed for each internal node and its 6~neighbours in the model mesh, as illustrated in Fig.~\ref{suppl:fig:stencil}.
 Each $i$-th node is characterised with its associated parameters: $T_i$, $k_i$, $A_i$.
@@ -119,10 +127,10 @@ To prevent further cluttering Fig.~\ref{suppl:fig:stencil}, these $Q_{m,n}$ heat
 Using one of the terms of Eq.~\ref{suppl:eq:steadystatefullheateq_simplified_Q} as an example, this implies that:
 \begin{equation}
     \label{suppl:eq:FD_example}
-    - \frac{\partial}{\partial x} Q_x \approx
-    - \frac{\Delta Q_x}{\Delta x} =
-    \frac{-(Q_{x,f} - Q_{x,b})}{(s_{x,b} + s_{x,f}) / 2} =
-    2 \frac{Q_{x,b} - Q_{x,f}}{s_{x,b} + s_{x,f}}
+    \frac{\partial}{\partial x} Q_x \approx
+    \frac{\Delta Q_x}{\Delta x} =
+    \frac{Q_{x,f} - Q_{x,b}}{(s_{x,b} + s_{x,f}) / 2} =
+    2 \frac{Q_{x,f} - Q_{x,b}}{s_{x,b} + s_{x,f}}
 \end{equation}
 The sketch provided in Fig.~\ref{suppl:fig:stencil_sketch} helps in representing the finite difference approximation just shown in Eq.~\ref{suppl:eq:FD_example}.
 In that figure the grid spacings $s_{x,b}$ and $s_{x,f}$ are plotted as sensibly different on purpose, to highlight the fact that they may be not equal, in the general case.
@@ -140,9 +148,9 @@ In that figure the grid spacings $s_{x,b}$ and $s_{x,f}$ are plotted as sensibly
 We can now write the FD approximation for the fluxes in Eq.~\ref{suppl:eq:steadystatefullheateq_simplified_Q}:
 \begin{equation}
     \label{suppl:eq:FD_fluxes}
-    2 \frac{Q_{x,b} - Q_{x,f}}{s_{x,b} + s_{x,f}} +
-    2 \frac{Q_{y,b} - Q_{y,f}}{s_{y,b} + s_{y,f}} +
-    2 \frac{Q_{z,b} - Q_{z,f}}{s_{z,b} + s_{z,f}} = A_0
+    2 \frac{Q_{x,f} - Q_{x,b}}{s_{x,b} + s_{x,f}} +
+    2 \frac{Q_{y,f} - Q_{y,b}}{s_{y,b} + s_{y,f}} +
+    2 \frac{Q_{z,f} - Q_{z,b}}{s_{z,b} + s_{z,f}} = A_0
 \end{equation}
 
 It is now the turn of FD approximation of the $Q_{m,n}$ fluxes at the staggered nodes.
@@ -176,16 +184,16 @@ By doing so for all the remaining $Q_{m,n}$ fluxes at staggered nodes around nod
 \begin{split}
     \label{suppl:eq:FD_fluxes_complete}
     2 \frac{
-            \left( -k_{x,b} \displaystyle \frac{T_0 - T_3}{s_{x,b}} \right ) -
-            \left( -k_{x,f} \displaystyle \frac{T_4 - T_0}{s_{x,f}} \right )
+            \left( -k_{x,f} \displaystyle \frac{T_4 - T_0}{s_{x,f}} \right ) -
+            \left( -k_{x,b} \displaystyle \frac{T_0 - T_3}{s_{x,b}} \right )
         }{s_{x,b} + s_{x,f}} &+ \\[1ex]
     2 \frac{
-            \left( -k_{y,b} \displaystyle \frac{T_0 - T_5}{s_{y,b}} \right ) -
-            \left( -k_{y,f} \displaystyle \frac{T_6 - T_0}{s_{y,f}} \right )
+            \left( -k_{y,f} \displaystyle \frac{T_6 - T_0}{s_{y,f}} \right ) -
+            \left( -k_{y,b} \displaystyle \frac{T_0 - T_5}{s_{y,b}} \right )
         }{s_{y,b} + s_{y,f}} &+ \\[1ex]
     2 \frac{
-            \left( -k_{z,b} \displaystyle \frac{T_0 - T_1}{s_{z,b}} \right ) -
-            \left( -k_{z,f} \displaystyle \frac{T_2 - T_0}{s_{z,f}} \right )
+            \left( -k_{z,f} \displaystyle \frac{T_2 - T_0}{s_{z,f}} \right ) -
+            \left( -k_{z,b} \displaystyle \frac{T_0 - T_1}{s_{z,b}} \right )
         }{s_{z,b} + s_{z,f}} &= A_0
 \end{split}
 \end{align}
@@ -195,35 +203,36 @@ Further expressing the averaged conductivities at staggered nodes $k_{m,n}$, we 
     \label{suppl:eq:FD_fluxes_complete_k}
     2 \frac{
             \left(
-                \displaystyle \frac{k_0 + k_3}{2}
-                \displaystyle \frac{T_3 - T_0}{s_{x,b}}
+                \displaystyle \frac{k_0 + k_4}{2}
+                \displaystyle \frac{T_0 - T_4}{s_{x,f}}
             \right ) -
             \left(
-                \displaystyle \frac{k_4 + k_0}{2}
-                \displaystyle \frac{T_0 - T_4}{s_{x,f}}
+                \displaystyle \frac{k_0 + k_3}{2}
+                \displaystyle \frac{T_3 - T_0}{s_{x,b}}
             \right )
         }{s_{x,b} + s_{x,f}} &+ \\[1ex]
     2 \frac{
             \left(
-                \displaystyle \frac{k_0 + k_5}{2}
-                \displaystyle \frac{T_5 - T_0}{s_{y,b}} \right ) -
+                \displaystyle \frac{k_0 + k_6}{2}
+                \displaystyle \frac{T_0 - T_6}{s_{y,f}} \right ) -
             \left(
-                \displaystyle \frac{k_6 + k_0}{2}
-                \displaystyle \frac{T_0 - T_6}{s_{y,f}}
+                \displaystyle \frac{k_0 + k_5}{2}
+                \displaystyle \frac{T_5 - T_0}{s_{y,b}}
             \right )
         }{s_{y,b} + s_{y,f}} &+ \\[1ex]
     2 \frac{
             \left(
-                \displaystyle \frac{k_0 + k_1}{2}
-                \displaystyle \frac{T_1 - T_0}{s_{z,b}}
+                \displaystyle \frac{k_0 + k_2}{2}
+                \displaystyle \frac{T_0 - T_2}{s_{z,f}}
             \right ) -
             \left(
-                \displaystyle \frac{k_2 + k_0}{2}
-                \displaystyle \frac{T_0 - T_2}{s_{z,f}}
+                \displaystyle \frac{k_0 + k_1}{2}
+                \displaystyle \frac{T_1 - T_0}{s_{z,b}}
             \right )
         }{s_{z,b} + s_{z,f}} &= A_0
 \end{split}
 \end{align}
+note that the order of $\Delta T$ differences was swapped, to take into account the negative sign of $k$ in Eq.~\ref{suppl:eq:FD_fluxes_complete}.
 
 We started with the FD discretisation of fluxes at the central node (Eq.~\ref{suppl:eq:FD_fluxes}), then formulated the FD discretisation of fluxes at staggered nodes (Eq.~\ref{suppl:eq:FD_staggered_example}).
 This is called a `conservative finite-difference discretisation', which allows for variable thermal conductivity.
@@ -344,47 +353,43 @@ Starting again with the first term only (the one dealing with the two neighbours
     \label{suppl:eq:FD_fluxes_complete_k_x_term}
     & 2 \frac{
         \left(
-            \displaystyle \frac{k_0 + k_3}{2}
-            \displaystyle \frac{T_3 - T_0}{s_{x,b}}
+            \displaystyle \frac{k_0 + k_4}{2}
+            \displaystyle \frac{T_0 - T_4}{s_{x,f}}
         \right ) -
         \left(
-            \displaystyle \frac{k_4 + k_0}{2}
-            \displaystyle \frac{T_0 - T_4}{s_{x,f}}
+            \displaystyle \frac{k_0 + k_3}{2}
+            \displaystyle \frac{T_3 - T_0}{s_{x,b}}
         \right )
     }{s_{x,b} + s_{x,f}} = \\[2ex]
     = &
     \frac{
-        \displaystyle\frac{(k_0 + k_3) (T_3 - T_0)}{s_{x,b}} -
-        \displaystyle\frac{(k_4 + k_0) (T_0 - T_4)}{s_{x,f}}
+        \displaystyle\frac{(k_0 + k_4) (T_0 - T_4)}{s_{x,f}} -
+        \displaystyle\frac{(k_0 + k_3) (T_3 - T_0)}{s_{x,b}}
         }
     {s_{x,b} + s_{x,f}} = \\[2ex]
     = &
-    \frac{(k_0 + k_3) (T_3 - T_0)}{s_{x,b} (s_{x,b} + s_{x,f})} -
-    \frac{(k_4 + k_0) (T_0 - T_4)}{s_{x,f} (s_{x,b} + s_{x,f})} = \\[2ex]
+    \frac{(k_0 + k_4) (T_0 - T_4)}{s_{x,f} (s_{x,b} + s_{x,f})} -
+    \frac{(k_0 + k_3) (T_3 - T_0)}{s_{x,b} (s_{x,b} + s_{x,f})} = \\[2ex]
     = &
-    - \frac{T_0 (k_0 + k_3)}{s_{x,b} (s_{x,b} + s_{x,f})} +
-    \frac{T_3 (k_0 + k_3)}{s_{x,b} (s_{x,b} + s_{x,f})} + \\
-    & + \frac{T_4 (k_4 + k_0)}{s_{x,f} (s_{x,b} + s_{x,f})} -
-    \frac{T_0 (k_4 + k_0)}{s_{x,f} (s_{x,b} + s_{x,f})} = \\[2ex]
+    \frac{T_0 (k_0 + k_4)}{s_{x,f} (s_{x,b} + s_{x,f})} -
+    \frac{T_4 (k_0 + k_4)}{s_{x,f} (s_{x,b} + s_{x,f})} + \\
+    & - \frac{T_3 (k_0 + k_3)}{s_{x,b} (s_{x,b} + s_{x,f})} +
+    \frac{T_0 (k_0 + k_3)}{s_{x,b} (s_{x,b} + s_{x,f})} = \\[2ex]
     = &
-    - T_0 \left(
-        \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})} +
-        \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})}
+    T_0 \left(
+        \frac{k_0 + k_4}{s_{x,f} (s_{x,b} + s_{x,f})} +
+        \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})}
     \right) + \\
-    & + T_3 \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})}
-    + T_4 \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} =
+    & - T_4 \frac{k_0 + k_4}{s_{x,f} (s_{x,b} + s_{x,f})}
+    - T_3 \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})} =
 \end{split}
 \end{align}
 
 Therefore, the coefficients in $\bm{L}$ are:
 \begin{align}
     \label{suppl:eq:L_coefficients_x_term}
-    % 0 here is incomplete, missing part from y and z terms
-    % 0: &&\quad \bm{L}_{r(u,v,w),r(u,v,w)} = & \left(
-    %     \frac{k_0 + k_3}{s_{x,r} (s_{x,b} + s_{x,f})} +
-    %     \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} \right) \\[2ex]
-    3: &&\quad \bm{L}_{r(u,v,w),r(u,v-1,w)} = & \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})} \\[2ex]
-    4: &&\quad \bm{L}_{r(u,v,w),r(u,v+1,w)} = & \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})}
+    3: &&\quad \bm{L}_{r(u,v,w),r(u,v-1,w)} = & - \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})} \\[2ex]
+    4: &&\quad \bm{L}_{r(u,v,w),r(u,v+1,w)} = & - \frac{k_0 + k_4}{s_{x,f} (s_{x,b} + s_{x,f})}
 \end{align}
 keeping in mind that the global indexes $r$ for neighbour-$3$ and neighbour-$4$ (one grid step along $x$) are given by Eq.~\ref{suppl:eq:GlobalIndex}.
 
@@ -392,25 +397,25 @@ The coefficients for the terms regarding the neighbours along $y$ and along $z$ 
 The result is:
 \begin{align}
     \label{suppl:eq:L_coefficients_y_z_terms}
-    5: &&\quad \bm{L}_{r(u,v,w),r(u,v,w-1)} = & \frac{k_0 + k_5}{s_{y,b} (s_{y,b} + s_{y,f})} \\[2ex]
-    6: &&\quad \bm{L}_{r(u,v,w),r(u,v,w+1)} = & \frac{k_6 + k_0}{s_{y,f} (s_{y,b} + s_{y,f})} \\[2ex]
-    1: &&\quad \bm{L}_{r(u,v,w),r(u-1,v,w)} = & \frac{k_0 + k_1}{s_{z,b} (s_{z,b} + s_{z,f})} \\[2ex]
-    2: &&\quad \bm{L}_{r(u,v,w),r(u+2,v,w)} = & \frac{k_2 + k_0}{s_{z,f} (s_{z,b} + s_{z,f})}
+    5: &&\quad \bm{L}_{r(u,v,w),r(u,v,w-1)} = & - \frac{k_0 + k_5}{s_{y,b} (s_{y,b} + s_{y,f})} \\[2ex]
+    6: &&\quad \bm{L}_{r(u,v,w),r(u,v,w+1)} = & - \frac{k_0 + k_6}{s_{y,f} (s_{y,b} + s_{y,f})} \\[2ex]
+    1: &&\quad \bm{L}_{r(u,v,w),r(u-1,v,w)} = & - \frac{k_0 + k_1}{s_{z,b} (s_{z,b} + s_{z,f})} \\[2ex]
+    2: &&\quad \bm{L}_{r(u,v,w),r(u+2,v,w)} = & - \frac{k_0 + k_2}{s_{z,f} (s_{z,b} + s_{z,f})}
 \end{align}
 
 By grouping the $T_0$ terms obtained in Eq.~\ref{suppl:eq:FD_fluxes_complete_k_x_term} for $x$-neighbours and their analogues for $y$- and $z$-neighbours (omitted), we obtain the coefficient on the diagonal:
 \begin{align}
     \label{suppl:eq:L_coefficients_diagonal_full}
-    0: &&\quad \bm{L}_{r(u,v,w),r(u,v,w)} = - &
+    0: &&\quad \bm{L}_{r(u,v,w),r(u,v,w)} = &
     \left(
-        \frac{k_0 + k_3}{s_{x,r} (s_{x,b} + s_{x,f})} +
-        \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} \right) & + \nonumber \\[2ex]
-    && - & \left(
-        \frac{k_0 + k_5}{s_{y,r} (s_{y,b} + s_{y,f})} +
-        \frac{k_6 + k_0}{s_{y,f} (s_{y,b} + s_{y,f})} \right) & + \nonumber \\[2ex]
-    && - & \left(
-        \frac{k_0 + k_1}{s_{z,r} (s_{z,b} + s_{z,f})} +
-        \frac{k_2 + k_0}{s_{z,f} (s_{z,b} + s_{z,f})} \right)
+        \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})} +
+        \frac{k_0 + k_4}{s_{x,f} (s_{x,b} + s_{x,f})} \right) & + \nonumber \\[2ex]
+    && + & \left(
+        \frac{k_0 + k_5}{s_{y,b} (s_{y,b} + s_{y,f})} +
+        \frac{k_0 + k_6}{s_{y,f} (s_{y,b} + s_{y,f})} \right) & + \nonumber \\[2ex]
+    && + & \left(
+        \frac{k_0 + k_1}{s_{z,b} (s_{z,b} + s_{z,f})} +
+        \frac{k_0 + k_2}{s_{z,f} (s_{z,b} + s_{z,f})} \right)
 \end{align}
 
 \FloatBarrier

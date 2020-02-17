@@ -2,7 +2,7 @@
 \label{c:ThermModel}
 
 The thermal parameter fitting strategy and the obtained thermal model (chapter~\ref{c:ThermAppl}) rely on a finite-difference solver for the steady-state heat equation.
-Its fundamental relationship can expressed in the following vector form:
+Its fundamental relationship can be expressed in the following vector form:
 \begin{equation}
     \label{suppl:eq:heateq}
     \bm{\nabla} \cdot ( k(\bm{x}) \bm{\nabla} T(\bm{x}) ) = - A(\bm{x})
@@ -33,7 +33,7 @@ which is equivalent to Eq.~\ref{suppl:eq:heateq}, as expressed above \parencite[
 % NOTE! Not sure if heat equation with a non-uniform k is a Poisson's equation
 %This is a partial differential equation (PDE), in the form of Poisson's equation ($\bm{\nabla}^2 \phi = f$, for two generic $\phi$ and $f$ functions).
 
-Analytical solution to this partial differential equation exist: plenty are available for specific cases in the Earth sciences \parencites(see e.g. )()[][chapter 4.6]{Turcotte2014_geodynamics}[][chapter 3.4]{stuwe2007geodynamics}.
+Analytical solutions to this partial differential equation exist: plenty are available for specific cases in the Earth sciences \parencites(see e.g. )()[][chapter 4.6]{Turcotte2014_geodynamics}[][chapter 3.4]{stuwe2007geodynamics}.
 As pointed out by \textcite{Gerya2010} a pitfall of analytical methods for PDE solution is that they are "restricted to relatively simple problems" \parencite[][chapter 3.1]{Gerya2010}.
 To analytically express the distribution of parameters' fields (e.g. $A$, $k$) is often cumbersome, sometimes impossible.
 For the purposes of this thesis, a solver to the steady-state heat equation based on the finite-difference method \parencites()()[][chapter 4.2]{Patankar1980}[][chapter 10]{Gerya2010} was developed.
@@ -88,7 +88,8 @@ For the sake of clarity, we indicate each of these heat flux components as $Q_x$
     \bm{Q} = 
     \left(-k \frac{\partial T}{\partial x} \bm{\hat{i}} \right) +
     \left(-k \frac{\partial T}{\partial y} \bm{\hat{j}} \right) +
-    \left(-k \frac{\partial T}{\partial z} \bm{\hat{k}} \right) = Q_x + Q_y + Q_z
+    \left(-k \frac{\partial T}{\partial z} \bm{\hat{k}} \right) =
+    Q_x \bm{\hat{i}} + Q_y \bm{\hat{j}} + Q_z \bm{\hat{k}}
 \end{equation}
 By substituting this into the $k \bm{\nabla}^2 T$ term of Eq.~\ref{suppl:eq:steadystatefullheateq_simplified}, we get:
 \begin{equation}
@@ -124,7 +125,7 @@ Using one of the terms of Eq.~\ref{suppl:eq:steadystatefullheateq_simplified_Q} 
     2 \frac{Q_{x,b} - Q_{x,f}}{s_{x,b} + s_{x,f}}
 \end{equation}
 The sketch provided in Fig.~\ref{suppl:fig:stencil_sketch} helps in representing the finite difference approximation just shown in Eq.~\ref{suppl:eq:FD_example}.
-In that figure the grid spacings $s_{x,b}$ and $s_{x,f}$ are plotted as sensibly different on purpose, to highlight the the fact that they may be not equal, in the general case.
+In that figure the grid spacings $s_{x,b}$ and $s_{x,f}$ are plotted as sensibly different on purpose, to highlight the fact that they may be not equal, in the general case.
 
 \begin{figure}[ht] % stencil figure: sketch for FD example, staggered nodes
     \begin{adjustbox}{center}
@@ -141,11 +142,11 @@ We can now write the FD approximation for the fluxes in Eq.~\ref{suppl:eq:steady
     \label{suppl:eq:FD_fluxes}
     2 \frac{Q_{x,b} - Q_{x,f}}{s_{x,b} + s_{x,f}} +
     2 \frac{Q_{y,b} - Q_{y,f}}{s_{y,b} + s_{y,f}} +
-    2 \frac{Q_{z,b} - Q_{y,f}}{s_{z,b} + s_{z,f}} = A_0
+    2 \frac{Q_{z,b} - Q_{z,f}}{s_{z,b} + s_{z,f}} = A_0
 \end{equation}
 
 It is now the turn of FD approximation of the $Q_{m,n}$ fluxes at the staggered nodes.
-Using node $Q_{x,b}$ an example (see Fig.~\ref{suppl:fig:stencil_sketch_flux} for a sketch):
+Using node $Q_{x,b}$ as an example (see Fig.~\ref{suppl:fig:stencil_sketch_flux} for a sketch):
 \begin{equation}
     \label{suppl:eq:FD_staggered_example}
     Q_{x,b} =
@@ -195,30 +196,30 @@ Further expressing the averaged conductivities at staggered nodes $k_{m,n}$, we 
     2 \frac{
             \left(
                 \displaystyle \frac{k_0 + k_3}{2}
-                \displaystyle \frac{T_0 - T_3}{s_{x,b}}
+                \displaystyle \frac{T_3 - T_0}{s_{x,b}}
             \right ) -
             \left(
                 \displaystyle \frac{k_4 + k_0}{2}
-                \displaystyle \frac{T_4 - T_0}{s_{x,f}}
+                \displaystyle \frac{T_0 - T_4}{s_{x,f}}
             \right )
         }{s_{x,b} + s_{x,f}} &+ \\[1ex]
     2 \frac{
             \left(
                 \displaystyle \frac{k_0 + k_5}{2}
-                \displaystyle \frac{T_0 - T_5}{s_{y,b}} \right ) -
+                \displaystyle \frac{T_5 - T_0}{s_{y,b}} \right ) -
             \left(
                 \displaystyle \frac{k_6 + k_0}{2}
-                \displaystyle \frac{T_6 - T_0}{s_{y,f}}
+                \displaystyle \frac{T_0 - T_6}{s_{y,f}}
             \right )
         }{s_{y,b} + s_{y,f}} &+ \\[1ex]
     2 \frac{
             \left(
                 \displaystyle \frac{k_0 + k_1}{2}
-                \displaystyle \frac{T_0 - T_1}{s_{z,b}}
+                \displaystyle \frac{T_1 - T_0}{s_{z,b}}
             \right ) -
             \left(
                 \displaystyle \frac{k_2 + k_0}{2}
-                \displaystyle \frac{T_2 - T_0}{s_{z,f}}
+                \displaystyle \frac{T_0 - T_2}{s_{z,f}}
             \right )
         }{s_{z,b} + s_{z,f}} &= A_0
 \end{split}
@@ -251,8 +252,7 @@ By expressing an FD model as a system of linear equations (Eq.~\ref{suppl:eq:FD_
 
 As mentioned when describing the thermal application (chapter~\ref{c:ThermAppl}), for the aim of this thesis $\bm{L}$ was inverted using the \textit{UMFPACK} factorization for sparse matrices \parencite{Davis2006}.
 % Providing its description here may be well beyond the scope of this thesis.
-In computational terms, it is a direct solver.
-For an increasing number of dimensions and model nodes it may result in an unmanageable amount of memory.
+It is a direct solver therefore, for an increasing number of dimensions and model nodes, it may result in an unmanageable amount of memory.
 The call to a fall-back alternative, an iterative solver \parencite[the generalized minimal residual method, \textit{gmres}, see][]{Saad1986gmres}, has been included in the code, but it never occurred to require resorting to it, in the experiments described here.
 
 \paragraph*{Indexing in the coefficient matrix}
@@ -345,34 +345,34 @@ Starting again with the first term only (the one dealing with the two neighbours
     & 2 \frac{
         \left(
             \displaystyle \frac{k_0 + k_3}{2}
-            \displaystyle \frac{T_0 - T_3}{s_{x,b}}
+            \displaystyle \frac{T_3 - T_0}{s_{x,b}}
         \right ) -
         \left(
             \displaystyle \frac{k_4 + k_0}{2}
-            \displaystyle \frac{T_4 - T_0}{s_{x,f}}
+            \displaystyle \frac{T_0 - T_4}{s_{x,f}}
         \right )
     }{s_{x,b} + s_{x,f}} = \\[2ex]
     = &
     \frac{
-        \displaystyle\frac{(k_0 + k_3) (T_0 - T_3)}{s_{x,b}} -
-        \displaystyle\frac{(k_4 + k_0) (T_4 - T_0)}{s_{x,f}}
+        \displaystyle\frac{(k_0 + k_3) (T_3 - T_0)}{s_{x,b}} -
+        \displaystyle\frac{(k_4 + k_0) (T_0 - T_4)}{s_{x,f}}
         }
     {s_{x,b} + s_{x,f}} = \\[2ex]
     = &
-    \frac{(k_0 + k_3) (T_0 - T_3)}{s_{x,b} (s_{x,b} + s_{x,f})} -
-    \frac{(k_4 + k_0) (T_4 - T_0)}{s_{x,f} (s_{x,b} + s_{x,f})} = \\[2ex]
+    \frac{(k_0 + k_3) (T_3 - T_0)}{s_{x,b} (s_{x,b} + s_{x,f})} -
+    \frac{(k_4 + k_0) (T_0 - T_4)}{s_{x,f} (s_{x,b} + s_{x,f})} = \\[2ex]
     = &
-    \frac{T_0 (k_0 + k_3)}{s_{x,b} (s_{x,b} + s_{x,f})} -
+    - \frac{T_0 (k_0 + k_3)}{s_{x,b} (s_{x,b} + s_{x,f})} +
     \frac{T_3 (k_0 + k_3)}{s_{x,b} (s_{x,b} + s_{x,f})} + \\
-    & - \frac{T_4 (k_4 + k_0)}{s_{x,f} (s_{x,b} + s_{x,f})} +
+    & + \frac{T_4 (k_4 + k_0)}{s_{x,f} (s_{x,b} + s_{x,f})} -
     \frac{T_0 (k_4 + k_0)}{s_{x,f} (s_{x,b} + s_{x,f})} = \\[2ex]
     = &
-    T_0 \left(
+    - T_0 \left(
         \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})} +
         \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})}
     \right) + \\
-    & - T_3 \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})}
-    - T_4 \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} =
+    & + T_3 \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})}
+    + T_4 \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} =
 \end{split}
 \end{align}
 
@@ -383,8 +383,8 @@ Therefore, the coefficients in $\bm{L}$ are:
     % 0: &&\quad \bm{L}_{r(u,v,w),r(u,v,w)} = & \left(
     %     \frac{k_0 + k_3}{s_{x,r} (s_{x,b} + s_{x,f})} +
     %     \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} \right) \\[2ex]
-    3: &&\quad \bm{L}_{r(u,v,w),r(u,v-1,w)} = & - \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})} \\[2ex]
-    4: &&\quad \bm{L}_{r(u,v,w),r(u,v+1,w)} = & - \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})}
+    3: &&\quad \bm{L}_{r(u,v,w),r(u,v-1,w)} = & \frac{k_0 + k_3}{s_{x,b} (s_{x,b} + s_{x,f})} \\[2ex]
+    4: &&\quad \bm{L}_{r(u,v,w),r(u,v+1,w)} = & \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})}
 \end{align}
 keeping in mind that the global indexes $r$ for neighbour-$3$ and neighbour-$4$ (one grid step along $x$) are given by Eq.~\ref{suppl:eq:GlobalIndex}.
 
@@ -392,23 +392,23 @@ The coefficients for the terms regarding the neighbours along $y$ and along $z$ 
 The result is:
 \begin{align}
     \label{suppl:eq:L_coefficients_y_z_terms}
-    5: &&\quad \bm{L}_{r(u,v,w),r(u,v,w-1)} = & - \frac{k_0 + k_5}{s_{y,b} (s_{y,b} + s_{y,f})} \\[2ex]
-    6: &&\quad \bm{L}_{r(u,v,w),r(u,v,w+1)} = & - \frac{k_6 + k_0}{s_{y,f} (s_{y,b} + s_{y,f})} \\[2ex]
-    1: &&\quad \bm{L}_{r(u,v,w),r(u-1,v,w)} = & - \frac{k_0 + k_1}{s_{z,b} (s_{z,b} + s_{z,f})} \\[2ex]
-    2: &&\quad \bm{L}_{r(u,v,w),r(u+2,v,w)} = & - \frac{k_2 + k_0}{s_{z,f} (s_{z,b} + s_{z,f})}
+    5: &&\quad \bm{L}_{r(u,v,w),r(u,v,w-1)} = & \frac{k_0 + k_5}{s_{y,b} (s_{y,b} + s_{y,f})} \\[2ex]
+    6: &&\quad \bm{L}_{r(u,v,w),r(u,v,w+1)} = & \frac{k_6 + k_0}{s_{y,f} (s_{y,b} + s_{y,f})} \\[2ex]
+    1: &&\quad \bm{L}_{r(u,v,w),r(u-1,v,w)} = & \frac{k_0 + k_1}{s_{z,b} (s_{z,b} + s_{z,f})} \\[2ex]
+    2: &&\quad \bm{L}_{r(u,v,w),r(u+2,v,w)} = & \frac{k_2 + k_0}{s_{z,f} (s_{z,b} + s_{z,f})}
 \end{align}
 
 By grouping the $T_0$ terms obtained in Eq.~\ref{suppl:eq:FD_fluxes_complete_k_x_term} for $x$-neighbours and their analogues for $y$- and $z$-neighbours (omitted), we obtain the coefficient on the diagonal:
 \begin{align}
     \label{suppl:eq:L_coefficients_diagonal_full}
-    0: &&\quad \bm{L}_{r(u,v,w),r(u,v,w)} = &
+    0: &&\quad \bm{L}_{r(u,v,w),r(u,v,w)} = - &
     \left(
         \frac{k_0 + k_3}{s_{x,r} (s_{x,b} + s_{x,f})} +
         \frac{k_4 + k_0}{s_{x,f} (s_{x,b} + s_{x,f})} \right) & + \nonumber \\[2ex]
-    && + & \left(
+    && - & \left(
         \frac{k_0 + k_5}{s_{y,r} (s_{y,b} + s_{y,f})} +
         \frac{k_6 + k_0}{s_{y,f} (s_{y,b} + s_{y,f})} \right) & + \nonumber \\[2ex]
-    && + & \left(
+    && - & \left(
         \frac{k_0 + k_1}{s_{z,r} (s_{z,b} + s_{z,f})} +
         \frac{k_2 + k_0}{s_{z,f} (s_{z,b} + s_{z,f})} \right)
 \end{align}

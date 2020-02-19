@@ -51,7 +51,7 @@ Gravity based methods have a well proven record in retrieval of crustal thicknes
 Here, by design, the performance of a satellite-only approach was assessed, relying as less as reasonably possible on other sources.
 
 % dettagli modello termico
-A 3D finite-difference thermal forward operator for solving the steady state heat equation has been developed for the purposes of this research.
+A 3D finite-difference thermal forward operator for solving the steady state heat equation has been developed for the purposes of this research (appendix~\ref{c:ThermModel}).
 It allows a radioactive heat production inversion technique, which progresses iteratively through a succession of 1D approximations and subsequent substitution of the parameter sought for.
 It enabled the production of a complete volume of temperature and thermal parameters in the study area, resulting in a gravity-controlled, physics-based, fill-in of the no-data cells -- both at surface and in depth.
 \\
@@ -73,6 +73,7 @@ In summary, with the findings of the experiments and applications carried out in
     A well-tested procedure was employed to invert a Moho depth from the isolated gravity signal, in local cartesian coordinates.
     The performance of this crustal thickness estimate are comparable with those obtained by using an integrated seismic based Moho: it is successful in resolving the deep structures controlling the shallow thermal regime and in providing a uniformly-sampled quantity for the RHP-fitting strategy.
     Results are significantly better than those provided by a checker board Moho test, with higher sensitivity in cells of higher heat flow.
+    The effect of crustal thickness in controlling the observed pattern of surface heat flow --as observed in thermal modelling works of similar focus \parencites()(to name a few){ScheckWenderoth2014}{Przybycin2015}{Limberger2018}-- was also reproduced.
     \begin{description}
         \item[\quad Further development] The effect of temperature on density, and then on Moho inversion, was assessed using the output of the forward thermal model: it results in variations of \SI{-12.2}{\percent} to \SI[retain-explicit-plus]{+14.8}{\percent} respect to the Moho inversion that disregarded the thermal effect. While this is deemed an acceptable uncertainty, it would make sense to not discard the temperature information that this modelling method provides. This is also suggested by the existing research on thermal effects on crustal gravity modelling have already provided  results \parencite[e.g.][]{Bagherbandi2017thermal}.
     \end{description}
